@@ -9,6 +9,11 @@ Page({
     tabbar: {},
   },
 
+  nav: function(e) {
+    wx.navigateTo({
+      url: '/pages/mine/auth/auth',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -20,7 +25,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.settingList = this.selectComponent("#settingList");
   },
 
   /**

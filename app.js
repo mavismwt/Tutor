@@ -2,7 +2,7 @@
 App({
   onLaunch: function () {
     //隐藏系统tabbar
-    //wx.hideTabBar();
+    wx.hideTabBar();
     //获取设备信息
     this.getSystemInfo();
 
@@ -46,14 +46,7 @@ App({
     let currentPages = getCurrentPages();
     let _this = currentPages[currentPages.length - 1];
     let pagePath = _this.route;
-    
     (pagePath.indexOf('/') != 0) && (pagePath = '/' + pagePath);
-
-
-    // if(pagePath.indexOf('/') != 0){
-    //   pagePath = '/' + pagePath;
-    // } 
-   
     for (let i in tabbar.list) {
       tabbar.list[i].selected = false;
       (tabbar.list[i].pagePath == pagePath) && (tabbar.list[i].selected = true);
@@ -63,7 +56,6 @@ App({
     });
   },
   globalData: {
-    systemInfo: null,//客户端设备信息
     userInfo: null,
     tabBar: {
       "backgroundColor": "#ffffff",
@@ -72,33 +64,33 @@ App({
       "list": [
         {
           "pagePath": "/pages/index/index",
+          "text": "找老师",
           "iconPath": "icon/icon_home.png",
-          "selectedIconPath": "icon/icon_home_HL.png",
-          "text": "找老师"
+          "selectedIconPath": "icon/icon_home_HL.png"
         },
         {
           "pagePath": "/pages/student/student",
+          "text": "找学生",
           "iconPath": "icon/icon_home.png",
-          "selectedIconPath": "icon/icon_home_HL.png",
-          "text": "找学生"
+          "selectedIconPath": "icon/icon_home_HL.png"
         },
         {
           "pagePath": "/pages/middle/middle",
           "iconPath": "icon/icon_release.png",
           "isSpecial": true,
-          "text": "发布"
+          "text": ""
         },
         {
           "pagePath": "/pages/message/message",
+          "text": "消息",
           "iconPath": "icon/icon_mine.png",
-          "selectedIconPath": "icon/icon_mine_HL.png",
-          "text": "消息"
+          "selectedIconPath": "icon/icon_mine_HL.png"
         },
         {
           "pagePath": "/pages/mine/mine",
+          "text": "个人中心",
           "iconPath": "icon/icon_mine.png",
-          "selectedIconPath": "icon/icon_mine_HL.png",
-          "text": "我的"
+          "selectedIconPath": "icon/icon_mine_HL.png"
         }
       ]
     }

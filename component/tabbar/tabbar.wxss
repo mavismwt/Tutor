@@ -42,7 +42,7 @@
 }
 .special-wrapper{
   position: absolute;
-  left: 30rpx;
+  left: 77rpx;
   top: -36rpx;
   width: 96rpx;
   height: 96rpx;

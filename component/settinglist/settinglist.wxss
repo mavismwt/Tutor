@@ -1,0 +1,28 @@
+/* component/settinglist/settinglist.wxss */
+:host {
+  display: block;
+  border-bottom: 1px solid #e0e0e0;
+}
+.list {
+  display: flex;
+  padding:5px 10px;
+  width: 100vw;
+  height: 40px;
+  border-bottom: none;
+}
+
+.icon {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  margin-left: 12px;
+  padding: 5px;
+}
+
+.title {
+  display: flex;
+  font-size: 16px;
+  height: 16px;
+  margin-left: 8px;
+  margin-top: 10px;
+}

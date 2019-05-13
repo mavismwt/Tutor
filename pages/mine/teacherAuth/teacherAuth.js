@@ -1,4 +1,4 @@
-// component/selbar/selbar.js
+// pages/mine/teacherAuth/teacherAuth.js
 Page({
 
   /**

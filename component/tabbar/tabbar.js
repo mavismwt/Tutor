@@ -13,31 +13,19 @@ Component({
         "selectedColor": "#1c1c1b",
         "list": [
           {
-            "pagePath": "pages/index/index",
+            "pagePath": "/pages/index/index",
             "iconPath": "icon/icon_home.png",
             "selectedIconPath": "icon/icon_home_HL.png",
             "text": "首页"
           },
           {
-            "pagePath": "pages/student/student",
-            "iconPath": "icon/icon_home.png",
-            "selectedIconPath": "icon/icon_home_HL.png",
-            "text": "找学生"
-          },
-          {
-            "pagePath": "pages/middle/middle",
+            "pagePath": "/pages/middle/middle",
             "iconPath": "icon/icon_release.png",
             "isSpecial": true,
             "text": "发布"
           },
           {
-            "pagePath": "pages/message/message",
-            "iconPath": "icon/icon_mine.png",
-            "selectedIconPath": "icon/icon_mine_HL.png",
-            "text": "消息"
-          },
-          {
-            "pagePath": "pages/mine/mine",
+            "pagePath": "/pages/mine/mine",
             "iconPath": "icon/icon_mine.png",
             "selectedIconPath": "icon/icon_mine_HL.png",
             "text": "我的"

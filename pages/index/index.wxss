@@ -30,10 +30,39 @@
 
 .cover-view {
   position: relative;
-  top: 0%;
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   background-color: white;
-
+  margin-top: 40px;
+}
+.objects {
+  clear: both;
+  width: 90vw;
+  display: inline-block;
+  margin-left: 5vw;
+  margin-top: 25vw;
+}
+.object-item {
+  float: left;
+  font-size: 16px;
+  width: 29%;
+  padding: 10px 0px;
+  text-align: center;
+  margin-left: 3%;
+  margin-top: 20rpx;
+  border: 1px solid #ececec;
+  border-radius: 5px;
+}
+.confirm {
+  float: left;
+  font-size: 16px;
+  width: 27%;
+  padding: 10px 0px;
+  text-align: center;
+  margin-left: 37%;
+  margin-top: 40px;
+  border-radius: 5px;
+  background-color: #ececec;
 }

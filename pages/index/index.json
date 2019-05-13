@@ -4,6 +4,7 @@
   "navigationBarTitleText": "老师列表",
   "navigationBarTextStyle": "black",
   "usingComponents": {
-    "teacherList": "/component/teacherlist/teacherlist"
+    "teacherList": "/component/teacherlist/teacherlist",
+    "tabbar": "/component/tabbar/tabbar"
   }
 }

@@ -1,3 +1,24 @@
 <view class="container">
+  <view class='info'>
+    <image class='profile' src='/images/tupian.png'></image>
+    <view class='basic-info'>
+      <text class='nickname'>ME</text>
+      <view class='auth'>未认证</view>
+    </view>
+  </view>
+  <view class='list'>
+    <settingList id="settingList"  wx:key="unique" title="我的认证" bindtap="nav">
+    </settingList>
+    <settingList id="settingList"  wx:key="unique" title="我的资料">
+    </settingList>
+    <settingList id="settingList"  wx:key="unique" title="我的收藏">
+    </settingList>
+    <settingList id="settingList"  wx:key="unique" title="钱款消息">
+    </settingList>
+    <settingList id="settingList"  wx:key="unique" title="平台须知">
+    </settingList>
+    <settingList id="settingList"  wx:key="unique" title="反馈意见">
+    </settingList>
+  </view>
   <tabbar tabbar="{{tabbar}}"></tabbar>
 </view>

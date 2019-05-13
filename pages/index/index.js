@@ -25,7 +25,26 @@ Page({
         price: '100',
         object: '物理',
         time: '周三晚上'
+      }, 
+      {
+        name: '叶老师',
+        school: '华中科技大学',
+        grade: '一年级',
+        price: '100',
+        object: '数学，英语',
+        time: '周一下午'
       },
+      {
+        name: '陈老师',
+        school: '华中科技大学',
+        grade: '高三',
+        price: '100',
+        object: '物理',
+        time: '周三晚上'
+      },
+    ],
+    obejctArrray: [
+      '语文', '数学', '英语', '物理', '化学', '生物', '政治', '历史', '地理', '其他'
     ],
     tabbar: {}
   },
@@ -39,6 +58,13 @@ Page({
   changeStatus: function (e) {
     isHidden = !isHidden
     this.setData({isHidden:isHidden})
+    // wx.request({
+    //   url: 'https://www.yjwbenji.top',
+    //   data: {},
+    //   success: function (res) {
+    //     console.log(res.data)
+    //   }
+    // })
   },
 
   /**

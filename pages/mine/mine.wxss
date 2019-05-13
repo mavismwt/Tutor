@@ -1,1 +1,38 @@
 /* pages/mine/mine.wxss */
+.container {
+  display: flex;
+  padding: 0px 0px 0px 0px;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.profile {
+  width: 80px;
+  height: 80px;
+  padding: 20px 0px 10px 20px;
+}
+.basic-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 45px;
+}
+.nickname {
+  font-size: 16px;
+}
+.auth {
+  font-size: 16px;
+  background-color:gainsboro;
+  margin-left: 8px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.listView {
+  display: list-item;
+  flex-direction: column;
+  width: 100%;
+}

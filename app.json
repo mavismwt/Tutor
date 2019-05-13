@@ -5,11 +5,15 @@
     "pages/mine/mine",
     "pages/message/message",
     "pages/student/student",
-    "component/selbar/selbar"
+    "pages/index/detail/detail",
+    "pages/mine/auth/auth",
+    "pages/mine/teacherAuth/teacherAuth",
+    "pages/mine/studentAuth/studentAuth"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#111111",
-    "navigationBarTitleText": "求教有道"
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "求教有道",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "backgroundColor": "#ffffff",
@@ -29,7 +33,7 @@
         "selectedIconPath": "component/tabbar/icon/icon_home_HL.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/middle/middle",
         "text": "   ",
         "iconPath": "component/tabbar/icon/icon_release.png",
         "selectedIconPath": "component/tabbar/icon/icon_release.png"
@@ -42,7 +46,7 @@
       },
       {
         "pagePath": "pages/mine/mine",
-        "text": "我的",
+        "text": "个人中心",
         "iconPath": "component/tabbar/icon/icon_mine.png",
         "selectedIconPath": "component/tabbar/icon/icon_mine_HL.png"
       }

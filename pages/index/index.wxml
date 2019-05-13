@@ -21,6 +21,10 @@
   </teacherList>
   <tabbar tabbar="{{tabbar}}"></tabbar> 
   <cover-view class = 'cover-view' style="position:fixed;top:0;left:0" hidden='{{isHidden}}' bindtap='changeStatus' >
-    <cover-view class='objects'>科目</cover-view>
+    <cover-view class='objects' style="flex-direction:row;">
+      <cover-view class='object-item' wx:for="{{obejctArrray}}" wx:key="unique">{{item}}</cover-view>
+    </cover-view>
+    <cover-view class='confirm'>确定</cover-view>
   </cover-view>
+  <tabbar tabbar="{{tabbar}}"></tabbar>
 </view>

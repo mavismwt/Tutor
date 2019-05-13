@@ -19,6 +19,28 @@ Page({
         isLongTerm: true
       }, 
       {
+        name: '李同学',
+        price: '80',
+        grade: '高二',
+        object: '数学',
+        time: '周六晚上',
+        location: 'XXXX小区XX单元XX楼XXX室',
+        sex: '不限',
+        isLongTerm: true
+      },
+      {
+        name: '王同学',
+        price: '120',
+        grade: '高二',
+        object: '物理',
+        time: '周六下午',
+        location: 'XXXX小区XX单元XX楼XXX室',
+        sex: '女',
+        isLongTerm: false,
+        number: '1',
+        perTime: '2'
+      },
+      {
         name: '王同学',
         price: '120',
         grade: '高二',
@@ -48,7 +70,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.longTermList = this.selectComponent("#longTermList");
+    this.studentList = this.selectComponent("#studentList");
   },
 
   /**

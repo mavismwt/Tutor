@@ -1,2 +1,16 @@
 <!--pages/middle/middle.wxml-->
-<text>pages/middle/middle.wxml</text>
+  <cover-view class='cover-view' hidden='{{hidden}}'>
+    <cover-view class='select-view'>
+      <cover-view class='select'>
+        <cover-image class='icon' src='/images/tupian.png'></cover-image>
+        <cover-view class='title'>当家教</cover-view>
+      </cover-view>
+      <cover-view class='select'>
+        <cover-image class='icon' src='/images/tupian.png'></cover-image>
+        <cover-view class='title'>找家教</cover-view>
+      </cover-view>
+    </cover-view>
+    <cover-image class='cancel' src='/images/tupian.png'></cover-image>
+  </cover-view>
+
+

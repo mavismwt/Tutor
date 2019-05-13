@@ -1,0 +1,17 @@
+<!--pages/mine/auth/auth.wxml-->
+<view class='container'>
+  <view class='cover-view' hidden='{{hidden}}'>
+    <view class='select-view'>
+      <view class='select' bindtap='teacherAuth'>
+        <image class='icon' src='/images/tupian.png'></image>
+        <view class='title'>当家教</view>
+      </view>
+      <view class='select' bindtap='studentAuth'>
+        <image class='icon' src='/images/tupian.png'></image>
+        <view class='title'>找家教</view>
+      </view>
+    </view>
+    <text class='more-info'>认证后才能发送申请\n9:00-22:00三小时内审核完毕</text>
+    <!-- <cover-image class='cancel' src='/images/tupian.png'></cover-image> -->
+  </view>
+</view>
