@@ -1,49 +1,45 @@
-//index.js
-//获取应用实例
+// pages/student/student.js
 const app = getApp();
-var isHidden = true;
 Page({
   /**
    * 页面的初始数据
    */
-  
   data: {
-    isHidden: isHidden,
-    teacherArray: [
+    //tabbar
+    tabbar: {},
+    studentArray: [
       {
-        name: '叶老师',
-        school: '华中科技大学',
-        grade: '一年级',
-        price:'100',
-        object:'数学，英语',
-        time:'周一下午'
-      },
+        name: '李同学',
+        price: '80',
+        grade: '高二',
+        object: '数学',
+        time: '周六晚上',
+        location: 'XXXX小区XX单元XX楼XXX室',
+        sex: '不限',
+        isLongTerm: true
+      }, 
       {
-        name: '陈老师',
-        school: '华中科技大学',
-        grade: '高三',
-        price: '100',
+        name: '王同学',
+        price: '120',
+        grade: '高二',
         object: '物理',
-        time: '周三晚上'
-      },
+        time: '周六下午',
+        location: 'XXXX小区XX单元XX楼XXX室',
+        sex: '女',
+        isLongTerm: false,
+        number: '1',
+        perTime: '2'
+      }
     ],
     tabbar: {}
-  },
-  canvasIdErrorCallback: function (e) {
-    console.error(e.detail.errMsg)
-  },
-  onReady: function (e) {
-    this.teacherList = this.selectComponent("#teacherList");
-  },
-
-  changeStatus: function (e) {
-    isHidden = !isHidden
-    this.setData({isHidden:isHidden})
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  canvasIdErrorCallback: function (e) {
+    console.error(e.detail.errMsg)
+  },
   onLoad: function (options) {
     app.editTabbar();
   },
@@ -52,7 +48,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.longTermList = this.selectComponent("#longTermList");
   },
 
   /**

@@ -1,13 +1,52 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/middle/middle",
+    "pages/mine/mine",
+    "pages/message/message",
+    "pages/student/student",
+    "component/selbar/selbar"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#111111",
+    "navigationBarTitleText": "求教有道"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#979795",
+    "selectedColor": "#1c1c1b",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "找老师",
+        "iconPath": "component/tabbar/icon/icon_home.png",
+        "selectedIconPath": "component/tabbar/icon/icon_home_HL.png"
+      },
+      {
+        "pagePath": "pages/student/student",
+        "text": "找学生",
+        "iconPath": "component/tabbar/icon/icon_home.png",
+        "selectedIconPath": "component/tabbar/icon/icon_home_HL.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "   ",
+        "iconPath": "component/tabbar/icon/icon_release.png",
+        "selectedIconPath": "component/tabbar/icon/icon_release.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "component/tabbar/icon/icon_mine.png",
+        "selectedIconPath": "component/tabbar/icon/icon_mine_HL.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "component/tabbar/icon/icon_mine.png",
+        "selectedIconPath": "component/tabbar/icon/icon_mine_HL.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

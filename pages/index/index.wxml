@@ -1,13 +1,26 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  
+  <view class="selLine" style="position:fixed;top:0;width: 750rpx;">
+    <button class='button' bindtap='changeStatus'>科目
+    </button>
+    <button class='button'>年级
+    </button>
+    <button class='button'>性别
+    </button>
+    <button class='button'>学校
+    </button>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  <teacherList id="teacherList"  wx:for="{{teacherArray}}" wx:key="unique"
+  name = "{{item.name}}"
+  school="{{item.school}}"
+  price="{{item.price}}"
+  grade="{{item.grade}}"
+  object="{{item.object}}"
+  time="{{item.time}}">
+  </teacherList>
+  <tabbar tabbar="{{tabbar}}"></tabbar> 
+  <cover-view class = 'cover-view' style="position:fixed;top:0;left:0" hidden='{{isHidden}}' bindtap='changeStatus' >
+    <cover-view class='objects'>科目</cover-view>
+  </cover-view>
 </view>

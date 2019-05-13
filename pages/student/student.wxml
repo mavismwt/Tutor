@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="selLine" style="position:fixed;top:0;width: 750rpx;">
+    <button class='button'>家教类型
+    </button>
+    <button class='button'>科目
+    </button>
+    <button class='button'>年级
+    </button>
+    <button class='button'>性别要求
+    </button>
+  </view>
+  <longTermList id="longTermList"  wx:for="{{studentArray}}" wx:key="unique"
+  name = "{{item.name}}"
+  price="{{item.price}}"
+  grade="{{item.grade}}"
+  object="{{item.object}}"
+  time="{{item.time}}"
+  location="{{item.location}}"
+  sex="{{item.sex}}"
+  isLongTerm="{{item.isLongTerm}}"
+  number="{{item.number}}"
+  perTime="{{item.perTime}}">
+  </longTermList>
+  <tabbar tabbar="{{tabbar}}"></tabbar>
+</view>

@@ -1,9 +1,9 @@
 {
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "老师列表",
+  "navigationBarTitleText": "学生列表",
   "navigationBarTextStyle": "black",
   "usingComponents": {
-    "teacherList": "/component/teacherlist/teacherlist"
+    "longTermList": "/component/studentlist/long/long"
   }
 }

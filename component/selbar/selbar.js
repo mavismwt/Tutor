@@ -1,51 +1,18 @@
-//index.js
-//获取应用实例
-const app = getApp();
-var isHidden = true;
+// component/selbar/selbar.js
 Page({
+
   /**
    * 页面的初始数据
    */
-  
   data: {
-    isHidden: isHidden,
-    teacherArray: [
-      {
-        name: '叶老师',
-        school: '华中科技大学',
-        grade: '一年级',
-        price:'100',
-        object:'数学，英语',
-        time:'周一下午'
-      },
-      {
-        name: '陈老师',
-        school: '华中科技大学',
-        grade: '高三',
-        price: '100',
-        object: '物理',
-        time: '周三晚上'
-      },
-    ],
-    tabbar: {}
-  },
-  canvasIdErrorCallback: function (e) {
-    console.error(e.detail.errMsg)
-  },
-  onReady: function (e) {
-    this.teacherList = this.selectComponent("#teacherList");
-  },
 
-  changeStatus: function (e) {
-    isHidden = !isHidden
-    this.setData({isHidden:isHidden})
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabbar();
+
   },
 
   /**

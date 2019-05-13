@@ -1,0 +1,75 @@
+/* component/studentlist/long/long.wxss */
+:host {
+  display: block;
+  border-bottom: 1px solid #e0e0e0;
+}
+.list-group {
+  display: flex;
+  padding:5px 10px;
+}
+.img {
+   width:95%;
+   align-content: center;
+}
+.list-left{
+  flex:0 0 100px;
+  align-content: center;
+}
+.list-right{
+  width: 70vw;
+  flex-direction: column;
+}
+.basic-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.name {
+  font-size:16px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.sex {
+  width: 20px;
+  margin-left: 4px;
+}
+.info {
+  display: flex;
+  padding:5px 10px;
+  flex-direction: row;
+}
+.basic {
+  display: inline-block;
+  width: 30vw;
+  font-size:16px;
+}
+.price {
+  display: inline-block;
+  width: 30vw;
+  font-size:16px;
+}
+.detail-list {
+  display: flex;
+  padding:0px 10px;
+}
+.detail-cell {
+  width: 30vw;
+}
+.detail-cell2 {
+  padding: 5px 10px;
+  width: 30vw;
+}
+.title {
+  display: inline-block;
+  width: 30vw;
+  font-size:14px;
+  color:#7a7a7a;
+}
+.detail {
+  display: inline-block;
+  width: 60vw;
+  font-size:16px;
+}
