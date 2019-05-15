@@ -1,0 +1,8 @@
+<!--component/settinglist/settinglist.wxml-->
+<view class='list'>
+  <view class='top-line'>
+    <image class='icon' src='{{icon}}'></image>
+    <text class='title'>{{title}}</text>
+  </view>
+  <view class='detail'>{{detail}}</view>
+</view>

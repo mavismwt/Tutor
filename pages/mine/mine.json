@@ -4,7 +4,7 @@
   "navigationBarTitleText": "个人中心",
   "navigationBarTextStyle": "black",
   "usingComponents": {
-    "settingList": "/component/settinglist/settinglist",
+    "settingList": "/component/basiclist/basiclist",
     "tabbar": "/component/tabbar/tabbar"
   }
 }

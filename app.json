@@ -7,8 +7,12 @@
     "pages/student/student",
     "pages/index/detail/detail",
     "pages/mine/auth/auth",
-    "pages/mine/teacherAuth/teacherAuth",
-    "pages/mine/studentAuth/studentAuth"
+    "pages/mine/teacher/teacher",
+    "pages/mine/student/student",
+    "pages/student/detail/detail",
+    "pages/index/info/select/select",
+    "pages/index/info/teacher/teacher",
+    "pages/index/info/student/student"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

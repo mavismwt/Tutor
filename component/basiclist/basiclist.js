@@ -10,7 +10,11 @@ Component({
     },
     icon: {
       type: String,
-      value: 'iconsrc'
+      value: '/images/tupian.png'
+    },
+    detail: {
+      type: String,
+      value: ''
     }
   },
 

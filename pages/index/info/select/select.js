@@ -1,4 +1,4 @@
-// pages/mine/auth/auth.js
+// pages/index/info/select/select.js
 Page({
 
   /**
@@ -8,15 +8,14 @@ Page({
 
   },
 
-  teacherAuth: function(e) {
+  teacherInfo: function (e) {
     wx.navigateTo({
-      url: '/pages/mine/teacher/teacher',
+      url: '/pages/index/info/teacher/teacher',
     })
   },
-
-  studentAuth: function(e) {
+  studentInfo: function (e) {
     wx.navigateTo({
-      url: '/pages/mine/student/student',
+      url: '/pages/index/info/student/student',
     })
   },
 

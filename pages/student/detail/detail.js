@@ -1,4 +1,4 @@
-// pages/index/detail/detail.js
+// pages/student/detail/detail.js
 Page({
 
   /**
@@ -6,37 +6,35 @@ Page({
    */
   data: {
     isCompleted: false,
-    name: '叶老师',
+    name: '李同学',
     lastLogin: '1小时前',
-    school: '华中科技大学',
     grade: '一年级',
-    price: '100',
+    price: '80',
     object: '数学，英语',
-    time: '周一下午',
+    sex: '女',
+    location: '巴黎豪庭',
     infoArray: [
       {
-        title: '学科成绩',
-        icon:'/images/tupian.png',
-        detail:'专业排名第一'
+        title: '授课时间',
+        icon: '/images/tupian.png',
+        detail: '周末'
       },
       {
-        title: '自我介绍',
+        title: '课时安排',
         icon: '/images/tupian.png',
-        detail: '我是来自XXX的XXX，我的爱好是XXX'
+        detail: '2课时'
       },
       {
-        title: '家教经历',
+        title: '孩子学习情况',
         icon: '/images/tupian.png',
-        detail: '曾经给XXX小学的学生上过XX时间的XXXX课'
+        detail: '成绩中上'
+      },
+      {
+        title: '教师要求',
+        icon: '/images/tupian.png',
+        detail: '曾经给XXX的学生上过XX时间的XXXX课'
       }
     ],
-    imageArray:['/images/tupian.png', '/images/tupian.png', '/images/tupian.png', '/images/tupian.png']
-  },
-
-  completeInfo: function (e) {
-    wx.navigateTo({
-      url: '/pages/index/info/select/select',
-    })
   },
 
   favorite: function (e) {
@@ -54,25 +52,24 @@ Page({
 
   alert: function (e) {
     wx.showModal({
-      title: '申请失败',
-      content: '求教有道是一个真实的社区，您需要完成身份认证后才可进行后续操作',
-      confirmText: '去认证',
-      cancelText: '暂不认证',
-      success: function (res) {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '/pages/mine/auth/auth',
-          })
+        title: '申请失败',
+        content: '求教有道是一个真实的社区，您需要完成身份认证后才可进行后续操作',
+        confirmText: '去认证',
+        cancelText: '暂不认证',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/mine/auth/auth',
+            })
+          }
         }
-      }
-    })
+      })
   },
-  foward: function (e) {
+  foward: function(e) {
     wx.navigateTo({
       url: '/pages/message/message',
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -84,7 +81,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.infoList = this.selectComponent("#infoList");
+
   },
 
   /**

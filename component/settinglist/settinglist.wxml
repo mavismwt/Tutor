@@ -1,5 +1,0 @@
-<!--component/settinglist/settinglist.wxml-->
-<view class='list'>
-  <image class='icon' src='/images/tupian.png'></image>
-  <text class='title'>{{title}}</text>
-</view>

@@ -1,0 +1,22 @@
+<!--pages/mine/studentAuth/studentAuth.wxml-->
+<view class='containner'>
+  <view class='title'>选择认证方式</view>
+  <view class='card-view'>
+    <image class='icon' src='/images/tupian.png'></image>
+    <text class='subtitle'>上传孩子学生证</text>
+  </view>
+  <view class='online-view'>
+    <image class='icon' src='/images/tupian.png'></image>
+    <text class='subtitle'>上传户口本孩子页</text>
+  </view>
+  <view class='detail'>
+    <image class='image' src='/images/tupian.png'></image>
+  </view>
+  
+  <view class='rule-view'>
+    <image class='icon' src='/images/tupian.png'></image>
+    <text class='subtitle'>我已同意用户协议</text>
+    <view class='help'>协议详情</view>
+  </view>
+  <button class='confirm'>提交</button>
+</view>

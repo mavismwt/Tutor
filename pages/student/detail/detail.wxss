@@ -1,7 +1,8 @@
-/* pages/index/detail/detail.wxss */
+/* pages/student/detail/detail.wxss */
 .container{
   display: flex;
   padding: 0px 0px 0px 0px;
+  flex-direction: column;
 }
 .basic-view{
   display: flex;
@@ -45,13 +46,13 @@
 }
 .title {
   display: inline-block;
-  width: 30vw;
+  width: 70vw;
   font-size:14px;
   color:#7a7a7a;
 }
 .detail {
   display: inline-block;
-  width: 30vw;
+  width: 70vw;
   font-size:16px;
 }
 .left-title {

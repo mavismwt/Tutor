@@ -17,7 +17,8 @@
   price="{{item.price}}"
   grade="{{item.grade}}"
   object="{{item.object}}"
-  time="{{item.time}}">
+  time="{{item.time}}" 
+  bindtap='navToDetail'>
   </teacherList>
   <tabbar tabbar="{{tabbar}}"></tabbar> 
   <cover-view class = 'cover-view' style="position:fixed;top:0;left:0" hidden='{{isHidden}}' bindtap='changeStatus' >

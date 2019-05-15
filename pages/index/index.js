@@ -48,13 +48,18 @@ Page({
     ],
     tabbar: {}
   },
+
   canvasIdErrorCallback: function (e) {
     console.error(e.detail.errMsg)
   },
   onReady: function (e) {
     this.teacherList = this.selectComponent("#teacherList");
   },
-
+  navToDetail: function(e) {
+    wx.navigateTo({
+      url: 'detail/detail',
+    })
+  },
   changeStatus: function (e) {
     isHidden = !isHidden
     this.setData({isHidden:isHidden})

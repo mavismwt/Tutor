@@ -1,4 +1,4 @@
-// pages/mine/teacherAuth/teacherAuth.js
+// pages/index/info/teacher/teacher.js
 Page({
 
   /**

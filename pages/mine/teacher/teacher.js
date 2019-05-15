@@ -1,25 +1,22 @@
-// pages/mine/auth/auth.js
+// pages/mine/teacherAuth/teacherAuth.js
+var isOnlineAuth = false;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isOnlineAuth: isOnlineAuth,
   },
 
-  teacherAuth: function(e) {
-    wx.navigateTo({
-      url: '/pages/mine/teacher/teacher',
-    })
+  changeToOnline: function (e) {
+    isOnlineAuth = true
+    this.setData({ isOnlineAuth: isOnlineAuth })
   },
-
-  studentAuth: function(e) {
-    wx.navigateTo({
-      url: '/pages/mine/student/student',
-    })
+  changeToLocal: function (e) {
+    isOnlineAuth = false
+    this.setData({ isOnlineAuth: isOnlineAuth })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
