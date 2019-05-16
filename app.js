@@ -65,32 +65,32 @@ App({
         {
           "pagePath": "/pages/index/index",
           "text": "找老师",
-          "iconPath": "icon/icon_home.png",
-          "selectedIconPath": "icon/icon_home_HL.png"
+          "iconPath": "icon/icon_teacher_non.png",
+          "selectedIconPath": "icon/icon_teacher_sel.png"
         },
         {
           "pagePath": "/pages/student/student",
           "text": "找学生",
-          "iconPath": "icon/icon_home.png",
-          "selectedIconPath": "icon/icon_home_HL.png"
+          "iconPath": "icon/icon_student_non.png",
+          "selectedIconPath": "icon/icon_student_sel.png"
         },
         {
           "pagePath": "/pages/middle/middle",
-          "iconPath": "icon/icon_release.png",
+          "iconPath": "icon/icon_more.png",
           "isSpecial": true,
           "text": ""
         },
         {
           "pagePath": "/pages/message/message",
           "text": "消息",
-          "iconPath": "icon/icon_mine.png",
-          "selectedIconPath": "icon/icon_mine_HL.png"
+          "iconPath": "icon/icon_message_non.png",
+          "selectedIconPath": "icon/icon_message_sel.png"
         },
         {
           "pagePath": "/pages/mine/mine",
           "text": "个人中心",
-          "iconPath": "icon/icon_mine.png",
-          "selectedIconPath": "icon/icon_mine_HL.png"
+          "iconPath": "icon/icon_user_non.png",
+          "selectedIconPath": "icon/icon_user_sel.png"
         }
       ]
     }

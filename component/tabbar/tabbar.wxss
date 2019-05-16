@@ -7,7 +7,7 @@
     left: 0;
     z-index: 999;
     width: 100%;
-    height: 98rpx;
+    height: 60px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 .tabbar_box.iphoneX-height{
@@ -37,8 +37,12 @@
     position: relative;
 }
 .tabbar_icon{
-    width: 56rpx;
-    height: 56rpx;
+    width: 24px;
+    height: 24px;
+}
+.tabbar_icon2{
+    width: 50px;
+    height: 50px;
 }
 .special-wrapper{
   position: absolute;

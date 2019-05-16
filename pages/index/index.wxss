@@ -1,7 +1,7 @@
 /**index.wxss**/
 .container {
   display: flex;
-  padding: 50px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 .sel-view {
   background-color: gainsboro;

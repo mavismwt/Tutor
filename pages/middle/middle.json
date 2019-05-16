@@ -1,7 +1,4 @@
 {
-  "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "老师列表",
-  "navigationBarTextStyle": "black"
+  "navigationBarTitleText": "老师列表"
   
 }

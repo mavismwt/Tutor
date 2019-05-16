@@ -1,31 +1,36 @@
 <!--index.wxml-->
-<view class="container">
-  
-  <view class="selLine" style="position:fixed;top:0;width: 750rpx;">
-    <button class='button' bindtap='changeStatus'>科目
-    </button>
-    <button class='button'>年级
-    </button>
-    <button class='button'>性别
-    </button>
-    <button class='button'>学校
-    </button>
-  </view>
-  <teacherList id="teacherList"  wx:for="{{teacherArray}}" wx:key="unique"
-  name = "{{item.name}}"
-  school="{{item.school}}"
-  price="{{item.price}}"
-  grade="{{item.grade}}"
-  object="{{item.object}}"
-  time="{{item.time}}" 
-  bindtap='navToDetail'>
-  </teacherList>
-  <tabbar tabbar="{{tabbar}}"></tabbar> 
-  <cover-view class = 'cover-view' style="position:fixed;top:0;left:0" hidden='{{isHidden}}' bindtap='changeStatus' >
-    <cover-view class='objects' style="flex-direction:row;">
-      <cover-view class='object-item' wx:for="{{obejctArrray}}" wx:key="unique">{{item}}</cover-view>
+<view>
+<navigationBar id="navigationBar" title="老师列表"></navigationBar>
+  <view class="container">
+    <view class="selLine" style='position:fixed' >
+      <button class='button' bindtap='changeStatus'>科目
+      </button>
+      <button class='button'>年级
+      </button>
+      <button class='button'>性别
+      </button>
+      <button class='button'>学校
+      </button>
+    </view>
+    <view style="margin-top:50px;margin-bottom:60px;">
+      <teacherList id="teacherList" wx:for="{{teacherArray}}" wx:key="unique"
+      name = "{{item.name}}"
+      school="{{item.school}}"
+      price="{{item.price}}"
+      grade="{{item.grade}}"
+      object="{{item.object}}"
+      time="{{item.time}}" 
+      bindtap='navToDetail'>
+      </teacherList>
+    </view>
+    
+    <tabbar tabbar="{{tabbar}}"></tabbar> 
+    <cover-view class = 'cover-view' style="position:fixed;top:0;left:0" hidden='{{isHidden}}' bindtap='changeStatus' >
+      <cover-view class='objects' style="flex-direction:row;">
+        <cover-view class='object-item' wx:for="{{obejctArrray}}" wx:key="unique">{{item}}</cover-view>
+      </cover-view>
+      <cover-view class='confirm'>确定</cover-view>
     </cover-view>
-    <cover-view class='confirm'>确定</cover-view>
-  </cover-view>
-  <tabbar tabbar="{{tabbar}}"></tabbar>
+  </view>
 </view>
+

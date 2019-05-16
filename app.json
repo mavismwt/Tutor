@@ -15,9 +15,15 @@
     "pages/index/info/student/student"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3CDEDE",
     "navigationBarTitleText": "求教有道",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "tabbar": "/component/tabbar/tabbar",
+    "navigationBar": "/component/navigationBar/index"
   },
   "tabBar": {
     "backgroundColor": "#ffffff",
@@ -27,32 +33,32 @@
       {
         "pagePath": "pages/index/index",
         "text": "找老师",
-        "iconPath": "component/tabbar/icon/icon_home.png",
-        "selectedIconPath": "component/tabbar/icon/icon_home_HL.png"
+        "iconPath": "component/tabbar/icon/icon_teacher_non.png",
+        "selectedIconPath": "component/tabbar/icon/icon_teacher_sel.png"
       },
       {
         "pagePath": "pages/student/student",
         "text": "找学生",
-        "iconPath": "component/tabbar/icon/icon_home.png",
-        "selectedIconPath": "component/tabbar/icon/icon_home_HL.png"
+        "iconPath": "component/tabbar/icon/icon_student_non.png",
+        "selectedIconPath": "component/tabbar/icon/icon_student_sel.png"
       },
       {
-        "pagePath": "pages/middle/middle",
+        "pagePath": "pages/index/index",
         "text": "   ",
-        "iconPath": "component/tabbar/icon/icon_release.png",
-        "selectedIconPath": "component/tabbar/icon/icon_release.png"
+        "iconPath": "component/tabbar/icon/icon_more.png",
+        "selectedIconPath": "component/tabbar/icon/icon_more.png"
       },
       {
         "pagePath": "pages/message/message",
         "text": "消息",
-        "iconPath": "component/tabbar/icon/icon_mine.png",
-        "selectedIconPath": "component/tabbar/icon/icon_mine_HL.png"
+        "iconPath": "component/tabbar/icon/icon_message_non.png",
+        "selectedIconPath": "component/tabbar/icon/icon_message_sel.png"
       },
       {
         "pagePath": "pages/mine/mine",
         "text": "个人中心",
-        "iconPath": "component/tabbar/icon/icon_mine.png",
-        "selectedIconPath": "component/tabbar/icon/icon_mine_HL.png"
+        "iconPath": "component/tabbar/icon/icon_user_non.png",
+        "selectedIconPath": "component/tabbar/icon/icon_user_sel.png"
       }
     ]
   },
