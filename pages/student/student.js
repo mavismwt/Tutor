@@ -1,53 +1,59 @@
 // pages/student/student.js
 const app = getApp();
+var isHidden = true;
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     //tabbar
+    isHidden: isHidden,
     tabbar: {},
     studentArray: [
       {
         name: '李同学',
+        sex:'male',
         price: '80',
         grade: '高二',
         object: '数学',
         time: '周六晚上',
         location: 'XXXX小区XX单元XX楼XXX室',
-        sex: '不限',
+        sexDeamand: '不限',
         isLongTerm: true
       }, 
       {
-        name: '李同学',
+        name: '张同学',
+        sex: 'male',
         price: '80',
         grade: '高二',
         object: '数学',
         time: '周六晚上',
         location: 'XXXX小区XX单元XX楼XXX室',
-        sex: '不限',
+        sexDeamand: '不限',
         isLongTerm: true
       },
       {
         name: '王同学',
+        sex: 'male',
         price: '120',
         grade: '高二',
         object: '物理',
         time: '周六下午',
         location: 'XXXX小区XX单元XX楼XXX室',
-        sex: '女',
+        sexDeamand: '女',
         isLongTerm: false,
         number: '1',
         perTime: '2'
       },
       {
-        name: '王同学',
+        name: '赵同学',
+        sex: 'female',
         price: '120',
         grade: '高二',
         object: '物理',
         time: '周六下午',
         location: 'XXXX小区XX单元XX楼XXX室',
-        sex: '女',
+        sexDemand: '女',
         isLongTerm: false,
         number: '1',
         perTime: '2'
@@ -66,6 +72,13 @@ Page({
   canvasIdErrorCallback: function (e) {
     console.error(e.detail.errMsg)
   },
+
+  changeStatus: function (e) {
+    isHidden = !isHidden
+    this.setData({ isHidden: isHidden })
+  },
+
+
   onLoad: function (options) {
     app.editTabbar();
   },

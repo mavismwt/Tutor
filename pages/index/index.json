@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "老师列表",
   "usingComponents": {
-    "teacherList": "/component/teacherlist/teacherlist"
+    "teacherList": "/component/teacherlist/teacherlist",
+    "i-collapse-item": "../../dist/collapse-item/index"
   }
 }

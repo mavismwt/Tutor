@@ -4,13 +4,19 @@
     <image src='/images/tupian.png' class='img' mode="widthFix"></image>
     <view class='basic-info'>
       <view class='name'>{{name}}</view>
-      <image src='/images/tupian.png' class='sex' mode='widthFix'></image>
+      <image src='/images/icon/icon_{{sex}}.png' class='sex' mode='widthFix'></image>
     </view>
   </view>
   <view class='list-right'>
     <view class='info'>
-      <text class='school'>{{school}}</text>
-      <text class='price'>{{price}}元/小时</text>
+      <view class='info-cell'>
+        <image class='icon' src='/images/icon/icon_school.png'></image>
+        <text class='info-title'>{{school}}</text>
+      </view>
+      <view class='info-cell'>
+        <image class='icon' src='/images/icon/icon_price.png'></image>
+        <text class='info-title' >{{price}}元/小时</text>
+      </view>
     </view>
     <view class='detail-list'>
       <view class='detail-cell'>
@@ -24,7 +30,7 @@
     </view>
     <view class='detail-cell2'>
       <text class='title'>空闲时间</text>
-      <text class='detail'>{{time}}</text>
+      <text class='detail2'>{{time}}</text>
     </view> 
   </view> 
 </view>

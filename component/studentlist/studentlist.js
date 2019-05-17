@@ -8,6 +8,10 @@ Component({
       type: String,
       value: '名字'
     },
+    sex: {
+      type: String,
+      value: 'male'
+    },
     price: {
       type: String,
       value: 'XX'
@@ -28,7 +32,7 @@ Component({
       type: String,
       value: '地点'
     },
-    sex: {
+    sexDeamand: {
       type: String,
       value: '不限'
     },

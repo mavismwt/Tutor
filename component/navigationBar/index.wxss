@@ -1,3 +1,5 @@
+
+
 .navigation-bar{
   position: relative;
   left: 0;
@@ -41,7 +43,7 @@
   font-size: 30rpx;
 }
 .title{
-  font-weight: bold;
+  font-family: PingFangSC-Medium;
 }
 .navigation-bar-holder{
   background: transparent;

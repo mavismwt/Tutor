@@ -2,24 +2,30 @@
 .container {
   display: flex;
   padding: 0px 0px 0px 0px;
+  background-color: #f5f5f5;
 }
 .sel-view {
   background-color: gainsboro;
+  
 }
 .selLine {
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 50px;
   align-items: flex-start;
+  background-color: white;
+  box-shadow: 0px 2px 4px 0px 
+		rgba(24, 99, 97, 0.1);
 }
 
 .button {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 25%;
   height: 40px;
+  margin-top: 5px;
   align-items: flex-start;
-  background-color: white
 }
 
 .listView {
@@ -29,40 +35,40 @@
 }
 
 .cover-view {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
   display: flex;
+  width: 100vw;
+  top: 112px;
+  bottom: 60px;
   flex-direction: column;
-  background-color: white;
-  margin-top: 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
 }
 .objects {
   clear: both;
   width: 90vw;
   display: inline-block;
-  margin-left: 5vw;
-  margin-top: 25vw;
 }
 .object-item {
   float: left;
-  font-size: 16px;
-  width: 29%;
-  padding: 10px 0px;
+  font-size: 14px;
+  width: 28%;
+  padding: 13px 0px;
   text-align: center;
-  margin-left: 3%;
-  margin-top: 20rpx;
-  border: 1px solid #ececec;
+  margin-left: 4%;
+  margin-top: 20px;
+  border: 1px solid #48cdc2;
   border-radius: 5px;
+  color: #48cdc2;
 }
 .confirm {
   float: left;
-  font-size: 16px;
-  width: 27%;
-  padding: 10px 0px;
+  font-size: 14px;
+  width: 45%;
+  padding: 13px 0px;
   text-align: center;
-  margin-left: 37%;
+  border-radius: 20px;
   margin-top: 40px;
-  border-radius: 5px;
-  background-color: #ececec;
+  background-color:#3cdede;
+  color: white;
 }

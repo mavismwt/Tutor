@@ -2,14 +2,22 @@
 <navigationBar id="navigationBar" title="学生列表"></navigationBar>    
   <view class="container">
     <view class="selLine" style="position:fixed">
-      <button class='button'>家教类型
-      </button>
-      <button class='button'>科目
-      </button>
-      <button class='button'>年级
-      </button>
-      <button class='button'>性别要求
-      </button>
+      <view class='button'>
+        <i-collapse-item title="家教类型" name="name" bindtap="changeStatus" >
+        </i-collapse-item>
+      </view>
+      <view class='button'>
+        <i-collapse-item title="科目" name="name" bindtap="changeStatus" >
+        </i-collapse-item>
+      </view>
+      <view class='button'>
+        <i-collapse-item title="年级" name="name" bindtap="changeStatus" >
+        </i-collapse-item>
+      </view>
+      <view class='button'>
+        <i-collapse-item title="性别要求" name="name" bindtap="changeStatus" >
+        </i-collapse-item>
+      </view>
     </view>
     <view style="margin-top:50px;margin-bottom:60px;">
       <studentList id="studentList"  wx:for="{{studentArray}}" wx:key="unique" bindtap="navToDetail"

@@ -2,21 +2,27 @@
 :host {
   display: block;
   border-bottom: 1px solid #e0e0e0;
+  
 }
 .list-group {
   display: flex;
-  padding:5px 10px;
+  padding:10px 10px;
+  margin: 10px 10px 0px 10px;
+  background-color: white;
+  box-shadow: 2px 2px 4px 0px rgba(21, 85, 83, 0.1);
 }
 .img {
-   width:95%;
+   width:80px;
+   height: 80px;
+   margin-top: 25px;
    align-content: center;
 }
 .list-left{
   flex:0 0 100px;
-  align-content: center;
+  width: 100px;
+  align-items: center;
 }
 .list-right{
-  width: 70vw;
   flex-direction: column;
 }
 .basic-info {
@@ -25,51 +31,68 @@
   align-items: center;
 }
 .name {
-  font-size:16px;
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
+  font-size:14px;
+  color: #3a3a3a;
+  padding-left: 10px;
 }
 .sex {
-  width: 20px;
-  margin-left: 4px;
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
 }
 .info {
   display: flex;
-  padding:5px 10px;
+  padding:0px 10px;
+}
+.info-cell {
+  display: flex;
+  width: 50%;
+  border-bottom: 2px solid rgba(21, 85, 83, 0.1);
   flex-direction: row;
+  padding: 10px 0px;
 }
-.basic {
-  display: inline-block;
-  width: 30vw;
-  font-size:16px;
+.icon {
+  display: flex;
+  width: 16px;
+  height: 16px;
 }
-.price {
-  display: inline-block;
-  width: 30vw;
-  font-size:16px;
+.info-title {
+  display: flex;
+  font-size:12px;
+  margin-left: 10px;
 }
+
 .detail-list {
   display: flex;
   padding:0px 10px;
 }
 .detail-cell {
-  width: 30vw;
+  width: 50%;
+  border-bottom: 2px solid rgba(21, 85, 83, 0.1);
 }
 .detail-cell2 {
+  display: flex;
+  flex-direction: column;
   padding: 5px 10px;
-  width: 30vw;
+  width: 100%;
+}
+.detail2 {
+  display: inline-block;
+  width: 100%;
+  font-size:12px;
+  padding: 10px 0px;
+  color:#000000;
 }
 .title {
   display: inline-block;
   width: 30vw;
-  font-size:14px;
-  color:#7a7a7a;
+  font-size:12px;
+  color:#b2b2b2;
 }
 .detail {
   display: inline-block;
-  width: 60vw;
-  font-size:16px;
+  width: 50%;
+  font-size:12px;
+  padding: 10px 0px;
+  color:#000000;
 }

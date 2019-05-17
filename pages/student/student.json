@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "学生列表",
   "usingComponents": {
-    "studentList": "/component/studentlist/studentlist"
+    "studentList": "/component/studentlist/studentlist",
+    "i-collapse-item": "../../dist/collapse-item/index"
   }
 }

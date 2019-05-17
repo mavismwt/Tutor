@@ -1,4 +1,6 @@
 <!--pages/index/detail/detail.wxml-->
+<view>
+<navigationBar id="navigationBar" title="详情" back="true" fixed="{{fixed}}"></navigationBar>
 <view class='container'>
   <view class='basic-view'>
     <view class='left-view'>
@@ -60,3 +62,5 @@
     <cover-view>需要填写资料</cover-view>
   </cover-view>
 </view>
+</view>
+

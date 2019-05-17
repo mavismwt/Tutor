@@ -3,14 +3,26 @@
   display: flex;
   padding: 0px 0px 0px 0px;
 }
+
 .info {
   display: flex;
+  width: 100vw;
+  height: 240px;
   flex-direction: column;
+  align-items: center;
+  background: linear-gradient(#40d0cd, #3cdede); 
+}
+.top-title {
+  margin-top: 30px;
+  font-family: PingFangSC-Medium;
+	font-size: 18px;
+	color: #ffffff;
 }
 .profile {
-  width: 80px;
-  height: 80px;
-  padding: 20px 0px 10px 20px;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  margin-top: 29px;
 }
 .basic-info {
   display: flex;
@@ -20,11 +32,19 @@
 }
 .nickname {
   font-size: 16px;
+  margin-top: 20px;
+  color: #ffffff;
 }
 .auth {
-  font-size: 16px;
-  background-color:gainsboro;
+  font-size: 10px;
+  width: 48px;
+	height: 15px;
+  text-align: center;
+  background-color:#3b9795;
+  color: #ffffff;
   margin-left: 8px;
+  margin-top: 20px;
+  border-radius: 3px;
 }
 .list {
   display: flex;

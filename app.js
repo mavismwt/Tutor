@@ -1,4 +1,5 @@
 //app.js
+
 App({
   onLaunch: function () {
     //隐藏系统tabbar
@@ -60,7 +61,7 @@ App({
     tabBar: {
       "backgroundColor": "#ffffff",
       "color": "#979795",
-      "selectedColor": "#1c1c1b",
+      "selectedColor": "#3CDEDE",
       "list": [
         {
           "pagePath": "/pages/index/index",

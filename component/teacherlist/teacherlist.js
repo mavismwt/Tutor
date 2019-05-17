@@ -8,6 +8,10 @@ Component({
       type: String,    
       value: '名字'
     }, 
+    sex: {
+      type: String,
+      value: 'male'
+    },
     price: {
       type: String,
       value: 'XX'
@@ -41,6 +45,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    
   }
 })
