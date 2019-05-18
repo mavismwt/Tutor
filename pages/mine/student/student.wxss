@@ -6,7 +6,9 @@
 }
 .title {
   display: flex;
-  margin: 20px 0px 0px 40px;
+  font-size: 17px;
+  color: #b2b2b2;
+  padding: 23px 0px 10px 20px;
 }
 
 .card-view {
@@ -21,41 +23,48 @@
 }
 .detail {
   display: flex;
+  width: 100%;
+  height: 300px;
   flex-direction: column;
-  padding: 50px 20px 20px 50px;
 }
 .online-auth {
   display: flex;
+  margin: 50px 20px;
   flex-direction: column;
+  align-items: center;
 }
-.textarea {
-  margin: 5px;
+.input {
   height: 30px;
+  width: 100vw-40px;
+  margin-top: 50px;
   border: 1px solid #ececec;
 }
 .image {
-  padding: 50px 0px 0px 50px;
-  width: 200px;
-  height: 150px;
+  margin: 50px;
 }
-.rule-view {
+.confirm-line {
   display: flex;
-  padding: 100px 20px 20px 100px;
-  align-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .confirm {
-  display: flex;
-  bottom: 0px;
-  width: 80px;
-  height: 40px;
-}
-.icon {
-  width: 30px;
+  font-size: 16px;
+  width: 40vw;
   height: 30px;
+  padding-top: 10px;
+  text-align: center;
+  border-radius: 20px;
+  margin-top: 40px;
+  background-color:#3cdede;
+  color: white;
+}
+.pstitle{
+  font-size: 14px;
+  color: #b2b2b2;
+  align-content: center;
 }
 .subtitle {
-  margin: 5px 0px 0px 5px;
-  font-size: 14px;
+  font-size: 17px;
 }
 .help {
   margin: 5px 0px 0px 5px;

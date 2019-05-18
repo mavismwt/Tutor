@@ -6,13 +6,18 @@
     "pages/message/message",
     "pages/student/student",
     "pages/index/detail/detail",
-    "pages/mine/auth/auth",
     "pages/mine/teacher/teacher",
     "pages/mine/student/student",
     "pages/student/detail/detail",
     "pages/index/info/select/select",
     "pages/index/info/teacher/teacher",
-    "pages/index/info/student/student"
+    "pages/index/info/student/student",
+    "pages/mine/certificate/certificate",
+    "pages/mine/collect/collect",
+    "pages/mine/feedback/feedback",
+    "pages/mine/information/information",
+    "pages/mine/money/money",
+    "pages/mine/notice/notice"
   ],
   "window": {
     "navigationStyle": "custom",

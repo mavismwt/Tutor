@@ -7,8 +7,37 @@ Page({
    */
   data: {
     isOnlineAuth: isOnlineAuth,
+    methodArray: [{
+      id: 1,
+      name: '上传学生证',
+      isOnlineAuth: false,
+    }, {
+      id: 2,
+      name: '学信网在线认证',
+      isOnlineAuth: true,
+    }],
+    current: '上传学生证',
+    position: 'left',
+    checked: false,
+    disabled: false,
   },
 
+  handleChange({ detail = {} }) {
+    this.setData({
+      current: detail.value,
+      isOnlineAuth: (detail.value == '上传学生证')?false:true
+    });
+  },
+  handleClick() {
+    this.setData({
+      position: this.data.position.indexOf('left') !== -1 ? 'right' : 'left',
+    });
+  },
+  handleDisabled() {
+    this.setData({
+      disabled: !this.data.disabled
+    });
+  },
   changeToOnline: function (e) {
     isOnlineAuth = true
     this.setData({ isOnlineAuth: isOnlineAuth })

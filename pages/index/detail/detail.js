@@ -6,6 +6,7 @@ Page({
    */
   data: {
     isCompleted: false,
+    id: 0,
     name: '叶老师',
     lastLogin: '1小时前',
     school: '华中科技大学',

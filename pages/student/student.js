@@ -11,6 +11,7 @@ Page({
     tabbar: {},
     studentArray: [
       {
+        id: 0,
         name: '李同学',
         sex:'male',
         price: '80',
@@ -22,6 +23,7 @@ Page({
         isLongTerm: true
       }, 
       {
+        id: 0,
         name: '张同学',
         sex: 'male',
         price: '80',
@@ -33,6 +35,7 @@ Page({
         isLongTerm: true
       },
       {
+        id: 0,
         name: '王同学',
         sex: 'male',
         price: '120',
@@ -46,6 +49,7 @@ Page({
         perTime: '2'
       },
       {
+        id: 0,
         name: '赵同学',
         sex: 'female',
         price: '120',
@@ -61,9 +65,10 @@ Page({
     ],
     tabbar: {}
   },
-  navToDetail: function (e) {
+  onClick: function (e) {
+    var index = e.currentTarget.id// e.currentTarget
     wx.navigateTo({
-      url: 'detail/detail',
+      url: 'detail/detail?id=' + this.data.studentArray[index].id
     })
   },
   /**

@@ -1,0 +1,33 @@
+/* pages/mine/certificate/certificate.wxss */
+.container {
+  display: flex;
+  padding: 0px 0px 0px 0px;
+}
+.select-view {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30vh;
+  align-items: center;
+  justify-content: center;
+}
+.select {
+  display: flex;
+  flex-direction: column;
+}
+.icon {
+  width: 90px;
+  height: 90px;
+  padding: 20px;
+}
+.title {
+  font-size: 17px;
+  text-align: center;
+  color: #b2b2b2;
+}
+.more-info {
+  margin-top: 40px;
+  width: 200px;
+  font-size: 14px;
+  text-align: center;
+  color: #b2b2b2;
+}

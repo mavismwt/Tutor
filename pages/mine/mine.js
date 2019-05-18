@@ -5,8 +5,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //tabbar
+    userInfo:{},
+    listArray: [
+      {
+        title: '我的认证',
+        detail: 'certificate'
+      },
+      {
+        title: '我的资料',
+        detail: 'information'
+      },
+      {
+        title: '我的收藏',
+        detail: 'collect'
+      },
+      {
+        title: '钱款信息',
+        detail: 'money'
+      },
+      {
+        title: '平台须知',
+        detail: 'notice'
+      },
+      {
+        title: '反馈意见',
+        detail: 'feedback'
+      }
+    ],
     tabbar: {},
+  },
+
+  onClick: function (e) {
+    var index = e.currentTarget.id// e.currentTarget
+    var detail = this.data.listArray[index].detail
+    wx.navigateTo({
+      url: '/pages/mine/' + this.data.listArray[index].detail + '/'+this.data.listArray[index].detail
+    })
   },
 
   nav: function(e) {
@@ -19,6 +53,15 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
+    wx.getUserInfo({
+      success: res => {
+        app.globalData.userInfo = res.userInfo
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    })
   },
 
   /**

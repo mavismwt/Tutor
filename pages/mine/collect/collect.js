@@ -1,4 +1,4 @@
-// pages/mine/auth/auth.js
+// pages/mine/collect/collect.js
 Page({
 
   /**
@@ -6,18 +6,6 @@ Page({
    */
   data: {
 
-  },
-
-  teacherAuth: function(e) {
-    wx.navigateTo({
-      url: '/pages/mine/teacher/teacher',
-    })
-  },
-
-  studentAuth: function(e) {
-    wx.navigateTo({
-      url: '/pages/mine/student/student',
-    })
   },
 
   /**

@@ -1,2 +1,24 @@
 <!--pages/index/info/student/student.wxml-->
-<text>pages/index/info/student/student.wxml</text>
+<view>
+<navigationBar id="navigationBar" title="填写资料" back="true"></navigationBar>
+  <view class="container">
+    <i-panel class="cell-panel" title="以下信息为必填项">
+      <i-input value="{{ value1 }}" title="收货人" autofocus placeholder="名字" />
+    <i-input value="{{ value2 }}" type="number" title="联系电话" placeholder="请输入手机号" />
+    <i-input value="{{ value3 }}" type="textarea" title="详细地址" placeholder="请输入详细地址(最多50字)" maxlength="50" />
+    <i-input value="{{ value4 }}" title="用户信息" disabled />
+      <view class='cell'>
+        <view class='title'>孩子年级</view>
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <button></button>
+        </picker>
+      </view>
+      <view class='cell'>
+        <view class='title'>孩子年级</view>
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <button></button>
+        </picker>
+      </view>
+    </i-panel>
+  </view>
+</view>

@@ -18,6 +18,10 @@ Component({
 
     properties: {
         // 左侧标题
+        noBorder: {
+          type: Boolean,
+          value: false
+        },
         title: {
             type: String
         },

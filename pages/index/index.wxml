@@ -29,7 +29,8 @@
       grade="{{item.grade}}"
       object="{{item.object}}"
       time="{{item.time}}" 
-      bindtap='navToDetail'>
+      bindtap='onClick'
+      id="{{index}}">
       </teacherList>
     </view>
     

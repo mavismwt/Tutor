@@ -20,7 +20,7 @@
       </view>
     </view>
     <view style="margin-top:50px;margin-bottom:60px;">
-      <studentList id="studentList"  wx:for="{{studentArray}}" wx:key="unique" bindtap="navToDetail"
+      <studentList id="studentList"  wx:for="{{studentArray}}" wx:key="unique"
       name = "{{item.name}}"
       price="{{item.price}}"
       grade="{{item.grade}}"
@@ -31,7 +31,8 @@
       isLongTerm="{{item.isLongTerm}}"
       number="{{item.number}}"
       perTime="{{item.perTime}}"
-      bindtap='navToDetail'>
+      bindtap='onClick'
+      id="{{index}}">
       </studentList>
     </view>
     <tabbar tabbar="{{tabbar}}"></tabbar>

@@ -5,7 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    methodArray: [{
+      id: 1,
+      name: '上传孩子学生证',
+      isOnlineAuth: false,
+    }, {
+      id: 2,
+      name: '上传户口品孩子页',
+      isOnlineAuth: true,
+    }],
+    current: '上传学生证',
+    position: 'left',
+    checked: false,
+    disabled: false,
   },
 
   /**

@@ -1,1 +1,35 @@
 /* pages/index/info/student/student.wxss */
+.cell-panel {
+  width: 100vw;
+}
+.cell {
+  position:relative;
+  padding:12px 15px;
+  display:flex;
+  background:#fff;
+  align-items:center;
+  line-height:1.4;
+  font-size:17px;
+  overflow:hidden;
+}
+.cell::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:200%;height:200%;
+  transform:scale(.5);
+  transform-origin:0 0;
+  pointer-events:none;
+  box-sizing:border-box;
+  border-bottom:1px solid #e9eaec;
+  right:0
+}
+.title {
+  display: inline-block;
+  width: 80px;
+}
+.input {
+  position: relative;
+  left: 10px;
+}

@@ -1,16 +1,18 @@
 <!--pages/middle/middle.wxml-->
-  <cover-view class='cover-view' hidden='{{hidden}}'>
-    <cover-view class='select-view'>
-      <cover-view class='select'>
-        <cover-image class='icon' src='/images/tupian.png'></cover-image>
-        <cover-view class='title'>当家教</cover-view>
-      </cover-view>
-      <cover-view class='select'>
-        <cover-image class='icon' src='/images/tupian.png'></cover-image>
-        <cover-view class='title'>找家教</cover-view>
-      </cover-view>
-    </cover-view>
-    <cover-image class='cancel' src='/images/tupian.png'></cover-image>
-  </cover-view>
+<view>
+  <navigationBar id="navigationBar" title="填写资料"back="true"></navigationBar>  
+  <view class='container'>
+    <view class='select-view'>
+      <view class='select' bindtap='teacher'>
+        <image class='icon' src='/images/tupian.png'></image>
+        <view class='title'>当家教</view>
+      </view>
+      <view class='select' bindtap='student'>
+        <image class='icon' src='/images/tupian.png'></image>
+        <view class='title'>找家教</view>
+      </view>
+    </view>
+  </view>
+</view>
 
 

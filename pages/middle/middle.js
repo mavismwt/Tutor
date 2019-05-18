@@ -5,7 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-   hidden: false
+  },
+
+  teacherAuth: function (e) {
+    wx.navigateTo({
+      url: '/pages/mine/teacher/teacher',
+    })
+  },
+
+  studentAuth: function (e) {
+    wx.navigateTo({
+      url: '/pages/mine/student/student',
+    })
   },
 
   /**

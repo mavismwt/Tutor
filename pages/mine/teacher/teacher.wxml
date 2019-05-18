@@ -1,27 +1,24 @@
 <!--pages/mine/teacherAuth/teacherAuth.wxml-->
-<view class='containner'>
-  <view class='title'>选择认证方式</view>
-  <view class='card-view' bindtap='changeToLocal'>
-    <image class='icon' src='/images/tupian.png'></image>
-    <text class='subtitle'>上传学生证</text>
-  </view>
-  <view class='online-view' bindtap='changeToOnline'>
-    <image class='icon' src='/images/tupian.png'></image>
-    <text class='subtitle'>学信网在线认证</text>
-    <view class='help'>查看帮助</view>
-  </view>
-  <view class='detail'>
-    <image class='image' src='/images/tupian.png' hidden='{{isOnlineAuth}}'></image>
-    <view class='online-auth' hidden='{{!isOnlineAuth}}' >
-      <text class='subtitle'>请输入学信网学历在线验证报告的在线验证码：</text>
-      <input class='input'></input>
+<view>
+  <navigationBar id="navigationBar" title="填写资料" back="true"></navigationBar> 
+  <view class='containner'>
+    <view class='top-line'>
+      <view class='title'>选择认证方式</view>
+        <i-radio-group current="{{current}}" bindchange="handleChange">
+          <i-radio class='cell' wx:for="{{methodArray}}" position="{{position}}" wx:key="{{item.id}}" value="{{item.name}}">
+          </i-radio>
+        </i-radio-group>
+    </view>
+    <view class='detail'>
+      <image class='image' src='/images/tupian.png' hidden='{{isOnlineAuth}}'></image>
+      <view class='online-auth' hidden='{{!isOnlineAuth}}' >
+        <text class='subtitle'>请输入学信网学历在线验证报告的在线验证码：</text>
+        <input class='input'></input>
+      </view>
+    </view>
+    <view class='confirm-line'>
+      <view class='confirm'>提交</view>
+      <text class='pstitle'>提交即同意《用户协议》</text>
     </view>
   </view>
-  
-  <view class='rule-view'>
-    <image class='icon' src='/images/tupian.png'></image>
-    <text class='subtitle'>我已同意用户协议</text>
-    <view class='help'>协议详情</view>
-  </view>
-  <button class='confirm'>提交</button>
 </view>

@@ -1,4 +1,9 @@
 {
   "navigationBarTitleText": "我的认证",
-  "usingComponents": {}
+  "usingComponents": {
+    "i-panel": "../../../dist/panel/index",
+    "i-button": "../../../dist/button/index",
+    "i-radio-group": "../../../dist/radio-group/index",
+    "i-radio": "../../../dist/radio/index"
+  }
 }

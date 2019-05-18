@@ -1,8 +1,6 @@
 /* component/studentlist/long/long.wxss */
 :host {
   display: block;
-  border-bottom: 1px solid #e0e0e0;
-  
 }
 .list-group {
   display: flex;

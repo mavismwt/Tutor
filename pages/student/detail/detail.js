@@ -6,6 +6,7 @@ Page({
    */
   data: {
     isCompleted: false,
+    id: 0,
     name: '李同学',
     lastLogin: '1小时前',
     grade: '一年级',

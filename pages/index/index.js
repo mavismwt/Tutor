@@ -10,10 +10,12 @@ Page({
    */
   
   data: {
+    userInfo: {},
     show: true,
     isHidden: isHidden,
     teacherArray: [
       {
+        id: 0,
         name: '叶老师',
         sex:'female',
         school: '华中科技大学',
@@ -23,6 +25,7 @@ Page({
         time:'周一下午'
       },
       {
+        id: 0,
         name: '陈老师',
         sex: 'male',
         school: '华中科技大学',
@@ -32,6 +35,7 @@ Page({
         time: '周三晚上'
       }, 
       {
+        id: 0,
         name: '王老师',
         sex: 'female',
         school: '武汉大学',
@@ -41,6 +45,7 @@ Page({
         time: '周一下午'
       },
       {
+        id: 0,
         name: '陆老师',
         sex: 'male',
         school: '华中科技大学',
@@ -50,6 +55,7 @@ Page({
         time: '周三晚上'
       },
       {
+        id: 0,
         name: '林老师',
         sex: 'female',
         school: '华中科技大学',
@@ -64,6 +70,13 @@ Page({
     tabbar: {}
   },
 
+  onClick: function (e) {
+    var index = e.currentTarget.id// e.currentTarget
+    console.log(this.data.teacherArray[index])
+    wx.navigateTo({
+      url: 'detail/detail?id='+this.data.teacherArray[index].id
+    })
+  },
   canvasIdErrorCallback: function (e) {
     console.error(e.detail.errMsg)
   },
@@ -93,8 +106,42 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     app.editTabbar();
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
+  },
+  getUserInfo: function (e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
   },
 
   /**
