@@ -8,6 +8,7 @@ Page({
     userInfo: {},
     listArray: [],
     index: 0,
+    singleArray: ['一年级','二年级','三年级','四年级','五年级','六年级','初一','初二','初三','高一','高二','高三'],
     multiArray: [['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'], ['上午', '下午', '晚上']],
     objectMultiArray: [
       [
@@ -89,7 +90,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.infoList = this.selectComponent("#infoList");
   },
 
   /**

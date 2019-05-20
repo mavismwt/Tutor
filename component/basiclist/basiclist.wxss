@@ -1,7 +1,7 @@
 /* component/settinglist/settinglist.wxss */
 :host{
   display: block;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e9eaec;
 }
 .list{
   display: flex;
@@ -12,22 +12,22 @@
 }
 .top-line{
   display: flex;
-  padding:5px 10px;
+  padding:5px 0px;
   width: 100vw;
   height: 40px;
   flex-direction: row;
 }
 .icon{
   display: flex;
-  width: 30px;
-  height: 30px;
-  margin-left: 12px;
+  width: 12pt;
+  height: 12pt;
   padding: 5px;
+  margin-top: 10px;
 }
 
 .title{
   display: flex;
-  font-size: 16px;
+  font-size: 17px;
   height: 16px;
   margin-left: 8px;
   margin-top: 10px;
@@ -35,8 +35,7 @@
 
 .detail{
   display: flex;
-  font-size: 14px;
+  font-size: 17px;
   margin-left: 8px;
-  margin-top: 10px;
   color: #7a7a7a;
 }

@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "settingList": "/component/basiclist/basiclist",
+    "infoList": "/component/basiclist/basiclist",
     "i-cell-group": "/dist/cell-group/index",
     "i-cell": "/dist/cell/index",
     "i-panel": "/dist/panel/index",

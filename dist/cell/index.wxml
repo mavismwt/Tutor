@@ -3,8 +3,12 @@
         <slot name="icon"></slot>
     </view>
     <view class="i-cell-bd">
-        <view wx:if="{{ title }}" class="i-cell-text">{{ title }}</view>
-        <!-- <view wx:if="{{ label }}" class="i-cell-desc">{{ label }}</view> -->
+        <view wx:if="{{ title }}" class="i-cell-text">{{ title }}
+        <slot name="title"></slot>
+        </view>
+        <view wx:if="{{ label }}" class="i-cell-desc" >{{ label }}
+        <slot name="label"></slot>
+        </view>
         <slot></slot>
     </view>
     <view catchtap="navigateTo" class="i-cell-ft">
