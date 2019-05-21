@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isCompleted: false,
+    isCompleted: true,
     id: 0,
     name: '叶老师',
     lastLogin: '1小时前',
@@ -36,7 +36,7 @@ Page({
 
   completeInfo: function (e) {
     wx.navigateTo({
-      url: '/pages/teacher/info/select/select',
+      url: '/pages/teacher/info/student/student',
     })
   },
 

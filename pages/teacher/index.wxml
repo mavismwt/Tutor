@@ -5,10 +5,6 @@
   
   <view class="selLine" style="position:fixed;">
     <view class='button'>
-        <i-collapse-item title="家教类型" name="name" bindtap="changeStatus" >
-        </i-collapse-item>
-      </view>
-      <view class='button'>
         <i-collapse-item title="科目" name="name" bindtap="changeStatus" >
         </i-collapse-item>
       </view>
@@ -17,7 +13,11 @@
         </i-collapse-item>
       </view>
       <view class='button'>
-        <i-collapse-item title="性别要求" name="name" bindtap="changeStatus" >
+        <i-collapse-item title="性别" name="name" bindtap="changeStatus" >
+        </i-collapse-item>
+      </view>
+      <view class='button'>
+        <i-collapse-item title="学校" name="name" bindtap="changeStatus" >
         </i-collapse-item>
       </view>
   </view>

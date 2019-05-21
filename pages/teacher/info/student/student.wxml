@@ -19,8 +19,6 @@
       </i-cell>
       <i-cell  title="性别要求" >
         <radio value="{{value}}" wx:for='{{sexRoc}}' wx:key="unique" checked="{{checks[index]}}"  disabled="{{disabled}}" style='position:relative;margin-left:10px' bindtap='radioChange1' id="{{index}}">{{sexRoc[index].title}}</radio>
-        <!-- <radio value="{{value}}" checked="{{!checked}}"  disabled="{{disabled}}" style='position:relative;margin-left:10px' bindtap='radioChange1' index="1">女</radio>
-        <radio value="{{value}}" checked="{{!checked}}"  disabled="{{disabled}}" style='position:relative;margin-left:10px' bindtap='radioChange1' index="2">不限</radio> -->
       </i-cell>
       <i-cell title="短期家教">
         <i-switch value="{{switch1}}" bind:change="onChange1" style='position:relative;margin-left:10px'></i-switch>
@@ -73,6 +71,6 @@
       canEdit="true" >
       </infoList>
     </i-panel>
-    <definedButton title="完成"></definedButton>
+    <definedButton title="完成" bindtap='completeInfo'></definedButton>
   </view>
 </view>

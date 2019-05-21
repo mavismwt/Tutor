@@ -1,0 +1,8 @@
+<!--component/textlist/textlist.wxml-->
+<view class='list'>
+  <view class='top-line'>
+    <text class='title'>{{title}}</text>
+  </view>
+  <textarea class='detail-input' placeholder='{{detail}}' hidden='{{!canEdit}}'></textarea>
+  <view class='detail' hidden='{{canEdit}}'>{{detail}}</view>
+</view>

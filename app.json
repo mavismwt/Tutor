@@ -19,7 +19,8 @@
     "pages/mine/information/information",
     "pages/mine/money/money",
     "pages/mine/notice/notice",
-    "pages/message/chat/chat"
+    "pages/message/chat/chat",
+    "pages/teacher/info/done/done"
   ],
   "window": {
     "navigationStyle": "custom",

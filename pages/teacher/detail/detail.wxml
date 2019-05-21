@@ -1,6 +1,6 @@
 <!--pages/index/detail/detail.wxml-->
 <view>
-<navigationBar id="navigationBar" title="详情" back="true" fixed="{{fixed}}"></navigationBar>
+<navigationBar id="navigationBar" title="详情" back="true" fixed="true"></navigationBar>
 <view class='container'>
   <view class='basic-view'>
     <view class='left-view'>
@@ -12,16 +12,14 @@
       <view class='more-info'>
         <text class='left-title'>期望薪酬</text>
         <text class='left-detail'>{{price}}元/小时</text>
-      </view>
-      <view class='more-info'>
         <text class='left-title'>上次登录</text>
         <text class='left-detail'>{{lastLogin}}</text>
       </view>
     </view>
     <view class='right-view'>
       <view class='info'>
-        <text class='title'>学历</text>
-        <text class='detail'>{{school}}</text>
+        <text class='top-title'>学历</text>
+        <text class='top-detail'>{{school}}</text>
       </view>
       <view class='info'>
         <text class='title'>可教年级</text>
@@ -37,29 +35,30 @@
       </view>
     </view> 
   </view>
-  <view class='more-view'>
-    <infoList id="settingList" wx:for="{{infoArray}}" wx:key="unique" 
+    <infoList id="settingList" wx:for="{{infoArray}}" wx:key="unique" class='more-view'
     title="{{item.title}}"
-    icon="{{item.icon}}"
-    detail="{{item.detail}}" >
+    detail="{{item.detail}}">
     </infoList>
-    <view class='pic-view'>
-      <infoList id="settingList" wx:key="unique" 
-      title="图片展示"
-      icon="/images/tupian.png" > 
+    <view class='more-view' style='margin-bottom:60px;' >
+      <infoList id="settingList" wx:key="unique" style='width:90vw;'
+      title="图片展示"> 
       </infoList>
-      <view class='images'>
+      <view class='images' style='width:90vw;'>
         <image class='image-large' wx:for="{{imageArray}}" wx:key="unique" src='/images/tupian.png'></image>
       </view>
     </view>
-    <view class='bottom-view'>
-      <button class='share-button'>分享</button>
-      <button class='favorite-button' bindtap='favorite'>收藏</button>
-      <button class='forward-button' bindtap='{{isCompleted?"forward":"alert"}}'>发送申请</button>
-    </view>
-  </view>
   <cover-view class = 'cover-view' style="position:fixed;top:40%;left:0" hidden='{{isCompleted}}' bindtap='completeInfo'>
     <cover-view>需要填写资料</cover-view>
   </cover-view>
+  <view class='bottom-view'>
+      <view class='bottom-button' >
+      <text class='bottom-text' >分享</text>
+      </view>
+      <view class='bottom-button' >
+      <text class='bottom-text' >收藏</text>
+      </view>
+      <view class='bottom-button' style='width:50vw;' bindtap='{{isCompleted?"forward":"alert"}}'><text class='bottom-text' >发送申请</text>
+      </view>
+  </view>
 </view>
 </view>

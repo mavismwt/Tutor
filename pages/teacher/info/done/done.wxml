@@ -1,0 +1,10 @@
+<!--pages/teacher/info/done/done.wxml-->
+<view>
+  <navigationBar id="navigationBar" title="填写成功" back="true"></navigationBar>
+  <view class='container' style='height:100%;background-color: #fff;'>
+  <image class='image' style=' background-color: #f5f5f5;display:flex;margin: 67px 20px 40px 20px;' ></image>
+  <text style='color: #b2b2b2;display:flex;text-align:center;font-size:14px;' >填写成功\n快去浏览资料吧</text>
+  <definedButton title="去看看" style='display:flex;margin-top:40px;' bindtap='completeInfo'></definedButton>
+  </view>
+</view>
+

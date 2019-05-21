@@ -121,11 +121,11 @@ Page({
     })
   },
 
-
-
-
-  // const parent = this.getRelationNodes('../radio-group/index')[0];
-  // parent ? parent.emitEvent(item) : this.triggerEvent('change', item);
+  completeInfo: function(e) {
+    wx.navigateTo({
+      url: '/pages/teacher/info/done/done',
+    })
+  },
 
   bindPickerChange: function (e) {
     this.setData({

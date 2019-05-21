@@ -1,4 +1,4 @@
-// component/settinglist/settinglist.js
+// component/textlist/textlist.js
 Component({
   /**
    * 组件的属性列表
@@ -26,7 +26,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    
+
   },
 
   /**
@@ -36,3 +36,4 @@ Component({
 
   }
 })
+
