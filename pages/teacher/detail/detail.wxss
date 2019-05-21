@@ -1,1 +1,111 @@
-/* pages/teacher/detail/detail.wxss */
+/* pages/index/detail/detail.wxss */
+.container{
+  display: flex;
+  padding: 0px 0px 0px 0px;
+}
+.basic-view{
+  display: flex;
+  padding:5px 10px;
+  flex-direction: row;
+}
+.img {
+   width:80px;
+   align-content: center;
+}
+.left-view{
+  flex:0 0 100px;
+  align-content: center;
+}
+.right-view{
+  width: 70vw;
+  flex-direction: column;
+}
+.basic-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.name {
+  font-size:16px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  //margin-left: 15px;
+}
+.sex {
+  width: 20px;
+  margin-left: 4px;
+}
+.info {
+  display: flex;
+  padding:5px 10px;
+  flex-direction: column;
+}
+.title {
+  display: inline-block;
+  width: 30vw;
+  font-size:14px;
+  color:#7a7a7a;
+}
+.detail {
+  display: inline-block;
+  width: 30vw;
+  font-size:16px;
+}
+.left-title {
+  display: inline-block;
+  width: 30vw;
+  font-size:14px;
+  color:#7a7a7a;
+  text-align: center;
+}
+.left-detail {
+  display: inline-block;
+  width: 30vw;
+  font-size:14px;
+  text-align: center;
+}
+.listView {
+  display: list-item;
+  flex-direction: column;
+  width: 100%;
+}
+.pic-view{
+  display: flex;
+  flex-direction: column;
+}
+.images{
+  display: flex;
+  flex-direction: row;
+}
+.image-large{
+  width: 80px;
+  height: 80px;
+}
+.bottom-view{
+  display: flex;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  flex-direction: row;
+}
+.share-button{
+  width: 25vw;
+}
+.favorite-button{
+  width: 25vw;
+}
+.forward-button{
+  width: 50vw;
+}
+.cover-view{
+  position:fixed;
+  bottom: 0px;
+  width: 100vw;
+  background-color: white;
+  opacity: 0.9;
+  align-items: center;
+  text-align: center;
+}

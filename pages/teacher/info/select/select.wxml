@@ -1,2 +1,15 @@
-<!--pages/teacher/info/select/select.wxml-->
-<text>pages/teacher/info/select/select.wxml</text>
+<!--pages/index/info/select/select.wxml-->
+<view class='container'>
+    <view class='select-view'>
+      <view class='select' bindtap='teacherInfo'>
+        <image class='icon' src='/images/tupian.png'></image>
+        <view class='title'>当家教</view>
+      </view>
+      <view class='select' bindtap='studentInfo'>
+        <image class='icon' src='/images/tupian.png'></image>
+        <view class='title'>找家教</view>
+      </view>
+    </view>
+    <!-- <cover-image class='cancel' src='/images/tupian.png'></cover-image> -->
+  
+</view>

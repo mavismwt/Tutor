@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "infoList": "/component/basiclist/basiclist",
+    "definedButton": "/component/definedButton/button"
+  }
 }
