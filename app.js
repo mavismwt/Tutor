@@ -64,7 +64,7 @@ App({
       "selectedColor": "#3CDEDE",
       "list": [
         {
-          "pagePath": "/pages/index/index",
+          "pagePath": "/pages/teacher/index",
           "text": "找老师",
           "iconPath": "icon/icon_teacher_non.png",
           "selectedIconPath": "icon/icon_teacher_sel.png"

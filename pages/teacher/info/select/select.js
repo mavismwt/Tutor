@@ -1,4 +1,4 @@
-// pages/index/info/select/select.js
+// pages/teacher/info/select/select.js
 Page({
 
   /**
@@ -6,17 +6,6 @@ Page({
    */
   data: {
 
-  },
-
-  teacherInfo: function (e) {
-    wx.navigateTo({
-      url: '/pages/index/info/teacher/teacher',
-    })
-  },
-  studentInfo: function (e) {
-    wx.navigateTo({
-      url: '/pages/index/info/student/student',
-    })
   },
 
   /**

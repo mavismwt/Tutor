@@ -4,6 +4,6 @@
     <image class='icon' src='{{icon}}'></image>
     <text class='title'>{{title}}</text>
   </view>
-  <input class='detail' placeholder='{{detail}}' hidden='{{!canEdit}}'></input>
+  <textarea class='detail-input' placeholder='{{detail}}' hidden='{{!canEdit}}'></textarea>
   <view class='detail' hidden='{{canEdit}}'>{{detail}}</view>
 </view>

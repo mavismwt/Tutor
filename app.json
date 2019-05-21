@@ -1,23 +1,25 @@
 {
   "pages": [
+    "pages/teacher/index",
     "pages/index/index",
     "pages/middle/middle",
     "pages/mine/mine",
     "pages/message/message",
     "pages/student/student",
-    "pages/index/detail/detail",
+    "pages/teacher/detail/detail",
     "pages/mine/teacher/teacher",
     "pages/mine/student/student",
     "pages/student/detail/detail",
-    "pages/index/info/select/select",
-    "pages/index/info/teacher/teacher",
-    "pages/index/info/student/student",
+    "pages/teacher/info/select/select",
+    "pages/teacher/info/teacher/teacher",
+    "pages/teacher/info/student/student",
     "pages/mine/certificate/certificate",
     "pages/mine/collect/collect",
     "pages/mine/feedback/feedback",
     "pages/mine/information/information",
     "pages/mine/money/money",
-    "pages/mine/notice/notice"
+    "pages/mine/notice/notice",
+    "pages/message/chat/chat"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -28,7 +30,13 @@
   },
   "usingComponents": {
     "tabbar": "/component/tabbar/tabbar",
-    "navigationBar": "/component/navigationBar/index"
+    "navigationBar": "/component/navigationBar/index",
+    "i-switch": "../../dist/switch/index",
+    "i-cell-group": "/dist/cell-group/index",
+    "i-cell": "/dist/cell/index",
+    "i-panel": "/dist/panel/index",
+    "i-icon": "/dist/icon/index",
+    "i-input": "/dist/input/index"
   },
   "tabBar": {
     "backgroundColor": "#ffffff",
@@ -36,7 +44,7 @@
     "selectedColor": "#1c1c1b",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/teacher/index",
         "text": "找老师",
         "iconPath": "component/tabbar/icon/icon_teacher_non.png",
         "selectedIconPath": "component/tabbar/icon/icon_teacher_sel.png"

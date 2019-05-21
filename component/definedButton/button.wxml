@@ -1,0 +1,4 @@
+<!--component/definedButton/button.wxml-->
+<view class='confirm'>
+  <text class='text'>{{title}}</text>
+</view>

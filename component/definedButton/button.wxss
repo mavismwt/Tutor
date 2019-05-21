@@ -1,0 +1,24 @@
+/* component/definedButton/button.wxss */
+.confirm {
+  float: left;
+  font-size: 14px;
+  width: 40vw;
+  height: 40px;
+  text-align: center;
+  justify-items: center;
+  border-radius: 20px;
+  margin-top: 10px;
+  background-color:#3cdede;
+  color: white;
+}
+.text {
+  display: flex;
+  font-size: 14px;
+  height: 40px;
+  margin-top: 10px;
+  text-align: center;
+  justify-items: center;
+  justify-content: center;
+  vertical-align: center;
+  color: white;
+}

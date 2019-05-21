@@ -1,0 +1,10 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "老师列表",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "teacherList": "/component/teacherlist/teacherlist",
+    "i-collapse-item": "../../dist/collapse-item/index"
+  }
+}
