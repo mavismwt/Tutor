@@ -1,7 +1,9 @@
 /* pages/mine/certificate/certificate.wxss */
 .container {
-  display: flex;
-  padding: 0px 0px 0px 0px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
 }
 .select-view {
   display: flex;
@@ -25,6 +27,7 @@
   color: #b2b2b2;
 }
 .more-info {
+  display: flex;
   margin-top: 40px;
   width: 200px;
   font-size: 14px;

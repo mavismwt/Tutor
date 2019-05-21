@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isCompleted: true,
+    isCompleted: false,
+    position:'fixed',
     id: 0,
     name: '叶老师',
     lastLogin: '1小时前',

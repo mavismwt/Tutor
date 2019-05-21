@@ -10,13 +10,13 @@ Page({
 
   teacherAuth: function (e) {
     wx.navigateTo({
-      url: '/pages/mine/teacher/teacher',
+      url: 'teacher/teacher',
     })
   },
 
   studentAuth: function (e) {
     wx.navigateTo({
-      url: '/pages/mine/student/student',
+      url: 'student/student',
     })
   },
   /**

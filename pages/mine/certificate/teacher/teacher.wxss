@@ -1,4 +1,4 @@
-/* pages/mine/studentAuth/studentAuth.wxss */
+/* pages/mine/teacherAuth/teacherAuth.wxss */
 .container {
   display: flex;
   padding: 0px;
@@ -41,6 +41,7 @@
 }
 .image {
   margin: 50px;
+  background-color: #b2b2b2;
 }
 .confirm-line {
   display: flex;

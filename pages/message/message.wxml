@@ -1,3 +1,6 @@
-<view class="container">
+<view>
+  <navigationBar id="navigationBar" title="填写资料" back="true"></navigationBar>
+  <view class="container">
   <tabbar tabbar="{{tabbar}}"></tabbar>
+</view>
 </view>

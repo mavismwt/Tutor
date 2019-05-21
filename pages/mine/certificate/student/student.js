@@ -1,4 +1,5 @@
 // pages/mine/studentAuth/studentAuth.js
+var isOnlineAuth= false;
 Page({
 
   /**
@@ -14,12 +15,18 @@ Page({
       name: '上传户口品孩子页',
       isOnlineAuth: true,
     }],
-    current: '上传学生证',
+    current: '上传孩子学生证',
     position: 'left',
     checked: false,
     disabled: false,
   },
 
+  handleChange({ detail = {} }) {
+    this.setData({
+      current: detail.value,
+      isOnlineAuth: (detail.value == '上传孩子学生证') ? false : true
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

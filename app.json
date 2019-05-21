@@ -7,8 +7,6 @@
     "pages/message/message",
     "pages/student/student",
     "pages/teacher/detail/detail",
-    "pages/mine/teacher/teacher",
-    "pages/mine/student/student",
     "pages/student/detail/detail",
     "pages/teacher/info/select/select",
     "pages/teacher/info/teacher/teacher",
