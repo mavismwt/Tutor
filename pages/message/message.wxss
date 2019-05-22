@@ -3,11 +3,13 @@
   height: 100vh;
 }
 .swiper {
-  position: fixed;
+  display: flex;
+  position: relative;
   width: 100vw;
   height: 100vh;
-  top: 105px;
+  top: 40px;
   bottom: 0px;
+  z-index: 0;
 }
  
 .swiper-con {

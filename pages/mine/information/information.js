@@ -1,4 +1,6 @@
 // pages/mine/information/information.js
+var contactInfo = [{contactIndex: 0,name: '',number: '',advice:''}];
+var contactNum = 2;
 Page({
 
   /**
@@ -19,6 +21,19 @@ Page({
       sexDeamand: '不限',
       isLongTerm: true
     }, 
+    contactInfo: [{
+      contactIndex: 1,
+      name: '',
+      number:'',
+      advice:'建议填写学校内的亲近好友'
+    }, 
+    {
+      contactIndex: 2,
+      name: '',
+      number: '',
+      advice: '建议填写父母或辅导员联系方式'
+    }],
+    contactNum: contactNum
   },
 
   // handleChange({ detail }) {
@@ -46,6 +61,15 @@ Page({
     }
   },
 
+  addContact: function() {
+    contactInfo = this.data.contactInfo;
+    contactNum += 1;
+    contactInfo.push({ contactIndex: contactNum, name: '', number: '', advice:'' })
+    console.log(contactInfo)
+    this.setData({
+      contactInfo:contactInfo
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -59,6 +83,8 @@ Page({
    */
   onReady: function () {
     this.studentList = this.selectComponent("#studentList");
+    this.toplistcell = this.selectComponent("#toplistcell");
+    this.definedButton = this.selectComponent("#definedButton");
   },
 
   /**

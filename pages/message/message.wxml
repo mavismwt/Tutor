@@ -1,7 +1,7 @@
 <view>
   <navigationBar id="navigationBar" title="消息"></navigationBar> 
     <view class='container' >
-    <i-tabs current="{{ current }}" color="#3cdede" bindchange="handleChange" style='position:fixed;width:100vw;box-shadow: inset 0px -1px 0px 0px #e5e5e5;'>
+    <i-tabs current="{{ current }}" color="#3cdede" bindchange="handleChange" style='position:fixed;width:100vw;box-shadow: inset 0px -1px 0px 0px #e5e5e5;z-index:100;'>
       <i-tab key="0" title="申请" bindtap='checkCurrent' data-current = "0" ></i-tab>
       <i-tab key="1" title="消息" bindtap='checkCurrent' data-current = "1"></i-tab>
     </i-tabs>
