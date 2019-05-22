@@ -1,2 +1,6 @@
 <!--pages/mine/feedback/feedback.wxml-->
-<text>pages/mine/feedback/feedback.wxml</text>
+<view>
+  <navigationBar id="navigationBar" title=""back="true"></navigationBar> 
+  <view class='container'>
+  </view>
+</view>

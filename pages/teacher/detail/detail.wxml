@@ -49,9 +49,9 @@
       </view>
     </view>
   </view>
-  <view class='bottom-view' hidden='isCompleted'>
+  <view class='bottom-view' hidden='{{isCompleted}}'>
       <view class='bottom-button' >
-      <text class='bottom-text' >分享</text>
+      <text class='bottom-text' bindtap='forward'>分享</text>
       </view>
       <view class='bottom-button' >
       <text class='bottom-text' >收藏</text>
@@ -62,7 +62,7 @@
   
 </view>
 <cover-view class = 'cover-view'hidden='{{isCompleted}}' >
-    <cover-image class='lock' src='/images/icon_lock.png'></cover-image>
+    <cover-image class='lock' src='/images/bg_lock.png'></cover-image>
     <cover-view class='alert' >以下内容填写资料后可观看</cover-view>
     <button style='position:fixed;bottom:20px;width:40vw;height:40px;border-radius:20px;background-color:#3cdede;color: #fff;' bindtap='completeInfo'>填写资料</button>
   </cover-view>

@@ -19,6 +19,18 @@ Component({
     detail: {
       type: String,
       value: ''
+    },
+    showStatus: {
+      type: Boolean,
+      value: false,
+    },
+    statusTitle: {
+      type: String,
+      value: '已回绝'
+    },
+    statusColor: {
+      type: String,
+      value: '#a9a9a9'
     }
   },
 

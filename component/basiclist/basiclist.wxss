@@ -47,3 +47,12 @@
   margin-left: 8px;
   color: #7a7a7a;
 }
+.status {
+  position: fixed;
+  font-size: 14px;
+  padding: 5px 20px;
+  margin-top: 7px;
+  right: 20px;
+  color: #fff;
+  border-radius: 5px;
+}

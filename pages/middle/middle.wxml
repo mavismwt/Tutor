@@ -4,11 +4,11 @@
   <view class='container'>
     <view class='select-view'>
       <view class='select' bindtap='teacher'>
-        <image class='icon' src='/images/tupian.png'></image>
+        <image class='icon' src='/images/icon/icon_teacher.png'></image>
         <view class='title'>当家教</view>
       </view>
       <view class='select' bindtap='student'>
-        <image class='icon' src='/images/tupian.png'></image>
+        <image class='icon' src='/images/icon/icon_student.png'></image>
         <view class='title'>找家教</view>
       </view>
     </view>

@@ -1,0 +1,7 @@
+<!--component/applylist/applylist.wxml-->
+<view>
+  <i-cell wx:key="unique" title="{{title}}">
+    <image class='icon' src='{{image}}' slot="icon" ></image>
+  </i-cell>
+  
+</view>

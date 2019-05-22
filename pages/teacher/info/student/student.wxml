@@ -40,20 +40,20 @@
       <i-cell title="课时安排">
         <label style='display:flex;margin-left:5px;'>
           <text class='course'>一周</text>
-          <input class='detail'></input>
+          <input class='detail' type='number'></input>
           <text class='course'>次，一次</text>
-          <input class='detail'></input>
+          <input class='detail' type='number'></input>
           <text class='course'>小时</text>
         </label>
       </i-cell>
       <i-cell title="授课时间可协调">
         <i-switch value="{{switch2}}" bind:change="onChange2" style='position:relative;margin-left:10px'></i-switch>
       </i-cell>
-      <i-input value="{{ value2 }}" type="number" title="手机号码" placeholder="与心仪老师对接后才公布" />
+      <i-input value="{{ value2 }}" type="number" title="手机号码" maxlength="11" placeholder="与心仪老师对接后才公布" />
       <i-input value="{{ value3 }}" type="textarea" title="地址" placeholder="无需具体至门牌号" maxlength="50" />
       
       <i-cell title="提供薪酬">
-          <input class='detail2'></input>
+          <input class='detail2' type='number'></input>
           <text class='course'>元/小时</text>
       </i-cell>
     </i-panel>

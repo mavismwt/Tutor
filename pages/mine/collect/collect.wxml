@@ -1,2 +1,6 @@
 <!--pages/mine/collect/collect.wxml-->
-<text>pages/mine/collect/collect.wxml</text>
+<view>
+  <navigationBar id="navigationBar" title=""back="true"></navigationBar> 
+  <view class='container'>
+  </view>
+</view>

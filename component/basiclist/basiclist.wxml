@@ -1,9 +1,11 @@
 <!--component/settinglist/settinglist.wxml-->
 <view class='list'>
   <view class='top-line'>
-    <image class='icon' src='{{icon}}'></image>
+    <image class='icon' src='{{icon}}' hidden='{{showStatus}}'></image>
     <text class='title'>{{title}}</text>
+    <view class='status' hidden='{{!showStatus}}'  style='background-color:{{statusColor}}'>{{statusTitle}}</view>
   </view>
   <textarea class='detail-input' placeholder='{{detail}}' hidden='{{!canEdit}}'></textarea>
   <view class='detail' hidden='{{canEdit}}'>{{detail}}</view>
+  
 </view>

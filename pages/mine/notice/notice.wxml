@@ -1,2 +1,6 @@
 <!--pages/mine/notice/notice.wxml-->
-<text>pages/mine/notice/notice.wxml</text>
+<view>
+  <navigationBar id="navigationBar" title=""back="true"></navigationBar> 
+  <view class='container'>
+  </view>
+</view>

@@ -26,6 +26,7 @@
   width: 100%;
   height: 300px;
   flex-direction: column;
+  align-items: center;
 }
 .online-auth {
   display: flex;
@@ -41,7 +42,7 @@
 }
 .image {
   margin: 50px;
-  background-color: #b2b2b2;
+  background-color: #cecece;
 }
 .confirm-line {
   display: flex;

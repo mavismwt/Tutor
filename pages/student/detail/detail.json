@@ -4,6 +4,6 @@
   "navigationBarTitleText": "详情",
   "navigationBarTextStyle": "black",
   "usingComponents": {
-    "infoList": "/component/basiclist/basiclist"
+    "infoList": "/component/textlist/textlist"
   }
 }

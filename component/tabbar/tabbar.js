@@ -42,10 +42,16 @@ Component({
     isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
   },
 
+  
   /**
    * 组件的方法列表
    */
   methods: {
-    
+    nav: function (e) {
+      console.log('os')
+      wx.navigateTo({
+        url: '/pages/middle/middle',
+      })
+    },
   }
 })

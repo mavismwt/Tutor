@@ -63,13 +63,13 @@ Page({
       success: function (res) {
         if (res.confirm) {
           wx.navigateTo({
-            url: '/pages/mine/auth/auth',
+            url: '/pages/mine/certificate/student/student',
           })
         }
       }
     })
   },
-  foward: function (e) {
+  forward: function (e) {
     wx.navigateTo({
       url: '/pages/message/message',
     })

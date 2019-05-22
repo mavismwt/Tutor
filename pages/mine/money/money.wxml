@@ -1,2 +1,6 @@
 <!--pages/mine/money/money.wxml-->
-<text>pages/mine/money/money.wxml</text>
+<view>
+  <navigationBar id="navigationBar" title=""back="true"></navigationBar> 
+  <view class='container'>
+  </view>
+</view>

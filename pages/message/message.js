@@ -5,8 +5,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //tabbar
-    tabbar: {},
+    current: 0,
+    status: [{
+      str: '待接受',
+      color: '#ffcb68'
+    },
+    {
+      str: '已接受',
+      color: '#3cdede'
+    },
+    {
+      str: '已回绝',
+      color: '#a9a9a9'
+    }],
+    statusCode: 1,
+  },
+
+  handleChange: function (e) {
+    const that = this;
+    that.setData({
+      current: e.detail.key
+    })
+  },
+  checkCurrent: function (e) {
+    const that = this;
+
+    if (that.data.current === e.target.dataset.current) {
+      return false;
+    } else {
+
+      that.setData({
+        current: e.target.dataset.current
+      })
+    }
   },
 
   /**
@@ -14,13 +45,15 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
+    wx.hideTabBar()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.listcell = this.selectComponent("#listcell");
+    this.toplistcell = this.selectComponent("#toplistcell");
   },
 
   /**

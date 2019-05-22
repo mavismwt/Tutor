@@ -10,14 +10,14 @@
         </i-radio-group>
     </view>
     <view class='detail'>
-      <image class='image' src='/images/tupian.png' hidden='{{isOnlineAuth}}'></image>
+      <image src='/images/bg_add.png' style='position:relative;margin-top:50px;align-content:center;width:58px;height:58px;padding:15% 30%;background-color:#ececec;' hidden='{{isOnlineAuth}}'></image>
       <view class='online-auth' hidden='{{!isOnlineAuth}}' >
         <text class='subtitle'>请输入学信网学历在线验证报告的在线验证码：</text>
         <input class='input'></input>
       </view>
     </view>
     <view class='confirm-line'>
-      <view class='confirm'>提交</view>
+      <view class='confirm' bindtap='submit'>提交</view>
       <text class='pstitle'>提交即同意《用户协议》</text>
     </view>
   </view>

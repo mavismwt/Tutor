@@ -35,7 +35,9 @@
     "i-cell": "/dist/cell/index",
     "i-panel": "/dist/panel/index",
     "i-icon": "/dist/icon/index",
-    "i-input": "/dist/input/index"
+    "i-input": "/dist/input/index",
+    "i-tabs": "../../dist/tabs/index",
+    "i-tab": "../../dist/tab/index"
   },
   "tabBar": {
     "backgroundColor": "#ffffff",
@@ -55,7 +57,7 @@
         "selectedIconPath": "component/tabbar/icon/icon_student_sel.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/middle/middle",
         "text": "   ",
         "iconPath": "component/tabbar/icon/icon_more.png",
         "selectedIconPath": "component/tabbar/icon/icon_more.png"

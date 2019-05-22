@@ -1,1 +1,15 @@
 /* pages/mine/information/information.wxss */
+.container {
+  height: 100vh;
+}
+.swiper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 105px;
+  bottom: 0px;
+}
+ 
+.swiper-con {
+  padding: 80rpx 0;
+}

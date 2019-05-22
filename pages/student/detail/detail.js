@@ -60,13 +60,13 @@ Page({
         success: function (res) {
           if (res.confirm) {
             wx.navigateTo({
-              url: '/pages/mine/auth/auth',
+              url: '/pages/mine/certificate/teacher/teacher',
             })
           }
         }
       })
   },
-  foward: function(e) {
+  forward: function(e) {
     wx.navigateTo({
       url: '/pages/message/message',
     })

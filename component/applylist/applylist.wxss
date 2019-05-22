@@ -1,0 +1,5 @@
+/* component/applylist/applylist.wxss */
+.icon {
+  width: 36px;
+  height: 36px;
+}

@@ -1,0 +1,52 @@
+<!--component/studentlist/long/long.wxml-->
+<view class='conl'>
+  <view class='list-group'>
+    <view class='list-left'>
+      <image src='/images/tupian.png' class='img' mode="widthFix"></image>
+      <view class='basic-info'>
+        <view class='name'>{{name}}</view>
+        <image src='/images/icon/icon_{{sex}}.png' class='sex' mode='widthFix'></image>
+      </view>
+    </view>
+    <view class='list-right'>
+      <view class='info'>
+        <view class='info-cell'>
+          <image class='icon' src='/images/icon/icon_school.png'></image>
+          <text class='info-title'>{{grade}}/{{object}}</text>
+        </view>
+        <view class='info-cell'>
+          <image class='icon' src='/images/icon/icon_price.png'></image>
+          <text class='info-title' >{{price}}元/小时</text>
+        </view>
+      </view>
+      <view class='detail-list'>
+        <view class='detail-cell'>
+          <text class='title'>时间</text>
+          <text class='detail'>{{time}}</text>
+        </view> 
+        <view class='detail-cell'>
+          <text class='title'>教师性别要求</text>
+          <text class='detail'>{{sexDeamand}}</text>
+        </view> 
+      </view>
+      <view class='detail-cell2' hidden='{{isLongTerm}}'>
+          <text class='title'>课时要求</text>
+          <text class='detail2'>一共{{number}}次，一次{{perTime}}小时</text>
+      </view> 
+      <view class='detail-cell2'>
+        <text class='title'>地点</text>
+        <text class='detail2'>{{location}}</text>
+      </view> 
+    </view> 
+    </view>
+    <view class='bottom-view'>
+      <text style='display:inline-block;font-size:12px;color:#b2b2b2;padding: 20px 10px;'>浏览{{lookNumber}}  申请{{appliNumber}}</text>
+      <view class='sel-button'>
+      <select style='display:flex;margin-top:3px;'></select>
+      </view>
+      <view class='edit-button' bindtap='edit'>
+      <text style='color:#fff;font-size:14px;margin-left:15px;'>编辑</text>
+      </view> 
+    </view>
+</view>
+

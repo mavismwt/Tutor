@@ -21,6 +21,19 @@ Page({
     disabled: false,
   },
 
+  submit: function() {
+    wx.showModal({
+      title: '提交成功',
+      content: '我们将在9:00—23:00间三小时内完成审核\n您可先浏览收藏老师信息',
+      showCancel: false,
+      success: function (res) {
+        wx.reLaunch({
+          url: '/pages/teacher/index',
+        })
+      }
+    })
+  },
+
   handleChange({ detail = {} }) {
     this.setData({
       current: detail.value,

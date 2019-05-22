@@ -43,16 +43,12 @@ Page({
     })
   },
 
-  nav: function(e) {
-    wx.navigateTo({
-      url: '/pages/mine/auth/auth',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     app.editTabbar();
+    wx.hideTabBar();
     wx.getUserInfo({
       success: res => {
         app.globalData.userInfo = res.userInfo

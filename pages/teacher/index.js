@@ -81,20 +81,14 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    wx.hideTabBar()
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

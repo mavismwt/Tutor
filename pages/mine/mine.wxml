@@ -11,7 +11,7 @@
     <i-panel class="cell-panel-demo">
       <i-cell-group>
       <i-cell wx:for="{{listArray}}" wx:key="unique"
-      title="{{item.title}}" is-link url="/pages/index/index"
+      title="{{item.title}}" is-link 
       bindtap='onClick' id='{{index}}'>
         <image class='icon' src='/images/icon/icon_{{item.detail}}.png' slot="icon" ></image>
       </i-cell>

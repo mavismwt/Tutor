@@ -1,2 +1,29 @@
 <!--pages/mine/information/information.wxml-->
-<text>pages/mine/information/information.wxml</text>
+<view>
+  <navigationBar id="navigationBar" title="我的资料"back="true"></navigationBar> 
+  <view class='container' >
+    <i-tabs current="{{ current }}" color="#3cdede" bindchange="handleChange" style='position:fixed;width:100vw;'>
+      <i-tab key="0" title="个人资料" bindtap='checkCurrent' data-current = "0"></i-tab>
+      <i-tab key="1" title="安全防护" bindtap='checkCurrent' data-current = "1"></i-tab>
+    </i-tabs>
+    <swiper current='{{current}}' class='swiper' duration="300">
+    <swiper-item >
+    <view class='swiper-con' >
+    <studentList id="studentList" wx:key="unique" style='position:fixed;top:0px;background-color:#f5f5f5;box-shadow: inset 0px -1px 0px 0px #e5e5e5;'
+      name = "{{info.name}}"
+      price="{{info.price}}"
+      grade="{{info.grade}}"
+      object="{{info.object}}"
+      time="{{info.time}}"
+      location="{{info.location}}"
+      sex="{{info.sex}}"
+      isLongTerm="{{info.isLongTerm}}"
+      number="{{info.number}}"
+      perTime="{{info.perTime}}">
+      </studentList>
+    </view></swiper-item>
+    <swiper-item ><view>tette</view></swiper-item>
+    </swiper>
+    
+  </view>
+</view>

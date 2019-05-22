@@ -22,6 +22,12 @@ Page({
     disabled: false,
   },
 
+  submit: function () {
+    wx.redirectTo({
+      url: '../done/done',
+    })
+  },
+
   handleChange({ detail = {} }) {
     this.setData({
       current: detail.value,
