@@ -1,4 +1,5 @@
 // pages/teacher/info/done/done.js
+const app = getApp();
 Page({
 
   /**
@@ -9,6 +10,8 @@ Page({
   },
 
   completeInfo: function() {
+    app.globalData.isAuthed = true,
+      console.log(app.globalData.isAuthed)
     wx.reLaunch({
       url: '/pages/student/student',
     })

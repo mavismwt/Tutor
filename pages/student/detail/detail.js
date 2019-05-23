@@ -1,10 +1,13 @@
 // pages/student/detail/detail.js
+const app = getApp();
+var isAuthed = app.globalData.isAuthed;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isAuthed: isAuthed,
     isCompleted: false,
     id: 0,
     name: '李同学',
@@ -51,6 +54,14 @@ Page({
     })
   },
 
+  send: function (e) {
+    wx.showModal({
+      title: '申请成功',
+      content: '可在申请消息里查看状态\t打开消息提醒，第一时间接收消息',
+      showCancel: false,
+    })
+  },
+
   alert: function (e) {
     wx.showModal({
         title: '申请失败',
@@ -75,7 +86,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      isAuthed: app.globalData.isAuthed
+    })
   },
 
   /**

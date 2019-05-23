@@ -32,6 +32,18 @@ Component({
       type: String,
       value: '空闲时间'
     },
+    lookNumber: {
+      type: String,
+      value: '333'
+    },
+    appliNumber: {
+      type: String,
+      value: '20'
+    },
+    url: {
+      type: String,
+      value: '/pages/teacher/info/teacher/teacher'
+    }
   },
 
   /**

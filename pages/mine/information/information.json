@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "studentList": "/component/studentshow/studentlist",
+    "studentList": "/component/teachershow/teacherlist",
     "toplistcell": "/component/applylist/applylist",
     "definedButton": "/component/definedButton/button"
   }

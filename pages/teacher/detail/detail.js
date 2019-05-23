@@ -1,11 +1,15 @@
 // pages/index/detail/detail.js
+const app = getApp();
+var isCompleted = app.globalData.isCompleted;
+var isAuthed = app.globalData.isAuthed;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isCompleted: false,
+    isCompleted: isCompleted,
+    isAuthed: isAuthed,
     position:'fixed',
     id: 0,
     name: '叶老师',
@@ -53,6 +57,14 @@ Page({
       // }
     })
   },
+  
+  send: function (e) {
+    wx.showModal({
+      title: '申请成功',
+      content: '可在申请消息里查看状态\t打开消息提醒，第一时间接收消息',
+      showCancel: false,
+    })
+  },
 
   alert: function (e) {
     wx.showModal({
@@ -79,7 +91,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(app.globalData.isCompleted)
+    this.setData({
+      isCompleted: app.globalData.isCompleted,
+    })
   },
 
   /**

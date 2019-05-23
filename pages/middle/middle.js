@@ -7,15 +7,15 @@ Page({
   data: {
   },
 
-  teacherAuth: function (e) {
+  teacher: function (e) {
     wx.navigateTo({
-      url: '/pages/mine/teacher/teacher',
+      url: 'teacher/teacher',
     })
   },
 
-  studentAuth: function (e) {
+  student: function (e) {
     wx.navigateTo({
-      url: '/pages/mine/student/student',
+      url: 'student/student',
     })
   },
 

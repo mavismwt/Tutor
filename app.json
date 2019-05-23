@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/teacher/info/student/student",
     "pages/teacher/index",
     "pages/index/index",
     "pages/middle/middle",
@@ -9,8 +8,8 @@
     "pages/student/student",
     "pages/teacher/detail/detail",
     "pages/student/detail/detail",
-    "pages/teacher/info/select/select",
     "pages/teacher/info/teacher/teacher",
+    "pages/teacher/info/student/student",
     "pages/mine/certificate/certificate",
     "pages/mine/collect/collect",
     "pages/mine/feedback/feedback",
@@ -18,7 +17,9 @@
     "pages/mine/money/money",
     "pages/mine/notice/notice",
     "pages/message/chat/chat",
-    "pages/teacher/info/done/done"
+    "pages/teacher/info/done/done",
+    "pages/middle/teacher/teacher",
+    "pages/middle/student/student"
   ],
   "window": {
     "navigationStyle": "custom",

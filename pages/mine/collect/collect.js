@@ -5,7 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
+    studentArray: [
+      {
+        id: 0,
+        name: '李同学',
+        sex: 'male',
+        price: '80',
+        grade: '高二',
+        object: '数学',
+        time: '周六晚上',
+        location: 'XXXX小区XX单元XX楼XXX室',
+        sexDeamand: '不限',
+        isLongTerm: true
+      },
+      {
+        id: 0,
+        name: '张同学',
+        sex: 'male',
+        price: '80',
+        grade: '高二',
+        object: '数学',
+        time: '周六晚上',
+        location: 'XXXX小区XX单元XX楼XXX室',
+        sexDeamand: '不限',
+        isLongTerm: true
+      }],
+  },
 
+  onClick: function (e) {
+    var index = e.currentTarget.id// e.currentTarget
+    wx.navigateTo({
+      url: 'detail/detail?id=' + this.data.studentArray[index].id
+    })
   },
 
   /**

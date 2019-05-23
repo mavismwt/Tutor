@@ -7,18 +7,45 @@ Page({
   data: {
     current: 0,
     status: [{
+      id: 0,
       str: '待接受',
       color: '#ffcb68'
     },
     {
+      id: 1,
       str: '已接受',
       color: '#3cdede'
     },
     {
+      id: 2,
       str: '已回绝',
       color: '#a9a9a9'
     }],
     statusCode: 1,
+    receiveMessage:[{
+      title:'李同学/巴黎豪庭',
+      status: 0,
+    },
+    {
+      title: '张同学/喻园小区',
+      status: 1,
+    },
+    {
+      title: '王同学/喻园小区',
+      status: 2,
+    }],
+    sendMessage: [{
+      title: '王老师/武汉大学',
+      status: 0,
+    },
+    {
+      title: '章老师/华中科技大学',
+      status: 1,
+    },
+    {
+      title: '左老师/华中科技大学',
+      status: 2,
+    }],
   },
 
   handleChange: function (e) {

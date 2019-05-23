@@ -58,6 +58,9 @@ App({
   },
   globalData: {
     userInfo: null,
+    identity: 'student',
+    isAuthed: false,
+    isCompleted: false,
     tabBar: {
       "backgroundColor": "#ffffff",
       "color": "#979795",
