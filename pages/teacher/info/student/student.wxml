@@ -40,13 +40,13 @@
         <image style='position:relative;width:20px;height:20px;top:-2px;margin-left:20px;' src='/images/icon/icon_add.png' catchtap='addTime'></image>
         </picker>
         </view>
-        <view hidden='{{!switch1}}'>
-          <picker mode="date" class='picker-view' value="{{date}}" end="2020-09-01" bindchange="bindDateChange">
+        <view hidden='{{!switch1}}' style='flex-direction:column;'>
+          <picker mode="date" class='picker-view' value="{{date}}" end="2020-09-01" bindchange="bindDateChange" wx:for="{{dates}}" wx:key="unique" data-index='{{index}}'>
           <label class='select-label1'>
-            <text class='time-text1'>{{date}}</text>
+            <text class='time-text1'>{{item}}</text>
             <image class='icon' src='/images/sanjiao.png'></image>
-            <image style='position:relative;width:20px;height:20px;top:-2px;margin-left:20px;' src='/images/icon/icon_add.png' catchtap='addTime'></image>
           </label>
+          <image style='position:relative;width:20px;height:20px;top:-2px;margin-left:20px;' src='/images/icon/icon_add.png' catchtap='addDate'></image>
           </picker>
         </view>
       </i-cell>

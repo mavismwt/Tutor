@@ -8,6 +8,7 @@ var checks = [true, false, false];
 var isSelectHidden = true;
 var multiIndex = [[0, 0]];
 var date = util.formatDate(new Date());
+var dates = [date];
 Page({
 
   /**
@@ -33,6 +34,7 @@ Page({
     isSelectHidden: isSelectHidden,
     timeArray: [{day:'',detail:''}],
     date: date,
+    dates:dates,
   },
 
   onChange1: function (e) {
@@ -94,6 +96,13 @@ Page({
     })
   },
 
+  addDate: function (e) {
+    dates.push(date)
+    this.setData({
+      dates: dates,
+    })
+  },
+
 
   completeInfo: function(e) {
     wx.navigateTo({
@@ -123,9 +132,10 @@ Page({
     //this.setData(data);
   },
   bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    let index = e.currentTarget.dataset.index
+    let urlStr = 'dates[' + index + ']'
     this.setData({
-      date: e.detail.value
+      [urlStr]: e.detail.value
     })
   },
   
