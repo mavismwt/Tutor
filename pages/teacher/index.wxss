@@ -50,6 +50,7 @@
   display: inline-block;
   margin-left: 5vw;
   margin-top: 25%;
+  align-items: center;
 }
 .object-item {
   float: left;

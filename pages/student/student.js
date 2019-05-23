@@ -1,6 +1,10 @@
 // pages/student/student.js
 const app = getApp();
 var isHidden = true;
+let objectArray = [{ object: '语文', isSelected: false }, { object: '数学', isSelected: false }, { object: '英语', isSelected: false }, { object: '物理', isSelected: false }, { object: '化学', isSelected: false }, { object: '生物', isSelected: false }, { object: '政治', isSelected: false }, { object: '历史', isSelected: false }, { object: '地理', isSelected: false }, { object: '其他', isSelected: false }];
+let gardeArray = [{ object: '小学', isSelected: false }, { object: '初中', isSelected: false }, { object: '高中', isSelected: false }, { object: '其他', isSelected: false }];
+let sexArray = [{ object: '男', isSelected: false }, { object: '女', isSelected: false }, { object: '不限', isSelected: false }];
+let typeArray = [{ object: '短期', isSelected: false }, { object: '长期', isSelected: false }, { object: '不限', isSelected: false }];
 Page({
   /**
    * 页面的初始数据
@@ -63,7 +67,82 @@ Page({
         perTime: '2'
       }
     ],
+    selectArray: [{
+      object: '',
+      isSelected: false
+    }],
     tabbar: {}
+  },
+
+  select: function (e) {
+    let index = e.currentTarget.dataset['index']
+    let status = !e.currentTarget.dataset['status']
+    let urlStr = 'selectArray[' + index + '].isSelected'
+    this.setData({
+      [urlStr]: status
+    })
+  },
+  changeStatus: function (e) {
+    let type = e.currentTarget.dataset['type'];
+    isHidden = !isHidden
+    switch (type) {
+      case 'object':
+        this.setData({
+          selectArray: objectArray
+        })
+        break;
+      case 'grade':
+        this.setData({
+          selectArray: gardeArray
+        })
+        break;
+      case 'sex':
+        this.setData({
+          selectArray: sexArray
+        })
+        break;
+      case 'type':
+        this.setData({
+          selectArray: typeArray
+        })
+        break;
+      default:
+        break;
+    }
+    this.setData({
+      isHidden: isHidden
+    })
+  },
+  showSelect: function (e) {
+    let type = e.currentTarget.dataset['type'];
+    isHidden = false;
+    switch (type) {
+      case 'object':
+        this.setData({
+          selectArray: objectArray
+        })
+        break;
+      case 'grade':
+        this.setData({
+          selectArray: gardeArray
+        })
+        break;
+      case 'sex':
+        this.setData({
+          selectArray: sexArray
+        })
+        break;
+      case 'type':
+        this.setData({
+          selectArray: typeArray
+        })
+        break;
+      default:
+        break;
+    }
+    this.setData({
+      isHidden: isHidden
+    })
   },
   onClick: function (e) {
     var index = e.currentTarget.id// e.currentTarget
@@ -76,11 +155,6 @@ Page({
    */
   canvasIdErrorCallback: function (e) {
     console.error(e.detail.errMsg)
-  },
-
-  changeStatus: function (e) {
-    isHidden = !isHidden
-    this.setData({ isHidden: isHidden })
   },
 
 

@@ -38,8 +38,8 @@
           <i-input title='专业班级' placeholder='如：计算机1602'></i-input>
           <i-input title='详细住址' placeholder='如：韵苑1栋101'></i-input>
       </view>
-      <view style='position:relative;margin:px;background-color:#f5f5f5;align-items:center;width:100vw;'>
-        <definedButton title="保存" style='display:flex;padding:20px 0px;' bindtap='completeInfo'></definedButton>
+      <view class='confirm'>
+        <definedButton title="保存" style='display:flex;margin-left:30%;margin-bottom:20px;' bindtap='completeInfo'></definedButton>
       </view>
       </swiper-item>
     </swiper>

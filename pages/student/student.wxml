@@ -3,19 +3,19 @@
   <view class="container">
     <view class="selLine" style="position:fixed">
       <view class='button'>
-        <i-collapse-item title="家教类型" name="name" bindtap="changeStatus" >
+        <i-collapse-item title="家教类型" name="name" bindtap="showSelect" data-type='type'>
         </i-collapse-item>
       </view>
       <view class='button'>
-        <i-collapse-item title="科目" name="name" bindtap="changeStatus" >
+        <i-collapse-item title="科目" name="name" bindtap="showSelect" data-type='object'>
         </i-collapse-item>
       </view>
       <view class='button'>
-        <i-collapse-item title="年级" name="name" bindtap="changeStatus" >
+        <i-collapse-item title="年级" name="name" bindtap="showSelect" data-type='grade'>
         </i-collapse-item>
       </view>
       <view class='button'>
-        <i-collapse-item title="性别要求" name="name" bindtap="changeStatus" >
+        <i-collapse-item title="性别要求" name="name" bindtap="showSelect" data-type='sex'>
         </i-collapse-item>
       </view>
     </view>
@@ -35,6 +35,13 @@
       id="{{index}}">
       </studentList>
     </view>
+    <cover-view class = 'cover-view' style="position:fixed;top:0;left:0" hidden='{{isHidden}}' catchtap='changeStatus' >
+    <cover-view class='objects' style="flex-direction:row;">
+      <cover-view class='object-item' wx:for="{{selectArray}}" wx:key="unique" style="background-color:{{item.isSelected?'#3cdede':''}};color:{{item.isSelected?'#fff':'#3cdede'}}" catchtap='select' data-index='{{index}}' data-status='{{item.isSelected}}'>{{item.object}}
+      </cover-view>
+    </cover-view>
+    <cover-view class='confirm'>确定</cover-view>
+  </cover-view>
     <tabbar tabbar="{{tabbar}}"></tabbar>
   </view>
 </view>
