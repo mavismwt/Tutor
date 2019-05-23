@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/teacher/info/student/student",
     "pages/teacher/index",
     "pages/index/index",
     "pages/middle/middle",
@@ -10,7 +11,6 @@
     "pages/student/detail/detail",
     "pages/teacher/info/select/select",
     "pages/teacher/info/teacher/teacher",
-    "pages/teacher/info/student/student",
     "pages/mine/certificate/certificate",
     "pages/mine/collect/collect",
     "pages/mine/feedback/feedback",

@@ -1,4 +1,5 @@
 // pages/index/info/student/student.js
+var util = require('../../../../utils/util.js');  
 var ismale = true;
 var check1 = true;
 var check2 = false;
@@ -6,6 +7,7 @@ var check3 = false;
 var checks = [true, false, false];
 var isSelectHidden = true;
 var multiIndex = [[0, 0]];
+var date = util.formatDate(new Date());
 Page({
 
   /**
@@ -29,7 +31,8 @@ Page({
     objectArray: [
       { object: '语文', isSelected: false }, { object: '数学', isSelected: false }, { object: '英语', isSelected: false }, { object: '物理', isSelected: false }, { object: '化学', isSelected: false }, { object: '生物', isSelected: false }, { object: '政治', isSelected: false }, { object: '历史', isSelected: false }, { object: '地理', isSelected: false }, { object: '其他', isSelected: false }],
     isSelectHidden: isSelectHidden,
-    timeArray: [{day:'',detail:''}]
+    timeArray: [{day:'',detail:''}],
+    date: date,
   },
 
   onChange1: function (e) {
@@ -104,24 +107,35 @@ Page({
     })
   },
   bindMultiPickerChange: function (e) {
+    let index = e.currentTarget.dataset.index
+    let urlStr = 'multiIndex['+index+']'
     this.setData({
-      multiIndex: e.detail.value
+      [urlStr]: e.detail.value
     })
   },
   bindMultiPickerColumnChange: function (e) {
-    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+    let index = e.currentTarget.dataset.index
     var data = {
       multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
+      multiIndex: this.data.multiIndex[index]
     };
     data.multiIndex[e.detail.column] = e.detail.value;
-    this.setData(data);
+    //this.setData(data);
   },
+  bindDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date: e.detail.value
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      date: date,
+    })
   },
 
   /**
