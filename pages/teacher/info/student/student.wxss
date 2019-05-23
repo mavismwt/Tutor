@@ -48,11 +48,11 @@
   margin-top: 5px;
 }
 .add-icon {
-  position: absolute;
+  position: relative;
   width: 20px;
   height: 20px;
   margin-top: 3px;
-  margin-left: 80px;
+  margin-left: 10px;
 }
 .text {
   display: inline-block;
@@ -117,4 +117,46 @@
   background-color: #f5f5f5;
   border-radius: 5px;
   margin-left: 10px;
+}
+
+.cover-view {
+  position: fixed;
+  display: flex;
+  margin-top: 0px;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #f5f5f5;
+}
+.objects {
+  clear: both;
+  width: 90vw;
+  display: inline-block;
+  margin-left: 5vw;
+  margin-top: 25%;
+  align-items: center;
+}
+.object-item {
+  float: left;
+  font-size: 16px;
+  width: 28%;
+  padding: 10px 0px;
+  text-align: center;
+  margin-left: 4%;
+  margin-top: 20px;
+  border: 1px solid #3cdede;
+  border-radius: 5px;
+  color: #3cdede;
+}
+.confirm {
+  float: left;
+  font-size: 16px;
+  width: 40vw;
+  padding: 10px 0px;
+  text-align: center;
+  margin-left: 30vw;
+  margin-top: 40px;
+  border-radius: 20px;
+  background-color: #3cdede;
+  color: #fff;
 }
