@@ -23,6 +23,12 @@
       </studentList>
     </view></swiper-item>
     <swiper-item >
+      <view style='position:absolute;width:100vw;padding:10px;background-color:#fff;font-size:14px;'>上门家教存在风险，请您务必填写安全信息</view>
+      <view style='position:relative;margin:55px 15px 15px 15px;padding:5px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;'>
+        <toplistcell title="个人详细信息" image='/images/icon/icon_personal.png'></toplistcell>
+          <i-input title='专业班级' placeholder='如：计算机1602'></i-input>
+          <i-input title='详细住址' placeholder='如：韵苑1栋101'></i-input>
+      </view>
       <view style='position:relative;margin:15px;padding:5px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;'>
         <toplistcell title="紧急联系人" image='/images/icon/icon_emergency.png'></toplistcell>
         <i-panel title='紧急联系人{{item.contactIndex}}' wx:for='{{contactInfo}}' wx:key='unique'>
@@ -33,13 +39,9 @@
           <image src='/images/icon/icon_add.png' style='width:32px;height:32px;margin-left:88%;' bindtap='addContact'></image>
         </view>
       </view>
-      <view style='position:relative;margin:15px;padding:5px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;'>
-        <toplistcell title="个人详细信息" image='/images/icon/icon_emergency.png'></toplistcell>
-          <i-input title='专业班级' placeholder='如：计算机1602'></i-input>
-          <i-input title='详细住址' placeholder='如：韵苑1栋101'></i-input>
-      </view>
+      
       <view class='confirm'>
-        <definedButton title="保存" style='display:flex;margin-left:30%;margin-bottom:20px;' bindtap='completeInfo'></definedButton>
+        <definedButton title="保存" style='display:flex;margin-left:30%;margin-bottom:20px;' bindtap='saveInfo'></definedButton>
       </view>
       </swiper-item>
     </swiper>

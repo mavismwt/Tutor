@@ -10,7 +10,7 @@
         </i-radio-group>
     </view>
     <view class='detail'>
-      <image src='/images/bg_add.png' style='position:relative;margin-top:50px;align-content:center;width:58px;height:58px;padding:15% 30%;background-color:#ececec;'></image>
+      <image src='{{image}}' mode='aspectFill' style='position:relative;margin-top:50px;align-content:center;background-color:#ececec;'  bindtap='chooseImage'></image>
     </view>
     <view class='confirm-line'>
       <view class='confirm' bindtap='submit'>提交</view>

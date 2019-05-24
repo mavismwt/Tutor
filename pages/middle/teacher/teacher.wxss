@@ -103,7 +103,7 @@
 }
 .select-button {
   margin-left: 10px;
-  width: 80px;
+  width: 180px;
   padding: 2px 5px;
   font-size: 17px;
   color: #84878f;

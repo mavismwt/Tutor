@@ -70,6 +70,13 @@ Page({
       contactInfo:contactInfo
     })
   },
+  saveInfo: function() {
+    wx.showModal({
+      title: '保存成功',
+      content: '已保存安全防护信息',
+      showCancel: false,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

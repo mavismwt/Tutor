@@ -10,7 +10,7 @@
         </i-radio-group>
     </view>
     <view class='detail'>
-      <image src='/images/bg_add.png' style='position:relative;margin-top:50px;align-content:center;width:58px;height:58px;padding:15% 30%;background-color:#ececec;' hidden='{{isOnlineAuth}}'></image>
+      <image src='{{image}}' mode='aspectFill' style='position:relative;margin-top:50px;align-content:center;background-color:#ececec;' hidden='{{isOnlineAuth}}' bindtap='chooseImage'></image>
       <view class='online-auth' hidden='{{!isOnlineAuth}}' >
         <text class='subtitle'>请输入学信网学历在线验证报告的在线验证码：</text>
         <input class='input'></input>

@@ -4,29 +4,33 @@
 <navigationBar id="navigationBar" title="填写资料" back="true"></navigationBar>
   <view class="container" hidden='{{!isSelectHidden}}'>
     <i-panel class="cell-panel" title="以下信息为必填项">
-      <i-input value="{{ value1 }}" title="孩子姓名" z-index='0' placeholder="我们将只公开您孩子的姓" />
-      <i-cell  title="孩子年级">
-       <picker class='select-button'bindchange="bindPickerChange" value="{{index}}" range="{{singleArray}}"> 
-       <text class='text'>{{singleArray[index]}}</text>
+      <i-input value="{{ value1 }}" title="真实姓名" z-index='0' placeholder="我们将只公开您的姓" />
+      <i-cell  title="性别" >
+        <radio value="{{value}}" checked="{{ismale}}"  disabled="{{disabled}}" style='position:relative;margin-left:45px;' bindtap='radioChange'>男</radio>
+        <radio value="{{value}}" checked="{{!ismale}}"  disabled="{{disabled}}" style='position:relative;margin-left:10px' bindtap='radioChange'>女</radio>
+      </i-cell>
+      <i-cell  title="学校">
+       <picker class='select-button' style='margin-left:45px;' bindchange="bindPickerChange" value="{{index}}" range="{{singleArray}}"> 
+       <text style='display: inline-block;width: 156px;font-size: 16px;color: #84878f;text-align:center;'>{{singleArray[singleIndex]}}</text>
         <image class='icon' src='/images/sanjiao.png'></image>
       </picker>
       </i-cell>
-      <i-cell  title="补习科目" >
+      <i-cell  title="年级">
+       <picker class='select-button' style='margin-left:45px;width:80px;' bindchange="bindPickerChange1" value="{{index}}" range="{{gradeArray}}"> 
+       <text style='display: inline-block;width: 56px;font-size: 16px;color: #84878f;text-align:center;'>{{gradeArray[gradeIndex]}}</text>
+        <image class='icon' src='/images/sanjiao.png'></image>
+      </picker>
+      </i-cell>
+      <i-input value="{{ value2 }}" type="number" title="手机号码" maxlength="11" placeholder="与心仪学生对接后才公布" z-index='0'/>
+      <i-cell  title="可教年级" >
+      <text style='diaplay:flex;margin-left:10px;font-size: 16px;color: #84878f;' wx:for="{{studentArray}}" wx:if="{{item.isSelected}}">{{item.object}}</text>
+        <image class='add-icon' src='/images/icon/icon_add.png' bindtap='showSelect' data-type='grade'></image>
+      </i-cell>
+      <i-cell  title="可教科目" >
       <text style='diaplay:flex;margin-left:10px;font-size: 16px;color: #84878f;' wx:for="{{objectArray}}" wx:if="{{item.isSelected}}">{{item.object}}</text>
-        <image class='add-icon' src='/images/icon/icon_add.png' bindtap='changeSelectStatus'></image>
+        <image class='add-icon' src='/images/icon/icon_add.png' bindtap='showSelect' data-type='object'></image>
       </i-cell>
-      <i-cell  title="孩子性别" >
-        <radio value="{{value}}" checked="{{ismale}}"  disabled="{{disabled}}" style='position:relative;margin-left:10px' bindtap='radioChange'>男</radio>
-        <radio value="{{value}}" checked="{{!ismale}}"  disabled="{{disabled}}" style='position:relative;margin-left:10px' bindtap='radioChange'>女</radio>
-      </i-cell>
-      <i-cell  title="性别要求" >
-        <radio value="{{value}}" wx:for='{{sexRoc}}' wx:key="unique" checked="{{checks[index]}}"  disabled="{{disabled}}" style='position:relative;margin-left:10px' bindtap='radioChange1' id="{{index}}">{{sexRoc[index].title}}</radio>
-      </i-cell>
-      <i-cell title="短期家教">
-        <i-switch value="{{switch1}}" bind:change="onChange1" style='position:relative;margin-left:10px'></i-switch>
-        <text style='position:relative;margin-top:5px;margin-left:10px;font-size:12px;color:#84878f'>时间小于一个月为短期家教</text>
-      </i-cell>
-      <i-cell  title="授课时间">
+      <i-cell  title="空闲时间">
         <view style='flex-direction:column;' hidden="{{switch1}}">
         <picker mode="multiSelector" class='picker-view' bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" wx:for="{{multiIndex}}" wx:key="unique" data-index="{{index}}">
         <label class='select-label'>
@@ -51,38 +55,34 @@
           </picker>
         </view>
       </i-cell>
-      <i-cell title="课时安排">
-        <label style='display:flex;margin-left:5px;'>
-          <text class='course' hidden='{{switch1}}'>一周</text>
-          <text class='course' hidden='{{!switch1}}'>一共</text>
-          <input class='detail' type='number'></input>
-          <text class='course'>次，一次</text>
-          <input class='detail' type='number'></input>
-          <text class='course'>小时</text>
-        </label>
-      </i-cell>
-      <i-cell title="授课时间可协调">
-        <i-switch value="{{switch2}}" bind:change="onChange2" style='position:relative;margin-left:10px'></i-switch>
-      </i-cell>
-      <i-input value="{{ value2 }}" type="number" title="手机号码" maxlength="11" placeholder="与心仪老师对接后才公布" z-index='0'/>
-      <i-input value="{{ value3 }}" type="textarea" title="地址" placeholder="无需具体至门牌号" maxlength="50" />
-      
-      <i-cell title="提供薪酬">
+      <i-cell title="期望薪酬">
           <input class='detail2' type='number'></input>
           <text class='course'>元/小时</text>
       </i-cell>
     </i-panel>
     <i-panel class="cell-panel" title="以下信息非必填项，但填写有助于您更大几率找到心仪的老师">
        <infoList id="settingList" wx:key="unique" 
-      title="孩子学习情况"
+      title="学科成绩"
       icon="/images/icon/icon_add.png"
-      detail="需增强知识点、科目，孩子性格等" 
+      detail="中高考分数/中学排名/获奖经历" 
       canEdit="true">
       </infoList>
       <infoList id="settingList" wx:key="unique" 
-      title="教师要求"
+      title="自我介绍"
       icon="/images/icon/icon_add.png"
-      detail="学校、家教经验、擅长科目等"
+      detail="个人兴趣/特长爱好/性格特征等"
+      canEdit="true" >
+      </infoList>
+      <infoList id="settingList" wx:key="unique" 
+      title="家教经历"
+      icon="/images/icon/icon_add.png"
+      detail="  "
+      canEdit="true" >
+      </infoList>
+      <infoList id="settingList" wx:key="unique" 
+      title="获奖经历"
+      icon="/images/icon/icon_add.png"
+      detail="  "
       canEdit="true" >
       </infoList>
     </i-panel>

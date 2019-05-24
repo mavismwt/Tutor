@@ -1,5 +1,5 @@
 // pages/index/info/student/student.js
-var util = require('../../../../utils/util.js');  
+var util = require('../../../utils/util.js');  
 var ismale = true;
 var check1 = true;
 var check2 = false;

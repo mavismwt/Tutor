@@ -19,7 +19,9 @@
     "pages/message/chat/chat",
     "pages/teacher/info/done/done",
     "pages/middle/teacher/teacher",
-    "pages/middle/student/student"
+    "pages/middle/student/student",
+    "pages/message/receive/receive",
+    "pages/message/send/send"
   ],
   "window": {
     "navigationStyle": "custom",

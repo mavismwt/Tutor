@@ -1,0 +1,7 @@
+<!--pages/message/receive/receive.wxml-->
+<view>
+  <navigationBar id="navigationBar" title="我收到的申请" back="true"></navigationBar> 
+    <view class='container' >
+      <infolist wx:for = "{{messageArray}}" style="background-color:#fff;margin-top:10px;"></infolist>
+    </view>
+</view>
