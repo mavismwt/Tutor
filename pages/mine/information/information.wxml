@@ -9,18 +9,30 @@
     <swiper current='{{current}}' class='swiper' duration="300">
     <swiper-item >
     <view class='swiper-con' >
-    <studentList id="studentList" wx:key="unique" style='position:fixed;top:0px;background-color:#f5f5f5;box-shadow: inset 0px -1px 0px 0px #e5e5e5;'
-      name = "{{info.name}}"
-      price="{{info.price}}"
-      grade="{{info.grade}}"
-      object="{{info.object}}"
-      time="{{info.time}}"
-      location="{{info.location}}"
-      sex="{{info.sex}}"
-      isLongTerm="{{info.isLongTerm}}"
-      number="{{info.number}}"
-      perTime="{{info.perTime}}">
+    <studentList id="studentList" wx:key="unique" style='position:fixed;top:0px;background-color:#f5f5f5;box-shadow: inset 0px -1px 0px 0px #e5e5e5;' wx:if="{{identity=='student'}}"
+      name = "{{studentInfo.name}}"
+      img = "{{studentInfo.img}}"
+      price="{{studentInfo.price}}"
+      grade="{{studentInfo.grade}}"
+      object="{{studentInfo.object}}"
+      time="{{studentInfo.time}}"
+      location="{{studentInfo.location}}"
+      sex="{{studentInfo.sex}}"
+      isLongTerm="{{studentInfo.isLongTerm}}"
+      number="{{studentInfo.number}}"
+      perTime="{{studentInfo.perTime}}">
       </studentList>
+    <teacherList id="teacherList" wx:key="unique" style='position:fixed;top:0px;background-color:#f5f5f5;box-shadow: inset 0px -1px 0px 0px #e5e5e5;' wx:if="{{identity=='teacher'}}"
+      name = "{{teacherInfo.name}}"
+      img = "{{teacherInfo.img}}"
+      price="{{teacherInfo.price}}"
+      grade="{{teacherInfo.grade}}"
+      object="{{teacherInfo.object}}"
+      school = "{{item.school}}"
+      time="{{teacherInfo.time}}"
+      location="{{teacherInfo.location}}"
+      sex="{{teacherInfo.sex}}">
+      </teacherList>
     </view></swiper-item>
     <swiper-item >
       <view style='position:absolute;width:100vw;padding:10px;background-color:#fff;font-size:14px;'>上门家教存在风险，请您务必填写安全信息</view>

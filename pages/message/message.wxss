@@ -1,6 +1,6 @@
 /* pages/mine/mine.wxss */
 .container {
-  height: 100vh;
+  
 }
 .swiper {
   display: flex;

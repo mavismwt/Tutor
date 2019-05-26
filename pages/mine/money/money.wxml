@@ -1,7 +1,7 @@
 <!--pages/mine/money/money.wxml-->
 <view>
   <navigationBar id="navigationBar" title=""back="true"></navigationBar> 
-  <view class='container'style='position:fixed;height:120vh;width:100vw;' >
-  <image style='width:100vw;' mode='widthFix' src='/images/money.png'></image>
+  <view class='container'style='position:fixed;height:120vh;width:100vw;align-items:center;' >
+  <text style='color:#a9a9a9;font-size:17px;'>暂无钱款信息</text>
   </view>
 </view>

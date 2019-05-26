@@ -24,6 +24,7 @@
   <view style="margin-top:50px;margin-bottom:60px;">
   <teacherList id="teacherList"  wx:for="{{teacherArray}}" wx:key="unique"
   name = "{{item.name}}"
+  img = "{{item.img}}"
   sex="{{item.sex}}"
   school="{{item.school}}"
   price="{{item.price}}"

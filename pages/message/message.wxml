@@ -10,17 +10,16 @@
     <view>
       <view style='position:relative;margin:10px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;' bindtap='navToReceive'>
         <toplistcell title="收到的消息" image='/images/icon/icon_receipt.png'></toplistcell>
-        <listcell wx:for='{{receiveMessage}}' title="{{item.title}}" statusColor='{{status[item.status].color}}' statusTitle='{{status[item.status].str}}' showStatus='true'></listcell>
-      </view>
+        <listcell wx:for="{{identity=='teacher'?receiveMessage1:receiveMessage2}}" title="{{item.title}}" statusColor='{{status[item.status].color}}' statusTitle='{{status[item.status].str}}' showStatus='true'></listcell></view>
       <view style='position:relative;margin:10px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;' bindtap='navToSend'>
         <toplistcell title="发出的消息" image='/images/icon/icon_send.png'></toplistcell>
-        <listcell wx:for='{{sendMessage}}' title="{{item.title}}" statusColor='{{status[item.status].color}}' statusTitle='{{status[item.status].str}}' showStatus='true'></listcell>
+        <listcell wx:for="{{identity=='teacher'?sendMessage1:sendMessage2}}" title="{{item.title}}" statusColor='{{status[item.status].color}}' statusTitle='{{status[item.status].str}}' showStatus='true'></listcell>
       </view>
     </view>
     </swiper-item>
       <swiper-item >
         <view>
-          <chatlist name="叶老师" bindtap='navtoChat'></chatlist>
+          <chatlist wx:for="{{identity=='teacher'?chatInfo1:chatInfo2}}" name="{{item.name}}" date="{{item.date}}" bindtap='navtoChat'></chatlist>
         </view>
       </swiper-item>
     </swiper>

@@ -39,7 +39,15 @@ App({
     wx.getSystemInfo({
       success: function (res) {
         t.globalData.systemInfo = res;
-
+        //  if (res.model == "iPhone X") {
+        //    t.setData({
+        //      isIPX: true,
+        //    })
+        //  } else {
+        //    t.setData({
+        //      isIPX: false,
+        //    })
+        //  }
       }
     });
   },

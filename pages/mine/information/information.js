@@ -1,4 +1,6 @@
 // pages/mine/information/information.js
+const app = getApp();
+var identity = app.globalData.identity;
 var contactInfo = [{contactIndex: 0,name: '',number: '',advice:''}];
 var contactNum = 2;
 Page({
@@ -9,6 +11,29 @@ Page({
   data: {
     current: 0,
     isInfo: true,
+    studentInfo:{
+      id: 0,
+      name: '李同学',
+      img: '/images/touxiang/s1.png',
+      sex: 'male',
+      price: '80',
+      grade: '高二',
+      object: '数学',
+      time: '周六晚上',
+      location: 'XXXX小区XX单元XX楼XXX室',
+      sexDeamand: '不限',
+      isLongTerm: true
+    },
+    teacherInfo: {
+      name: '叶老师',
+      img: '/images/touxiang/t1.png',
+      sex: 'female',
+      school: '华中科技大学',
+      grade: '一年级',
+      price: '100',
+      object: '数学，英语',
+      time: '周一下午'
+    },
     info: {
       id: 0,
       name: '老师',
@@ -81,14 +106,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    identity = app.globalData.identity;
+    console.log(this.data.identity)
+    this.setData({
+      identity: identity
+    }) 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.studentList = this.selectComponent("#studentList");
+    if (identity == 'student') {
+      this.list = this.selectComponent("#studentList");
+    } else {
+      this.list = this.selectComponent("#teacherList");
+    }
     this.toplistcell = this.selectComponent("#toplistcell");
     this.definedButton = this.selectComponent("#definedButton");
   },

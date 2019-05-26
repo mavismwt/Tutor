@@ -1,4 +1,5 @@
 // pages/middle/middle.js
+const app = getApp();
 Page({
 
   /**
@@ -8,12 +9,15 @@ Page({
   },
 
   teacher: function (e) {
+    app.globalData.identity = 'teacher',
+      console.log(app.globalData.identity)
     wx.navigateTo({
       url: 'teacher/teacher',
     })
   },
 
   student: function (e) {
+    app.globalData.identity = 'student',
     wx.navigateTo({
       url: 'student/student',
     })

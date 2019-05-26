@@ -11,6 +11,7 @@ Page({
   data: {
     isCompleted: isCompleted,
     isAuthed: isAuthed,
+    isIPX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
     position:'fixed',
     id: 0,
     name: '叶老师',

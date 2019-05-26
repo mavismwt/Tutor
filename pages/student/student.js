@@ -17,7 +17,8 @@ Page({
       {
         id: 0,
         name: '李同学',
-        sex:'male',
+        img: '/images/touxiang/s1.png',
+        sex: 'male',
         price: '80',
         grade: '高二',
         object: '数学',
@@ -25,48 +26,22 @@ Page({
         location: 'XXXX小区XX单元XX楼XXX室',
         sexDeamand: '不限',
         isLongTerm: true
-      }, 
+      },
       {
         id: 0,
         name: '张同学',
-        sex: 'male',
+        img: '/images/touxiang/s0.png',
+        sex: 'female',
         price: '80',
         grade: '高二',
         object: '数学',
         time: '周六晚上',
         location: 'XXXX小区XX单元XX楼XXX室',
         sexDeamand: '不限',
-        isLongTerm: true
-      },
-      {
-        id: 0,
-        name: '王同学',
-        sex: 'male',
-        price: '120',
-        grade: '高二',
-        object: '物理',
-        time: '周六下午',
-        location: 'XXXX小区XX单元XX楼XXX室',
-        sexDeamand: '女',
         isLongTerm: false,
-        number: '1',
+        number: '2',
         perTime: '2'
-      },
-      {
-        id: 0,
-        name: '赵同学',
-        sex: 'female',
-        price: '120',
-        grade: '高二',
-        object: '物理',
-        time: '周六下午',
-        location: 'XXXX小区XX单元XX楼XXX室',
-        sexDemand: '女',
-        isLongTerm: false,
-        number: '1',
-        perTime: '2'
-      }
-    ],
+      }],
     selectArray: [{
       object: '',
       isSelected: false

@@ -1,7 +1,7 @@
 <!--component/teacherlistcell/teacherlistcell.wxml-->
 <view class='list-group'>
   <view class='list-left'>
-    <image src='/images/tupian.png' class='img' mode="widthFix"></image>
+    <image src='{{img}}' class='img' mode="widthFix"></image>
     <view class='basic-info'>
       <view class='name'>{{name}}</view>
       <image src='/images/icon/icon_{{sex}}.png' class='sex' mode='widthFix'></image>

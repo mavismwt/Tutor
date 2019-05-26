@@ -1,6 +1,6 @@
 <!--pages/middle/middle.wxml-->
 <view>
-  <navigationBar id="navigationBar" title="填写资料"back="true"></navigationBar>  
+  <navigationBar id="navigationBar" title="填写资料" back="true" ></navigationBar>  
   <view class='container'>
     <view class='select-view'>
       <view class='select' bindtap='teacher'>

@@ -17,14 +17,15 @@ Page({
   teacher: function (e) {
     app.globalData.identity = 'teacher',
     wx.reLaunch({
-      url: '/pages/teacher/index',
+      url: '/pages/student/student',
     })
     console.log(app.globalData.userInfo)
   },
 
   student: function (e) {
+    app.globalData.identity = 'student',
     wx.reLaunch({
-      url: '/pages/student/student',
+      url: '/pages/teacher/index',
     })
   },
   onLoad: function () {

@@ -1,10 +1,12 @@
 // pages/message/message.js
 const app = getApp();
+var identity = app.globalData.identity;
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    identity: identity,
     current: 0,
     status: [{
       id: 0,
@@ -22,30 +24,64 @@ Page({
       color: '#a9a9a9'
     }],
     statusCode: 1,
-    receiveMessage:[{
-      title:'李同学/巴黎豪庭',
+    receiveMessage1:[{
+      title:'李同学/初三',
       status: 0,
     },
     {
-      title: '张同学/喻园小区',
+      title: '张同学/高三',
       status: 1,
     },
     {
-      title: '王同学/喻园小区',
+      title: '王同学/高一',
       status: 2,
     }],
-    sendMessage: [{
-      title: '王老师/武汉大学',
+    sendMessage1: [{
+      title: '李同学/初二',
       status: 0,
     },
     {
-      title: '章老师/华中科技大学',
+      title: '陈同学/初三',
+      status: 1,
+    },
+    {
+      title: '张同学/高二',
+      status: 2,
+    }],
+    receiveMessage2: [{
+      title: '叶老师/华中科技大学',
+      status: 0,
+    },
+    {
+      title: '章老师/武汉大学',
       status: 1,
     },
     {
       title: '左老师/华中科技大学',
       status: 2,
     }],
+    sendMessage2: [{
+      title: '王老师/武汉大学',
+      status: 0,
+    },
+    {
+      title: '刘老师/华中科技大学',
+      status: 1,
+    },
+    {
+      title: '陈老师/华中科技大学',
+      status: 2,
+    }],
+    chatInfo2:[{
+      name:'叶老师',
+      date:'2019年5月31日'
+    }], 
+    chatInfo1: [{
+      name: '李同学',
+      sex:'male',
+      date: '2019年6月2日'
+    }]
+
   },
 
   handleChange: function (e) {
@@ -88,7 +124,11 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
-    wx.hideTabBar()
+    wx.hideTabBar();
+    identity = app.globalData.identity;
+    this.setData({
+      identity: identity
+    }) 
   },
 
   /**

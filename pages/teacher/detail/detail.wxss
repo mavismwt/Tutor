@@ -3,9 +3,7 @@
   /* display: flex;
   padding: 0px 0px 0px 0px;
   flex-direction: column; */
-  position:absolute;
-  min-height:100%;
-  width:100%;
+  
 }
 
 .basic-view{
@@ -151,11 +149,11 @@
 .cover-view{
   display: flex;
   flex-direction: column;
-  position:fixed;
-  top:385px;
-  left:10px;
-  right:10px;
+  position: fixed;
+  top: 50%;
   bottom: 0px;
+  left: 0px;
+  right: 0px;
   background-color:rgb(253, 254, 254);
   text-align: center;
   border-radius: 5px;

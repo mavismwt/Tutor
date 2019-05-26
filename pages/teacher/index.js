@@ -13,44 +13,26 @@ Page({
   
   data: {
     isHidden: isHidden,
-    teacherArray: [
-      {
-        name: '叶老师',
-        sex: 'female',
-        school: '华中科技大学',
-        grade: '一年级',
-        price:'100',
-        object:'数学，英语',
-        time:'周一下午'
-      },
+    teacherArray: [{
+      name: '叶老师',
+      img: '/images/touxiang/t1.png',
+      sex: 'female',
+      school: '华中科技大学',
+      grade: '一年级',
+      price: '100',
+      object: '数学，英语',
+      time: '周一下午'
+    },
       {
         name: '陈老师',
+        img: '/images/touxiang/t2.png',
         sex: 'male',
         school: '华中科技大学',
         grade: '高三',
         price: '100',
         object: '物理',
         time: '周三晚上'
-      }, 
-      {
-        name: '叶老师',
-        sex: 'male',
-        school: '华中科技大学',
-        grade: '一年级',
-        price: '100',
-        object: '数学，英语',
-        time: '周一下午'
-      },
-      {
-        name: '陈老师',
-        sex: 'female',
-        school: '华中科技大学',
-        grade: '高三',
-        price: '100',
-        object: '物理',
-        time: '周三晚上'
-      },
-    ],
+      }],
     selectArray: [{
       object: '',
       isSelected: false

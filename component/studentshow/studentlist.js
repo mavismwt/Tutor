@@ -8,6 +8,10 @@ Component({
       type: String,
       value: '名字'
     },
+    img: {
+      type: String,
+      value: '/images/tupian.png'
+    }, 
     sex: {
       type: String,
       value: 'male'

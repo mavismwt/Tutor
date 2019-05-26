@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "studentList": "/component/studentlist/studentlist"
+    "studentList": "/component/studentlist/studentlist",
+    "teacherList": "/component/teacherlist/teacherlist"
   }
 }
