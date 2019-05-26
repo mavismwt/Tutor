@@ -11,11 +11,13 @@ Page({
     isCompleted: false,
     id: 0,
     name: '李同学',
+    img: '/images/touxiang/s1.png',
+    sex: 'male',
     lastLogin: '1小时前',
     grade: '一年级',
     price: '80',
     object: '数学，英语',
-    sex: '女',
+    sexRec: '女',
     location: '巴黎豪庭',
     infoArray: [
       {

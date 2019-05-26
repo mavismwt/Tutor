@@ -1,13 +1,13 @@
 <!--pages/student/detail/detail.wxml-->
 <view>
 <navigationBar id="navigationBar" title="详情" back="true" fixed="{{fixed}}"></navigationBar>
-<view class='container'>
+<view class="container {{isIPX?'IPX':''}}">
   <view class='basic-view'>
     <view class='left-view'>
-      <image src='/images/tupian.png' class='img' mode="widthFix"></image>
+      <image src='{{img}}' class='img' mode="widthFix"></image>
       <view class='basic-info'>
         <view class='name'>{{name}}</view>
-        <image src='/images/tupian.png' class='sex' mode='widthFix'></image>
+        <image src='/images/icon/icon_{{sex}}.png' class='sex' mode='widthFix'></image>
       </view>
       <view class='more-info'>
         <text class='left-title'>上次登录</text>
@@ -21,7 +21,7 @@
       </view>
       <view class='info'>
         <text class='title'>教师性别要求</text>
-        <text class='detail'>{{sex}}</text>
+        <text class='detail'>{{sexRec}}</text>
       </view>
       <view class='info'>
         <text class='title'>提供薪酬</text>
@@ -39,7 +39,7 @@
     icon="{{item.icon}}"
     detail="{{item.detail}}" >
     </infoList>
-    <view class='bottom-view' hidden='{{isCompleted}}'>
+    <view class="bottom-view {{IPX?'IPX':''}}">
       <view class='bottom-button' bindtap='forward'>
       <text class='bottom-text' >分享</text>
       </view>

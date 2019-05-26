@@ -1,13 +1,13 @@
 <!--pages/index/detail/detail.wxml-->
 <view>
 <navigationBar id="navigationBar" title="详情" back="true" fixed="true"></navigationBar>
-<view class="container"  style="position:{{isCompleted==true?'relative':'fixed'}};">
+<view class="container {{isIPX?'IPX':''}}"  style="position:{{isCompleted==true?'relative':'fixed'}};">
   <view class='basic-view'>
     <view class='left-view'>
-      <image src='/images/tupian.png' class='img' mode="widthFix"></image>
+      <image src='{{img}}' class='img' mode="widthFix"></image>
       <view class='basic-info'>
         <view class='name'>{{name}}</view>
-        <image src='/images/tupian.png' class='sex' mode='widthFix'></image>
+        <image src='/images/icon/icon_{{sex}}.png' class='sex' mode='widthFix'></image>
       </view>
       <view class='more-info'>
         <text class='left-title'>期望薪酬</text>
@@ -49,7 +49,7 @@
       </view>
     </view>
   </view>
-  <view class='bottom-view'>
+  <view class="bottom-view {{isIPX?'IPX':''}}">
       <view class='bottom-button' >
       <text class='bottom-text' bindtap='forward'>分享</text>
       </view>
@@ -63,6 +63,6 @@
 <cover-view class = 'cover-view' hidden='{{isCompleted}}' >
     <cover-image class='lock' src='/images/bg_lock.png'></cover-image>
     <cover-view class='alert' >以下内容填写资料后可观看</cover-view>
-    <button style='position:fixed;bottom:20px;width:40vw;height:40px;border-radius:20px;background-color:#3cdede;color: #fff;' bindtap='completeInfo'>填写资料</button>
+    <button style='position:fixed;bottom:60px;width:40vw;height:40px;border-radius:20px;background-color:#3cdede;color: #fff;' bindtap='completeInfo'>填写资料</button>
   </cover-view>
 </view>
