@@ -35,7 +35,7 @@
 .cover-view {
   position: fixed;
   display: flex;
-  margin-top: 110px;
+  margin-top: 135px;
   width: 100vw;
   height: 100vh;
   flex-direction: column;

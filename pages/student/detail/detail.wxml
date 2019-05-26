@@ -1,7 +1,7 @@
 <!--pages/student/detail/detail.wxml-->
 <view>
 <navigationBar id="navigationBar" title="详情" back="true" fixed="{{fixed}}"></navigationBar>
-<view class="container {{isIPX?'IPX':''}}">
+<view class="container">
   <view class='basic-view'>
     <view class='left-view'>
       <image src='{{img}}' class='img' mode="widthFix"></image>
@@ -39,14 +39,14 @@
     icon="{{item.icon}}"
     detail="{{item.detail}}" >
     </infoList>
-    <view class="bottom-view {{IPX?'IPX':''}}">
+    <view class="bottom-view {{isIphoneX?'IPX':''}}">
       <view class='bottom-button' bindtap='forward'>
       <text class='bottom-text' >分享</text>
       </view>
       <view class='bottom-button' bindtap='favorite' >
       <text class='bottom-text' >收藏</text>
       </view>
-      <view class='bottom-button' style='width:50vw;' bindtap="{{isAuthed?'send':'alert'}}"><text class='bottom-text' >发送申请</text>
+      <view class='bottom-button1' style='width:50vw;' bindtap="{{isAuthed?'send':'alert'}}"><text class='bottom-text1' >发送申请</text>
       </view>
   </view>
   </view>

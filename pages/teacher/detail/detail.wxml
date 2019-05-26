@@ -49,14 +49,14 @@
       </view>
     </view>
   </view>
-  <view class="bottom-view {{isIPX?'IPX':''}}">
+  <view class="bottom-view {{isIphoneX?'IPX':''}}">
       <view class='bottom-button' >
       <text class='bottom-text' bindtap='forward'>分享</text>
       </view>
       <view class='bottom-button' >
       <text class='bottom-text' >收藏</text>
       </view>
-      <view class='bottom-button' style='width:50vw;' bindtap='{{isAuthed?"send":"alert"}}'><text class='bottom-text' >发送申请</text>
+      <view class='bottom-button1' style='width:50vw;' bindtap='{{isAuthed?"send":"alert"}}'><text class='bottom-text1' >发送申请</text>
       </view>
   </view>
 </view>

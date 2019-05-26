@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
     isAuthed: isAuthed,
     isCompleted: false,
     id: 0,
