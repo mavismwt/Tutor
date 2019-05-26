@@ -5,7 +5,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    messageArray: [{
+      name: '李同学',
+      date: '2019年7月1日',
+      sex: 'male',
+      statusTitle: '已接受',
+      statusColor: '#3cdede',
+      school: '华中科技大学',
+      grade: '大二',
+      price: '70',
+      time: '周六下午',
+      operate: '支付',
+      operateColor: 'ffcb68',
+      showCountDown: false
+    },
+    {
+      name: '李同学',
+      date: '2019年7月1日',
+      sex: 'male',
+      statusTitle: '已接受',
+      statusColor: '#3cdede',
+      school: '华中科技大学',
+      grade: '大二',
+      price: '70',
+      time: '周六下午',
+      operate: '支付',
+      operateColor: 'ffcb68',
+      showCountDown: false
+    },
+    {
+      name: '李同学',
+      date: '2019年7月1日',
+      sex: 'male',
+      statusTitle: '已接受',
+      statusColor: '#3cdede',
+      school: '华中科技大学',
+      grade: '大二',
+      price: '70',
+      time: '周六下午',
+      operate: '支付',
+      operateColor: 'ffcb68',
+      showCountDown: false
+    }]
   },
 
   /**

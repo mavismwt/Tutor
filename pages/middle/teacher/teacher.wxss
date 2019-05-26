@@ -112,7 +112,7 @@
   border-radius: 5px;
 }
 .picker-view {
-  display: flex;
+  display: inline-block;
   flex-direction: row;
   margin-left: 10px;
 }

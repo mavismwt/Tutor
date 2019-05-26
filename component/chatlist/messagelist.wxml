@@ -1,0 +1,15 @@
+<!--component/messagelist/messagelist.wxml-->
+<view style='background-color:#fff;margin-top:8px;'>
+  <i-cell wx:key="unique" title="{{name}}-{{date}}">
+    <image class='icon' src='/images/icon/icon_{{sex}}.png' slot="icon" ></image>
+  </i-cell>
+  <view class="view-wrap" style='display:flex;flex-direction:row;height:50px;border-bottom: 1px solid #f5f5f5;background-color:#fff;'>
+    <text style="display:inline-block;width:80px;font-size:17px;margin-top:8px;margin-left:20px;padding:5px;">目前进程</text>
+    <text style="display:inline-block;font-size:17px;color:#565656;margin-top:8px;margin-left:0px;padding:5px;">{{process}}</text>
+  </view>
+  <view class="view-wrap" style='display:flex;flex-direction:row;height:50px;border-bottom: 1px solid #f5f5f5;'>
+    <text style="display:inline-block;width:80px;font-size:17px;margin-top:8px;margin-left:20px;padding:5px;">最新消息</text>
+    <text style="display:inline-block;font-size:15px;color:#aeaaaa;margin-top:8px;margin-left:0px;padding:5px;">{{latestMessage}}</text>
+  </view>
+  
+</view>

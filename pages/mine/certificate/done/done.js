@@ -11,7 +11,7 @@ Page({
 
   completeInfo: function() {
     app.globalData.isAuthed = true,
-      console.log(app.globalData.isAuthed)
+    console.log(app.globalData.isAuthed)
     wx.reLaunch({
       url: '/pages/student/student',
     })

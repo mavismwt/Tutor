@@ -11,15 +11,13 @@ Page({
     isInfo: true,
     info: {
       id: 0,
-      name: '李同学',
+      name: '老师',
       sex: 'male',
       price: '80',
+      school:'华中科技大学',
       grade: '高二',
       object: '数学',
-      time: '周六晚上',
-      location: 'XXXX小区XX单元XX楼XXX室',
-      sexDeamand: '不限',
-      isLongTerm: true
+      time: '周六晚上'
     }, 
     contactInfo: [{
       contactIndex: 1,
@@ -78,6 +76,7 @@ Page({
     })
   },
 
+  
   /**
    * 生命周期函数--监听页面加载
    */

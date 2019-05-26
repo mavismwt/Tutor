@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/teacher/index",
     "pages/index/index",
+    "pages/teacher/index",
     "pages/middle/middle",
     "pages/mine/mine",
     "pages/message/message",
@@ -18,8 +18,8 @@
     "pages/mine/notice/notice",
     "pages/message/chat/chat",
     "pages/teacher/info/done/done",
-    "pages/middle/teacher/teacher",
     "pages/middle/student/student",
+    "pages/middle/teacher/teacher",
     "pages/message/receive/receive",
     "pages/message/send/send"
   ],

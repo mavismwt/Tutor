@@ -22,7 +22,7 @@
       <view class='detail-cell'>
         <text class='title'>可教年级</text>
         <text class='detail'>{{grade}}</text>
-      </view> 
+      </view>
       <view class='detail-cell'>
         <text class='title'>可教科目</text>
         <text class='detail'>{{object}}</text>

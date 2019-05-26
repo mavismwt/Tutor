@@ -1,10 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -15,9 +13,18 @@ Page({
       url: '../logs/logs'
     })
   },
-  goto: function() {
-    wx.navigateTo({
-      url: '/pages/teacher/index'
+
+  teacher: function (e) {
+    app.globalData.identity = 'teacher',
+    wx.reLaunch({
+      url: '/pages/teacher/index',
+    })
+    console.log(app.globalData.userInfo)
+  },
+
+  student: function (e) {
+    wx.reLaunch({
+      url: '/pages/student/student',
     })
   },
   onLoad: function () {
@@ -48,6 +55,7 @@ Page({
       })
     }
   },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

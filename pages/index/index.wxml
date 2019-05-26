@@ -1,13 +1,16 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view>
+  <navigationBar id="navigationBar" title="选择身份"></navigationBar>  
+  <view class='container'>
+    <view class='select-view'>
+      <button class='select' bindtap='teacher' open-type='getUserInfo'>
+        <image class='icon' src='/images/icon/icon_teacher.png'></image>
+        <view class='title'>当家教</view>
+      </button>
+      <button class='select' bindtap='student' open-type='getUserInfo'>
+        <image class='icon' src='/images/icon/icon_student.png'></image>
+        <view class='title'>找家教</view>
+      </button>
+    </view>
   </view>
-  <button class="usermotto" bindtap='goto'>
-    <text class="user-motto">{{motto}}</text>
-  </button>
 </view>

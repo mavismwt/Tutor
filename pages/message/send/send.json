@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "infolist": "/component/messagelist/messagelist"
+  }
 }

@@ -125,6 +125,7 @@ Page({
   },
   bindMultiPickerChange: function (e) {
     let index = e.currentTarget.dataset.index
+    console.log(index)
     let urlStr = 'multiIndex[' + index + ']'
     this.setData({
       [urlStr]: e.detail.value
@@ -148,7 +149,7 @@ Page({
   },
   showSelect: function (e) {
     let type = e.currentTarget.dataset['type'];
-    isHidden = false;
+    isSelectHidden = false;
     switch (type) {
       case 'object':
         this.setData({

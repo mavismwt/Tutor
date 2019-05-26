@@ -1,7 +1,11 @@
 /* pages/index/detail/detail.wxss */
 .container{
-  display: flex;
+  /* display: flex;
   padding: 0px 0px 0px 0px;
+  flex-direction: column; */
+  position:absolute;
+  min-height:100%;
+  width:100%;
 }
 
 .basic-view{

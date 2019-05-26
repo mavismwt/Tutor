@@ -67,6 +67,22 @@ Page({
     }
   },
 
+  navToReceive: function(e) {
+    wx.navigateTo({
+      url: 'receive/receive',
+    })
+  },
+
+  navToSend: function (e) {
+    wx.navigateTo({
+      url: 'send/send',
+    })
+  },
+  navtoChat: function (e) {
+    wx.navigateTo({
+      url: '/pages/message/chat/chat',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -81,6 +97,7 @@ Page({
   onReady: function () {
     this.listcell = this.selectComponent("#listcell");
     this.toplistcell = this.selectComponent("#toplistcell");
+    this.chatlist = this.selectComponent("#chatlist");
   },
 
   /**

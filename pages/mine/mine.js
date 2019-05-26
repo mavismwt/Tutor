@@ -49,15 +49,14 @@ Page({
   onLoad: function (options) {
     app.editTabbar();
     wx.hideTabBar();
-    wx.getUserInfo({
-      success: res => {
-        app.globalData.userInfo = res.userInfo
+    // wx.getUserInfo({
+    //   success: res => {
+    //     app.globalData.userInfo = res.userInfo
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          userInfo: app.globalData.userInfo
         })
-      }
-    })
+    //   }
+    // })
   },
 
   /**

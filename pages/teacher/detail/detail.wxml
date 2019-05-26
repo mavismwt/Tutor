@@ -1,7 +1,7 @@
 <!--pages/index/detail/detail.wxml-->
 <view>
 <navigationBar id="navigationBar" title="详情" back="true" fixed="true"></navigationBar>
-<view class='container' style='position:{{position}}'>
+<view class='container' style='position:relative;top:70px;'>
   <view class='basic-view'>
     <view class='left-view'>
       <image src='/images/tupian.png' class='img' mode="widthFix"></image>
@@ -49,7 +49,7 @@
       </view>
     </view>
   </view>
-  <view class='bottom-view' hidden='{{isCompleted}}'>
+  <view class='bottom-view'>
       <view class='bottom-button' >
       <text class='bottom-text' bindtap='forward'>分享</text>
       </view>

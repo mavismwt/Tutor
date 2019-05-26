@@ -2,6 +2,7 @@
 const app = getApp();
 var isCompleted = app.globalData.isCompleted;
 var isAuthed = app.globalData.isAuthed;
+//let isIphoneX = app.globalData.isIphoneX; this.setData({ isIphoneX: isIphoneX })
 Page({
 
   /**

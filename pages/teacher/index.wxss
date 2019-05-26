@@ -76,3 +76,7 @@
   background-color: #3cdede;
   color: #fff;
 }
+.fix-iphonex-button {
+  bottom:68rpx!important;
+}
+

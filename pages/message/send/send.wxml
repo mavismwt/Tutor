@@ -1,2 +1,7 @@
 <!--pages/message/send/send.wxml-->
-<text>pages/message/send/send.wxml</text>
+<view>
+  <navigationBar id="navigationBar" title="我发出的申请" back="true"></navigationBar> 
+    <view class='container' >
+      <infolist wx:for = "{{messageArray}}" style="background-color:#fff;margin-top:10px;"></infolist>
+    </view>
+</view> 

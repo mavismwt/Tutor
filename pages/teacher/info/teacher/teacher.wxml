@@ -1,6 +1,8 @@
 <!--pages/index/info/teacher/teacher.wxml-->
-<view class='container'>
-  <view class='basic-view'>
-    <image class='profile' src=''></image>
+<view>
+  <view class='container'>
+    <view class='basic-view'>
+      <image class='profile' src=''></image>
+    </view>
   </view>
 </view>

@@ -2,6 +2,7 @@
   "navigationBarTitleText": "消息",
   "usingComponents": {
     "listcell":"/component/basiclist/basiclist",
-    "toplistcell": "/component/applylist/applylist"
+    "toplistcell": "/component/applylist/applylist",
+    "chatlist":"/component/chatlist/messagelist"
   }
 }

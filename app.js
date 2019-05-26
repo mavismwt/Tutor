@@ -39,6 +39,7 @@ App({
     wx.getSystemInfo({
       success: function (res) {
         t.globalData.systemInfo = res;
+
       }
     });
   },
@@ -61,6 +62,7 @@ App({
     identity: 'student',
     isAuthed: false,
     isCompleted: false,
+    isIPX: false,
     tabBar: {
       "backgroundColor": "#ffffff",
       "color": "#979795",
