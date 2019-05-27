@@ -1,6 +1,7 @@
 // pages/student/student.js
 const app = getApp();
 var isHidden = true;
+var select = 'object';
 let objectArray = [{ object: '语文', isSelected: false }, { object: '数学', isSelected: false }, { object: '英语', isSelected: false }, { object: '物理', isSelected: false }, { object: '化学', isSelected: false }, { object: '生物', isSelected: false }, { object: '政治', isSelected: false }, { object: '历史', isSelected: false }, { object: '地理', isSelected: false }, { object: '其他', isSelected: false }];
 let gardeArray = [{ object: '小学', isSelected: false }, { object: '初中', isSelected: false }, { object: '高中', isSelected: false }, { object: '其他', isSelected: false }];
 let sexArray = [{ object: '男', isSelected: false }, { object: '女', isSelected: false }, { object: '不限', isSelected: false }];
@@ -12,7 +13,28 @@ Page({
   data: {
     //tabbar
     isHidden: isHidden,
+    select: select,
     tabbar: {},
+    itemSelect: [{
+      title: '家教类型',
+      selected: false,
+      type: 'type'
+    },
+    {
+      title: '科目',
+      selected: false,
+      type: 'object'
+    },
+    {
+      title: '年级',
+      selected: false,
+      type: 'grade'
+    },
+    {
+      title: '性别要求',
+      selected: false,
+      type: 'sex'
+    }],
     studentArray: [
       {
         id: 0,
@@ -57,6 +79,30 @@ Page({
       [urlStr]: status
     })
   },
+  confirm: function(e) {
+    let sel = this.data.select
+    let selectIndex = 0;
+    switch (sel) {
+      case 'object':
+        selectIndex = 1;
+        break;
+      case 'grade':
+        selectIndex = 2;
+        break;
+      case 'sex':
+        selectIndex = 3;
+        break;
+      case 'type':
+        selectIndex =4;
+        break;
+      default:
+        break;
+    }
+    let selStr = 'itemSelect[' + selectIndex + '].selected'
+    this.setData({
+      [selStr]: true
+    })
+  },
   changeStatus: function (e) {
     let type = e.currentTarget.dataset['type'];
     isHidden = !isHidden
@@ -94,21 +140,25 @@ Page({
     switch (type) {
       case 'object':
         this.setData({
+          select: 'object',
           selectArray: objectArray
         })
         break;
       case 'grade':
         this.setData({
+          select: 'grade',
           selectArray: gardeArray
         })
         break;
       case 'sex':
         this.setData({
+          select: 'sex',
           selectArray: sexArray
         })
         break;
       case 'type':
         this.setData({
+          select: 'type',
           selectArray: typeArray
         })
         break;

@@ -24,7 +24,18 @@
   width: 25%;
   height: 40px;
   margin-top: 5px;
-  align-items: flex-start;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+.i-collapse-item-arrow-unselected {
+  transform:rotate(90deg);
+  color: #7f7f7f;
+}
+.i-collapse-item-arrow-selected {
+  transition:transform .2s ease-in-out;
+  transform:rotate(-90deg);
+  color: #3cdede;
 }
 
 .listView {

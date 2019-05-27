@@ -2,21 +2,9 @@
 <navigationBar id="navigationBar" title="学生列表"></navigationBar>    
   <view class="container">
     <view class="selLine" style="position:fixed">
-      <view class='button'>
-        <i-collapse-item title="家教类型" name="name" bindtap="showSelect" data-type='type' style='margin-left:5px;'>
-        </i-collapse-item>
-      </view>
-      <view class='button'>
-        <i-collapse-item title="科目" name="name" bindtap="showSelect" data-type='object' style='margin-left:5px;'>
-        </i-collapse-item>
-      </view>
-      <view class='button'>
-        <i-collapse-item title="年级" name="name" bindtap="showSelect" data-type='grade' style='margin-left:5px;'>
-        </i-collapse-item>
-      </view>
-      <view class='button'>
-        <i-collapse-item title="性别要求" name="name" bindtap="showSelect" data-type='sex' style='margin-left:5px;'>
-        </i-collapse-item>
+      <view class='button' wx:for="{{itemSelect}}">
+        <text style="font-size:14px;color:{{item.selected?'#3cdede':'#7f7f7f'}};margin-top:2px;" bindtap='showSelect' data-type='{{item.type}}'>{{item.title}}</text>
+        <i-icon size="14" type="enter" i-class="{{ item.selected ? 'i-collapse-item-arrow-selected' : 'i-collapse-item-arrow-unselected' }}"/>
       </view>
     </view>
     <view style="margin-top:50px;margin-bottom:60px;">
@@ -25,7 +13,7 @@
       <cover-view class='object-item' wx:for="{{selectArray}}" wx:key="unique" style="background-color:{{item.isSelected?'#3cdede':''}};color:{{item.isSelected?'#fff':'#3cdede'}}" catchtap='select' data-index='{{index}}' data-status='{{item.isSelected}}'>{{item.object}}
       </cover-view>
     </cover-view>
-    <cover-view class='confirm'>确定</cover-view>
+    <cover-view class='confirm' bindtap='confirm'>确定</cover-view>
   </cover-view>
       <studentList id="studentList"  wx:for="{{studentArray}}" wx:key="unique"
       name = "{{item.name}}"

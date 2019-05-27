@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp();
+var select = 'object';
+var filter = false ;
 var isHidden = true;
 let objectArray = [{object: '语文',isSelected: false},{object: '数学',isSelected: false},{object: '英语',isSelected: false},{object: '物理',isSelected: false},{object: '化学',isSelected: false},{object: '生物',isSelected: false},{object: '政治',isSelected: false},{object: '历史',isSelected: false},{object: '地理',isSelected: false},{object: '其他',isSelected: false}];
 let gardeArray = [{ object: '小学', isSelected: false }, { object: '初中', isSelected: false }, { object: '高中', isSelected: false }, { object: '其他', isSelected: false }];
@@ -12,7 +14,28 @@ Page({
    */
   
   data: {
+    selected: false,
     isHidden: isHidden,
+    itemSelect: [{
+      title: '科目',
+      selected: false,
+      type:'object'
+    }, 
+    {
+      title: '年级',
+      selected: false,
+      type: 'grade'
+    },
+    {
+      title: '性别',
+      selected: false,
+      type: 'sex'
+    },
+    {
+      title: '学校',
+      selected: false,
+      type: 'school'
+    }],
     teacherArray: [{
       name: '叶老师',
       img: '/images/touxiang/t1.png',
@@ -38,6 +61,31 @@ Page({
       isSelected: false
     }],
     tabbar: {}
+  },
+
+  confirm: function (e) {
+    let sel = this.data.select
+    let selectIndex = 0;
+    switch (sel) {
+      case 'object':
+        selectIndex = 0;
+        break;
+      case 'grade':
+        selectIndex = 1;
+        break;
+      case 'sex':
+        selectIndex = 2;
+        break;
+      case 'school':
+        selectIndex = 3;
+        break;
+      default:
+        break;
+    }
+    let selStr = 'itemSelect[' + selectIndex + '].selected'
+    this.setData({
+      [selStr]: true
+    })
   },
 
   select: function(e) {
@@ -87,6 +135,7 @@ Page({
         break;
       case 'school':
         this.setData({
+          select: 'school',
           selectArray: schoolArray
         })
         break;
@@ -96,13 +145,6 @@ Page({
     this.setData({
       isHidden: isHidden
     })
-    // wx.request({
-    //   url: 'https://www.yjwbenji.top',
-    //   data: {},
-    //   success: function (res) {
-    //     console.log(res.data)
-    //   }
-    // })
   },
   showSelect: function (e) {
     let type = e.currentTarget.dataset['type'];
@@ -110,21 +152,25 @@ Page({
     switch (type) {
       case 'object':
         this.setData({
+          select: 'object',
           selectArray: objectArray
         })
         break;
       case 'grade':
         this.setData({
+          select: 'grade',
           selectArray: gardeArray
         })
         break;
       case 'sex':
         this.setData({
+          select: 'sex',
           selectArray: sexArray
         })
         break;
       case 'school':
         this.setData({
+          select: 'school',
           selectArray: schoolArray
         })
         break;
@@ -135,14 +181,6 @@ Page({
       isHidden: isHidden
     })
 
-    console.log(array)
-    // wx.request({
-    //   url: 'https://www.yjwbenji.top',
-    //   data: {},
-    //   success: function (res) {
-    //     console.log(res.data)
-    //   }
-    // })
   },
 
 
