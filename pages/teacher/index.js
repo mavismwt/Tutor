@@ -16,6 +16,7 @@ Page({
   data: {
     selected: false,
     isHidden: isHidden,
+    
     itemSelect: [{
       title: '科目',
       selected: false,

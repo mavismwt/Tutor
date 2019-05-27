@@ -6,6 +6,7 @@ Page({
    */
   data: {
     userInfo:{},
+    isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
     listArray: [
       {
         title: '我的认证',

@@ -20,6 +20,12 @@
 	font-size: 18px;
 	color: #ffffff;
 }
+.top-title.IPX {
+  margin-top: 40px;
+  font-family: PingFangSC-Medium;
+	font-size: 18px;
+	color: #ffffff;
+}
 .profile {
   width: 90px;
   height: 90px;
