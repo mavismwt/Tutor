@@ -1,7 +1,6 @@
 <!--pages/message/chat/chat.wxml-->
 <view>
   <navigationBar id="navigationBar" title="叶老师" back="true"></navigationBar> 
-    <view class='container' >
-      <image src='/images/chat1.png'  mode='widthFix' style='width:100vw;margin-top:-75px;'></image>
+    <view class='container'>
     </view>
 </view>

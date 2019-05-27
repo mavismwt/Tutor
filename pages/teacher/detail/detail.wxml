@@ -36,20 +36,25 @@
     </view> 
   </view>
   <view>
+  <cover-view class = 'cover-view' style='position:fixed:height:100%;width:100%;' hidden='{{isCompleted}}' >
+    <cover-image class='lock'src='/images/bg_lock.png'></cover-image>
+    <cover-view class='alert' >以下内容填写资料后可观看</cover-view>
+    <button style='margin-top:40px;height:40px;width:40vw;border-radius:20px;background-color:#3cdede;color: #fff;' bindtap='completeInfo' >填写资料</button>
+    <cover-view style='margin-top:260px;height:40px;width:40vw;border-radius:20px;color: #fff;'></cover-view>
+  </cover-view>
     <infoList id="settingList" wx:for="{{infoArray}}" wx:key="unique" class='more-view'
     title="{{item.title}}"
-    detail="{{item.detail}}">
+    detail="{{item.detail}}" wx:if='{{isCompleted}}'>
     </infoList>
     <view class='more-view' style='margin-bottom:60px;' >
-      <infoList id="settingList" wx:key="unique" style='width:90vw;'
-      title="图片展示"> 
+      <infoList id="settingList" wx:key="unique" style='width:90vw;' title="图片展示" wx:if='{{isCompleted}}'> 
       </infoList>
       <view class='images' style='width:90vw;'>
         <image class='image-large' wx:for="{{imageArray}}" wx:key="unique" src='/images/tupian.png'></image>
       </view>
     </view>
   </view>
-  <view class="bottom-view {{isIphoneX?'IPX':''}}">
+  <view class="bottom-view {{isIphoneX?'IPX':''}}" wx:if='{{isCompleted}}'>
       <view class='bottom-button' >
       <text class='bottom-text' bindtap='forward'>分享</text>
       </view>
@@ -60,9 +65,5 @@
       </view>
   </view>
 </view>
-<cover-view class = 'cover-view' hidden='{{isCompleted}}' >
-    <cover-image class='lock' src='/images/bg_lock.png'></cover-image>
-    <cover-view class='alert' >以下内容填写资料后可观看</cover-view>
-    <button style='position:fixed;bottom:60px;width:40vw;height:40px;border-radius:20px;background-color:#3cdede;color: #fff;' bindtap='completeInfo'>填写资料</button>
-  </cover-view>
+
 </view>

@@ -40,7 +40,7 @@
         
         </picker>
         <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;background-color:#3cdede;color:#fff;' wx:if="{{index!=0}}">
-          <text style='display:flex;margin-left:5px;margin-top:-3px;'>-</text><!-- display:flex;margin-left:10px;  position:relative; -->
+          <text style='display:flex;margin-left:5px;margin-top:-3px;'>-</text>
           </view>
           <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;' wx:if="{{index==0}}"></view>
           <image style='width:20px;height:20px;top:-2px;margin-top:3px;margin-left:10px;' src='/images/icon/icon_add.png' catchtap='addTime'></image>
@@ -93,7 +93,7 @@
     </i-panel>
     <definedButton title="完成" bindtap='completeInfo'></definedButton>
   </view>
-   <cover-view class = 'cover-view' style="position:fixed;top:0;left:0" hidden='{{isSelectHidden}}' catchtap='changeSelectStatus' z-index='100'>
+   <cover-view class = 'cover-view'  hidden='{{isSelectHidden}}' catchtap='changeSelectStatus' z-index='100'>
     <cover-view class='objects' style="flex-direction:row;">
       <cover-view class='object-item' wx:for="{{objectArray}}" wx:key="unique" style="background-color:{{item.isSelected?'#3cdede':''}};color:{{item.isSelected?'#fff':'#3cdede'}}" catchtap='select' data-index='{{index}}' data-status='{{item.isSelected}}'>{{item.object}}
       </cover-view>

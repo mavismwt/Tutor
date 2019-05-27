@@ -20,11 +20,11 @@
       </picker>
       </i-cell>
       <i-input value="{{ value2 }}" type="number" title="手机号码" maxlength="11" placeholder="与心仪学生对接后才公布" z-index='0'/>
-      <i-cell  title="可教年级" bindtap='showSelect'>
+      <i-cell  title="可教年级" bindtap='showSelect' data-type="grade">
       <text style='diaplay:flex;margin-left:10px;font-size: 16px;color: #84878f;' wx:for="{{studentArray}}" wx:if="{{item.isSelected}}">{{item.object}}</text>
         <image class='add-icon' src='/images/icon/icon_add.png'  data-type='grade'></image>
       </i-cell>
-      <i-cell  title="可教科目"  bindtap='showSelect'>
+      <i-cell  title="可教科目"  bindtap='showSelect' data-type="object">
       <text style='diaplay:flex;margin-left:10px;font-size: 16px;color: #84878f;' wx:for="{{objectArray}}" wx:if="{{item.isSelected}}">{{item.object}}</text>
         <image class='add-icon' src='/images/icon/icon_add.png'  data-type='object'></image>
       </i-cell>
@@ -91,9 +91,9 @@
     </i-panel>
     <definedButton title="完成" bindtap='completeInfo'></definedButton>
   </view>
-   <cover-view class = 'cover-view' style="position:fixed;top:0;left:0" hidden='{{isSelectHidden}}' catchtap='changeSelectStatus' z-index='100'>
+   <cover-view class = 'cover-view' hidden='{{isSelectHidden}}' catchtap='changeSelectStatus' z-index='100'>
     <cover-view class='objects' style="flex-direction:row;">
-      <cover-view class='object-item' wx:for="{{objectArray}}" wx:key="unique" style="background-color:{{item.isSelected?'#3cdede':''}};color:{{item.isSelected?'#fff':'#3cdede'}}" catchtap='select' data-index='{{index}}' data-status='{{item.isSelected}}'>{{item.object}}
+      <cover-view class='object-item' wx:for="{{selectArray}}" wx:key="unique" style="background-color:{{item.isSelected?'#3cdede':''}};color:{{item.isSelected?'#fff':'#3cdede'}}" catchtap='select' data-index='{{index}}' data-status='{{item.isSelected}}'>{{item.object}}
       </cover-view>
     </cover-view>
     <cover-view class='confirm' >确定</cover-view>

@@ -10,7 +10,7 @@ var multiIndex = [[0, 0]];
 var date = util.formatDate(new Date());
 var dates = [date];
 var objectArray = [{ object: '语文', isSelected: false }, { object: '数学', isSelected: false }, { object: '英语', isSelected: false }, { object: '物理', isSelected: false }, { object: '化学', isSelected: false }, { object: '生物', isSelected: false }, { object: '政治', isSelected: false }, { object: '历史', isSelected: false }, { object: '地理', isSelected: false }, { object: '其他', isSelected: false }];
-var studentArray= [{ object: '小学', isSelected: false }, { object: '初中', isSelected: false }, { object: '高中', isSelected: false }, { object: '其他', isSelected: false }];
+var gradeArray= [{ object: '小学', isSelected: false }, { object: '初中', isSelected: false }, { object: '高中', isSelected: false }, { object: '其他', isSelected: false }];
 Page({
 
   /**
@@ -158,7 +158,7 @@ Page({
         break;
       case 'grade':
         this.setData({
-          selectArray: gardeArray
+          selectArray: gradeArray
         })
         break;
       default:

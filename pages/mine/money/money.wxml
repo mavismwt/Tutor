@@ -1,7 +1,18 @@
 <!--pages/mine/money/money.wxml-->
 <view>
   <navigationBar id="navigationBar" title=""back="true"></navigationBar> 
-  <view class='container'style='position:fixed;height:120vh;width:100vw;align-items:center;' >
-  <text style='color:#a9a9a9;font-size:17px;'>暂无钱款信息</text>
+  <view class='container'>
+    <view class='top-view'>
+      <view class='left-view'>
+        <text class='title'>{{identity=='student'?'累计付款金额':'累计获得金额'}}</text>
+        <text class='money'>¥570</text>
+      </view>
+      <view class='right-view'>
+        <text class='title'>待提现金额</text>
+        <text class='money'>¥70</text>
+        <button class='button'>提现</button>
+      </view>
+    </view>
+    <moneylist style='margin-top:10px;' wx:for="{{identity=='student'?detail1:detail2}}" date="{{item.date}}" time="{{item.time}}" money="{{item.money}}" info="{{item.info}}"></moneylist>
   </view>
 </view>

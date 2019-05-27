@@ -1,6 +1,7 @@
 /* pages/mine/mine.wxss */
 .container {
   display: flex;
+  position: fixed;
   padding: 0px 0px 0px 0px;
   background-color: #f5f5f5;
 }

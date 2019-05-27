@@ -20,6 +20,13 @@
       </view>
     </view>
     <view style="margin-top:50px;margin-bottom:60px;">
+    <cover-view  class='cover-view' hidden='{{isHidden}}' catchtap='changeStatus' z-index='100'>
+    <cover-view class='objects' style="flex-direction:row;">
+      <cover-view class='object-item' wx:for="{{selectArray}}" wx:key="unique" style="background-color:{{item.isSelected?'#3cdede':''}};color:{{item.isSelected?'#fff':'#3cdede'}}" catchtap='select' data-index='{{index}}' data-status='{{item.isSelected}}'>{{item.object}}
+      </cover-view>
+    </cover-view>
+    <cover-view class='confirm'>确定</cover-view>
+  </cover-view>
       <studentList id="studentList"  wx:for="{{studentArray}}" wx:key="unique"
       name = "{{item.name}}"
       img = "{{item.img}}"
@@ -33,16 +40,10 @@
       number="{{item.number}}"
       perTime="{{item.perTime}}"
       bindtap='onClick'
-      id="{{index}}">
+      id="{{index}}"
+      z-index='0'>
       </studentList>
     </view>
-    <cover-view class = 'cover-view' style="position:fixed;top:0;left:0" hidden='{{isHidden}}' catchtap='changeStatus' >
-    <cover-view class='objects' style="flex-direction:row;">
-      <cover-view class='object-item' wx:for="{{selectArray}}" wx:key="unique" style="background-color:{{item.isSelected?'#3cdede':''}};color:{{item.isSelected?'#fff':'#3cdede'}}" catchtap='select' data-index='{{index}}' data-status='{{item.isSelected}}'>{{item.object}}
-      </cover-view>
-    </cover-view>
-    <cover-view class='confirm'>确定</cover-view>
-  </cover-view>
     <tabbar tabbar="{{tabbar}}"></tabbar>
   </view>
 </view>

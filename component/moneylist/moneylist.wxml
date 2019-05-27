@@ -1,0 +1,36 @@
+<!--component/moneylist/moneylist.wxml-->
+<view style='height:100%;width:100%;box-shadow: 2px 2px 4px 0px rgba(21, 85, 83, 0.1);'>
+  <topline title="{{date}}" image="/images/icon/icon_money.png"></topline>
+  <view class='basic-info'>
+    <view class='line-view'>
+    <text class='title'>付款时间</text>
+    <text class='detail'>{{time}}</text>
+    </view>
+    <view class='line-view'>
+    <text class='title'>付款金额</text>
+    <text class='detail'>{{money}}</text>
+    </view>
+  </view>
+  <view class='basic-info'>
+    <view class='line-view' wx:for="{{info}}">
+    <text class='title'>{{item.title}}</text>
+    <text class='detail' style="{{item.isLink?'color:#0c5454;text-decoration:underline;':''}}" data-url='{{item.url}}' bindtap='navigateTo' >{{item.detail}}</text>
+    </view>
+    <!-- <view class='line-view'>
+    <text class='title'>收款状态</text>
+    <text class='detail' >已收款</text>
+    </view>
+    <view class='line-view'>
+    <text class='title'>收款人</text>
+    <text class='detail' >叶老师</text>
+    </view>
+    <view class='line-view'>
+    <text class='title'>收款时间</text>
+    <text class='detail'>2019年5月14日 8:32</text>
+    </view> -->
+  </view>
+  <view class='bottom-view'>
+    <text class='button' style= 'background-color:#a9a9a9;'>常见问题</text>
+    <text class='button' style= 'background-color:#3cdede;'>联系客服</text>
+    </view>
+</view>

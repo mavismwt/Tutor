@@ -22,6 +22,13 @@
       </view>
   </view>
   <view style="margin-top:50px;margin-bottom:60px;">
+  <cover-view class='cover-view' hidden='{{isHidden}}' catchtap='changeStatus' >
+    <cover-view class='objects' style="flex-direction:row;">
+      <cover-view class='object-item' wx:for="{{selectArray}}" wx:key="unique" style="background-color:{{item.isSelected?'#3cdede':''}};color:{{item.isSelected?'#fff':'#3cdede'}}" catchtap='select' data-index='{{index}}' data-status='{{item.isSelected}}'>{{item.object}}
+      </cover-view>
+    </cover-view>
+    <cover-view class='confirm'>确定</cover-view>
+  </cover-view>
   <teacherList id="teacherList"  wx:for="{{teacherArray}}" wx:key="unique"
   name = "{{item.name}}"
   img = "{{item.img}}"
@@ -35,15 +42,6 @@
   id="{{index}}">
   </teacherList>
   </view>
-  <tabbar tabbar="{{tabbar}}"></tabbar> 
-  <cover-view class = 'cover-view' style="position:fixed;top:0;left:0" hidden='{{isHidden}}' catchtap='changeStatus' >
-    <cover-view class='objects' style="flex-direction:row;">
-      <cover-view class='object-item' wx:for="{{selectArray}}" wx:key="unique" style="background-color:{{item.isSelected?'#3cdede':''}};color:{{item.isSelected?'#fff':'#3cdede'}}" catchtap='select' data-index='{{index}}' data-status='{{item.isSelected}}'>{{item.object}}
-      </cover-view>
-    </cover-view>
-    <cover-view class='confirm'>确定</cover-view>
-  </cover-view>
   <tabbar tabbar="{{tabbar}}"></tabbar>
 </view>
 </view>
-<view class="button-group {{isIphoneX ?'fix-iphonex-button':''}}">这是一个吸底按钮区域</view>
