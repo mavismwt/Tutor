@@ -11,7 +11,7 @@ Page({
   data: {
     isCompleted: isCompleted,
     isAuthed: isAuthed,
-    isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
+    isIPX: app.globalData.isIPX,
     position:'fixed',
     img: '/images/touxiang/t1.png',
     id: 0,

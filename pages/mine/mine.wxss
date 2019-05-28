@@ -5,7 +5,6 @@
   padding: 0px 0px 0px 0px;
   background-color: #f5f5f5;
 }
-
 .info {
   display: flex;
   width: 100vw;
@@ -21,7 +20,7 @@
 	color: #ffffff;
 }
 .top-title.IPX {
-  margin-top: 40px;
+  margin-top: 50px;
   font-family: PingFangSC-Medium;
 	font-size: 18px;
 	color: #ffffff;

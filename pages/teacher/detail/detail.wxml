@@ -1,7 +1,7 @@
 <!--pages/index/detail/detail.wxml-->
 <view>
 <navigationBar id="navigationBar" title="详情" back="true" fixed="true"></navigationBar>
-<view class="container {{isIphoneX?'IPX':''}}"  style="position:{{isCompleted==true?'relative':'fixed'}};">
+<view class="container {{isIPX?'IPX':''}}"  style="position:{{isCompleted==true?'relative':'fixed'}};">
   <view class='basic-view'>
     <view class='left-view'>
       <image src='{{img}}' class='img' mode="widthFix"></image>
@@ -54,7 +54,7 @@
       </view>
     </view>
   </view>
-  <view class="bottom-view {{isIphoneX?'IPX':''}}" wx:if='{{isCompleted}}'>
+  <view class="bottom-view {{isIPX?'IPX':''}}" wx:if='{{isCompleted}}'>
       <view class='bottom-button' >
       <text class='bottom-text' bindtap='forward'>分享</text>
       </view>

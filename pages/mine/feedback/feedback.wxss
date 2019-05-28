@@ -1,1 +1,4 @@
 /* pages/mine/feedback/feedback.wxss */
+.button::after {
+  border: none;
+}

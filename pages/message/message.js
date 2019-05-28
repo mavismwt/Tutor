@@ -84,6 +84,13 @@ Page({
 
   },
 
+  change: function(e) {
+    const current = e.detail.current
+    this.setData({
+      current: current
+    })
+  },
+
   handleChange: function (e) {
     const that = this;
     that.setData({

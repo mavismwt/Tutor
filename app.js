@@ -1,7 +1,10 @@
 //app.js
-
+// var jwt = require(jsonwebtoken); 
+// const openid = jwt.decode(token);
+// console.log(openid);
 App({
   onLaunch: function () {
+    const that = this;
     //隐藏系统tabbar
     wx.hideTabBar();
     //获取设备信息
@@ -10,8 +13,32 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          console.log(res.code)
+          // wx.request({
+          //   url: 'https://hd.plus1sec.cn/signup',
+          //   method: 'POST',
+          //   data: {
+          //     code: res.code
+          //   },
+          //   header: {
+          //     'content-type': 'application/json'
+          //   },
+          //   success: function (res) {
+          //     const auth = res.header.Authorization;
+          //     const id = res.data.id;
+          //     const token = that.getToken(auth);
+          //     that.globalData.token = token; 
+          //     that.globalData.id = id; 
+          //     console.log(id);
+          //   }
+          // })
+
+        } else {
+          console.log('获取用户登录态失败')
+        }
       }
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
     })
     // 获取用户信息
     wx.getSetting({
@@ -34,20 +61,24 @@ App({
       }
     })
   },
+  getToken: function(auth) {
+    const Authorization = auth || null
+    if(Authorization === null){
+      return ''
+    }
+    const token = Authorization.replace("Bearer ", "")
+    
+    return token
+  },
   getSystemInfo: function () {
-    let t = this;
+    let that = this;
     wx.getSystemInfo({
       success: function (res) {
-        t.globalData.systemInfo = res;
-        //  if (res.model == "iPhone X") {
-        //    t.setData({
-        //      isIPX: true,
-        //    })
-        //  } else {
-        //    t.setData({
-        //      isIPX: false,
-        //    })
-        //  }
+        that.globalData.systemInfo = res;
+        let deviceModel = 'iPhone X';
+        if (res.model.indexOf(deviceModel) > -1) {
+          that.globalData.isIPX = true;
+        }
       }
     });
   },
@@ -68,6 +99,8 @@ App({
   globalData: {
     userInfo: null,
     identity: 'student',
+    token: '',
+    id:'',
     isAuthed: false,
     isCompleted: false,
     isIPX: false,

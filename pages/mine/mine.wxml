@@ -1,7 +1,7 @@
 <view>
   <view class="container">
     <view class='info'>
-      <view class="top-title {{isIphoneX?'IPX':''}}">个人中心</view>
+      <view class="top-title {{isIPX?'IPX':''}}">个人中心</view>
       <image class='profile' src="{{userInfo.avatarUrl}}"></image>
       <view class='basic-info'>
         <text class='nickname'>{{userInfo.nickName}}</text>

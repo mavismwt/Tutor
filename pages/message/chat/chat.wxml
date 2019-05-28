@@ -1,6 +1,76 @@
 <!--pages/message/chat/chat.wxml-->
 <view>
   <navigationBar id="navigationBar" title="叶老师" back="true"></navigationBar> 
-    <view class='container'>
+  <view class="container {{IPX?'IPX':''}}" >
+    <view class="historycon">
+   <scroll-view scroll-y="true" class="history" scroll-top="{{scrollTop}}">
+    
+       <block wx:for="{{newslist}}" wx:key>
+          <!-- 历史消息 -->
+           <!-- <view class="chat-news">
+              <view style="text-align: left;padding-left: 20rpx;">
+                  <image class='new_img' src="{{item.avatarUrl? item.avatarUrl:'images/avator.png'}}"></image>
+                  <text class="name">{{ item.nickName }}{{item.date}}</text>
+              </view>
+              <view class='you_left'>
+                  <block wx:if="{{item.type=='text'}}">      
+                    <view class='new_txt'>{{item.content}}</view>
+                  </block>
+                  <block wx:if="{{item.type=='image'}}">      
+                    <image class="selectImg" src="{{item.images}}"></image> 
+                  </block>
+              </view>
+          </view>   -->
+          <view>{{item.date}}</view>
+          <!--自己的消息  -->
+          <view class="chat-news" wx:if="{{item.nickName == userInfo.nickName}}">
+              <view style="text-align: right;padding-right: 20rpx;">
+                  <text class="name">{{ item.nickName }}</text>
+                  <image class='new_img' src="{{userInfo.avatarUrl}}"></image>
+              </view>
+              <view class='my_right'>
+                  <block wx:if="{{item.type=='text'}}">      
+                    <view class='new_txt'>{{item.content}}</view>
+                  </block>
+                  <block wx:if="{{item.type=='image'}}">
+                    <image class="selectImg" src="{{item.images}}" data-src="{{item.images}}" lazy-load="true" bindtap="previewImg"></image>  
+                  </block> 
+              </view>
+          </view> 
+          <!-- 别人的消息  -->
+            <view class="chat-news" wx:else>
+              <view style="text-align: left;padding-left: 20rpx;">
+                  <image class='new_img' src="{{item.avatarUrl? item.avatarUrl:'images/avator.png'}}"></image>
+                  <text class="name">{{ item.nickName }}</text>
+              </view>
+              <view class='you_left'>
+                  <block wx:if="{{item.type=='text'}}">      
+                    <view class='new_txt'>{{item.content}}</view>
+                  </block>
+                  <block wx:if="{{item.type=='image'}}">
+                    <image class="selectImg" src="{{item.images}}" data-src="{{item.images}}" lazy-load="true" bindtap="previewImg"></image>  
+                  </block>
+              </view>
+          </view>  
+       </block>
+   </scroll-view>
+  </view>
+    <view class="message">
+    <form bindreset="cleanInput" class="sendMessage">
+        <input type="text" placeholder="请输入聊天内容.." value="{{massage}}" bindinput='bindChange'></input>
+        <button style='width:100px;height:40px;background-color:#3cdede;color:#fff;' bindtap='send' formType="reset" button-hover="blue">发送</button>
+    </form>
     </view>
+  </view>
+  <cover-view class="top-view {{IPX?'IPX':''}}'">
+    <cover-view class='info-view'>
+      <cover-view class='basic-info' >
+        <cover-view style='width:55vw;padding:10px;font-size:16px'>基本信息：{{info.school}}/{{info.grade}}</cover-view>
+        <cover-view style='width:30vw;padding:10px;font-size:16px'>试教费用：{{info.price}}元</cover-view>
+      </cover-view>
+      <cover-view style='color: #a9a9a9;margin:10px;padding: 0px 10px 10px 10px;font-size:16px'>目前进程：{{process}}</cover-view>
+    </cover-view>
+    <cover-view class='edit-button0' bindtap='edit'>已试教</cover-view> 
+    <cover-view class='edit-button1' bindtap='edit'>中止试教</cover-view>
+  </cover-view>
 </view>

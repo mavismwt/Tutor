@@ -12,5 +12,6 @@
         <view class='title'>找家教</view>
       </button>
     </view>
+    <text class='more-info'>请谨慎选择身份\n身份选择后不可更改</text>
   </view>
 </view>

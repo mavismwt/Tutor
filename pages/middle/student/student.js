@@ -1,4 +1,5 @@
 // pages/index/info/student/student.js
+const app = getApp()
 var util = require('../../../utils/util.js');  
 var ismale = true;
 var check1 = true;
@@ -16,6 +17,7 @@ Page({
    */
   data: {
     userInfo: {},
+    isIPX: getApp().globalData.isIPX,
     switch1: false,
     switch2: true,
     value: 'sex',
@@ -105,9 +107,72 @@ Page({
 
 
   completeInfo: function(e) {
-    wx.navigateTo({
-      url: '/pages/teacher/info/done/done',
+    const id = getApp().globalData.id;
+    console.log("id" + id);
+    wx.request({
+      url: 'https://hd.plus1sec.cn/parent/signup',
+      data: {
+        "openid": id,
+        "phone": "15623337359",
+        "name": "袁佳",
+        "address": "华中科技大学韵苑23栋",
+        "email": "1459477412@qq.com",
+        "authStatus": "UNCOMMITED",
+        "starList": {},
+        "invitations": {},
+        "order": {},
+        "publish": false,
+        "publishTerm": {
+          "create": {
+            "Level": "PRIMARY",
+            "pay": 60,
+            "childGender": "FEMALE",
+            "teacherGender": "BOTH",
+            "teacherReuqire": "无",
+            "childStatus": "成绩非常差",
+            "subjects": {
+              "set": [
+                "MATH",
+                "CHINESE",
+                "ENGLISH"
+              ]
+            },
+            "shortTerm": {
+              "create": {
+                "lessonTime": 2,
+                "all": 4,
+                "timeList": {
+                  "set": [
+                    "2019-05-31",
+                    "2019-06-17"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      header: {
+        'Authorization': 'Bearer'+' '+ getApp().globalData.token,
+        'content-type': 'application/json'
+      },
+      method: 'POST',
+      success: function(res) {
+        console.log(res.data);
+        if (res.statusCode == 200) {
+          wx.navigateTo({
+            url: '/pages/teacher/info/done/done',
+          })
+        } else {
+          wx.showModal({
+            title: '填写失败',
+            content: '请重新填写后再次提交',
+            showCancel: false
+          })
+        }
+      }
     })
+    
   },
 
   bindPickerChange: function (e) {

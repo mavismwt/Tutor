@@ -2,5 +2,7 @@
 <view>
   <navigationBar id="navigationBar" title=""back="true"></navigationBar> 
   <view class='container'>
+    <textarea style='margin:20px 0px;height:50vh;width:90vw;background-color:#fff;border-radius:8px;'></textarea>
+    <button class='button' style='width:45vw;height:40px;background-color:#3cdede;color:#fff;justify-content:center;' bindtap='back'>提交反馈</button>
   </view>
 </view>

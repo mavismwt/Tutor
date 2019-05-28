@@ -3,7 +3,7 @@
 <navigationBar id="navigationBar" title="老师列表"></navigationBar> 
 <view class="container">
   <view class="selLine" style="position:fixed;">
-    <view class='button' wx:for="{{itemSelect}}">
+    <view class='button' wx:for="{{itemSelect}}" wx:key="unique">
       <text style="font-size:14px;color:{{item.selected?'#3cdede':'#7f7f7f'}};margin-top:2px;" bindtap='showSelect' data-type='{{item.type}}'>{{item.title}}</text>
       <i-icon size="14" type="enter" i-class="{{ item.selected ? 'i-collapse-item-arrow-selected' : 'i-collapse-item-arrow-unselected'}}"/>
     </view>
@@ -32,3 +32,16 @@
   <tabbar tabbar="{{tabbar}}"></tabbar>
 </view>
 </view>
+<cover-view class='select-view' hidden='false'>
+  <cover-view class='login-view'></cover-view>
+    <cover-view class='select-button'>
+      <button class='select-button1' bindtap='teacher' open-type='getUserInfo'>
+        <cover-image class='selicon' src='/images/icon/icon_teacher.png'></cover-image>
+        <cover-view class='seltitle'>当家教</cover-view>
+      </button>
+      <button class='select-button2' bindtap='student' open-type='getUserInfo'>
+        <cover-image class='selicon' src='/images/icon/icon_student.png'></cover-image>
+        <cover-view class='seltitle'>找家教</cover-view>
+      </button>
+    </cover-view>
+</cover-view>

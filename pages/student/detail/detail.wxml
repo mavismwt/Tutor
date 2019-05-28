@@ -39,7 +39,7 @@
     icon="{{item.icon}}"
     detail="{{item.detail}}" >
     </infoList>
-    <view class="bottom-view {{isIphoneX?'IPX':''}}">
+    <view class="bottom-view {{isIPX?'IPX':''}}">
       <view class='bottom-button' bindtap='forward'>
       <text class='bottom-text' >分享</text>
       </view>

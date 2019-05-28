@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    info: {
+      school: '华中科技大学',
+      grade: '大三',
+      price: '70'
+    },
+    process: '待试教'
   },
 
   /**

@@ -18,6 +18,7 @@ Page({
    */
   data: {
     userInfo: {},
+    isIPX: getApp().globalData.isIPX,
     switch1: false,
     switch2: true,
     value: 'sex',

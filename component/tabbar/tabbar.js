@@ -20,7 +20,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
+    identity: app.globalData.identity,
+    isIPX: app.globalData.isIPX,
   },
 
   

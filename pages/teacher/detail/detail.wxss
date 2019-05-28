@@ -132,9 +132,9 @@
   display: flex;
   flex-direction: row;
   position: fixed;
-  bottom: 68rpx;
+  bottom: 0px;
   left: 0px;
-  height: 50px;
+  height: 60px;
 }
 .bottom-button{
   display:flex;

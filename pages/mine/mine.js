@@ -6,7 +6,7 @@ Page({
    */
   data: {
     userInfo:{},
-    isIphoneX: app.globalData.systemInfo.model == "iPhone X" ? true : false,
+    isIPX: app.globalData.isIPX,
     listArray: [
       {
         title: '我的认证',
@@ -37,11 +37,18 @@ Page({
   },
 
   onClick: function (e) {
-    var index = e.currentTarget.id// e.currentTarget
-    var detail = this.data.listArray[index].detail
-    wx.navigateTo({
-      url: '/pages/mine/' + this.data.listArray[index].detail + '/'+this.data.listArray[index].detail
-    })
+    const index = e.currentTarget.id// e.currentTarget
+    const detail = this.data.listArray[index].detail
+    if (index == 0) {
+      const identity = app.globalData.identity
+      wx.navigateTo({
+        url: '/pages/mine/certificate/' + identity + '/' + identity
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/mine/' + this.data.listArray[index].detail + '/' + this.data.listArray[index].detail
+      })
+    } 
   },
 
   /**

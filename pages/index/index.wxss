@@ -30,3 +30,11 @@
   text-align: center;
   color: #b2b2b2;
 }
+.more-info {
+  display: inline-block;
+  margin-top: 40px;
+  width: 100vw;
+  font-size: 14px;
+  text-align: center;
+  color: #b2b2b2;
+}

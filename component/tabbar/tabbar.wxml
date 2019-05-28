@@ -1,6 +1,6 @@
-<view class="tabbar_box {{isIphoneX?'iphoneX-height':''}}" style="background-color:{{tabbar.backgroundColor}}">
+<view class="tabbar_box {{isIPX?'iphoneX-height':''}}" style="background-color:{{tabbar.backgroundColor}}">
   <block wx:for="{{tabbar.list}}" wx:key="{{item.pagePath}}">
-    <navigator wx:if="{{item.isSpecial}}" class="tabbar_nav" hover-class="none" url="{{item.pagePath}}" style="color:{{tabbar.selectedColor}}" open-type='switchTab' detail='{{item.pagePath}}'>
+    <navigator wx:if="{{item.isSpecial}}" class="tabbar_nav" hover-class="none" url="{{identity == 'student'?'/pages/middle/student/student':'/pages/middle/teacher/teacher'}}" style="color:{{tabbar.selectedColor}}" open-type='navigateTo' detail='{{item.pagePath}}'>
       <image class="tabbar_icon2" src="{{item.iconPath}}" ></image>
       <text>{{item.text}}</text>
     </navigator>

@@ -89,4 +89,57 @@
 .fix-iphonex-button {
   bottom:68rpx!important;
 }
-
+.login-view {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #7f7f7f;
+  opacity: 0.7;
+}
+.select-view {
+  display: flex;
+  position: fixed;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.select-button {
+  display: flex;
+  position: fixed;
+  top: 30vh;
+  flex-direction: row;
+  background-color: #fff;
+}
+.select-button1 {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+}
+.select-button2 {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+}
+.select-button1::after{
+  border: none;
+}
+.select-button2::after{
+  border: none;
+}
+.selicon {
+  width: 90px;
+  height: 90px;
+  padding: 20px;
+}
+.seltitle {
+  font-size: 17px;
+  text-align: center;
+  color: #b2b2b2;
+}

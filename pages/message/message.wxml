@@ -5,7 +5,7 @@
       <i-tab key="0" title="申请" bindtap='checkCurrent' data-current = "0" ></i-tab>
       <i-tab key="1" title="消息" bindtap='checkCurrent' data-current = "1"></i-tab>
     </i-tabs>
-    <swiper current='{{current}}' class='swiper' duration="300">
+    <swiper current='{{current}}' class='swiper' duration="300" bindchange='change'>
     <swiper-item >
     <view>
       <view style='position:relative;margin:10px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;' bindtap='navToReceive'>
@@ -17,7 +17,7 @@
       </view>
     </view>
     </swiper-item>
-      <swiper-item >
+      <swiper-item  >
         <view>
           <chatlist wx:for="{{identity=='teacher'?chatInfo1:chatInfo2}}" name="{{item.name}}" date="{{item.date}}" bindtap='navtoChat'></chatlist>
         </view>
