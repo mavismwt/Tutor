@@ -5,7 +5,7 @@
     <text class='title'>{{title}}</text>
     <view class='status' hidden='{{!showStatus}}'  style='background-color:{{statusColor}}'>{{statusTitle}}</view>
   </view>
-  <textarea class='detail-input' placeholder='{{detail}}' hidden='{{!canEdit}}'></textarea>
+  <textarea class='detail-input' placeholder='{{detail}}' hidden='{{!canEdit}}' value='{{value}}'></textarea>
   <view class='detail' hidden='{{canEdit}}'>{{detail}}</view>
   
 </view>

@@ -1,5 +1,6 @@
 // pages/mine/teacherAuth/teacherAuth.js
 var isOnlineAuth = false;
+var app = getApp();
 Page({
 
   /**
@@ -20,7 +21,7 @@ Page({
     position: 'left',
     checked: false,
     disabled: false,
-    image:'',
+    image:'/images/add.png',
   },
 
   chooseImage: function () {
@@ -41,6 +42,11 @@ Page({
   },
 
   submit: function () {
+    wx.setStorage({
+      key: 'isAuthed',
+      data: '1',
+    })
+    app.globalData.isAuthed = true,
     wx.redirectTo({
       url: '../done/done',
     })

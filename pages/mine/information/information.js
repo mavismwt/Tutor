@@ -59,11 +59,12 @@ Page({
     contactNum: contactNum
   },
 
-  // handleChange({ detail }) {
-  //   this.setData({
-  //     current: detail.key
-  //   });
-  // },
+  change: function (e) {
+    const current = e.detail.current
+    this.setData({
+      current: current
+    })
+  },
 
   handleChange: function (e) {
     const that = this;

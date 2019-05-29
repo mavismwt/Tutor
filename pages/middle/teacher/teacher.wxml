@@ -41,7 +41,7 @@
             <image class='icon' src='/images/sanjiao.png'></image>
           </label>
           </picker>
-          <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;background-color:#3cdede;color:#fff;' wx:if="{{index!=0}}">
+          <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;background-color:#3cdede;color:#fff;' wx:if="{{index!=0}}" bindtap='deleteTime' data-index='{{index}}'>
           <text style='display:flex;margin-left:5px;margin-top:-3px;'>-</text><!-- display:flex;margin-left:10px;  position:relative; -->
           </view>
           <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;' wx:if="{{index==0}}"></view>

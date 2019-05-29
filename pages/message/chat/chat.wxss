@@ -27,6 +27,7 @@
   right:0px;
   height: 160px;
   width: 100vw;
+  padding:10px;
   background-color: #fff;
 }
 .top-view.IPX {
@@ -36,6 +37,7 @@
   right:0px;
   height: 160px;
   width: 100vw;
+  padding:10px;
   background-color: #fff;
 }
 .info-view {
@@ -52,7 +54,7 @@
   font-size: 16px;
 }
 .edit-button0 {
-  display: flex;
+  display: inline-block;
   position: fixed;
   right: 140px;
   width: 100px;
@@ -67,7 +69,7 @@
   align-content: center;
 }
 .edit-button1 {
-  display: flex;
+  display: inline-block;
   position: fixed;
   right: 20px;
   width: 100px;
@@ -80,9 +82,20 @@
   color:#fff;
   font-size: 17px;
 }
+.edit-button0::after{
+  border: none;
+}
+.edit-button1::after{
+  border: none;
+}
 .message{
   position: fixed;
   bottom:0;
+  width: 100%;
+}
+.message.IPX{
+  position: fixed;
+  bottom:60rpx;
   width: 100%;
 }
 .sendMessage{
@@ -118,7 +131,10 @@
 } 
 .sendMessage button {
   float: right;
-  font-size: 35rpx;
+  text-align: center;
+}
+.sendMessage button::after {
+  border: none;
 }
 .increased{
   width:100%;

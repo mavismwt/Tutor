@@ -64,6 +64,13 @@
   flex-direction: column;
   border-bottom: 1px solid #f5f5f5;
 }
+.info2 {
+  display: flex;
+  padding:5px 10px;
+  width: 50%;
+  flex-direction: column;
+  border-bottom: 1px solid #f5f5f5;
+}
 .title {
   display: inline-block;
   margin: 5px 0px;
@@ -172,11 +179,27 @@
   color:#fff;
 }
 .cover-view{
-  position:fixed;
-  bottom: 0px;
-  width: 100vw;
-  background-color: white;
-  opacity: 0.9;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  
+  background-color:rgb(253, 254, 254);
   text-align: center;
+  border-radius: 5px;
+  align-items: center;
+  justify-items: center;
+}
+.lock {
+  display: flex;
+  position: relative;
+  margin-top: 32pt;
+  width: 54px;
+  height: 72px;
+}
+.alert {
+  display: flex;
+  position: relative;
+  margin-top: 20pt;
+  font-size: 17px;
+  color: #b2b2b2;
 }

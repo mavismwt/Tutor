@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/blank",
-    "pages/middle/student/student",
     "pages/index/index",
-    "pages/teacher/index",
     "pages/message/chat/chat",
+    "pages/middle/student/student",
+    "pages/teacher/teacher",
     "pages/middle/middle",
     "pages/mine/mine",
     "pages/message/message",
@@ -14,6 +14,7 @@
     "pages/teacher/info/teacher/teacher",
     "pages/teacher/info/student/student",
     "pages/mine/certificate/certificate",
+    "pages/mine/certificate/mine/mine",
     "pages/mine/collect/collect",
     "pages/mine/feedback/feedback",
     "pages/mine/information/information",
@@ -49,7 +50,7 @@
     "selectedColor": "#1c1c1b",
     "list": [
       {
-        "pagePath": "pages/teacher/index",
+        "pagePath": "pages/teacher/teacher",
         "text": "找老师",
         "iconPath": "component/tabbar/icon/icon_teacher_non.png",
         "selectedIconPath": "component/tabbar/icon/icon_teacher_sel.png"

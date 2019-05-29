@@ -7,48 +7,71 @@ Page({
   data: {
     userInfo:{},
     isIPX: app.globalData.isIPX,
-    listArray: [
+    listArray: [[
       {
         title: '我的认证',
         detail: 'certificate'
       },
-      {
-        title: '我的资料',
-        detail: 'information'
-      },
-      {
-        title: '我的收藏',
-        detail: 'collect'
-      },
+      
       {
         title: '钱款信息',
         detail: 'money'
-      },
-      {
-        title: '平台须知',
-        detail: 'notice'
-      },
-      {
-        title: '反馈意见',
-        detail: 'feedback'
       }
     ],
+    [
+    {
+      title: '我的资料',
+      detail: 'information'
+    },
+    {
+      title: '我的收藏',
+      detail: 'collect'
+    }],
+    [
+    {
+      title: '平台须知',
+      detail: 'notice'
+    },
+    {
+      title: '反馈意见',
+      detail: 'feedback'
+    }
+    ]],
     tabbar: {},
   },
 
   onClick: function (e) {
-    const index = e.currentTarget.id// e.currentTarget
-    const detail = this.data.listArray[index].detail
-    if (index == 0) {
+    var isAuthed = true;
+    wx.getStorage({
+      key: 'isAuthed',
+      success: function(res) {
+        isAuthed = (res.data==1)? true : false
+      },
+      fail: function(res) {
+        isAuthed = false
+        console.log(res)
+      }
+    })
+    console.log(isAuthed)
+    const detail = e.currentTarget.dataset.detail
+    if (detail == 'certificate') {
       const identity = app.globalData.identity
-      wx.navigateTo({
-        url: '/pages/mine/certificate/' + identity + '/' + identity
-      })
+      const isAuthed = app.globalData.isAuthed
+      if (isAuthed==false) {
+        wx.navigateTo({
+          url: '/pages/mine/certificate/' + identity + '/' + identity
+        })
+      } else {
+        wx.navigateTo({
+          url: '/pages/mine/certificate/mine/mine',
+        })
+      }
+      
     } else {
       wx.navigateTo({
-        url: '/pages/mine/' + this.data.listArray[index].detail + '/' + this.data.listArray[index].detail
+        url: '/pages/mine/' + detail + '/' + detail
       })
-    } 
+    }
   },
 
   /**

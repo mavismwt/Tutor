@@ -19,13 +19,15 @@
         <text class='title'>年级/科目</text>
         <text class='detail'>{{grade}}/{{object}}</text>
       </view>
-      <view class='info'>
-        <text class='title'>教师性别要求</text>
-        <text class='detail'>{{sexRec}}</text>
-      </view>
-      <view class='info'>
-        <text class='title'>提供薪酬</text>
-        <text class='detail'>{{price}}</text>
+      <view style='display:flex;flex-deriction:row;'>
+        <view class='info2'>
+          <text class='title'>教师性别要求</text>
+          <text class='detail'>{{sexRec}}</text>
+        </view>
+        <view class='info2'>
+          <text class='title'>提供薪酬</text>
+          <text class='detail'>{{price}}</text>
+        </view>
       </view>
       <view class='info'>
         <text class='title'>地址</text>
@@ -33,7 +35,13 @@
       </view>
     </view> 
   </view>
-  <view style='margin-bottom:60px;'>
+  <view >
+  <cover-view class = 'cover-view' style='position:fixed:height:100%;width:100%;' hidden='{{isCompleted}}' >
+    <cover-image class='lock'src='/images/bg_lock.png'></cover-image>
+    <cover-view class='alert' >以下内容填写资料后可观看</cover-view>
+    <button style='margin-top:40px;height:40px;width:40vw;border-radius:20px;background-color:#3cdede;color: #fff;' bindtap='completeInfo' >填写资料</button>
+    <cover-view style='margin-top:260px;height:40px;width:40vw;border-radius:20px;color: #fff;'></cover-view>
+  </cover-view>
     <infoList id="settingList" wx:for="{{infoArray}}" wx:key="unique" class='more-view'
     title="{{item.title}}"
     icon="{{item.icon}}"

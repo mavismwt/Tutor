@@ -1,5 +1,6 @@
 // tabBarComponent/tabBar.js
 const app = getApp();
+const identity = getApp().globalData.identity;
 Component({
   /**
    * 组件的属性列表
@@ -13,6 +14,10 @@ Component({
         "selectedColor": "#1c1c1b",
         "list": []
       }
+    },
+    identity: {
+      type: String,
+      value: ''
     }
   },
 
@@ -20,7 +25,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    identity: app.globalData.identity,
+    identity: identity,
     isIPX: app.globalData.isIPX,
   },
 

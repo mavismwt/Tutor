@@ -1,0 +1,15 @@
+<!--pages/mine/certificate/mine/mine.wxml-->
+<view>
+  <navigationBar id="navigationBar" title="我的认证"back="true"></navigationBar> 
+    <view class='containner'>
+      <i-panel>
+        <i-cell title='学校'>
+          <text style='margin-left:20px;font-size:16px;color:#a9a9a9;'>光谷四小</text>
+        </i-cell>
+        <i-cell title='年级'>
+          <text style='margin-left:20px;font-size:16px;color:#a9a9a9;'>三年级</text>
+        </i-cell>
+      </i-panel>
+      <definedButton title="重新认证" style='display:flex;margin-left:30%;margin-top:80%;' bindtap='reAuth'></definedButton>
+    </view>
+</view>

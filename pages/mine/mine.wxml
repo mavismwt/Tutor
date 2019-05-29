@@ -1,18 +1,18 @@
 <view>
   <view class="container">
-    <view class='info'>
-      <view class="top-title {{isIPX?'IPX':''}}">个人中心</view>
+    <view class="info {{isIPX?'IPX':''}}">
+      <view class="top-title">个人中心</view>
       <image class='profile' src="{{userInfo.avatarUrl}}"></image>
       <view class='basic-info'>
         <text class='nickname'>{{userInfo.nickName}}</text>
         <view class='auth'>未认证</view>
       </view>
     </view>
-    <i-panel class="cell-panel-demo">
+    <i-panel class="cell-panel-demo" wx:for="{{listArray}}">
       <i-cell-group>
-      <i-cell wx:for="{{listArray}}" wx:key="unique"
+      <i-cell  wx:for="{{item}}" wx:key="unique"
       title="{{item.title}}" is-link 
-      bindtap='onClick' id='{{index}}'>
+      bindtap='onClick' data-detail='{{item.detail}}'>
         <image class='icon' src='/images/icon/icon_{{item.detail}}.png' slot="icon" ></image>
       </i-cell>
       </i-cell-group>

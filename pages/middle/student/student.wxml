@@ -1,9 +1,9 @@
 <!--pages/index/info/student/student.wxml-->
 <view>
 <navigationBar id="navigationBar" title="填写资料" back="true"></navigationBar>
-  <view class="container {{isIPX?'IPX':''}}" hidden='{{!isSelectHidden}}'>
+  <view class="container {{isIPX?'IPX':''}}" wx:if='{{isSelectHidden}}'>
     <i-panel class="cell-panel" title="以下信息为必填项">
-      <i-input value="{{ value1 }}" title="孩子姓名" z-index='0' placeholder="我们将只公开您孩子的姓" />
+      <i-input value="{{name}}" title="孩子姓名"  placeholder="我们将只公开您孩子的姓" />
       <i-cell  title="孩子年级">
        <picker class='select-button'bindchange="bindPickerChange" value="{{index}}" range="{{singleArray}}"> 
        <text class='text'>{{singleArray[index]}}</text>
@@ -11,7 +11,9 @@
       </picker>
       </i-cell>
       <i-cell  title="补习科目" bindtap='changeSelectStatus'>
-      <text style='diaplay:flex;margin-left:10px;font-size: 16px;color: #84878f;' wx:for="{{objectArray}}" wx:if="{{item.isSelected}}">{{item.object}}</text>
+      <text style='diaplay:flex;margin-left:10px;font-size: 16px;color: #84878f;'wx:for="{{object}}" wx:key="unique" >{{item}}
+      <!-- wx:for="{{objectArray}}" wx:if="{{item.isSelected}}">{{item.object}} -->
+      </text>
         <image class='add-icon' src='/images/icon/icon_add.png' ></image>
       </i-cell>
       <i-cell  title="孩子性别" >
@@ -37,43 +39,48 @@
           <text class='time-text'>{{multiArray[1][multiIndex[index][1]]}}</text>
           <image class='icon' src='/images/sanjiao.png'></image>
         </label>
-        
         </picker>
-        <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;background-color:#3cdede;color:#fff;' wx:if="{{index!=0}}">
+        <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;background-color:#3cdede;color:#fff;' wx:if="{{index!=0}}" bindtap='deleteTime' data-index='{{index}}'>
           <text style='display:flex;margin-left:5px;margin-top:-3px;'>-</text>
-          </view>
-          <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;' wx:if="{{index==0}}"></view>
-          <image style='width:20px;height:20px;top:-2px;margin-top:3px;margin-left:10px;' src='/images/icon/icon_add.png' catchtap='addTime'></image>
+        </view>
+        <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;' wx:if="{{index==0}}"></view>
+        <image style='width:20px;height:20px;top:-2px;margin-top:3px;margin-left:10px;' src='/images/icon/icon_add.png' catchtap='addTime'></image>
         </view>
         </view>
         <view hidden='{{!switch1}}' style='flex-direction:column;'>
-          <picker mode="date" class='picker-view' value="{{date}}" end="2020-09-01" bindchange="bindDateChange" wx:for="{{dates}}" wx:key="unique" data-index='{{index}}'>
+          <view style='display:flex;flex-direction:row;' wx:for="{{dates}}" wx:key="unique">
+          <picker mode="date" class='picker-view' value="{{date}}" end="2020-09-01" bindchange="bindDateChange"  data-index='{{index}}'>
           <label class='select-label1'>
             <text class='time-text1'>{{item}}</text>
             <image class='icon' src='/images/sanjiao.png'></image>
           </label>
-          <image style='position:relative;width:20px;height:20px;top:-2px;margin-left:20px;' src='/images/icon/icon_add.png' catchtap='addDate'></image>
           </picker>
+          <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;background-color:#3cdede;color:#fff;' wx:if="{{index!=0}}" bindtap='deleteDate' data-index='{{index}}'>
+            <text style='display:flex;margin-left:5px;margin-top:-3px;'>-</text>
+          </view>
+          <view style='margin-top:3px;margin-left:10px;width:20px;height:20px;border-radius:10px;' wx:if="{{index==0}}"></view>
+          <image style='width:20px;height:20px;top:-2px;margin-top:3px;margin-left:10px;' src='/images/icon/icon_add.png' catchtap='addDate'></image>
+          </view>
         </view>
       </i-cell>
       <i-cell title="课时安排">
         <label style='display:flex;margin-left:5px;'>
           <text class='course' hidden='{{switch1}}'>一周</text>
           <text class='course' hidden='{{!switch1}}'>一共</text>
-          <input class='detail' type='number'></input>
+          <input class='detail' z-index='0' type='number' value='{{number}}'></input>
           <text class='course'>次，一次</text>
-          <input class='detail' type='number'></input>
+          <input class='detail' z-index='0' type='number' value='{{perTime}}'></input>
           <text class='course'>小时</text>
         </label>
       </i-cell>
       <i-cell title="授课时间可协调">
         <i-switch value="{{switch2}}" bind:change="onChange2" style='position:relative;margin-left:10px'></i-switch>
       </i-cell>
-      <i-input value="{{ value2 }}" type="number" title="手机号码" maxlength="11" placeholder="与心仪老师对接后才公布" z-index='0'/>
-      <i-input value="{{ value3 }}" type="textarea" title="地址" placeholder="无需具体至门牌号" maxlength="50" />
+      <i-input value="{{phone}}" type="number" title="手机号码" maxlength="11" placeholder="与心仪老师对接后才公布"/>
+      <i-input value="{{address}}" type="textarea" title="地址" placeholder="无需具体至门牌号" maxlength="50" />
       
       <i-cell title="提供薪酬">
-          <input class='detail2' type='number'></input>
+          <input class='detail2' type='number' value='{{price}}'></input>
           <text class='course'>元/小时</text>
       </i-cell>
     </i-panel>
@@ -82,12 +89,14 @@
       title="孩子学习情况"
       icon="/images/icon/icon_add.png"
       detail="需增强知识点、科目，孩子性格等" 
+      value="{{studentStatus}}"
       canEdit="true">
       </infoList>
       <infoList id="settingList" wx:key="unique" 
       title="教师要求"
       icon="/images/icon/icon_add.png"
       detail="学校、家教经验、擅长科目等"
+      value="{{teacherRequire}}"
       canEdit="true" >
       </infoList>
     </i-panel>

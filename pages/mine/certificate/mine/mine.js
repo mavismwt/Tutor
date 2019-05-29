@@ -1,24 +1,26 @@
-// pages/teacher/info/done/done.js
-const app = getApp();
+// pages/mine/certificate/mine/mine.js
+const identity = getApp().globalData.identity;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isAuthed: getApp().globalData.isAuthed,
+    identity: identity
   },
 
-  completeInfo: function() {
-    wx.reLaunch({
-      url: '/pages/teacher/teacher',
+  reAuth: function (e) {
+    wx.navigateTo({
+      url: '../' + identity + '/' + identity,
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.globalData.isCompleted = true
+
   },
 
   /**

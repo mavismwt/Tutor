@@ -2,9 +2,8 @@
 <view>
   <navigationBar id="navigationBar" title="叶老师" back="true"></navigationBar> 
   <view class="container {{IPX?'IPX':''}}" >
-    <view class="historycon">
+    <view class="historycon" style='bottom:{{inputHeight}};'>
    <scroll-view scroll-y="true" class="history" scroll-top="{{scrollTop}}">
-    
        <block wx:for="{{newslist}}" wx:key>
           <!-- 历史消息 -->
            <!-- <view class="chat-news">
@@ -55,22 +54,23 @@
        </block>
    </scroll-view>
   </view>
-    <view class="message">
-    <form bindreset="cleanInput" class="sendMessage">
-        <input type="text" placeholder="请输入聊天内容.." value="{{massage}}" bindinput='bindChange'></input>
-        <button style='width:100px;height:40px;background-color:#3cdede;color:#fff;' bindtap='send' formType="reset" button-hover="blue">发送</button>
-    </form>
+    <view class="message {{isIPX?'IPX':''}}" style='bottom:{{inputHeight}}'>
+      <form bindreset="cleanInput" class="sendMessage">
+        <input id='input' class='input' value="{{value}}" bindinput="bindinput" confirm-type="send" adjust-position="{{inputUp}}" bindfocus="inputFocus" bindblur="inputBlur"></input>
+          <!-- <input type="text" placeholder="请输入聊天内容.." value="{{massage}}" bindinput='bindChange'></input> -->
+          <button class='button' style='width:20vw;height:40px;background-color:#3cdede;color:#fff;text-align:center;justify-content:center;float:center;' bindtap='send' formType="reset" button-hover="blue">发送</button>
+      </form>
     </view>
   </view>
-  <cover-view class="top-view {{IPX?'IPX':''}}'">
+  <cover-view class="top-view {{isIPX?'IPX':''}}">
     <cover-view class='info-view'>
       <cover-view class='basic-info' >
-        <cover-view style='width:55vw;padding:10px;font-size:16px'>基本信息：{{info.school}}/{{info.grade}}</cover-view>
-        <cover-view style='width:30vw;padding:10px;font-size:16px'>试教费用：{{info.price}}元</cover-view>
+        <cover-view style='width:60vw;margin-left:5px;padding:10px 0px;font-size:16px'>基本信息：{{info.school}}/{{info.grade}}</cover-view>
+        <cover-view style='width:35vw;margin-left:10px;padding:10px 0px;font-size:16px'>试教费用：{{info.price}}元</cover-view>
       </cover-view>
-      <cover-view style='color: #a9a9a9;margin:10px;padding: 0px 10px 10px 10px;font-size:16px'>目前进程：{{process}}</cover-view>
+      <cover-view style='color: #a9a9a9;margin:5px;padding: 0px 10px 10px 10px;font-size:16px'>目前进程：{{process}}</cover-view>
     </cover-view>
-    <cover-view class='edit-button0' bindtap='edit'>已试教</cover-view> 
-    <cover-view class='edit-button1' bindtap='edit'>中止试教</cover-view>
+    <button class='edit-button0' bindtap='edit'>已试教</button> 
+    <button class='edit-button1' bindtap='edit'>中止试教</button>
   </cover-view>
 </view>

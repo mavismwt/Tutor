@@ -1,5 +1,6 @@
 // pages/mine/studentAuth/studentAuth.js
 var isOnlineAuth= false;
+var app = getApp();
 Page({
 
   /**
@@ -12,16 +13,18 @@ Page({
       isOnlineAuth: false,
     }, {
       id: 2,
-      name: '上传户口品孩子页',
+      name: '上传户口本孩子页',
       isOnlineAuth: true,
     }],
     current: '上传孩子学生证',
     position: 'left',
     checked: false,
     disabled: false,
-    image:''
+    image: '/images/add.png',
   },
-
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+  },
   chooseImage: function () {
     var that = this;
     // 选择图片
@@ -30,7 +33,6 @@ Page({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         that.setData({
           image: tempFilePaths[0]
@@ -38,14 +40,19 @@ Page({
       }
     })
   },
-  submit: function() {
+  submit: function () {
+    wx.setStorage({
+      key: 'isAuthed',
+      data: '1',
+    })
+    app.globalData.isAuthed = true,
     wx.showModal({
       title: '提交成功',
       content: '我们将在9:00—23:00间三小时内完成审核\n您可先浏览收藏老师信息',
       showCancel: false,
       success: function (res) {
         wx.reLaunch({
-          url: '/pages/teacher/index',
+          url: '/pages/teacher/teacher',
         })
       }
     })
@@ -69,7 +76,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

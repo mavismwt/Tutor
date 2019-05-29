@@ -1,16 +1,41 @@
 // pages/message/chat/chat.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    date: app.globalData.id,
+    isIPX: app.globalData.isIPX,
+    totalHeight: 0,
+    inputHeight: 0,
     info: {
       school: '华中科技大学',
       grade: '大三',
       price: '70'
     },
     process: '待试教'
+  },
+
+  inputFocus(e) {
+    var that = this
+    if (e.detail.height) {
+      this.setData ({
+        inputHeight: e.detail.height
+      })
+    }
+    var query = wx.createSelectorQuery()
+    query.select('#input').boundingClientRect();
+    query.exec(function (res) {
+      
+      console.log(res)
+    })
+  },
+  inputBlur() {
+    this.setData({
+      inputHeight: 0
+    })
   },
 
   /**
@@ -24,7 +49,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

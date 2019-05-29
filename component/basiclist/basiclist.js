@@ -20,6 +20,10 @@ Component({
       type: String,
       value: ''
     },
+    value: {
+      type: String,
+      value: ''
+    },
     showStatus: {
       type: Boolean,
       value: false,

@@ -9,30 +9,30 @@ App({
     wx.hideTabBar();
     //获取设备信息
     this.getSystemInfo();
-
     // 登录
     wx.login({
       success: res => {
+        that.isAuthed()
         if (res.code) {
           console.log(res.code)
-          // wx.request({
-          //   url: 'https://hd.plus1sec.cn/signup',
-          //   method: 'POST',
-          //   data: {
-          //     code: res.code
-          //   },
-          //   header: {
-          //     'content-type': 'application/json'
-          //   },
-          //   success: function (res) {
-          //     const auth = res.header.Authorization;
-          //     const id = res.data.id;
-          //     const token = that.getToken(auth);
-          //     that.globalData.token = token; 
-          //     that.globalData.id = id; 
-          //     console.log(id);
-          //   }
-          // })
+          wx.request({
+            url: 'https://hd.plus1sec.cn/signup',
+            method: 'POST',
+            data: {
+              code: res.code
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              const auth = res.header.Authorization;
+              const id = res.data.id;
+              const token = that.getToken(auth);
+              that.globalData.token = token; 
+              that.globalData.id = id; 
+              console.log(id);
+            }
+          })
 
         } else {
           console.log('获取用户登录态失败')
@@ -82,6 +82,18 @@ App({
       }
     });
   },
+  isAuthed: function() {
+    wx.getStorage({
+      key: 'isAuthed',
+      success: function(res) {
+        getApp().globalData.isAuthed = true
+      },
+      fail: function(res) {
+        getApp().globalData.isAuthed = false
+      }
+    })
+  },
+
   editTabbar: function () {
     let tabbar = this.globalData.tabBar;
     let currentPages = getCurrentPages();
@@ -101,6 +113,7 @@ App({
     identity: 'student',
     token: '',
     id:'',
+    isInit: true,
     isAuthed: false,
     isCompleted: false,
     isIPX: false,
@@ -110,7 +123,7 @@ App({
       "selectedColor": "#3CDEDE",
       "list": [
         {
-          "pagePath": "/pages/teacher/index",
+          "pagePath": "/pages/teacher/teacher",
           "text": "找老师",
           "iconPath": "icon/icon_teacher_non.png",
           "selectedIconPath": "icon/icon_teacher_sel.png"

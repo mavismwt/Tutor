@@ -19,6 +19,15 @@ Page({
   data: {
     userInfo: {},
     isIPX: getApp().globalData.isIPX,
+    phone: "15623337359",
+    name: "袁佳",
+    address: "华中科技大学韵苑23栋",
+    price: 60,
+    studentStatus: 'alallal',
+    teacherRequire: 'ffafaà',
+    number: '1',
+    perTime: '2',
+    sexRequire: 'male',
     switch1: false,
     switch2: true,
     value: 'sex',
@@ -100,6 +109,14 @@ Page({
     })
   },
 
+  deleteTime: function (e) {
+    const index = e.currentTarget.dataset.index
+    multiIndex.splice(index, 1)
+    this.setData({
+      multiIndex: multiIndex,
+    })
+  },
+
   addDate: function (e) {
     dates.push(date)
     this.setData({
@@ -107,10 +124,72 @@ Page({
     })
   },
 
+  deleteDate: function (e) {
+    const index = e.currentTarget.dataset.index
+    dates.splice(index, 1)
+    this.setData({
+      dates: dates,
+    })
+  },
+
 
   completeInfo: function (e) {
-    wx.navigateTo({
-      url: '/pages/teacher/info/done/done',
+    const id = getApp().globalData.id;
+    const t = this.data;
+    wx.request({
+      url: 'https://hd.plus1sec.cn/student/signup',
+      data: {
+        "openid": id,
+        "name": "xn",
+        "university": "HUST",
+        "grade": "大一",
+        "phone": "15623337359",
+        "email": "xn@MediaList.com",
+        "authStatus": "UNCOMMITED",
+        "Gender": "MALE",
+        "subjects": {
+          "create": [
+            {
+              "name": "CHINESE",
+              "level": {
+                "set": [
+                  "MIDDLE",
+                  "PRIMARY"
+                ]
+              }
+            }
+          ]
+        },
+        "avalible": {
+          "create": [
+            {
+              "day": "SUN",
+              "detail": "MORN"
+            }
+          ]
+        },
+        "invitations": {},
+        "order": {}
+      },
+      header: {
+        'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
+        'content-type': 'application/json'
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res.data);
+        if (res.statusCode == 200) {
+          wx.navigateTo({
+            url: '/pages/teacher/info/done/done',
+          })
+        } else {
+          wx.showModal({
+            title: '填写失败',
+            content: '请重新填写后再次提交',
+            showCancel: false
+          })
+        }
+      }
     })
   },
 

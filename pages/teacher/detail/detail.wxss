@@ -1,5 +1,5 @@
 /* pages/index/detail/detail.wxss */
-.container{
+.container {
   /* display: flex;
   padding: 0px 0px 0px 0px;
   flex-direction: column; */

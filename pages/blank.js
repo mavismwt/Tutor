@@ -1,21 +1,62 @@
 // pages/blank.js
+const app = getApp();
+const idetity = getApp().globalData.identity;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isInit: getApp().globalData.isInit,
   },
+
+  // enterMainPage(flag) {
+  //   if (flag) {
+  //     wx.redirectTo({
+  //       url: '/pages/index/index',
+  //     });
+  //   } else {
+  //     wx.redirectTo({
+  //       url: '/pages/'+idetity+'/'+identity,
+  //     });
+  //   }
+  // },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.navigateTo({
-      url: '/pages/index/index',
+    var main = ''
+    wx.getStorage({
+      key: 'identity',
+      success(res) {
+        const identity = res.data
+        app.globalData.identity = identity
+        switch (identity) {
+          case 'student':
+            main = 'teacher';
+            break;
+          case 'teacher':
+            main = 'student';
+            break;
+          default:
+            break;
+        }
+        wx.reLaunch({
+          url: '/pages/'+main+'/'+main,
+        })
+      },
+      fail() {
+        wx.reLaunch({
+          url: '/pages/index/index',
+        })
+      }
     })
+
+    
+    
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

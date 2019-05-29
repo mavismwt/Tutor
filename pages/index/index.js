@@ -16,16 +16,23 @@ Page({
 
   teacher: function (e) {
     app.globalData.identity = 'teacher',
+    wx.setStorage({
+      key: 'identity',
+      data: 'teacher',
+    })
     wx.reLaunch({
       url: '/pages/student/student',
     })
-    console.log(app.globalData.userInfo)
   },
 
   student: function (e) {
     app.globalData.identity = 'student',
+    wx.setStorage({
+      key: 'identity',
+      data: 'student',
+    })
     wx.reLaunch({
-      url: '/pages/teacher/index',
+      url: '/pages/teacher/teacher',
     })
   },
   onLoad: function () {
