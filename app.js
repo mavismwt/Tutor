@@ -14,7 +14,6 @@ App({
       success: res => {
         that.isAuthed()
         if (res.code) {
-          console.log(res.code)
           wx.request({
             url: 'https://hd.plus1sec.cn/signup',
             method: 'POST',
@@ -30,10 +29,8 @@ App({
               const token = that.getToken(auth);
               that.globalData.token = token; 
               that.globalData.id = id; 
-              console.log(id);
             }
           })
-
         } else {
           console.log('获取用户登录态失败')
         }
@@ -81,6 +78,12 @@ App({
         }
       }
     });
+    wx.getStorage({
+      key: 'isAuthed',
+      success: function(res) {
+        that.globalData.isAuthed = true;
+      },
+    })
   },
   isAuthed: function() {
     wx.getStorage({

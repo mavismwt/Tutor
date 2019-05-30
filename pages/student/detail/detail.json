@@ -1,8 +1,5 @@
 {
-  "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#fff",
   "navigationBarTitleText": "详情",
-  "navigationBarTextStyle": "black",
   "usingComponents": {
     "infoList": "/component/textlist/textlist"
   }

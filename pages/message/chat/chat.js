@@ -15,7 +15,53 @@ Page({
       grade: '大三',
       price: '70'
     },
-    process: '待试教'
+    process: '待试教',
+    index: 0,
+    teacherStatus:[{
+      id:1,
+      detail:'等待对方填写时间地点',
+      confirmButton:'提醒对方',
+      cancelButton:'取消试教'
+    }, 
+    {
+      id: 2,
+      detail: '待确认试教',
+      confirmButton: '确认试教',
+      cancelButton: '取消试教'
+    },
+    {
+      id: 3,
+      detail: '试教开始',
+      confirmButton: '确认试教',
+      cancelButton: '取消试教'
+    },
+    {
+      id: 4,
+      detail: '打款处理中\n3个工作日内打款至账户',
+      confirmButton: '确认试教',
+      cancelButton: '取消试教'
+    }
+    ],
+    studentStatus: [{
+      id: 1,
+      detail: '待填写试教时间地点',
+      confirmButton: '去填写',
+      cancelButton: '取消试教'
+    },
+    {
+      id: 2,
+      detail: '待教师确认试教',
+      confirmButton: '提醒对方',
+      cancelButton: '取消试教'
+    },
+    {
+      id: 3,
+      detail: '试教中',
+      confirmButton: '已试教',
+      cancelButton: '联系客服'
+    }
+    ]
+
   },
 
   inputFocus(e) {

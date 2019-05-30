@@ -1,7 +1,7 @@
 <!--pages/student/detail/detail.wxml-->
 <view>
-<navigationBar id="navigationBar" title="详情" back="true" fixed="{{fixed}}"></navigationBar>
-<view class="container">
+<navigationBar id="navigationBar" title="详情" back="true" fixed="true"></navigationBar>
+<view class="container {{isIPX?'IPX':''}}" style="position:{{isCompleted==true?'relative':'fixed'}};padding-bottom:200px">
   <view class='basic-view'>
     <view class='left-view'>
       <image src='{{img}}' class='img' mode="widthFix"></image>
@@ -36,25 +36,25 @@
     </view> 
   </view>
   <view >
-  <cover-view class = 'cover-view' style='position:fixed:height:100%;width:100%;' hidden='{{isCompleted}}' >
-    <cover-image class='lock'src='/images/bg_lock.png'></cover-image>
+  <cover-view style='display:flex;position:fixed;left:0px;flex-direction: column;margin-top:10px;background-color:#fff;justify-items:center;align-items:center;position:fixed:height:100%;width:100vw;border-top: 1px solid #f5f5f5' wx:if='{{!isCompleted}}' >
+    <cover-image class='lock' src='/images/bg_lock.png'></cover-image>
     <cover-view class='alert' >以下内容填写资料后可观看</cover-view>
     <button style='margin-top:40px;height:40px;width:40vw;border-radius:20px;background-color:#3cdede;color: #fff;' bindtap='completeInfo' >填写资料</button>
     <cover-view style='margin-top:260px;height:40px;width:40vw;border-radius:20px;color: #fff;'></cover-view>
   </cover-view>
-    <infoList id="settingList" wx:for="{{infoArray}}" wx:key="unique" class='more-view'
+    <infoList id="settingList" wx:for="{{infoArray}}" wx:key="unique" class='more-view' wx:if='{{isCompleted}}'
     title="{{item.title}}"
     icon="{{item.icon}}"
     detail="{{item.detail}}" >
     </infoList>
-    <view class="bottom-view {{isIPX?'IPX':''}}">
+    <view class="bottom-view {{isIPX?'IPX':''}}" wx:if='{{isCompleted}}'>
       <view class='bottom-button' bindtap='forward'>
       <text class='bottom-text' >分享</text>
       </view>
       <view class='bottom-button' bindtap='favorite' >
       <text class='bottom-text' >收藏</text>
       </view>
-      <view class='bottom-button1' style='width:50vw;' bindtap="{{isAuthed?'send':'alert'}}"><text class='bottom-text1' >发送申请</text>
+      <view class='bottom-button1' style='width:50vw;' bindtap="apply"><text class='bottom-text1' >发送申请</text>
       </view>
   </view>
   </view>

@@ -7,9 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isIPX: app.globalData.isIPX,
+    isCompleted: app.globalData.isCompleted,
+    identity: app.globalData.identity,
     isAuthed: isAuthed,
-    isCompleted: false,
+    isIPX: app.globalData.isIPX,
     id: 0,
     name: '李同学',
     img: '/images/touxiang/s1.png',
@@ -44,6 +45,13 @@ Page({
     ],
   },
 
+  completeInfo: function (e) {
+    const identity = app.globalData.identity
+    wx.navigateTo({
+      url: '/pages/middle/' + identity + '/' + identity,
+    })
+  },
+
   favorite: function (e) {
     wx.showModal({
       title: '收藏成功',
@@ -57,16 +65,24 @@ Page({
     })
   },
 
-  send: function (e) {
-    wx.showModal({
-      title: '申请成功',
-      content: '可在申请消息里查看状态\t打开消息提醒，第一时间接收消息',
-      showCancel: false,
+  forward: function(e) {
+    wx.navigateTo({
+      url: '/pages/message/message',
     })
   },
-
-  alert: function (e) {
-    wx.showModal({
+  apply: function(e) {
+    const id = app.globalData.identity;
+    const isAuthed = app.globalData.isAuthed
+    const identity = app.globalData.isAuthed
+    const that = this
+    if (id=='teacher'&& isAuthed) {
+      wx.showModal({
+        title: '申请成功',
+        content: '可在申请消息里查看状态\t打开消息提醒，第一时间接收消息',
+        showCancel: false,
+      })
+    } else if (id=='teacher'&&!isAuthed){
+      wx.showModal({
         title: '申请失败',
         content: '求教有道是一个真实的社区，您需要完成身份认证后才可进行后续操作',
         confirmText: '去认证',
@@ -74,23 +90,45 @@ Page({
         success: function (res) {
           if (res.confirm) {
             wx.navigateTo({
-              url: '/pages/mine/certificate/teacher/teacher',
+              url: '/pages/mine/certificate/'+identity+'/'+identity,
             })
           }
         }
       })
-  },
-  forward: function(e) {
-    wx.navigateTo({
-      url: '/pages/message/message',
-    })
+    } else if (id!='student') {
+      wx.showModal({
+        title: '申请失败',
+        content: '只有家教身份才能申请当家教哦\n如需更换身份，请在个人中心-反馈意见中提交反馈，我们将尽快为您处理',
+        confirmText: '去反馈',
+        cancelText: '暂不反馈',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/mine/feedback/feedback',
+            })
+          }
+        }
+      })
+    } else {
+      wx.showModal({
+        title: '申请失败',
+        content: '发生了未知错误\n请仔细检查个人资料与认证是否完善再重新提交',
+        showCancel: false,
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      isAuthed: app.globalData.isAuthed
+    const that = this
+    wx.getStorage({
+      key: 'info',
+      success: function (res) {
+        that.setData({
+          isCompleted: true,
+        })
+      },
     })
   },
 
@@ -98,7 +136,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

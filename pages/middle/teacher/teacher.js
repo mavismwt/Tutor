@@ -9,8 +9,7 @@ var isSelectHidden = true;
 var multiIndex = [[0, 0]];
 var date = util.formatDate(new Date());
 var dates = [date];
-var objectArray = [{ object: '语文', isSelected: false }, { object: '数学', isSelected: false }, { object: '英语', isSelected: false }, { object: '物理', isSelected: false }, { object: '化学', isSelected: false }, { object: '生物', isSelected: false }, { object: '政治', isSelected: false }, { object: '历史', isSelected: false }, { object: '地理', isSelected: false }, { object: '其他', isSelected: false }];
-var gradeArray= [{ object: '小学', isSelected: false }, { object: '初中', isSelected: false }, { object: '高中', isSelected: false }, { object: '其他', isSelected: false }];
+var type = '';
 Page({
 
   /**
@@ -27,7 +26,9 @@ Page({
     teacherRequire: 'ffafaà',
     number: '1',
     perTime: '2',
-    sexRequire: 'male',
+    object: [],
+    timeList:[],
+    grade: [],
     switch1: false,
     switch2: true,
     value: 'sex',
@@ -37,12 +38,14 @@ Page({
     singleIndex: 0,
     singleArray: ['华中科技大学', '武汉大学', '华中师范大学', '华中农业大学', '中南财经政法大学','武汉理工大学','更多高校'],
     gradeIndex: 0,
-    gradeArray: ['大一', '大二', '大三', '大四', '研究生'],
+    gradeArray: [{ text: '大一', id: 'UNI_1' }, { text: '大二', id: 'UNI_2' }, { text: '大三', id: 'UNI_3' }, { text: '大四', id: 'UNI_4' }],
     multiArray: [
       ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'], ['上午', '下午', '晚上']],
-    objectMultiArray: [[{ id: 0, name: '星期一' }, { id: 1, name: '星期二' }, { id: 2, name: '星期三' }, { id: 3, name: '星期四' }, { id: 4, name: '星期五' }, { id: 5, name: '星期六' }, { id: 6, name: '星期日' }],
-    [{ id: 0, name: '上午' }, { id: 1, name: '下午' }, { id: 2, name: '晚上' }]],
+    objectMultiArray: [[{ id: 'MON', name: '星期一' }, { id: 'TUE', name: '星期二' }, { id: 'WED', name: '星期三' }, { id: 'THU', name: '星期四' }, { id: 'FRI', name: '星期五' }, { id: 'SAT', name: '星期六' }, { id: 'SUN', name: '星期日' }],
+    [{ id: 'MORN', name: '上午' }, { id: 'AFTER', name: '下午' }, { id: 'EVEN', name: '晚上' }]],
     multiIndex: multiIndex,
+    objectArray: [{ object: '语文', id: 'CHINESE', isSelected: false }, { object: '数学', id: 'MATH', isSelected: false }, { object: '英语', id: 'ENGLISH', isSelected: false }, { object: '物理', id: 'PHYSICS', isSelected: false }, { object: '化学', id: 'CHEMISTRY', isSelected: false }, { object: '生物', id: 'BIOLOGY', isSelected: false }, { object: '政治', id: 'POLITICS', isSelected: false }, { object: '历史', id: 'HISTORY', isSelected: false }, { object: '地理', id: 'GEOGRAPHY', isSelected: false }],
+    teachArray: [{ object: '一年级', id: 'PRI_1', isSelected: false }, { object: '二年级', id: 'PRI_2', isSelected: false }, { object: '三年级', id: 'PRI_3', isSelected: false }, { object: '四年级', id: 'PRI_4', isSelected: false }, { object: '五年级', id: 'PRI_5', isSelected: false }, { object: '六年级', id: 'PRI_6', isSelected: false }, { object: '初一', id: 'MID_1', isSelected: false }, { object: '初二', id: 'MID_2', isSelected: false }, { object: '初三', id: 'MID_3', isSelected: false }, { object: '高一', id: 'MIDHIGH_1', isSelected: false }, { object: '高二', id: 'MIDHIGH_2', isSelected: false }, { object: '高三', id: 'MIDHIGH_3', isSelected: false }],
     selectArray: [],
     isSelectHidden: isSelectHidden,
     timeArray: [{ day: '', detail: '' }],
@@ -60,14 +63,94 @@ Page({
       switch2: e.detail.value
     })
   },
+
+  showSelect: function (e) {
+    type = e.currentTarget.dataset['type'];
+    const objectArray = this.data.objectArray;
+    const gradeArray = this.data.teachArray;
+    isSelectHidden = false;
+    switch (type) {
+      case 'object':
+        this.setData({
+          selectArray: objectArray
+        })
+        break;
+      case 'grade':
+        this.setData({
+          selectArray: gradeArray
+        })
+        break;
+      default:
+        break;
+    }
+    this.setData({
+      isSelectHidden: isSelectHidden
+    })
+    // wx.request({
+    //   url: 'https://www.yjwbenji.top',
+    //   data: {},
+    //   success: function (res) {
+    //     console.log(res.data)
+    //   }
+    // })
+  },
+
   select: function (e) {
     let index = e.currentTarget.dataset['index']
     let status = !e.currentTarget.dataset['status']
-    let urlStr = 'objectArray[' + index + '].isSelected'
+    let urlStr = 'selectArray[' + index + '].isSelected'
+    var selectArray = this.data.selectArray
     this.setData({
       [urlStr]: status,
     })
+    switch (type) {
+      case 'object':
+        this.setData({
+          objectArray: selectArray
+        })
+        break;
+      case 'grade':
+        this.setData({
+          teachArray: selectArray
+        })
+        break;
+      default:
+        break;
+    }
+    this.addObject()
+    this.addGrade()
   },
+  confirmSelect: function(e) {
+
+  },
+  
+  addObject: function (e) {
+    const t = this.data
+    var i = 0
+    var object = []
+    for (i = 0; i < t.objectArray.length; i++) {
+      if (t.objectArray[i].isSelected == true) {
+        object.push(t.objectArray[i].id)
+      }
+    }
+    this.setData({
+      object: object
+    })
+  },
+  addGrade: function (e) {
+    const t = this.data
+    var i = 0
+    var grade = []
+    for (i = 0; i < t.teachArray.length; i++) {
+      if (t.teachArray[i].isSelected == true) {
+        grade.push(t.teachArray[i].id)
+      }
+    }
+    this.setData({
+      grade:grade
+    })
+  },
+
   changeSelectStatus: function () {
     isSelectHidden = !isSelectHidden
     this.setData({
@@ -142,7 +225,7 @@ Page({
         "openid": id,
         "name": "xn",
         "university": "HUST",
-        "grade": "大一",
+        "grade": "UNI_1",
         "phone": "15623337359",
         "email": "xn@MediaList.com",
         "authStatus": "UNCOMMITED",
@@ -153,8 +236,8 @@ Page({
               "name": "CHINESE",
               "level": {
                 "set": [
-                  "MIDDLE",
-                  "PRIMARY"
+                  "MID_1",
+                  "PRI_1"
                 ]
               }
             }
@@ -171,6 +254,30 @@ Page({
         "invitations": {},
         "order": {}
       },
+      //   "openid": id,
+      //   "name": t.name,
+      //   "university": t.singleArray[t.singleIndex],
+      //   "grade": t.gradeArray[t.gradeIndex].id,
+      //   "phone": t.phone,
+      //   "email": "xn@MediaList.com",
+      //   "authStatus": "UNCOMMITED",
+      //   "Gender": t.ismale ? "MALE" : "FEMALE",
+      //   "subjects": {
+      //     "create": [
+      //       {
+      //         "name": "CHINESE",
+      //         "level": {
+      //           "set": ["MID_1"]//t.grade
+      //         }
+      //       }
+      //     ]
+      //   },
+      //   "avalible": {
+      //     "create": t.timeList
+      //   },
+      //   "invitations": {},
+      //   "order": {}
+      // },
       header: {
         'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
         'content-type': 'application/json'
@@ -218,8 +325,23 @@ Page({
       multiIndex: this.data.multiIndex[index]
     };
     data.multiIndex[e.detail.column] = e.detail.value;
-    //this.setData(data);
+    this.addTimeList();
   },
+  addTimeList: function (e) {
+    const t = this.data
+    var i = 0
+    var timeList = []
+    for (i = 0; i < t.multiIndex; i++) {
+      timeList.push({
+        "day": t.multiArray[0][multiIndex[i][0]],
+        "detail": t.multiArray[1][multiIndex[i][1]]
+      })
+    }
+    this.setData({
+      timeList: timeList
+    })
+  },
+
   bindDateChange: function (e) {
     let index = e.currentTarget.dataset.index
     let urlStr = 'dates[' + index + ']'
@@ -227,36 +349,7 @@ Page({
       [urlStr]: e.detail.value
     })
   },
-  showSelect: function (e) {
-    let type = e.currentTarget.dataset['type'];
-    isSelectHidden = false;
-    switch (type) {
-      case 'object':
-        this.setData({
-          selectArray: objectArray
-        })
-        break;
-      case 'grade':
-        this.setData({
-          selectArray: gradeArray
-        })
-        break;
-      default:
-        break;
-    }
-    this.setData({
-      isSelectHidden: isSelectHidden
-    })
-
-    console.log(array)
-    // wx.request({
-    //   url: 'https://www.yjwbenji.top',
-    //   data: {},
-    //   success: function (res) {
-    //     console.log(res.data)
-    //   }
-    // })
-  },
+  
 
 
   /**

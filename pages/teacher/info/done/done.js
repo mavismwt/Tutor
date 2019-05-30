@@ -19,6 +19,10 @@ Page({
    */
   onLoad: function (options) {
     app.globalData.isCompleted = true
+    wx.setStorage({
+      key: 'info',
+      data: 'data{}',
+    })
   },
 
   /**

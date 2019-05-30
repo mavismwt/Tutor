@@ -36,7 +36,7 @@
     </view> 
   </view>
   <view>
-  <cover-view class = 'cover-view' style='position:fixed:height:100%;width:100%;' hidden='{{isCompleted}}' >
+  <cover-view class = 'cover-view' style='position:fixed:height:100%;width:100%;border-top: 1px solid #f5f5f5' hidden='{{isCompleted}}' >
     <cover-image class='lock'src='/images/bg_lock.png'></cover-image>
     <cover-view class='alert' >以下内容填写资料后可观看</cover-view>
     <button style='margin-top:40px;height:40px;width:40vw;border-radius:20px;background-color:#3cdede;color: #fff;' bindtap='completeInfo' >填写资料</button>
@@ -55,13 +55,14 @@
     </view>
   </view>
   <view class="bottom-view {{isIPX?'IPX':''}}" wx:if='{{isCompleted}}'>
-      <view class='bottom-button' >
+      <!-- <view class='bottom-button' >
       <text class='bottom-text' bindtap='forward'>分享</text>
-      </view>
+      </view> -->
+      <button class='button' open-type='share'>分享</button>
       <view class='bottom-button' >
-      <text class='bottom-text' >收藏</text>
+      <text class='bottom-text' bindtap='favorite'>收藏</text>
       </view>
-      <view class='bottom-button1' style='width:50vw;' bindtap='{{isAuthed?"send":"alert"}}'><text class='bottom-text1' >发送申请</text>
+      <view class='bottom-button1' style='width:50vw;' bindtap="apply"><text class='bottom-text1' >发送申请</text>
       </view>
   </view>
 </view>

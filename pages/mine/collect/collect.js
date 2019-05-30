@@ -71,7 +71,6 @@ Page({
    */
   onLoad: function (options) {
     identity = app.globalData.identity;
-    console.log(this.data.identity)
     this.setData({
       identity: identity
     }) 

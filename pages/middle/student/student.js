@@ -19,14 +19,14 @@ Page({
   data: {
     userInfo: {},
     isIPX: getApp().globalData.isIPX,
-    phone: "15623337359",
-    name: "袁佳",
-    address: "华中科技大学韵苑23栋",
-    price: 60,
-    studentStatus: 'alallal',
-    teacherRequire: 'ffafaà',
-    number: '1',
-    perTime: '2',
+    phone: "",
+    name: "",
+    address: "",
+    price: 0,
+    studentStatus: '',
+    teacherRequire: '',
+    number: '',
+    perTime: '',
     sexRequire: 'male',
     switch1: false,//是否为短期家教
     switch2: true,
@@ -215,7 +215,7 @@ Page({
         } else {
           wx.showModal({
             title: '填写失败',
-            content: '请重新填写后再次提交',
+            content: '请重新填写确认无误后再次提交',
             showCancel: false
           })
         }

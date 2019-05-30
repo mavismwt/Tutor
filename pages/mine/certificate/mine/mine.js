@@ -1,5 +1,5 @@
 // pages/mine/certificate/mine/mine.js
-const identity = getApp().globalData.identity;
+const app = getApp();
 Page({
 
   /**
@@ -7,10 +7,14 @@ Page({
    */
   data: {
     isAuthed: getApp().globalData.isAuthed,
-    identity: identity
+    identity: getApp().globalData.identity,
+    shool: '',
+    grade:'三年级',
+    object:'机械学院/工业工程专业'
   },
 
   reAuth: function (e) {
+    const identity = app.globalData.identity;
     wx.navigateTo({
       url: '../' + identity + '/' + identity,
     })
@@ -20,7 +24,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const identity = app.globalData.identity;
+    const school = identity=='student'?'光谷四小':'华中科技大学';
+    this.setData({
+      identity: identity,
+      school: school
+    }) 
   },
 
   /**

@@ -15,17 +15,12 @@ Component({
         "list": []
       }
     },
-    identity: {
-      type: String,
-      value: ''
-    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    identity: identity,
     isIPX: app.globalData.isIPX,
   },
 
@@ -35,9 +30,16 @@ Component({
    */
   methods: {
     nav: function (e) {
-      console.log('os')
+      var that = this
+      console.log(app.globalData.identity)
+      const identity = app.globalData.identity
+      const url = app.globalData.identity == 'student' ? '/pages/middle/student/student' : '/pages/middle/teacher/teacher'
+      this.setData({
+        url: url
+      })
+      console.log(url)
       wx.navigateTo({
-        url: '/pages/middle/middle',
+        url: url,
       })
     },
   }
