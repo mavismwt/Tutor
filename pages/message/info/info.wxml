@@ -1,0 +1,13 @@
+<!--pages/message/info/info.wxml-->
+<view>
+  <navigationBar id="navigationBar" title="填写试教信息" back="true"></navigationBar> 
+  <view class="container {{IPX?'IPX':''}}" >
+    <i-panel style="width:100vw;">
+    <i-input title='试教时间' placeholder='6月6日 15:50-17:00' value="{{time}}"></i-input>
+    <i-input title='详细住址' placeholder='洪山区巴黎豪庭1栋1单元302' value='{{address}}'></i-input>
+    <i-input title='联系方向' type='number' value='{{phone}}'></i-input>
+    <i-input title='其他注意事项' placeholder='如小区进入方式/楼栋排列等' value='{{other}}'></i-input>
+    </i-panel>
+    <definedButton title='完成' style='margin-top:40px;' bindtap='submit'></definedButton>
+  </view>
+</view>

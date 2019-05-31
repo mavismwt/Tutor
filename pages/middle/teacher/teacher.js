@@ -1,4 +1,5 @@
 // pages/teacher/info/teacher/teacher.js
+const app = getApp();
 var util = require('../../../utils/util.js');
 var ismale = true;
 var check1 = true;
@@ -215,6 +216,12 @@ Page({
     })
   },
 
+  complete: function (e) {
+    app.globalData.isCompleted = true; 
+    wx.navigateTo({
+      url: '/pages/teacher/info/done/done',
+    })
+  },
 
   completeInfo: function (e) {
     const id = getApp().globalData.id;

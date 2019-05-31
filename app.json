@@ -22,8 +22,10 @@
     "pages/mine/money/money",
     "pages/teacher/info/done/done",
     "pages/middle/teacher/teacher",
+    "pages/message/info/info",
     "pages/message/receive/receive",
-    "pages/message/send/send"
+    "pages/message/send/send",
+    "pages/message/detail/detail"
   ],
   "window": {
     "navigationStyle": "custom",

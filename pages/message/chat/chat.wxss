@@ -58,7 +58,7 @@
   position: fixed;
   right: 140px;
   width: 100px;
-  height: 35px;
+  height: 40px;
   background-color: #a9a9a9;
   margin-top: 14px;
   border-radius: 5px;
@@ -73,7 +73,7 @@
   position: fixed;
   right: 20px;
   width: 100px;
-  height: 35px;
+  height: 40px;
   background-color: #3cdede;
   margin-top: 14px;
   border-radius: 5px;
@@ -87,6 +87,22 @@
 }
 .edit-button1::after{
   border: none;
+}
+.chat-notice{
+  text-align: center;
+  font-size: 30rpx;
+  margin-top: 20px;
+  padding: 10rpx 0;
+  color: #666;
+}
+.chat-notice-detail{
+  text-align: center;
+  font-size: 30rpx;
+  margin: 0px 10px;
+  padding: 10rpx 0;
+  background-color: #ececec;
+  border-radius: 5px;
+  color: #666;
 }
 .message{
   position: fixed;

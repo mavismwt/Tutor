@@ -152,6 +152,11 @@ Page({
     })
   },
 
+  complete: function (e) {
+    wx.navigateTo({
+      url: '/pages/teacher/info/done/done',
+    })
+  },
 
   completeInfo: function(e) {
     const id = getApp().globalData.id;

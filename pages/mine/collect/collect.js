@@ -62,7 +62,13 @@ Page({
   onClick: function (e) {
     var index = e.currentTarget.id// e.currentTarget
     wx.navigateTo({
-      url: 'detail/detail?id=' + this.data.studentArray[index].id
+      url: '/pages/student/detail/detail?id=' + this.data.studentArray[index].id
+    })
+  },
+  onClickT: function (e) {
+    var index = e.currentTarget.id// e.currentTarget
+    wx.navigateTo({
+      url: '/pages/teacher/detail/detail?id=' + this.data.teacherArray[index].id
     })
   },
 

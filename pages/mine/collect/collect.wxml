@@ -28,7 +28,7 @@
       time="{{item.time}}"
       location="{{item.location}}"
       sex="{{item.sex}}"
-      bindtap='onClick'
+      bindtap='onClickT'
       id="{{index}}">
       </teacherList>
     </view>

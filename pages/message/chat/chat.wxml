@@ -1,7 +1,12 @@
 <!--pages/message/chat/chat.wxml-->
 <view>
-  <navigationBar id="navigationBar" title="叶老师" back="true"></navigationBar> 
+  <navigationBar id="navigationBar" title="{{title}}" back="true"></navigationBar> 
   <view class="container {{IPX?'IPX':''}}" >
+    <view wx:for="{{notice}}" wx:key="unique" hidden="{{item.detail==''?true:false}}">
+    <view class="chat-notice">{{item.time}}</view>
+    <view class='chat-notice-detail'>{{item.detail}}</view>
+    </view>
+    <!-- <view class="chat-notice" wx:for="{{notice}}">{{}}dddd</view> -->
     <view class="historycon" style='bottom:{{inputHeight}};'>
    <scroll-view scroll-y="true" class="history" scroll-top="{{scrollTop}}">
        <block wx:for="{{newslist}}" wx:key>
@@ -58,7 +63,7 @@
       <form bindreset="cleanInput" class="sendMessage">
         <input id='input' class='input' value="{{value}}" bindinput="bindinput" confirm-type="send" adjust-position="{{inputUp}}" bindfocus="inputFocus" bindblur="inputBlur"></input>
           <!-- <input type="text" placeholder="请输入聊天内容.." value="{{massage}}" bindinput='bindChange'></input> -->
-          <button class='button' style='width:20vw;height:40px;background-color:#3cdede;color:#fff;text-align:center;justify-content:center;float:center;' bindtap='send' formType="reset" button-hover="blue">发送</button>
+          <button class='button' style='width:20vw;height:40px;background-color:#3cdede;color:#fff;text-align:center;justify-content:center;align-items:center;' bindtap='send' formType="reset" button-hover="blue">发送</button>
       </form>
     </view>
   </view>
@@ -68,9 +73,9 @@
         <cover-view style='width:60vw;margin-left:5px;padding:10px 0px;font-size:16px'>基本信息：{{info.school}}/{{info.grade}}</cover-view>
         <cover-view style='width:35vw;margin-left:10px;padding:10px 0px;font-size:16px'>试教费用：{{info.price}}元</cover-view>
       </cover-view>
-      <cover-view style='color: #a9a9a9;margin:5px;padding: 0px 10px 10px 10px;font-size:16px'>目前进程：{{process}}</cover-view>
+      <cover-view style='color: #a9a9a9;margin:5px;padding: 0px 10px 10px 10px;font-size:16px'>目前进程：{{objectStatus[index].detail}}</cover-view>
     </cover-view>
-    <button class='edit-button0' bindtap='edit'>已试教</button> 
-    <button class='edit-button1' bindtap='edit'>中止试教</button>
+    <button class='edit-button0' style="background-color:{{objectStatus[index].cancelButton==''?'#fff':'#a9a9a9'}}" bindtap='cancel'>{{objectStatus[index].cancelButton}}</button> 
+    <button class='edit-button1' style="background-color:{{objectStatus[index].confirmButton==''?'#fff':'#3cdede'}}"  bindtap='gotoProcess'>{{objectStatus[index].confirmButton}}</button>
   </cover-view>
 </view>

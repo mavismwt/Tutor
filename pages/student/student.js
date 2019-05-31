@@ -80,7 +80,7 @@ Page({
     })
   },
   confirm: function(e) {
-    let sel = this.data.select
+    let sel = this.data.select;
     let selectIndex = 0;
     switch (sel) {
       case 'object':
@@ -93,7 +93,7 @@ Page({
         selectIndex = 3;
         break;
       case 'type':
-        selectIndex =4;
+        selectIndex =0;
         break;
       default:
         break;
