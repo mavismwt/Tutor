@@ -73,7 +73,7 @@ Page({
   apply: function(e) {
     const id = app.globalData.identity;
     const isAuthed = app.globalData.isAuthed
-    const identity = app.globalData.isAuthed
+    const identity = app.globalData.identity
     const that = this
     if (id=='teacher'&& isAuthed) {
       wx.showModal({

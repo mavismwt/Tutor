@@ -19,14 +19,14 @@ Page({
   data: {
     userInfo: {},
     isIPX: getApp().globalData.isIPX,
-    phone: "15623337359",
-    name: "袁佳",
-    address: "华中科技大学韵苑23栋",
-    price: 60,
-    studentStatus: 'alallal',
-    teacherRequire: 'ffafaà',
-    number: '1',
-    perTime: '2',
+    phone: "",
+    name: "",
+    address: "",
+    price: 0,
+    studentStatus: '',
+    teacherRequire: '',
+    number: '',
+    perTime: '',
     object: [],
     timeList:[],
     grade: [],
@@ -131,7 +131,7 @@ Page({
     var object = []
     for (i = 0; i < t.objectArray.length; i++) {
       if (t.objectArray[i].isSelected == true) {
-        object.push(t.objectArray[i].id)
+        object.push(t.objectArray[i].object)
       }
     }
     this.setData({
@@ -144,7 +144,7 @@ Page({
     var grade = []
     for (i = 0; i < t.teachArray.length; i++) {
       if (t.teachArray[i].isSelected == true) {
-        grade.push(t.teachArray[i].id)
+        grade.push(t.teachArray[i].object)
       }
     }
     this.setData({

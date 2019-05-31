@@ -23,9 +23,9 @@
     "pages/teacher/info/done/done",
     "pages/middle/teacher/teacher",
     "pages/message/info/info",
+    "pages/message/detail/detail",
     "pages/message/receive/receive",
-    "pages/message/send/send",
-    "pages/message/detail/detail"
+    "pages/message/send/send"
   ],
   "window": {
     "navigationStyle": "custom",

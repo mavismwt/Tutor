@@ -1,5 +1,5 @@
 <view>
-  <navigationBar id="navigationBar" title="消息"></navigationBar> 
+  <navigationBar id="navigationBar" title="消息" back="true"></navigationBar> 
     <view class='container' >
     <i-tabs current="{{ current }}" color="#3cdede" bindchange="handleChange" style='position:fixed;width:100vw;box-shadow: inset 0px -1px 0px 0px #e5e5e5;z-index:100;'>
       <i-tab key="0" title="申请" bindtap='checkCurrent' data-current = "0" ></i-tab>
@@ -9,7 +9,7 @@
     <swiper-item >
     <view>
       <view style='position:relative;margin:10px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;' bindtap='navToReceive'>
-        <toplistcell title="收到的消息" image='/images/icon/icon_receipt.png'></toplistcell>
+        <toplistcell title="收到的申请" image='/images/icon/icon_receipt.png'></toplistcell>
         <listcell wx:for="{{identity=='teacher'?receiveMessage1:receiveMessage2}}" wx:key="unique" title="{{item.title}}" statusColor='{{status[item.status].color}}' statusTitle='{{status[item.status].str}}' showStatus='true'></listcell></view>
       <view style='position:relative;margin:10px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;' bindtap='navToSend'>
         <toplistcell title="发出的消息" image='/images/icon/icon_send.png'></toplistcell>
@@ -17,9 +17,22 @@
       </view>
     </view>
     </swiper-item>
-      <swiper-item  >
+      <swiper-item >
         <view>
-          <chatlist wx:for="{{identity=='teacher'?chatInfo1:chatInfo2}}" wx:key="unique" name="{{item.name}}" date="{{item.date}}" bindtap='navtoChat'></chatlist>
+          <view wx:for="{{identity=='teacher'?chatInfo1:chatInfo2}}" wx:key="unique" style='margin-top:10px;backgound-color:#fff;' bindtap='navtoChat'>
+          <i-cell wx:key="unique" title="{{item.name}}-{{item.date}}">
+            <image class='icon' src='/images/icon/icon_{{item.sex}}.png' slot="icon" ></image>
+          </i-cell>
+          </view>
+          <view class="view-wrap" style='display:flex;flex-direction:row;height:50px;border-bottom: 1px solid #f5f5f5;background-color:#fff;'>
+            <text style="display:inline-block;width:80px;font-size:17px;margin-top:8px;margin-left:20px;padding:5px;">目前进程</text>
+            <text style="display:inline-block;font-size:17px;color:#565656;margin-top:8px;margin-left:0px;padding:5px;">{{teacherStatus[index].detail}}</text>
+          </view>
+          <view class="view-wrap" style='display:flex;flex-direction:row;height:50px;border-bottom: 1px solid #f5f5f5;background-color:#fff;'>
+            <text style="display:inline-block;width:80px;font-size:17px;margin-top:8px;margin-left:20px;padding:5px;">最新消息</text>
+            <text style="display:inline-block;font-size:15px;color:#aeaaaa;margin-top:8px;margin-left:0px;padding:5px;">{{latestMessage}}</text>
+          </view>
+          
         </view>
       </swiper-item>
     </swiper>

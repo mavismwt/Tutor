@@ -75,7 +75,11 @@
       </cover-view>
       <cover-view style='color: #a9a9a9;margin:5px;padding: 0px 10px 10px 10px;font-size:16px'>目前进程：{{objectStatus[index].detail}}</cover-view>
     </cover-view>
-    <button class='edit-button0' style="background-color:{{objectStatus[index].cancelButton==''?'#fff':'#a9a9a9'}}" bindtap='cancel'>{{objectStatus[index].cancelButton}}</button> 
-    <button class='edit-button1' style="background-color:{{objectStatus[index].confirmButton==''?'#fff':'#3cdede'}}"  bindtap='gotoProcess'>{{objectStatus[index].confirmButton}}</button>
+    <cover-view class='edit-button0' style="background-color:{{objectStatus[index].cancelButton==''?'#fff':'#a9a9a9'}}" bindtap='cancel'>
+    <cover-view>{{objectStatus[index].cancelButton}}</cover-view>
+    </cover-view> 
+    <cover-view class='edit-button1' style="background-color:{{objectStatus[index].confirmButton==''?'#fff':'#3cdede'}}"  bindtap='gotoProcess'>
+    <cover-view>{{objectStatus[index].confirmButton}}</cover-view>
+    </cover-view>
   </cover-view>
 </view>

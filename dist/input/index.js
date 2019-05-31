@@ -7,6 +7,9 @@ Component({
         title: {
             type: String
         },
+        value: {
+            type: String
+        },
         // text || textarea || password || number
         type: {
             type: String,

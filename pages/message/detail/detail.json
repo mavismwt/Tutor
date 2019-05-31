@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "listcell": "/component/basiclist/basiclist",
+    "toplistcell": "/component/applylist/applylist",
+    "chatlist": "/component/chatlist/messagelist"
+  }
 }

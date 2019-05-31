@@ -22,7 +22,7 @@ Component({
     }, 
     latestMessage: {
       type: String,
-      value: '周六下午可以吗'
+      value: ''
     }
     //attrArray: [],
   },

@@ -116,6 +116,7 @@ App({
     identity: 'student',
     token: '',
     id:'',
+    statusCode: 0,
     isInit: true,
     isAuthed: false,
     isCompleted: false,

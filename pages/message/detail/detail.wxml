@@ -1,2 +1,63 @@
 <!--pages/message/detail/detail.wxml-->
-<text>pages/message/detail/detail.wxml</text>
+<view>
+  <navigationBar id="navigationBar" title="李学生" back="true"></navigationBar> 
+    <view class='container' >
+    <i-tabs current="{{ current }}" color="#3cdede" bindchange="handleChange" style='position:fixed;width:100vw;box-shadow: inset 0px -1px 0px 0px #e5e5e5;z-index:100;'>
+      <i-tab key="0" title="试教进程" bindtap='checkCurrent' data-current = "0" ></i-tab>
+      <i-tab key="1" title="聊天" bindtap='checkCurrent' data-current = "1"></i-tab>
+    </i-tabs>
+    <swiper current='{{current}}' class='swiper' duration="300" bindchange='change'>
+    <swiper-item >
+    <view style='position:relative'>
+  <view class="top-view {{isIPX?'IPX':''}}">
+    <view class='info-view'>
+      <view class='basic-info' >
+        <view style='width:60vw;padding:10px 0px;font-size:16px'>基本信息：{{info.school}}/{{info.grade}}</view>
+        <view style='width:35vw;margin-left:10px;padding:10px 0px;font-size:16px'>试教费用：{{info.price}}元</view>
+      </view>
+      <view style='color: #a9a9a9;margin: 5px 0px;padding: 0px 10px 10px 10px;font-size:16px'>目前进程：试教中</view>
+    </view>
+    <view class='more-info'>
+    <view style='color: #000000;padding: 5px 0px;font-size:16px'>时间：6月6日15:30至17:30</view>
+    <view style='color: #000000;padding: 5px 0px;font-size:16px'>
+    地址：洪山区巴黎豪庭1栋1单元101</view>
+    <view style='color: #000000;padding: 5px 0px;font-size:16px'>
+    联系方式：13164175090</view>
+    <view style='color: #000000;padding: 5px 0px;font-size:16px'>
+    注意事项：无</view>
+    </view>
+    <view  style="color: #101010;margin: 5px 0px;padding: 0px 10px 10px 10px;font-size:16px"  bindtap='gotoProcess'>等待家长确认，试教完成48小时内家长未确认平台将自动打钱</view>
+  </view>
+  <view style='position:fixed;top:320px;left:0px;right:0px;height:115px;margin:10px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;' bindtap='navToReceive'>
+  <text style='color: #000000;margin:15px;margin-top:20px;font-size:14px'>安全助手</text>
+  <view style='display:flex;flex-direction:row;margin-top:10px;'>
+  <button class='button' style='background-color:#00af00;'>定时报警</button>
+  <button class='button' style='background-color:#e8423a;'>一键求救</button>
+  </view>
+  </view>
+  </view>
+    </swiper-item>
+      <swiper-item >
+    <view class="message {{isIPX?'IPX':''}}" style='bottom:{{inputHeight}}'>
+      <form bindreset="cleanInput" class="sendMessage">
+        <input id='input' class='input' value="{{value}}" bindinput="bindinput" confirm-type="send" adjust-position="{{inputUp}}" bindfocus="inputFocus" bindblur="inputBlur"></input>
+          <!-- <input type="text" placeholder="请输入聊天内容.." value="{{massage}}" bindinput='bindChange'></input> -->
+          <button class='button' style='width:20vw;height:40px;background-color:#3cdede;color:#fff;text-align:center;justify-content:center;align-items:center;' bindtap='send' formType="reset" button-hover="blue">发送</button>
+      </form>
+    </view>
+    <view style='position:relative'>
+  <view class="top-view {{isIPX?'IPX':''}}" style='height:160px;'>
+    <view class='info-view'>
+      <view class='basic-info' >
+        <view style='width:60vw;padding:10px 0px;font-size:16px'>基本信息：{{info.school}}/{{info.grade}}</view>
+        <view style='width:35vw;margin-left:10px;padding:10px 0px;font-size:16px'>试教费用：{{info.price}}元</view>
+      </view>
+      <view style='color: #a9a9a9;margin: 5px 0px;padding: 0px 10px 10px 10px;font-size:16px'>目前进程：试教中</view>
+    </view>
+    <view  style="color: #101010;margin: 5px 0px;padding: 0px 10px 10px 10px;font-size:16px"  bindtap='gotoProcess'>等待家长确认，试教完成48小时内家长未确认平台将自动打钱</view>
+  </view>
+  </view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

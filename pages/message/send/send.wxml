@@ -2,6 +2,15 @@
 <view>
   <navigationBar id="navigationBar" title="我发出的申请" back="true"></navigationBar> 
     <view class='container' >
-      <infolist wx:for = "{{messageArray}}" style="background-color:#fff;margin-top:10px;"></infolist>
+      <infolist wx:for = "{{messageArray}}" style="background-color:#fff;margin-top:10px;"
+      name="{{item.name}}"
+      date="{{item.date}}"
+      school="{{item.school}}"
+      grade="{{item.grade}}"
+      price="{{item.price}}"
+      time="{{item.time}}"
+      operate="{{item.operate}}"
+      statusTitle="{{item.statusTitle}}"
+      sex="{{item.sex}}"></infolist>
     </view>
 </view> 

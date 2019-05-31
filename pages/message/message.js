@@ -1,12 +1,53 @@
 // pages/message/message.js
 const app = getApp();
 var identity = app.globalData.identity;
+var index = app.globalData.index;
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     identity: identity,
+    index: index,
+    teacherStatus: [{
+      id: 1,
+      detail: '等待对方填写时间地点',
+      confirmButton: '提醒对方',
+      cancelButton: '取消试教',
+      noticeInfo: '已为您发送提醒信息'
+    },
+    {
+      id: 2,
+      detail: '待确认试教',
+      confirmButton: '确认试教',
+      cancelButton: '取消试教',
+      url: '/pages/message/detail/detail',
+      noticeInfo: '您已确认试教成功，请在也约定好的时间前往试教，请注意人身安全'
+    },
+    {
+      id: 3,
+      detail: '试教开始',
+      confirmButton: '',
+      cancelButton: '',
+      noticeInfo: ''
+    },
+    {
+      id: 4,
+      detail: '打款处理中\n3个工作日内打款至账户',
+      confirmButton: '查看详情',
+      cancelButton: '联系客服',
+      url: '/pages/mine/money/money',
+      noticeInfo: ''
+    },
+    {
+      id: 4,
+      detail: '打款处理中\n3个工作日内打款至账户',
+      confirmButton: '查看详情',
+      cancelButton: '联系客服',
+      url: '/pages/mine/money/money',
+      noticeInfo: ''
+    }
+    ],
     current: 0,
     status: [{
       id: 0,
@@ -151,7 +192,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    const index = getApp().globalData.statusCode
+    this.setData({
+      index: index
+    })
+    console.log('main'+this.data.index)
   },
 
   /**

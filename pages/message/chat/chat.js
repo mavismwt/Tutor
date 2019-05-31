@@ -18,6 +18,7 @@ const teacherStatus = [{
   detail: '待确认试教',
   confirmButton: '确认试教',
   cancelButton: '取消试教',
+  url: '/pages/message/detail/detail',
   noticeInfo: '您已确认试教成功，请在也约定好的时间前往试教，请注意人身安全'
 },
 {
@@ -31,15 +32,7 @@ const teacherStatus = [{
   id: 4,
   detail: '打款处理中\n3个工作日内打款至账户',
   confirmButton: '查看详情',
-  cancelButton: '',
-  url: '/pages/mine/money/money',
-  noticeInfo: ''
-},
-{
-  id: 4,
-  detail: '打款处理中\n3个工作日内打款至账户',
-  confirmButton: '查看详情',
-  cancelButton: '',
+  cancelButton: '联系客服',
   url: '/pages/mine/money/money',
   noticeInfo: ''
 }
@@ -57,7 +50,6 @@ const studentStatus = [{
     detail: '待教师确认试教',
     confirmButton: '提醒对方',
     cancelButton: '取消试教',
-    url: '',
     noticeInfo: '已为您发送提醒消息'
   },
   {
@@ -74,14 +66,6 @@ const studentStatus = [{
     cancelButton: '',
     url: '/pages/mine/money/money',
     noticeInfo:''
-  },
-  {
-    id: 4,
-    detail: '试教结束',
-    confirmButton: '查看详情',
-    cancelButton: '',
-    url: '',
-    noticeInfo: ''
   }
   ];
 const studentInfo = {
@@ -136,6 +120,7 @@ Page({
   gotoProcess: function() {
     if (index < this.data.objectStatus.length-1) {
       index += 1
+      getApp().globalData.statusCode += 1
       this.setData({
         index: index
       })
@@ -147,9 +132,9 @@ Page({
     this.setData({
       notice: notice
     })
-    console.log(this.data.objectStatus[urlindex].url)
+    console.log(current+'  '+this.data.objectStatus[urlindex].url)
     if (this.data.objectStatus[current].url) {
-      wx.navigateTo({
+      wx.redirectTo({
         url: this.data.objectStatus[current].url,
       })
     }
@@ -164,6 +149,7 @@ Page({
       success: function(res) {
         if (res.confirm) {
           wx.navigateBack()
+          getApp().globalData.statusCode = 0
         } else if (res.cancel) {
           
         }
@@ -176,20 +162,24 @@ Page({
    */
   onLoad: function (options) {
     const identity = getApp().globalData.identity 
+    const index = getApp().globalData.statusCode
     this.setData({
-      identity: identity
+      identity: identity,
+      index:index
     })
     switch (identity) {
       case 'student':
         this.setData({
           objectStatus: studentStatus,
-          info: studentInfo
+          info: studentInfo,
+          title: '叶老师'
         })
         break;
       case 'teacher':
         this.setData({
           objectStatus: teacherStatus,
-          info: teacherInfo
+          info: teacherInfo,
+          title: '李同学'
         })
         break;
       default:
@@ -202,14 +192,18 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+   
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const index = getApp().globalData.statusCode
+    console.log(index)
+    this.setData({
+      index:index
+    })
   },
 
   /**
