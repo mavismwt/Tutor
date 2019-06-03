@@ -17,6 +17,16 @@ const formatDate = date => {
   return [year, month, day].map(formatNumber).join('-') 
 }
 
+const formatTimeShort = date => {
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [hour, minute].map(formatNumber).join(':')
+}
+
+  
+
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -24,5 +34,6 @@ const formatNumber = n => {
 
 module.exports = {
   formatTime: formatTime,
-  formatDate: formatDate
+  formatDate: formatDate,
+  formatTimeShort: formatTimeShort
 }

@@ -1,0 +1,10 @@
+<!--pages/message/help/done/done.wxml-->
+<view>
+  <navigationBar id="navigationBar" title="求救中" back="true"></navigationBar>
+  <view class='container' style='position:fixed; height:100%;background-color: #fff;'>
+  <image class='image' style='display:flex;height:150px;width:159px;margin: 20vh 0px 30px 0px;' src='/images/icon_sos.png'></image>
+  <text style='color: #000000;display:flex;text-align:center;font-size:17px;padding:10px;'>求救中</text>
+  <text style='color: #b2b2b2;display:flex;text-align:center;font-size:14px;' >已向紧急联系人发送信息\n客服人员将立即跟进确认您的安全</text>
+  <definedButton title="我已安全" style='display:flex;margin-top:40px;' bindtap='confirm'></definedButton>
+  </view>
+</view>

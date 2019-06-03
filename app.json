@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/message/alert/alert",
     "pages/blank",
     "pages/index/index",
     "pages/message/chat/chat",
@@ -23,9 +24,11 @@
     "pages/teacher/info/done/done",
     "pages/middle/teacher/teacher",
     "pages/message/info/info",
-    "pages/message/detail/detail",
     "pages/message/receive/receive",
-    "pages/message/send/send"
+    "pages/message/detail/detail",
+    "pages/message/send/send",
+    "pages/message/help/help",
+    "pages/message/help/done/done"
   ],
   "window": {
     "navigationStyle": "custom",

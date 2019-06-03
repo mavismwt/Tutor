@@ -154,6 +154,16 @@ Page({
     wx.navigateBack()
     getApp().globalData.statusCode = 4
   },
+  goToAlert: function(e) {
+    wx.navigateTo({
+      url: '../alert/alert',
+    })
+  },
+  goToHelp: function (e) {
+    wx.navigateTo({
+      url: '../help/help',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
