@@ -8,7 +8,15 @@ Page({
   data: {
     time: '12:01',
   },
-
+  confirm: function(e) {
+    wx.showModal({
+      title: '设置成功',
+      content: '要注意自己的安全哦',
+      success: function(res) {
+        wx.navigateBack()
+      }
+    })
+  },
   bindTimeChange: function (e) {
     this.setData({
       time: e.detail.value

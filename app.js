@@ -27,6 +27,7 @@ App({
               const auth = res.header.Authorization;
               const id = res.data.id;
               const token = that.getToken(auth);
+              console.log(id);
               that.globalData.token = token; 
               that.globalData.id = id; 
             }

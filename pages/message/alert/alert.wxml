@@ -2,16 +2,37 @@
 <view>
   <navigationBar id="navigationBar" title="定时报警" back="true"></navigationBar> 
   <view class="container {{IPX?'IPX':''}}">
-  <view class="section">
-    <view class="section__title">时间选择器</view>
-    <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-      <view class="picker">
-        当前选择: {{time}}
-      </view>
+  <view class="section" style='display:flex;align-items:center;justify-items:center;'>
+    <view style='display:flex;flex-direction:column;align-items:center;justify-items:center;'>
+      <view class="section__title" style='width:100%;'>定时报警时间</view>
+      <view class="section__title" style='color:#a9a9a9;width:100%;'>该时间前未手动取消，则自动发送报警信息 </view>
+    </view>
+      <picker class='select-button' mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+      <text class='text'>{{time}}</text>
+        <image class='icon' src='/images/sanjiao.png'></image>
     </picker>
   </view>
-  <view catchtap='cancel'>
-    <definedButton title="取消"style='margin-top:100px'></definedButton>
+  <view class="section">
+    <view style='display:flex;flex-direction:row;'>
+      <text class='title'>*所去地点</text>
+      <text class='title' style='color:#a9a9a9;'>要写到最详细哦</text>
+    </view>
+    <input class='input' placeholder='洪山区巴黎豪庭1栋1单元'></input>
+  </view>
+  <view class="section">
+    <text class='title'>*本人联系电话</text>
+    <input class='input' placeholder='' type='number' maxlength='11'></input>
+  </view>
+  <view class="section">
+    <text class='title'>*紧急联系人电话1</text>
+    <input class='input' placeholder='' type='number' maxlength='11'></input>
+  </view>
+  <view class="section">
+    <text class='title'>*紧急联系人电话2</text>
+    <input class='input' placeholder='' type='number' maxlength='11'></input>
+  </view>
+  <view catchtap='confirm' style='margin-top:30px;'>
+    <definedButton title="确认"style='margin-top:100px'></definedButton>
   </view>
 </view>
 </view>

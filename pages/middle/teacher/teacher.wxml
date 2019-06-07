@@ -95,7 +95,7 @@
       canEdit="true" >
       </infoList>
     </i-panel>
-    <definedButton title="完成" bindtap='complete'></definedButton>
+    <definedButton title="完成" bindtap='completeInfo'></definedButton>
   </view>
    <cover-view class = 'cover-view' hidden='{{isSelectHidden}}' catchtap='changeSelectStatus' z-index='100'>
     <cover-view class='objects' style="flex-direction:row;">

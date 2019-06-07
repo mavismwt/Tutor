@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/message/alert/alert",
     "pages/blank",
     "pages/index/index",
     "pages/message/chat/chat",
@@ -27,6 +26,7 @@
     "pages/message/receive/receive",
     "pages/message/detail/detail",
     "pages/message/send/send",
+    "pages/message/alert/alert",
     "pages/message/help/help",
     "pages/message/help/done/done"
   ],
@@ -40,6 +40,7 @@
   "usingComponents": {
     "tabbar": "/component/tabbar/tabbar",
     "navigationBar": "/component/navigationBar/index",
+    "definedButton": "/component/definedButton/button",
     "i-switch": "../../dist/switch/index",
     "i-cell-group": "/dist/cell-group/index",
     "i-cell": "/dist/cell/index",

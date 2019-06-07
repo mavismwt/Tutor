@@ -48,6 +48,37 @@ Page({
       noticeInfo: ''
     }
     ],
+    studentStatus: [{
+      id: 1,
+      detail: '待填写试教时间地点',
+      confirmButton: '去填写',
+      cancelButton: '取消试教',
+      url: '/pages/message/info/info',
+      noticeInfo: '填写成功，等待教师确认'
+    },
+    {
+      id: 2,
+      detail: '待教师确认试教',
+      confirmButton: '提醒对方',
+      cancelButton: '取消试教',
+      noticeInfo: '已为您发送提醒消息'
+    },
+    {
+      id: 3,
+      detail: '试教中',
+      confirmButton: '已试教',
+      cancelButton: '联系客服',
+      noticeInfo: ''
+    },
+    {
+      id: 4,
+      detail: '试教结束',
+      confirmButton: '查看详情',
+      cancelButton: '',
+      url: '/pages/mine/money/money',
+      noticeInfo: ''
+    }
+    ],
     current: 0,
     status: [{
       id: 0,
@@ -115,6 +146,7 @@ Page({
     }],
     chatInfo2:[{
       name:'叶老师',
+      sex: 'female',
       date:'2019年5月31日'
     }], 
     chatInfo1: [{

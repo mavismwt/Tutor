@@ -225,18 +225,19 @@ Page({
 
   completeInfo: function (e) {
     const id = getApp().globalData.id;
+    
     const t = this.data;
     wx.request({
       url: 'https://hd.plus1sec.cn/student/signup',
       data: {
         "openid": id,
-        "name": "xn",
-        "university": "HUST",
-        "grade": "UNI_1",
-        "phone": "15623337359",
-        "email": "xn@MediaList.com",
+        "name": t.name,
+        "university": t.singleArray[t.singleIndex],
+        "phone": t.phone,
+        "email": "",
+        "grade": t.gradeArray[t.gradeIndex].id,
         "authStatus": "UNCOMMITED",
-        "Gender": "MALE",
+        "Gender": t.ismale ? "MALE" : "FEMALE",
         "subjects": {
           "create": [
             {
@@ -251,40 +252,11 @@ Page({
           ]
         },
         "avalible": {
-          "create": [
-            {
-              "day": "SUN",
-              "detail": "MORN"
-            }
-          ]
+          "create": t.timeList
         },
         "invitations": {},
         "order": {}
       },
-      //   "openid": id,
-      //   "name": t.name,
-      //   "university": t.singleArray[t.singleIndex],
-      //   "grade": t.gradeArray[t.gradeIndex].id,
-      //   "phone": t.phone,
-      //   "email": "xn@MediaList.com",
-      //   "authStatus": "UNCOMMITED",
-      //   "Gender": t.ismale ? "MALE" : "FEMALE",
-      //   "subjects": {
-      //     "create": [
-      //       {
-      //         "name": "CHINESE",
-      //         "level": {
-      //           "set": ["MID_1"]//t.grade
-      //         }
-      //       }
-      //     ]
-      //   },
-      //   "avalible": {
-      //     "create": t.timeList
-      //   },
-      //   "invitations": {},
-      //   "order": {}
-      // },
       header: {
         'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
         'content-type': 'application/json'
