@@ -25,6 +25,14 @@ Page({
     })
   },
 
+  inputedit: function (e) {
+    const name = e.currentTarget.dataset.name
+    this.setData({
+      [name]: e.detail.detail.value
+    })
+    console.log(e.currentTarget.dataset.name);
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

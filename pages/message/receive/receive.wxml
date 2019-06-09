@@ -2,7 +2,7 @@
 <view>
   <navigationBar id="navigationBar" title="我收到的申请" back="true"></navigationBar> 
     <view class='container' >
-      <infolist wx:for = "{{messageArray}}" style="background-color:#fff;margin-top:10px;"
+      <infolist wx:for = "{{identity=='student'?teacherArray:studentArray}}" style="background-color:#fff;margin-top:10px;"
       name="{{item.name}}"
       date="{{item.date}}"
       school="{{item.school}}"

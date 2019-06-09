@@ -32,6 +32,7 @@ Page({
     objectID: [],
     timeList:[],
     grade: [],
+    gradeID: [],
     switch1: false,
     switch2: true,
     value: 'sex',
@@ -39,7 +40,7 @@ Page({
     sexRoc: [{ "title": '男', check: check1, }, { "title": '女', check: check2, }, { "title": '不限', check: check3, }],
     checks: checks,
     singleIndex: 0,
-    singleArray: ['华中科技大学', '武汉大学', '华中师范大学', '华中农业大学', '中南财经政法大学','武汉理工大学','更多高校'],
+    singleArray: [{ text: '华中科技大学', id: 'HUST' }, { text: '武汉大学', id: 'WHU' }, { text: '其他高校', id: 'OTHER' }],
     gradeIndex: 0,
     gradeArray: [{ text: '大一', id: 'UNI_1' }, { text: '大二', id: 'UNI_2' }, { text: '大三', id: 'UNI_3' }, { text: '大四', id: 'UNI_4' }],
     multiArray: [[{ id: 'MON', name: '星期一' }, { id: 'TUE', name: '星期二' }, { id: 'WED', name: '星期三' }, { id: 'THU', name: '星期四' }, { id: 'FRI', name: '星期五' }, { id: 'SAT', name: '星期六' }, { id: 'SUN', name: '星期日' }],
@@ -87,13 +88,6 @@ Page({
     this.setData({
       isSelectHidden: isSelectHidden
     })
-    // wx.request({
-    //   url: 'https://www.yjwbenji.top',
-    //   data: {},
-    //   success: function (res) {
-    //     console.log(res.data)
-    //   }
-    // })
   },
 
   select: function (e) {
@@ -118,8 +112,8 @@ Page({
       default:
         break;
     }
-    this.addObject()
-    this.addGrade()
+    this.addObject();
+    this.addGrade();
   },
   confirmSelect: function(e) {
 
@@ -145,13 +139,16 @@ Page({
     const t = this.data
     var i = 0
     var grade = []
+    var gradeID = []
     for (i = 0; i < t.teachArray.length; i++) {
       if (t.teachArray[i].isSelected == true) {
         grade.push(t.teachArray[i].object)
+        gradeID.push(t.teachArray[i].id)
       }
     }
     this.setData({
-      grade:grade
+      grade:grade,
+      gradeID:gradeID
     })
   },
 
@@ -219,6 +216,21 @@ Page({
     })
   },
 
+  inputedit: function (e) {
+    const name = e.currentTarget.dataset.name
+    this.setData({
+      [name]: e.detail.detail.value
+    })
+    console.log(e.currentTarget.dataset.name);
+  },
+  inputedit2: function (e) {
+    const name = e.currentTarget.dataset.name
+    this.setData({
+      [name]: e.detail.value
+    })
+    console.log(e.currentTarget.dataset.name);
+  },
+
   complete: function (e) {
     app.globalData.isCompleted = true; 
     wx.navigateTo({
@@ -228,8 +240,38 @@ Page({
 
   completeInfo: function (e) {
     const id = getApp().globalData.id;
-    
     const t = this.data;
+    const subjects = [];
+    var i = 0;
+    console.log(t.objectID);
+    for (i=0;i<t.objectID.length;i++) {
+      subjects.push({
+        "name": t.objectID[i],
+        "level": {
+          "set": t.gradeID
+        }
+      })
+    }
+    console.log(subjects)
+    const data = {
+      "openid": id,
+      "name": t.name,
+      "university": t.singleArray[t.singleIndex].id,
+      "phone": t.phone,
+      "email": "",
+      "grade": t.gradeArray[t.gradeIndex].id,
+      "authStatus": "UNCOMMITED",
+      "Gender": t.ismale ? "MALE" : "FEMALE",
+      "subjects": {
+        "create": subjects
+      },
+      "avalible": {
+        "create": t.timeList
+      },
+      "invitations": {},
+      "order": {}
+    };
+    console.log(data);
     wx.request({
       url: 'https://hd.plus1sec.cn/student/signup',
       data: {
@@ -341,15 +383,12 @@ Page({
       date: date,
       token: app.globalData.token
     })
-    console.log(this.data.token);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
-    console.log('token'+this.data.token);
     this.infoList = this.selectComponent("#infoList");
     this.definedButton = this.selectComponent("#definedButton");
   },

@@ -3,7 +3,7 @@
 <navigationBar id="navigationBar" title="填写资料" back="true"></navigationBar>
   <view class="container {{isIPX?'IPX':''}}" wx:if='{{isSelectHidden}}'>
     <i-panel class="cell-panel" title="以下信息为必填项">
-      <i-input value="{{name}}" title="孩子姓名"  placeholder="我们将只公开您孩子的姓氏" data-name='name' bindblur='inputedit' />
+      <i-input value="{{name}}" maxlength='5' title="孩子姓名"  placeholder="我们将只公开您孩子的姓氏" data-name='name' bindblur='inputedit' />
       <i-cell  title="孩子年级">
        <picker class='select-button'bindchange="bindPickerChange" value="{{index}}" range="{{singleArray}}" range-key="text"> 
        <text class='text'>{{singleArray[index].text}}</text>

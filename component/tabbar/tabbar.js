@@ -31,13 +31,11 @@ Component({
   methods: {
     nav: function (e) {
       var that = this
-      console.log(app.globalData.identity)
       const identity = app.globalData.identity
       const url = app.globalData.identity == 'student' ? '/pages/middle/student/student' : '/pages/middle/teacher/teacher'
       this.setData({
         url: url
       })
-      console.log(url)
       wx.navigateTo({
         url: url,
       })

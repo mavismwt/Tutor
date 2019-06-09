@@ -10,18 +10,6 @@ Page({
     isInit: getApp().globalData.isInit,
   },
 
-  // enterMainPage(flag) {
-  //   if (flag) {
-  //     wx.redirectTo({
-  //       url: '/pages/index/index',
-  //     });
-  //   } else {
-  //     wx.redirectTo({
-  //       url: '/pages/'+idetity+'/'+identity,
-  //     });
-  //   }
-  // },
-
   /**
    * 生命周期函数--监听页面加载
    */
