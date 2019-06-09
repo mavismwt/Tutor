@@ -19,6 +19,7 @@ Page({
   data: {
     userInfo: {},
     isIPX: getApp().globalData.isIPX,
+    token: '',
     phone: "",
     name: "",
     address: "",
@@ -28,6 +29,7 @@ Page({
     number: '',
     perTime: '',
     object: [],
+    objectID: [],
     timeList:[],
     grade: [],
     switch1: false,
@@ -40,9 +42,7 @@ Page({
     singleArray: ['华中科技大学', '武汉大学', '华中师范大学', '华中农业大学', '中南财经政法大学','武汉理工大学','更多高校'],
     gradeIndex: 0,
     gradeArray: [{ text: '大一', id: 'UNI_1' }, { text: '大二', id: 'UNI_2' }, { text: '大三', id: 'UNI_3' }, { text: '大四', id: 'UNI_4' }],
-    multiArray: [
-      ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'], ['上午', '下午', '晚上']],
-    objectMultiArray: [[{ id: 'MON', name: '星期一' }, { id: 'TUE', name: '星期二' }, { id: 'WED', name: '星期三' }, { id: 'THU', name: '星期四' }, { id: 'FRI', name: '星期五' }, { id: 'SAT', name: '星期六' }, { id: 'SUN', name: '星期日' }],
+    multiArray: [[{ id: 'MON', name: '星期一' }, { id: 'TUE', name: '星期二' }, { id: 'WED', name: '星期三' }, { id: 'THU', name: '星期四' }, { id: 'FRI', name: '星期五' }, { id: 'SAT', name: '星期六' }, { id: 'SUN', name: '星期日' }],
     [{ id: 'MORN', name: '上午' }, { id: 'AFTER', name: '下午' }, { id: 'EVEN', name: '晚上' }]],
     multiIndex: multiIndex,
     objectArray: [{ object: '语文', id: 'CHINESE', isSelected: false }, { object: '数学', id: 'MATH', isSelected: false }, { object: '英语', id: 'ENGLISH', isSelected: false }, { object: '物理', id: 'PHYSICS', isSelected: false }, { object: '化学', id: 'CHEMISTRY', isSelected: false }, { object: '生物', id: 'BIOLOGY', isSelected: false }, { object: '政治', id: 'POLITICS', isSelected: false }, { object: '历史', id: 'HISTORY', isSelected: false }, { object: '地理', id: 'GEOGRAPHY', isSelected: false }],
@@ -129,13 +129,16 @@ Page({
     const t = this.data
     var i = 0
     var object = []
+    var objectID = []
     for (i = 0; i < t.objectArray.length; i++) {
       if (t.objectArray[i].isSelected == true) {
         object.push(t.objectArray[i].object)
+        objectID.push(t.objectArray[i].id)
       }
     }
     this.setData({
-      object: object
+      object: object,
+      objectID: objectID
     })
   },
   addGrade: function (e) {
@@ -258,20 +261,20 @@ Page({
         "order": {}
       },
       header: {
-        'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
+        'Authorization': 'Bearer' + ' ' + t.token,
         'content-type': 'application/json'
       },
       method: 'POST',
       success: function (res) {
-        console.log(res.data);
+        console.log(res.request.data);
         if (res.statusCode == 200) {
           wx.navigateTo({
             url: '/pages/teacher/info/done/done',
           })
         } else {
           wx.showModal({
-            title: '填写失败',
-            content: '请重新填写后再次提交',
+            title: '发布失败',
+            content: '您可能已经发布您的信息，如未发布请重新填写后再次提交',
             showCancel: false
           })
         }
@@ -291,7 +294,6 @@ Page({
   },
   bindMultiPickerChange: function (e) {
     let index = e.currentTarget.dataset.index
-    console.log(index)
     let urlStr = 'multiIndex[' + index + ']'
     this.setData({
       [urlStr]: e.detail.value
@@ -310,10 +312,10 @@ Page({
     const t = this.data
     var i = 0
     var timeList = []
-    for (i = 0; i < t.multiIndex; i++) {
+    for (i = 0; i < t.multiIndex.length; i++) {
       timeList.push({
-        "day": t.multiArray[0][multiIndex[i][0]],
-        "detail": t.multiArray[1][multiIndex[i][1]]
+        "day": t.multiArray[0][multiIndex[i][0]].id,
+        "detail": t.multiArray[1][multiIndex[i][1]].id
       })
     }
     this.setData({
@@ -337,13 +339,17 @@ Page({
   onLoad: function (options) {
     this.setData({
       date: date,
+      token: app.globalData.token
     })
+    console.log(this.data.token);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+
+    console.log('token'+this.data.token);
     this.infoList = this.selectComponent("#infoList");
     this.definedButton = this.selectComponent("#definedButton");
   },

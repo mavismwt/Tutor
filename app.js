@@ -9,6 +9,9 @@ App({
     wx.hideTabBar();
     //获取设备信息
     this.getSystemInfo();
+    wx.showLoading({
+      title: '加载中',
+    })
     // 登录
     wx.login({
       success: res => {
@@ -27,9 +30,9 @@ App({
               const auth = res.header.Authorization;
               const id = res.data.id;
               const token = that.getToken(auth);
-              console.log(id);
               that.globalData.token = token; 
               that.globalData.id = id; 
+              wx.hideLoading();
             }
           })
         } else {

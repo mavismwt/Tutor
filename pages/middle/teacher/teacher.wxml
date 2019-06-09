@@ -31,13 +31,13 @@
       <i-cell  title="空闲时间">
         <view style='flex-direction:column;' hidden="{{switch1}}">
         <view style='display:flex;flex-direction:row;' wx:for="{{multiIndex}}" wx:key="index">
-          <picker mode="multiSelector" class='picker-view' bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}"  data-index="{{index}}">
+          <picker mode="multiSelector" class='picker-view' bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key='name'  data-index="{{index}}">
           <label class='select-label'>
-            <text class='time-text'>{{multiArray[0][multiIndex[index][0]]}}</text>
+            <text class='time-text'>{{multiArray[0][multiIndex[index][0]].name}}</text>
             <image class='icon' src='/images/sanjiao.png'></image>
           </label>
           <label class='select-label'>
-            <text class='time-text'>{{multiArray[1][multiIndex[index][1]]}}</text>
+            <text class='time-text'>{{multiArray[1][multiIndex[index][1]].name}}</text>
             <image class='icon' src='/images/sanjiao.png'></image>
           </label>
           </picker>

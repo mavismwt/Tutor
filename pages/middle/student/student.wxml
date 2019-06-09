@@ -3,10 +3,10 @@
 <navigationBar id="navigationBar" title="填写资料" back="true"></navigationBar>
   <view class="container {{isIPX?'IPX':''}}" wx:if='{{isSelectHidden}}'>
     <i-panel class="cell-panel" title="以下信息为必填项">
-      <i-input value="{{name}}" title="孩子姓名"  placeholder="我们将只公开您孩子的姓氏" />
+      <i-input value="{{name}}" title="孩子姓名"  placeholder="我们将只公开您孩子的姓氏" data-name='name' bindblur='inputedit' />
       <i-cell  title="孩子年级">
-       <picker class='select-button'bindchange="bindPickerChange" value="{{index}}" range="{{singleArray}}"> 
-       <text class='text'>{{singleArray[index]}}</text>
+       <picker class='select-button'bindchange="bindPickerChange" value="{{index}}" range="{{singleArray}}" range-key="text"> 
+       <text class='text'>{{singleArray[index].text}}</text>
         <image class='icon' src='/images/sanjiao.png'></image>
       </picker>
       </i-cell>
@@ -30,13 +30,13 @@
       <i-cell  title="授课时间">
         <view style='flex-direction:column;' hidden="{{switch1}}">
         <view style='display:flex;flex-direction:row;' wx:for="{{multiIndex}}" wx:key="unique">
-        <picker mode="multiSelector" class='picker-view' bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}"  data-index="{{index}}">
+        <picker mode="multiSelector" class='picker-view' bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}"  data-index="{{index}}" range-key="name">
         <label class='select-label'>
-          <text class='time-text'>{{multiArray[0][multiIndex[index][0]]}}</text>
+          <text class='time-text'>{{multiArray[0][multiIndex[index][0]].name}}</text>
           <image class='icon' src='/images/sanjiao.png'></image>
         </label>
         <label class='select-label'>
-          <text class='time-text'>{{multiArray[1][multiIndex[index][1]]}}</text>
+          <text class='time-text'>{{multiArray[1][multiIndex[index][1]].name}}</text>
           <image class='icon' src='/images/sanjiao.png'></image>
         </label>
         </picker>
@@ -67,20 +67,20 @@
         <label style='display:flex;margin-left:5px;'>
           <text class='course' hidden='{{switch1}}'>一周</text>
           <text class='course' hidden='{{!switch1}}'>一共</text>
-          <input class='detail' z-index='0' type='number' value='{{number}}'></input>
+          <input class='detail' z-index='0' type='number' value='{{number}}' data-name='number'  bindblur='inputedit2'></input>
           <text class='course'>次，一次</text>
-          <input class='detail' z-index='0' type='number' value='{{perTime}}'></input>
+          <input class='detail' z-index='0' type='number' value='{{perTime}}' data-name='perTime'  bindblur='inputedit2'></input>
           <text class='course'>小时</text>
         </label>
       </i-cell>
       <i-cell title="授课时间可协调">
         <i-switch value="{{switch2}}" bind:change="onChange2" style='position:relative;margin-left:10px'></i-switch>
       </i-cell>
-      <i-input value="{{phone}}" type="number" title="手机号码" maxlength="11" placeholder="与心仪老师对接后才公布"/>
-      <i-input value="{{address}}" type="textarea" title="地址" placeholder="无需具体至门牌号" maxlength="50" />
+      <i-input value="{{phone}}" type="number" title="手机号码" maxlength="11" placeholder="与心仪老师对接后才公布" data-name='phone'  bindblur='inputedit'/>
+      <i-input value="{{address}}" type="textarea" title="地址" placeholder="无需具体至门牌号" maxlength="50" data-name='address'  bindblur='inputedit'/>
       
       <i-cell title="提供薪酬">
-          <input class='detail2' type='number' value='{{price}}'></input>
+          <input class='detail2' type='number' value='{{price}}' data-name='price'  bindblur='inputedit2'></input>
           <text class='course'>元/小时</text>
       </i-cell>
     </i-panel>
@@ -90,14 +90,18 @@
       icon="/images/icon/icon_add.png"
       detail="需增强知识点、科目，孩子性格等" 
       value="{{studentStatus}}"
-      canEdit="true">
+      canEdit="true"
+      data-name='studentStatus'
+      bindblur='inputedit'>
       </infoList>
       <infoList id="settingList" wx:key="unique" 
       title="教师要求"
       icon="/images/icon/icon_add.png"
       detail="学校、家教经验、擅长科目等"
       value="{{teacherRequire}}"
-      canEdit="true" >
+      canEdit="true"
+      data-name='teacherRequire'
+      bindblur='inputedit'>
       </infoList>
     </i-panel>
     <definedButton title="完成" bindtap='completeInfo'></definedButton>

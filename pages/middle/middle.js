@@ -10,7 +10,6 @@ Page({
 
   teacher: function (e) {
     app.globalData.identity = 'teacher',
-      console.log(app.globalData.identity)
     wx.navigateTo({
       url: 'teacher/teacher',
     })
