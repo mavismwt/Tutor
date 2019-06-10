@@ -11,6 +11,39 @@ var multiIndex = [[0, 0]];
 var date = util.formatDate(new Date());
 var dates = [date];
 var type = '';
+var datarrr = {
+  "openid": "12333333333",
+  "name": "xn",
+  "university": "HUST",
+  "phone": "15623337359",
+  "email": "xn@MediaList.com",
+  "grade": "UNI_1",
+  "authStatus": "UNCOMMITED",
+  "Gender": "MALE",
+  "subjects": {
+    "create": [
+      {
+        "name": "CHINESE",
+        "level": {
+          "set": [
+            "MID_1",
+            "PRI_1"
+          ]
+        }
+      }
+    ]
+  },
+  "avalible": {
+    "create": [
+      {
+        "day": "SUN",
+        "detail": "MORN"
+      }
+    ]
+  },
+  "invitations": {},
+  "order": {}
+};
 Page({
 
   /**
@@ -238,13 +271,16 @@ Page({
     })
   },
 
+  setSubjects: function(e) {
+    
+  },
+
   completeInfo: function (e) {
-    const id = getApp().globalData.id;
-    const t = this.data;
+    const id = getApp().globalData.id
+    const t = this.data
     const subjects = [];
     var i = 0;
-    console.log(t.objectID);
-    for (i=0;i<t.objectID.length;i++) {
+    for (i = 0; i < t.objectID.length; i++) {
       subjects.push({
         "name": t.objectID[i],
         "level": {
@@ -252,52 +288,22 @@ Page({
         }
       })
     }
-    console.log(subjects)
-    const data = {
-      "openid": id,
-      "name": t.name,
-      "university": t.singleArray[t.singleIndex].id,
-      "phone": t.phone,
-      "email": "",
-      "grade": t.gradeArray[t.gradeIndex].id,
-      "authStatus": "UNCOMMITED",
-      "Gender": t.ismale ? "MALE" : "FEMALE",
-      "subjects": {
-        "create": subjects
-      },
-      "avalible": {
-        "create": t.timeList
-      },
-      "invitations": {},
-      "order": {}
-    };
-    console.log(data);
     wx.request({
       url: 'https://hd.plus1sec.cn/student/signup',
       data: {
         "openid": id,
         "name": t.name,
-        "university": t.singleArray[t.singleIndex],
+        "university": t.singleArray[t.singleIndex].id,
         "phone": t.phone,
         "email": "",
         "grade": t.gradeArray[t.gradeIndex].id,
         "authStatus": "UNCOMMITED",
         "Gender": t.ismale ? "MALE" : "FEMALE",
         "subjects": {
-          "create": [
-            {
-              "name": "CHINESE",
-              "level": {
-                "set": [
-                  "MID_1",
-                  "PRI_1"
-                ]
-              }
-            }
-          ]
+          "create": subjects,
         },
         "avalible": {
-          "create": t.timeList
+          "create": t.timeList,
         },
         "invitations": {},
         "order": {}
@@ -308,7 +314,6 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res.request.data);
         if (res.statusCode == 200) {
           wx.navigateTo({
             url: '/pages/teacher/info/done/done',

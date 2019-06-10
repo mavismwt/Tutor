@@ -263,7 +263,6 @@ Page({
       },
       method: 'POST',
       success: function(res) {
-        console.log(res.request.data);
         if (res.statusCode == 200) {
           wx.navigateTo({
             url: '/pages/teacher/info/done/done',
