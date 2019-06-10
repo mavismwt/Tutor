@@ -30,6 +30,7 @@ App({
               const auth = res.header.Authorization;
               const id = res.data.id;
               const token = that.getToken(auth);
+              console.log('Bearer '+token);
               that.globalData.token = token; 
               that.globalData.id = id; 
               wx.hideLoading();

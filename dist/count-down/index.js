@@ -39,7 +39,7 @@ Component({
         init() {
             const self = this;
             setTimeout(function () {
-                self.getLastTime.call(self);
+              self.getLastTime.call(self);
             }, 1000);
         },
         getLastTime() {
@@ -64,6 +64,9 @@ Component({
                 if (!data.clearTimer) this.init.call(this);
             } else {
                 this.endfn();
+              wx.navigateTo({
+                url: '/pages/message/help/done/done',
+              })
             }
 
             if (data.showDay) {

@@ -13,7 +13,7 @@ Page({
   },
 
   cancel: function (e) {
-    console.log("back")
+
     wx.navigateBack()
   },
 
@@ -41,7 +41,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      targetTime: new Date().getTime() + 300000
+    })
   },
 
   /**
@@ -55,7 +57,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.setData({
+      targetTime: new Date().getTime() + 3000000
+    })
   },
 
   /**
@@ -79,3 +83,22 @@ Page({
 
   }
 })
+function countDown(that, count) {
+  if (count == 0) {
+    that.setData({
+      timeCountDownTop: '获取验证码',
+      counting: false
+    })
+    return;
+  }
+
+  that.setData({
+    counting: true,
+    timeCountDownTop: count + '秒后重新获取',
+  })
+
+  setTimeout(function () {
+    count--;
+    countDown(that, count);
+  }, 1000);
+}
