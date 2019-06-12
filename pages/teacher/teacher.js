@@ -2,9 +2,9 @@
 //获取应用实例
 const app = getApp();
 var select = 'object';
-var filter = false ;
+var filter = false;
 var isHidden = true;
-let objectArray = [{object: '语文',isSelected: false},{object: '数学',isSelected: false},{object: '英语',isSelected: false},{object: '物理',isSelected: false},{object: '化学',isSelected: false},{object: '生物',isSelected: false},{object: '政治',isSelected: false},{object: '历史',isSelected: false},{object: '地理',isSelected: false},{object: '其他',isSelected: false}];
+let objectArray = [{ object: '语文', isSelected: false }, { object: '数学', isSelected: false }, { object: '英语', isSelected: false }, { object: '物理', isSelected: false }, { object: '化学', isSelected: false }, { object: '生物', isSelected: false }, { object: '政治', isSelected: false }, { object: '历史', isSelected: false }, { object: '地理', isSelected: false }, { object: '其他', isSelected: false }];
 let gardeArray = [{ object: '小学', isSelected: false }, { object: '初中', isSelected: false }, { object: '高中', isSelected: false }, { object: '其他', isSelected: false }];
 let sexArray = [{ object: '男', isSelected: false }, { object: '女', isSelected: false }, { object: '不限', isSelected: false }];
 let schoolArray = [{ object: '华中科技大学', isSelected: false }, { object: '武汉大学', isSelected: false }, { object: '不限', isSelected: false }];
@@ -12,15 +12,15 @@ Page({
   /**
    * 页面的初始数据
    */
-  
+
   data: {
     selected: false,
     isHidden: isHidden,
     itemSelect: [{
       title: '科目',
       selected: false,
-      type:'object'
-    }, 
+      type: 'object'
+    },
     {
       title: '年级',
       selected: false,
@@ -46,16 +46,16 @@ Page({
       object: '数学，英语',
       time: '周一下午'
     },
-      {
-        name: '陈老师',
-        img: '/images/touxiang/t2.png',
-        sex: 'male',
-        school: '华中科技大学',
-        grade: '高三',
-        price: '100',
-        object: '物理',
-        time: '周三晚上'
-      }],
+    {
+      name: '陈老师',
+      img: '/images/touxiang/t2.png',
+      sex: 'male',
+      school: '华中科技大学',
+      grade: '高三',
+      price: '100',
+      object: '物理',
+      time: '周三晚上'
+    }],
     selectArray: [{
       object: '',
       isSelected: false
@@ -88,7 +88,7 @@ Page({
     })
   },
 
-  select: function(e) {
+  select: function (e) {
     let index = e.currentTarget.dataset['index']
     let status = !e.currentTarget.dataset['status']
     let urlStr = 'selectArray[' + index + '].isSelected'
@@ -103,7 +103,7 @@ Page({
   onReady: function (e) {
     this.teacherList = this.selectComponent("#teacherList");
   },
-  navToDetail: function(e) {
+  navToDetail: function (e) {
     wx.navigateTo({
       url: 'detail/detail',
     })
@@ -118,7 +118,7 @@ Page({
     let type = e.currentTarget.dataset['type'];
     isHidden = !isHidden
     switch (type) {
-      case 'object': 
+      case 'object':
         this.setData({
           selectArray: objectArray
         })
@@ -230,7 +230,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**

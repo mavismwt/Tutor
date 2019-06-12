@@ -11,19 +11,7 @@ Page({
   data: {
     current: 0,
     isInfo: true,
-    studentInfo:{
-      id: 0,
-      name: '李同学',
-      img: '/images/touxiang/s1.png',
-      sex: 'male',
-      price: '80',
-      grade: '高二',
-      object: '数学',
-      time: '周六晚上',
-      location: 'XXXX小区XX单元XX楼XXX室',
-      sexDeamand: '不限',
-      isLongTerm: true
-    },
+    studentInfo: null,
     teacherInfo: {
       name: '叶老师',
       img: '/images/touxiang/t1.png',
@@ -107,11 +95,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const that = this;
     identity = app.globalData.identity;
+    var info = {};//app.globalData.info;
     console.log(this.data.identity)
     this.setData({
-      identity: identity
+      identity: identity,
+      //studentInfo: info
     }) 
+    wx.getStorage({
+      key: 'info222',
+      success: function(res) {
+        info = res.data
+        that.setData({
+          studentInfo: info
+        })
+      },
+    })
   },
 
   /**

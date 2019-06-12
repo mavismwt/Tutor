@@ -30,13 +30,13 @@ Page({
           case 'teacher':
             main = 'student';
             wx.reLaunch({
-              url: '/pages/' + main + '/' + main,
+              url: '/pages/student/student',
             })
             break;
           default:
             break;
         }
-        
+
       },
       fail() {
         wx.reLaunch({

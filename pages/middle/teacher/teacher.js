@@ -11,39 +11,6 @@ var multiIndex = [[0, 0]];
 var date = util.formatDate(new Date());
 var dates = [date];
 var type = '';
-var datarrr = {
-  "openid": "12333333333",
-  "name": "xn",
-  "university": "HUST",
-  "phone": "15623337359",
-  "email": "xn@MediaList.com",
-  "grade": "UNI_1",
-  "authStatus": "UNCOMMITED",
-  "Gender": "MALE",
-  "subjects": {
-    "create": [
-      {
-        "name": "CHINESE",
-        "level": {
-          "set": [
-            "MID_1",
-            "PRI_1"
-          ]
-        }
-      }
-    ]
-  },
-  "avalible": {
-    "create": [
-      {
-        "day": "SUN",
-        "detail": "MORN"
-      }
-    ]
-  },
-  "invitations": {},
-  "order": {}
-};
 Page({
 
   /**

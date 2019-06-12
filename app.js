@@ -117,6 +117,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    info: null,
     identity: 'student',
     token: '',
     id:'',

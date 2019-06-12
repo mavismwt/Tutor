@@ -34,7 +34,8 @@ Page({
     ismale: ismale,
     object: [],
     objectID: [],
-    timeList:[],
+    timeList:[{"day":"MON","deatil":"MORN"}],
+    timeListStr: ["周一上午"],
     sexRoc: [{"title": '男',check: check1,},{"title": '女',check: check2,},{"title": '不限',check: check3,}],
     checks: checks,
     index: 0,
@@ -171,6 +172,25 @@ Page({
   },
 
   complete: function (e) {
+    const t = this.data
+    const studentInfo = {
+      id: 0,
+      name: t.name ,
+      img: '/images/touxiang/s1.png',
+      sex: t.ismale ? "male" : "female",
+      price: t.price,
+      grade: t.singleArray[t.index].text,
+      object: t.object,
+      time: t.timeListStr,
+      location: t.address,
+      sexDeamand: t.teacherGender,
+      isLongTerm: !t.switch1
+    };
+    app.globalData.info = studentInfo;
+    wx.setStorage({
+      key: 'info222',
+      data: studentInfo
+    })
     wx.navigateTo({
       url: '/pages/teacher/info/done/done',
     })
@@ -313,14 +333,47 @@ Page({
     const t = this.data
     var i = 0
     var timeList = []
+    var timeListStr = []
+    var day = ''
     for (i = 0; i < t.multiIndex.length;i++) {
+      switch (t.multiArray[0][multiIndex[i][0]].id) {
+        case 'MON':
+          day = '周一';
+          break;
+        case 'TUE':
+          day = '周二';
+          break;
+        case 'WED':
+          day = '周三';
+          break;
+        case 'THU':
+          day = '周四';
+          break;
+        case 'FRI':
+          day = '周五';
+          break;
+        case 'SAT':
+          day = '周六';
+          break;
+        case 'SUN':
+          day = '周日';
+          break;
+        default:
+          break;
+
+      }
+      timeListStr.push(
+        day + t.multiArray[1][multiIndex[i][1]].name
+      )
+      console.log(timeListStr)
       timeList.push({
         "day": t.multiArray[0][multiIndex[i][0]].id,
         "detail": t.multiArray[1][multiIndex[i][1]].id
       })
     }
     this.setData({
-      timeList: timeList
+      timeList: timeList,
+      timeListStr: timeListStr
     })
   },
 
