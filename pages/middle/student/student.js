@@ -376,7 +376,18 @@ Page({
       timeListStr: timeListStr
     })
   },
-
+  getLocation: function(e) {
+    var location = ""
+    wx.chooseLocation({
+      success: function(res) {
+        console.log(res.name)
+        location = res.name
+      },
+    })
+    this.setData({
+      address: location
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

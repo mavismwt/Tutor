@@ -77,8 +77,11 @@
         <i-switch value="{{switch2}}" bind:change="onChange2" style='position:relative;margin-left:10px'></i-switch>
       </i-cell>
       <i-input value="{{phone}}" type="number" title="手机号码" maxlength="11" placeholder="与心仪老师对接后才公布" data-name='phone'  bindblur='inputedit'/>
-      <i-input value="{{address}}" type="textarea" title="地址" placeholder="无需具体至门牌号" maxlength="50" data-name='address'  bindblur='inputedit'/>
-      
+      <i-cell title="地址">
+      <input style='diaplay:flex;margin-left:42px;width:65vw;' value='{{address}}' placeholder='无需具体至门牌号'></input>
+      <image src='/images/icon/icon_location.png' style='postion:fixed;right:10px;width:30px;height:30px;' bindtap='getLocation'></image>
+      </i-cell>
+      <!-- <i-input value="{{address}}" type="textarea" title="地址" placeholder="无需具体至门牌号" maxlength="50" data-name='address'  bindblur='inputedit'/> -->
       <i-cell title="提供薪酬">
           <input class='detail2' type='number' value='{{price}}' data-name='price'  bindblur='inputedit2'></input>
           <text class='course'>元/小时</text>

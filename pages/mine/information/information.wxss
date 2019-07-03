@@ -11,10 +11,7 @@
   bottom: 0px;
   z-index: 0;
 }
- 
-.swiper-con {
-  padding: 80rpx 0;
-}
+
 .confirm {
   display: flex;
   width: 100vw;

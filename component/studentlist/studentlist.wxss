@@ -9,6 +9,12 @@
   background-color: white;
   box-shadow: 2px 2px 4px 0px rgba(21, 85, 83, 0.1);
 }
+.tag {
+  width: 90px;
+  height: 40px;
+  margin-left: -10px;
+  margin-top: 5px; 
+}
 .img {
    width:80px;
    height: 80px;
@@ -18,7 +24,6 @@
 .list-left{
   flex:0 0 100px;
   width: 100px;
-  align-items: center;
 }
 .list-right{
   flex-direction: column;

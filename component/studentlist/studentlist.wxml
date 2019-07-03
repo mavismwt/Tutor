@@ -1,10 +1,13 @@
 <!--component/studentlist/long/long.wxml-->
 <view class='list-group'>
   <view class='list-left'>
-    <image src='{{img}}' class='img' mode="widthFix"></image>
-    <view class='basic-info'>
-      <view class='name'>{{name}}</view>
-      <image src='/images/icon/icon_{{sex}}.png' class='sex' mode='widthFix'></image>
+    <image src='/images/short.png' class='tag' mode="widthFix" hidden='{{isLongTerm}}'></image>
+    <view style='align-items: center;'>
+      <image src='{{img}}' class='img' mode="widthFix"></image>
+      <view class='basic-info'>
+        <view class='name'>{{name}}</view>
+        <image src='/images/icon/icon_{{sex}}.png' class='sex' mode='widthFix'></image>
+      </view>
     </view>
   </view>
   <view class='list-right'>
