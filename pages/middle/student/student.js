@@ -10,6 +10,7 @@ var isSelectHidden = true;
 var multiIndex = [[0, 0]];
 var date = util.formatDate(new Date());
 var dates = [date];
+var location = "";
 const id = getApp().globalData.id;
 Page({
 
@@ -376,16 +377,18 @@ Page({
       timeListStr: timeListStr
     })
   },
+  showHelp: function(e) {
+    wx.showModal({
+      title: '',
+      content: '',
+    })
+  },
   getLocation: function(e) {
-    var location = ""
     wx.chooseLocation({
       success: function(res) {
         console.log(res.name)
         location = res.name
       },
-    })
-    this.setData({
-      address: location
     })
   },
   /**
@@ -409,7 +412,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      address: location
+    })
   },
 
   /**
