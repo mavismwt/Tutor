@@ -1,9 +1,9 @@
 /* component/select/select.wxss */
 .select_box{
-  width:100px;
-  height:20px;
-  border-radius: 14rpx;
-  position: relative;
+  width: 100px;
+  height: 28px;
+  border-radius: 5px;
+  margin-top: -3px; 
 }
 .select_box .select{
   box-sizing: border-box;

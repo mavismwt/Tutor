@@ -29,6 +29,13 @@ Component({
     // 点击下拉列表
     optionTap(e) {
       let Index = e.currentTarget.dataset.index;//获取点击的下拉列表的下标
+      if (Index == 1) {
+        wx.showModal({
+          title: '取消发布成功',
+          content: '您的资料将不在广场展示，他人无法主动向您发送申请。重新展示请再次发布。',
+          showCancel: false,
+        })
+      }
       this.setData({
         index: Index,
         selectShow: !this.data.selectShow

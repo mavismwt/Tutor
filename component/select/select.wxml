@@ -1,5 +1,5 @@
 <!--component/select/select.wxml-->
-<view class='select_box'>
+<view class='select_box' style="background-color:{{index==1?'#a9a9a9':'#3cdede'}};">
     <view class='select' catchtap='selectTap'>
         <text class='select_text'>{{selectData[index]}}</text>
         <image class='select_img {{selectShow&&"select_img_rotate"}}' src='../../images/sanjiao-white.png'  background-size="contain"></image> 
