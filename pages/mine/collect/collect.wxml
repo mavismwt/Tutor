@@ -1,6 +1,6 @@
 <!--pages/mine/collect/collect.wxml-->
 <view>
-  <navigationBar id="navigationBar" title=""back="true"></navigationBar> 
+  <navigationBar id="navigationBar" title="我的收藏" back="true"></navigationBar> 
   <view class='container'>
   <view style="margin-top:5px;">
       <studentList id="studentList"  wx:for="{{studentArray}}" wx:key="unique" wx:if="{{identity=='teacher'}}"

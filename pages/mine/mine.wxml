@@ -5,7 +5,7 @@
       <image class='profile' src="{{userInfo.avatarUrl}}"></image>
       <view class='basic-info'>
         <text class='nickname'>{{userInfo.nickName}}</text>
-        <view class='auth'>未认证</view>
+        <view class='auth' style="background-color:{{isAuthed?'#09BB07':'#3b9795'}}">{{isAuthed?'已认证':'未认证'}}</view>
       </view>
     </view>
     <i-panel class="cell-panel-demo" wx:for="{{listArray}}">

@@ -1,5 +1,6 @@
 // pages/mine/mine.js
 const app = getApp();
+var isAuthed = true;
 Page({
   /**
    * 页面的初始数据
@@ -7,6 +8,7 @@ Page({
   data: {
     userInfo:{},
     isIPX: app.globalData.isIPX,
+    isAuthed: isAuthed,
     listArray: [[
       {
         title: '我的认证',
@@ -80,14 +82,7 @@ Page({
   onLoad: function (options) {
     app.editTabbar();
     wx.hideTabBar();
-    // wx.getUserInfo({
-    //   success: res => {
-    //     app.globalData.userInfo = res.userInfo
-        this.setData({
-          userInfo: app.globalData.userInfo
-        })
-    //   }
-    // })
+    
   },
 
   /**
@@ -95,13 +90,48 @@ Page({
    */
   onReady: function () {
     this.settingList = this.selectComponent("#settingList");
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.getUserInfo({
+      success: res => {
+        app.globalData.userInfo = res.userInfo
+        this.setData({
+          userInfo: app.globalData.userInfo
+        })
+        wx.hideLoading();
+      }
+    })
+    wx.getStorage({
+      key: 'isAuthed',
+      success: function (res) {
+        isAuthed = (res.data == 1) ? true : false
+      },
+      fail: function (res) {
+        isAuthed = false
+      }
+    })
+    this.setData({
+      isAuthed: isAuthed,
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    wx.getStorage({
+      key: 'isAuthed',
+      success: function (res) {
+        isAuthed = (res.data == 1) ? true : false
+      },
+      fail: function (res) {
+        isAuthed = false
+      }
+    })
+    this.setData({
+      isAuthed: isAuthed,
+    })
   },
 
   /**

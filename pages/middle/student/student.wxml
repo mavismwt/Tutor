@@ -95,7 +95,7 @@
     <i-panel class="cell-panel" title="以下信息非必填项，但填写有助于您更大几率找到心仪的老师">
        <infoList id="settingList" wx:key="unique" 
       title="孩子学习情况"
-      icon="/images/icon/icon_add.png"
+      icon="/images/icon/icon_learning_situation.png"
       detail="需增强知识点、科目，孩子性格等" 
       value="{{studentStatus}}"
       canEdit="true"
@@ -104,7 +104,7 @@
       </infoList>
       <infoList id="settingList" wx:key="unique" 
       title="教师要求"
-      icon="/images/icon/icon_add.png"
+      icon="/images/icon/icon_requirement.png"
       detail="学校、家教经验、擅长科目等"
       value="{{teacherRequire}}"
       canEdit="true"

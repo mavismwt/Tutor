@@ -2,11 +2,17 @@
 <navigationBar id="navigationBar" title="填写资料" back="true"></navigationBar>
   <view class="container {{isIPX?'IPX':''}}" wx:if='{{isSelectHidden}}'>
     <i-panel class="cell-panel" title="以下信息为必填项">
-      <i-input value="{{name}}" maxlength='5' title="真实姓名" placeholder="我们将只公开您的姓氏" data-name='name'  bindblur='inputedit' />
-      <i-cell  title="性别" >
-        <radio value="{{value}}" checked="{{ismale}}"  disabled="{{disabled}}" style='position:relative;margin-left:45px;' bindtap='radioChange'>男</radio>
-        <radio value="{{value}}" checked="{{!ismale}}"  disabled="{{disabled}}" style='position:relative;margin-left:10px' bindtap='radioChange'>女</radio>
-      </i-cell>
+      <view style='display:flex;flex-direction:row;padding:5px;'>
+        <image src='/images/bg_add.png' style='width:80px;height:80px;'></image>
+        <view style='display:flex;flex-direction:column;'>
+          <i-input value="{{name}}" maxlength='5' title="真实姓名"  placeholder="我们将只公开您的姓氏" data-name='name' bindblur='inputedit'/>
+          <view style='display:flex;flex-direction:row;font-size:17px;margin-left:16px;'>
+            <view style='display:inline-block;width:68px;font-size:17px;'>性别</view>
+            <radio value="{{value}}" checked="{{ismale}}"  disabled="{{disabled}}" style='position:relative;margin-left:10px' bindtap='radioChange'>男</radio>
+            <radio value="{{value}}" checked="{{!ismale}}"  disabled="{{disabled}}" style='position:relative;margin-left:10px' bindtap='radioChange'>女</radio>
+          </view>
+        </view>
+      </view>
       <i-cell  title="学校">
        <picker class='select-button' style='margin-left:45px;' bindchange="bindPickerChange" value="{{index}}" range="{{singleArray}}" range-key='text'> 
        <text style='display: inline-block;width: 156px;font-size: 16px;color: #84878f;text-align:center;'>{{singleArray[singleIndex].text}}</text>
@@ -72,25 +78,25 @@
     <i-panel class="cell-panel" title="以下信息非必填项，但填写有助于您更大几率找到心仪的学生">
        <infoList id="settingList" wx:key="unique" 
       title="学科成绩"
-      icon="/images/icon/icon_add.png"
+      icon="/images/icon/icon_academic_record.png"
       detail="中高考分数/中学排名/获奖经历" 
       canEdit="true">
       </infoList>
       <infoList id="settingList" wx:key="unique" 
       title="自我介绍"
-      icon="/images/icon/icon_add.png"
+      icon="/images/icon/icon_self_introduction.png"
       detail="个人兴趣/特长爱好/性格特征等"
       canEdit="true" >
       </infoList>
       <infoList id="settingList" wx:key="unique" 
       title="家教经历"
-      icon="/images/icon/icon_add.png"
+      icon="/images/icon/icon_experience.png"
       detail="  "
       canEdit="true" >
       </infoList>
       <infoList id="settingList" wx:key="unique" 
       title="获奖经历"
-      icon="/images/icon/icon_add.png"
+      icon="/images/icon/icon_picture.png"
       detail="  "
       canEdit="true" >
       </infoList>
