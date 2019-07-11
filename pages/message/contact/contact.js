@@ -1,38 +1,48 @@
-// pages/message/info/info.js
-const app = getApp();
+// pages/message/contact/contact.js
+var contactNum = 2;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    time:'',
-    address:'',
-    phone:'',
-    other:''
+    contactInfo: [{
+      contactIndex: 1,
+      name: '',
+      number: '',
+      advice: '建议填写学校内的亲近好友'
+    },
+    {
+      contactIndex: 2,
+      name: '',
+      number: '',
+      advice: '建议填写父母或辅导员联系方式'
+    }],
+    contactNum: contactNum
   },
-  submit: function(e) {
-    var t = this.data
-    wx.showModal({
-      title: '试教信息确认',
-      content: '试教时间 '+t.time+'\n详细地址 '+t.address+'\n联系方式 '+t.phone+'\n其他注意事项 '+t.other,
-      success: function(res) {
-        if (res.confirm) {
-          getApp().globalData.statusCode = 1
-          wx.navigateBack()
-        } else if (res.cancel) {
 
+  addContact: function () {
+    contactInfo = this.data.contactInfo;
+    contactNum += 1;
+    contactInfo.push({ contactIndex: contactNum, name: '', number: '', advice: '' })
+    console.log(contactInfo)
+    this.setData({
+      contactInfo: contactInfo
+    })
+  },
+  saveInfo: function () {
+    wx.showModal({
+      title: '保存成功',
+      content: '已保存安全防护信息',
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '/pages/message/agreement/agreement',
+          })
         }
       }
     })
-  },
-
-  inputedit: function (e) {
-    const name = e.currentTarget.dataset.name
-    this.setData({
-      [name]: e.detail.detail.value
-    })
-    console.log(e.currentTarget.dataset.name);
   },
 
   /**
@@ -46,6 +56,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.toplistcell = this.selectComponent("#toplistcell");
     this.definedButton = this.selectComponent("#definedButton");
   },
 

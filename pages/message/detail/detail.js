@@ -154,7 +154,7 @@ Page({
   },
   gotoProcess: function(e) {
     wx.navigateBack()
-    getApp().globalData.statusCode = 4
+    getApp().globalData.statusCode = 3
   },
   goToAlert: function(e) {
     wx.navigateTo({
@@ -204,8 +204,6 @@ Page({
     var now = new Date();
     const h = now.getHours()
     const m = now.getMinutes()
-    console.log([h, m]) 
-    console.log([ht, mt]) 
     if (ht>h) {
       this.setData({
         time: alert

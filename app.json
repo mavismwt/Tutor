@@ -29,7 +29,9 @@
     "pages/message/send/send",
     "pages/message/alert/alert",
     "pages/message/help/help",
-    "pages/message/help/done/done"
+    "pages/message/help/done/done",
+    "pages/message/contact/contact",
+    "pages/message/agreement/agreement"
   ],
   "window": {
     "navigationStyle": "custom",

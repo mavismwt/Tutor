@@ -1,0 +1,28 @@
+<!--pages/message/agreement/agreement.wxml-->
+<view>
+  <navigationBar id="navigationBar" title="安全须知" back="true"></navigationBar> 
+  <view class="container {{IPX?'IPX':''}}" >
+    <i-panel style='margin-top:10px;'>
+      <infoList id="settingList" wx:key="unique" 
+      title="安全小贴士"
+      icon="/images/icon/icon_character.png"
+      detail="为了您的安全，请务必填写真实安全信息。" 
+      value=""
+      canEdit="false">
+      </infoList>
+    </i-panel>
+    <i-panel style='margin-top:10px;'>
+      <infoList id="settingList" wx:key="unique" 
+      title="安全协议"
+      icon="/images/icon/icon_learning_situation.png"
+      detail="" 
+      value=""
+      canEdit="false">
+      </infoList>
+    </i-panel>
+    <text style='font-size:14px;color:#7a7a7a;margin-top:20px;'>我已阅读并同意求教有道安全协议</text>
+    <view class='confirm'>
+      <definedButton title="完成" style='display:flex;margin-left:30%;margin-bottom:20px;' bindtap='goToDetail'></definedButton>
+    </view>
+  </view>
+</view>

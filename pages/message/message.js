@@ -33,15 +33,7 @@ Page({
     },
     {
       id: 4,
-      detail: '打款处理中\n3个工作日内打款至账户',
-      confirmButton: '查看详情',
-      cancelButton: '联系客服',
-      url: '/pages/mine/money/money',
-      noticeInfo: ''
-    },
-    {
-      id: 4,
-      detail: '打款处理中\n3个工作日内打款至账户',
+      detail: '钱款到账中',
       confirmButton: '查看详情',
       cancelButton: '联系客服',
       url: '/pages/mine/money/money',

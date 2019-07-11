@@ -1,0 +1,25 @@
+<!--pages/message/contact/contact.wxml-->
+<view>
+  <navigationBar id="navigationBar" title="确认安全信息" back="true"></navigationBar> 
+  <view class="container {{IPX?'IPX':''}}" >
+      <view style='position:relative;margin:55px 15px 15px 15px;padding:5px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;'>
+        <toplistcell title="个人详细信息" image='/images/icon/icon_personal.png'></toplistcell>
+          <i-input title='专业班级' placeholder='如：计算机1602'></i-input>
+          <i-input title='详细住址' placeholder='如：韵苑1栋101'></i-input>
+      </view>
+      <view style='position:relative;margin:15px;padding:5px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;'>
+        <toplistcell title="紧急联系人" image='/images/icon/icon_emergency.png'></toplistcell>
+        <i-panel title='紧急联系人{{item.contactIndex}}' wx:for='{{contactInfo}}' wx:key='unique'>
+          <i-input title='姓名' value='{{item.name}}' placeholder='{{item.advice}}'></i-input>
+          <i-input title='电话' value='{{item.number}}' type='number' maxlength='11' ></i-input>
+        </i-panel>
+        <view style='display:flex;height:60px;align-items:center;'>
+          <image src='/images/icon/icon_add.png' style='width:32px;height:32px;margin-left:88%;' bindtap='addContact'></image>
+        </view>
+      </view>
+      <view class='confirm'>
+        <definedButton title="保存" style='display:flex;margin-left:30%;margin-bottom:20px;' bindtap='saveInfo'></definedButton>
+      </view>
+      <cover-view style='position:fixed;width:100vw;padding:10px;background-color:#ffff99;font-size:14px;border: 1px soild #e5e5e5;'>上门家教存在风险，请您务必填写安全信息</cover-view>
+  </view>
+</view>

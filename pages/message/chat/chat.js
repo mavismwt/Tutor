@@ -18,7 +18,7 @@ const teacherStatus = [{
   detail: '待确认试教',
   confirmButton: '确认试教',
   cancelButton: '取消试教',
-  url: '/pages/message/detail/detail',
+  url: '/pages/message/contact/contact',
   noticeInfo: '您已确认试教成功，请在也约定好的时间前往试教，请注意人身安全'
 },
 {
@@ -30,7 +30,7 @@ const teacherStatus = [{
 },
 {
   id: 4,
-  detail: '打款处理中\n3个工作日内打款至账户',
+  detail: '钱款到账中 3个工作日内打款至账户',
   confirmButton: '查看详情',
   cancelButton: '联系客服',
   url: '/pages/mine/money/money',
@@ -57,7 +57,7 @@ const studentStatus = [{
     detail: '试教中',
     confirmButton: '已试教',
     cancelButton: '联系客服',
-    noticeInfo:''
+    noticeInfo:'已完成试教'
   },
   {
     id: 4,
@@ -117,44 +117,99 @@ Page({
     })
   },
 
-  gotoProcess: function() {
-    if (index < this.data.objectStatus.length-1) {
-      index += 1
-      getApp().globalData.statusCode += 1
-      this.setData({
-        index: index
-      })
-    }
+  gotoProcess: function(e) {
     const time = util.formatTime(new Date());
-    const current = this.data.index -1;
-    const urlindex = this.data.index;
-    notice.push({time: time, detail: this.data.objectStatus[current].noticeInfo})
-    this.setData({
-      notice: notice
-    })
-    console.log(current+'  '+this.data.objectStatus[urlindex].url)
-    if (this.data.objectStatus[current].url) {
-      wx.redirectTo({
-        url: this.data.objectStatus[current].url,
+    var current = e.currentTarget.dataset['index']
+    if (current < this.data.objectStatus.length) {
+      const operation = e.currentTarget.dataset['operation']
+      switch (operation) {
+        case '去填写':
+          wx.redirectTo({
+            url: this.data.objectStatus[current].url,
+          })
+          notice.push({ time: time, detail: this.data.objectStatus[current].noticeInfo })
+          this.setData({
+            notice: notice
+          })
+          current += 1;
+          break;
+        case '确认试教':
+          wx.redirectTo({
+            url: this.data.objectStatus[current].url,
+          })
+          current += 1;
+          break;
+        case '查看详情':
+          wx.redirectTo({
+            url: this.data.objectStatus[current].url,
+          })
+          break;
+        default:
+          notice.push({ time: time, detail: this.data.objectStatus[current].noticeInfo })
+          this.setData({
+            notice: notice
+          })
+          current += 1;
+        break;
+      }
+      this.setData({
+        index: current
       })
+      getApp().globalData.statusCode = current
     }
+    // if (index < this.data.objectStatus.length-1) {
+    //   index += 1
+    //   getApp().globalData.statusCode += 1
+    //   this.setData({
+    //     index: index
+    //   })
+    // }
+    // 
+    // const current = this.data.index -1;
+    // const urlindex = this.data.index;
+    // notice.push({time: time, detail: this.data.objectStatus[current].noticeInfo})
+    // this.setData({
+    //   notice: notice
+    // })
+    // console.log(current+'  '+this.data.objectStatus[urlindex].url)
+    // if (this.data.objectStatus[current].url) {
+    //   wx.redirectTo({
+    //     url: this.data.objectStatus[current].url,
+    //   })
+    // }
   },
 
-  cancel: function() {
-    notice = [],
-    index = 0,
-    wx.showModal({
-      title: '取消试教',
-      content: '取消后将无法再次沟通，\n且无法获得报酬',
-      success: function(res) {
-        if (res.confirm) {
-          wx.navigateBack()
-          getApp().globalData.statusCode = 0
-        } else if (res.cancel) {
-          
-        }
-      },
-    })
+  cancel: function(e) {
+    const current = e.currentTarget.dataset['index']
+    if (current < this.data.objectStatus.length) {
+      const operation = e.currentTarget.dataset['operation']
+      switch (operation) {
+        case '联系客服': 
+          wx.showModal({
+            title: '联系客服',
+            content: '如您在试教过程中遇到问题，请您在工作时间拨打客服电话（15257370253），我们将尽快解决您的问题。',
+            showCancel: false,
+          })
+          break;
+        default:
+          notice = [],
+          index = 0,
+          wx.showModal({
+            title: '取消试教',
+            content: '取消试教后将无法再次与对方沟通，也无法获得相应的报酬。',
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateBack()
+                getApp().globalData.statusCode = 0
+              } else if (res.cancel) {
+
+              }
+            },
+          })
+          break;
+      }
+    }
+    
   },
 
   /**
@@ -203,6 +258,9 @@ Page({
     console.log(index)
     this.setData({
       index:index
+    })
+    this.setData({
+      notice: notice
     })
   },
 

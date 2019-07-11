@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "toplistcell": "/component/applylist/applylist",
+    "definedButton": "/component/definedButton/button"
+  }
+}
