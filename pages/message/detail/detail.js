@@ -1,6 +1,7 @@
 // pages/message/detail/detail.js
 const app = getApp();
 var identity = app.globalData.identity; 
+var time = '';
 const info = {
   school: '光谷四小',
   grade: '五年级',
@@ -11,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    time: '',
     info: {
       school: '光谷四小',
       grade: '五年级',
@@ -164,6 +166,12 @@ Page({
       url: '../help/help',
     })
   },
+  getNowTime: function () {
+    var now = new Date();
+    const h = now.getHours()
+    const m = now.getMinutes()
+    return [h, m].map().join(':')
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -189,7 +197,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const that = this;
+    const alert = wx.getStorageSync('alert');
+    const ht = parseInt(alert.substring(0,2));
+    const mt = parseInt(alert.substring(3,5));
+    var now = new Date();
+    const h = now.getHours()
+    const m = now.getMinutes()
+    console.log([h, m]) 
+    console.log([ht, mt]) 
+    if (ht>h) {
+      this.setData({
+        time: alert
+      })
+    } else if (ht==h && mt>m) {
+      this.setData({
+        time: alert
+      })
+    }
+    
   },
 
   /**

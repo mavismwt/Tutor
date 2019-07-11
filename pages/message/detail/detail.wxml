@@ -28,12 +28,14 @@
     </view>
     <view  style="color: #101010;margin: 5px 0px;padding: 0px 10px 10px 10px;font-size:16px"  bindtap='gotoProcess'>等待家长确认，试教完成48小时内家长未确认平台将自动打钱</view>
   </view>
-  <view style='position:fixed;top:320px;left:0px;right:0px;height:115px;margin:10px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;'>
+  <view style='position:fixed;top:320px;left:0px;right:0px;height:50vw;;margin:10px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;'>
   <text style='color: #000000;margin:15px;margin-top:20px;font-size:14px'>安全助手</text>
-  <view style='display:flex;flex-direction:row;margin-top:10px;'>
-  <button class='button' style='background-color:#00af00;' bindtap='goToAlert'>定时报警</button>
-  <button class='button' style='background-color:#e8423a;' bindtap='goToHelp'>一键求救</button>
-  </view>
+    <view style='display:flex;flex-direction:row;margin-top:10px;'>
+      <button class="button {{time==''?'':'alert'}}" style='background-color:#00af00;' bindtap='goToAlert'>
+        <text>{{time==''?'定时报警':time+'\n前确认安全'}}</text>
+      </button>
+      <button class='button' style='background-color:#e8423a;' bindtap='goToHelp'>一键求救</button>
+    </view>
   </view>
   </view>
     </swiper-item>

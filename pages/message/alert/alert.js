@@ -9,6 +9,10 @@ Page({
     time: '12:01',
   },
   confirm: function(e) {
+    wx.setStorage({
+      key: 'alert',
+      data: this.data.time,
+    })
     wx.showModal({
       title: '设置成功',
       content: '要注意自己的安全哦',

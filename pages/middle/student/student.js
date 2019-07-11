@@ -20,6 +20,7 @@ Page({
   data: {
     userInfo: {},
     isIPX: getApp().globalData.isIPX,
+    image:'/images/bg_add.png',
     phone:'',
     name: '',
     address: '',
@@ -50,7 +51,21 @@ Page({
     date: date,
     dates: dates,
   },
-
+  chooseImage: function () {
+    var that = this;
+    // 选择图片
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        that.setData({
+          image: tempFilePaths[0]
+        });
+      }
+    })
+  },
   onChange1: function (e) {
     this.setData({
       switch1: e.detail.value

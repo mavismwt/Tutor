@@ -133,11 +133,6 @@ Page({
       notice: notice
     })
     console.log(current+'  '+this.data.objectStatus[urlindex].url)
-    if (this.data.objectStatus[urlindex].url) {
-      wx.redirectTo({
-        url: this.data.objectStatus[urlindex].url,
-      })
-    }
     if (this.data.objectStatus[current].url) {
       wx.redirectTo({
         url: this.data.objectStatus[current].url,

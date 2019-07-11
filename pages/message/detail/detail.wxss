@@ -113,12 +113,25 @@
 }
 .button {
   width: 40%;
+  height: 36vw;
   color: #fff;
-  font-size: 20px;
+  font-size: 24px;
+  padding-top: 11vw;
+}
+.button.alert {
+  width: 40%;
+  height: 36vw;
+  color: #fff;
+  font-size: 24px;
+  line-height: 30px;
+  padding-top: 8vw;
+  padding-left: 0px;
+  padding-right: 0px; 
 }
 .button::after {
   border: none;
 }
+
 .message{
   position: fixed;
   bottom:0;

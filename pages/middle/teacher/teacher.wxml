@@ -3,7 +3,7 @@
   <view class="container {{isIPX?'IPX':''}}" wx:if='{{isSelectHidden}}'>
     <i-panel class="cell-panel" title="以下信息为必填项">
       <view style='display:flex;flex-direction:row;padding:5px;'>
-        <image src='/images/bg_add.png' style='width:80px;height:80px;'></image>
+        <image src='{{image}}' style='width:80px;height:80px;' bindtap='chooseImage'></image>
         <view style='display:flex;flex-direction:column;'>
           <i-input value="{{name}}" maxlength='5' title="真实姓名"  placeholder="我们将只公开您的姓氏" data-name='name' bindblur='inputedit'/>
           <view style='display:flex;flex-direction:row;font-size:17px;margin-left:16px;'>
