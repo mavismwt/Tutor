@@ -1,7 +1,7 @@
 <view>
 <navigationBar id="navigationBar" title="学生列表"></navigationBar>    
   <view class="container">
-    <view class="selLine" style="position:fixed;top:90px;">
+    <view class="selLine {{isIPX?'IPX':''}}">
       <view class='button' wx:for="{{itemSelect}}">
         <text style="font-size:14px;color:{{item.selected?'#3cdede':'#7f7f7f'}};margin-top:2px;" bindtap='showSelect' data-type='{{item.type}}'>{{item.title}}</text>
         <i-icon size="14" type="enter" i-class="{{ item.selected ? 'i-collapse-item-arrow-selected' : 'i-collapse-item-arrow-unselected' }}"/>

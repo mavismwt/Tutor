@@ -18,6 +18,7 @@ Page({
     listLoading: false, //"上拉加载"的变量，默认false，隐藏
     listLoadingComplete: false,//“没有数据”的变量，默认false，隐藏
     isHidden: isHidden,
+    isIPX: getApp().globalData.isIPX,
     select: select,
     tabbar: {},
     itemSelect: [{

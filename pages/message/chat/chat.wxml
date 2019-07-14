@@ -30,7 +30,7 @@
           <view class="chat-news" wx:if="{{item.self}}"> 
               <view style="text-align: right;padding-right: 20rpx;">
                   <text class="name">{{ item.nickName }}</text>
-                  <text>{{ userInfo.avaterUrl }}</text>
+                  <text>{{userInfo.avaterUrl}}</text>
                   <image class='new_img' src="{{userInfo.avatarUrl}}"></image>
               </view>
               <view class='my_right'>

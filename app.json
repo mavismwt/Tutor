@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/message/chat/chat",
     "pages/blank/blank",
     "pages/blank",
     "pages/index/index",
@@ -28,6 +27,7 @@
     "pages/message/detail/detail",
     "pages/message/send/send",
     "pages/message/alert/alert",
+    "pages/message/chat/chat",
     "pages/message/help/help",
     "pages/message/help/done/done",
     "pages/message/contact/contact",

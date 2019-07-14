@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isIPX: getApp().globalData.isIPX,
   },
 
   teacher: function (e) {

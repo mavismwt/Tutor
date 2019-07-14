@@ -95,6 +95,7 @@ Page({
     process: '待试教',
     index: 0,
     objectStatus:[],
+    userInfo:{},
     newslist: [{
       self: true,
       date: '2019-1-1',
@@ -257,8 +258,13 @@ Page({
       identity: identity,
       index:index
     })
-    const userInfo = wx.getUserInfo()
-    console.log(`userInfo:${userInfo}`)
+   wx.getUserInfo({
+      success:(res)=>{
+        this.setData({
+          userInfo:res.userInfo
+        })
+      }
+    })
     switch (identity) {
       case 'student':
         this.setData({

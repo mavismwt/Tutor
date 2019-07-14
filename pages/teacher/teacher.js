@@ -18,6 +18,7 @@ const timeJSON = { "MORN": "上午", "AFTER": "中午", "EVEN": "晚上" };
 const weekJSON = { "MON": "周一", "TUE": "周二", "WED": "周三","THU":"周四","FRI":"周五","SAT":"周六","SUN":"周日"};
 const sexJSON = {"MALE":"男","FEMALE":"女","BOTH":"不限"}
 const schoolJSON = {"HUST":"华中科技大学","WHU":"武汉大学","OTHER":"其他高校"}
+var list = []
 Page({
   /**
    * 页面的初始数据
@@ -29,6 +30,7 @@ Page({
     listLoading: false, //"上拉加载"的变量，默认false，隐藏
     listLoadingComplete: false,//“没有数据”的变量，默认false，隐藏
     selected: false,
+    isIPX: getApp().globalData.isIPX,
     isHidden: isHidden,
     itemSelect: [{
       title: '科目',
@@ -58,6 +60,7 @@ Page({
   },
 
   confirm: function (e) {
+    const that = this
     let sel = this.data.select
     let selectIndex = 0;
     switch (sel) {
@@ -81,6 +84,7 @@ Page({
       [selStr]: true
     })
     this.getSelectData()
+    console.log(searchData)
     wx.request({
       url: 'https://hd.plus1sec.cn/parent/publishlist/search',
       data: searchData,
@@ -90,6 +94,51 @@ Page({
       method: 'POST',
       success: function (res) {
         console.log(res)
+        var i = 0
+        if (res.statusCode == 200) {
+          list = []
+          for (i = 0; i < res.data.students.length; i++) {
+            console.log(res.data.students[i])
+            const name = res.data.students[i].name.slice(0, 1) + '老师'
+            const sex = res.data.students[i].Gender == 'MALE' ? 'male' : 'female'
+            const price = res.data.students[i].expectPay
+            const school = schoolJSON[`${res.data.students[i].university}`]
+
+            var times = ''
+            var subjects = ''
+            var levels = ''
+
+            const timeList = res.data.students[i].avalible
+            const subjectList = res.data.students[i].subjects
+            const levelList = res.data.students[i].subjects[0].level
+            var j, k, l = 0
+
+            for (j = 0; j < timeList.length; j++) {
+              const day = weekJSON[`${timeList[j].day}`]
+              const detail = timeJSON[`${timeList[j].detail}`]
+              const time = day + detail
+              times = times + ' ' + time
+            }
+            times = times.slice(1, times.length)
+
+            for (k = 0; k < subjectList.length; k++) {
+              const subject = subjectJSON[`${subjectList[k].name}`]
+              subjects = subjects + ' ' + subject
+            }
+            subjects = subjects.slice(1, subjects.length)
+
+            for (l = 0; l < levelList.length; l++) {
+              const level = gradeJSON[`${levelList[l]}`]
+              levels = levels + ' ' + level
+            }
+            levels.slice(1, levels.length)
+            list.push({ id: res.data.students[i].openid, name: name, img: '/images/touxiang/t1.png', sex: sex, school: school, grade: levels, price: price, time: times, object: subjects })
+            console.log(list)
+          }
+          that.setData({
+            list: list
+          })
+        }
       }
     })
   },
@@ -111,27 +160,39 @@ Page({
     var universitySelected = false
     var i, j, k, h = 0
     for (i = 0; i < gradeArray.length; i++) {
-      if (gradeArray[i].isSelected) {
+      if (gradeArray[i].isSelected && !levelSelected) {
+        levels = []
         levels.push(gradeArray[i].id)
         levelSelected = true
+      } else if (gradeArray[i].isSelected) {
+        levels.push(gradeArray[i].id)
       }
     }
     for (i = 0; i < sexArray.length; i++) {
-      if (sexArray[i].isSelected) {
+      if (sexArray[i].isSelected && !genderSelected) {
+        gender = []
         gender.push(sexArray[i].id)
         genderSelected = true
+      } else if (sexArray[i].isSelected) {
+        gender.push(sexArray[i].id)
       }
     }
     for (i = 0; i < objectArray.length; i++) {
-      if (objectArray[i].isSelected) {
+      if (objectArray[i].isSelected && !subjectsSelected ) {
+        subjects = []
         subjects.push(objectArray[i].id)
         subjectsSelected = true
+      } else if (objectArray[i].isSelected) {
+        subjects.push(objectArray[i].id)
       }
     }
     for (i = 0; i < schoolArray.length; i++) {
-      if (schoolArray[i].isSelected) {
+      if (schoolArray[i].isSelected && !universitySelected) {
+        university = []
         university.push(schoolArray[i].id)
         universitySelected = true
+      } else if (schoolArray[i].isSelected) {
+        university.push(schoolArray[i].id)
       }
     }
     searchData.levels = levels
@@ -236,7 +297,6 @@ Page({
   },
 
   loadListOnPage: function (page, refresh) {
-    var list = []
     if (!refresh) {
       list = this.data.list
     }
@@ -248,88 +308,58 @@ Page({
       },
       method: 'GET',
       success: function (res) {
-        var i = 0
         wx.hideLoading()
-        if (res.statusCode == 200) {
-          for (i = 0; i< res.data.data.length; i++) {
-            console.log(res.data.data[i])
-            const name = res.data.data[i].name.slice(0, 1) + '老师'
-            const sex = res.data.data[i].Gender == 'MALE' ? 'male' : 'female'
-            const price = res.data.data[i].expectPay
-            const school = schoolJSON[`${res.data.data[i].university}`]
-
-            var times = ''
-            var subjects = ''
-            var levels = ''
-
-            const timeList = res.data.data[i].avalible
-            const subjectList = res.data.data[i].subjects
-            const levelList = res.data.data[i].subjects[0].level
-            var j,k,l = 0
-
-            for (j = 0; j < timeList.length; j++) {
-              const day = weekJSON[`${timeList[j].day}`]
-              const detail = timeJSON[`${timeList[j].detail}`]
-              const time = day + detail
-              times = times + ' ' + time
-            }
-            times = times.slice(1,times.length)
-            
-            for (k = 0; k < subjectList.length; k++) {
-              const subject = subjectJSON[`${subjectList[k].name}`]
-              subjects = subjects + ' ' + subject
-            }
-            subjects = subjects.slice(1,subjects.length)
-
-            for (l = 0; l < levelList.length; l++) {
-              const level = gradeJSON[`${levelList[l]}`]
-              levels = levels + ' ' + level
-            }
-            levels.slice(1,levels.length)
-
-
-            list.push({ id: res.data.data[i].openid, name: name, img: '/images/touxiang/t1.png', sex: sex, school: school, grade: levels, price: price, time: times, object: subjects})
-            //list.push({ id: res.data.data[i].openid, name: name, img: '/images/touxiang/t1.png', sex: sex, school: school, grade: level, price: price, object: subjects, time: times })
-
-          }
-          that.setData({
-            list:list
-          })
-        }
-
-      //         for (l = 0; l < res.data.data[i].subjects[0].level.length; l++) {
-      //           const onelevel = gradeJSON[`${res.data.data[i].subjects[0].level[l]}`]
-      //           if (l == 0) {
-      //             level = onelevel
-      //           } else {
-      //             level = level + ' ' + onelevel
-      //           }
-      //         }
-      //         list.push({ id: res.data.data[i].openid, name: name, img: '/images/touxiang/t1.png', sex: sex , school: school, grade: level, price: price, object: subjects, time: times })
-      //       }
-      //       that.setData({
-      //         list: list
-      //       })
-      //     } else {
-      //       that.setData({
-      //         listLoading: false,
-      //         listLoadingComplete: true,
-      //       })
-      //     }
-      //   } else {
-      //     wx.showModal({
-      //       title: '加载失败',
-      //       content: '请检查网络及登录状况',
-      //       showCancel: false,
-      //     })
-      //     that.setData({
-      //       listLoading: false,
-      //       listLoadingComplete: false,
-      //     })
-      //   }
+        that.showList(res)
       }
       
     })
+  },
+
+  showList: function(res) {
+    const that = this
+    var i = 0
+    if(res.statusCode == 200) {
+      for (i = 0; i < res.data.data.length; i++) {
+        console.log(res.data.data[i])
+        const name = res.data.data[i].name.slice(0, 1) + '老师'
+        const sex = res.data.data[i].Gender == 'MALE' ? 'male' : 'female'
+        const price = res.data.data[i].expectPay
+        const school = schoolJSON[`${res.data.data[i].university}`]
+
+        var times = ''
+        var subjects = ''
+        var levels = ''
+
+        const timeList = res.data.data[i].avalible
+        const subjectList = res.data.data[i].subjects
+        const levelList = res.data.data[i].subjects[0].level
+        var j, k, l = 0
+
+        for (j = 0; j < timeList.length; j++) {
+          const day = weekJSON[`${timeList[j].day}`]
+          const detail = timeJSON[`${timeList[j].detail}`]
+          const time = day + detail
+          times = times + ' ' + time
+        }
+        times = times.slice(1, times.length)
+
+        for (k = 0; k < subjectList.length; k++) {
+          const subject = subjectJSON[`${subjectList[k].name}`]
+          subjects = subjects + ' ' + subject
+        }
+        subjects = subjects.slice(1, subjects.length)
+
+        for (l = 0; l < levelList.length; l++) {
+          const level = gradeJSON[`${levelList[l]}`]
+          levels = levels + ' ' + level
+        }
+        levels.slice(1, levels.length)
+        list.push({ id: res.data.data[i].openid, name: name, img: '/images/touxiang/t1.png', sex: sex, school: school, grade: levels, price: price, time: times, object: subjects })
+      }
+      that.setData({
+        list: list
+      })
+    }
   },
 
   onPullDownRefresh() {

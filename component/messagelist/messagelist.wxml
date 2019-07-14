@@ -24,7 +24,7 @@
     <text style="display:inline-block;font-size:17px;margin-top:8px;margin-left:0px;padding:5px;">{{price}}元/小时</text>
   </view>
   <view class="view-wrap" style='display:flex;flex-direction:row;height:50px;width:100vw;border-bottom: 1px solid #f5f5f5;'>
-  <text style="display:inline-block;width:80px;height:28px;justify-content:center;text-align:center;font-size:17px;background-color:#3cdede;color:#fff;margin-left:75%;margin-top:11px;border-radius:3px;">{{operate}}</text>
-    
+  <text style="display:inline-block;width:80px;height:28px;justify-content:center;text-align:center;font-size:17px;background-color:#3cdede;color:#fff;margin-left:50vw;margin-top:11px;border-radius:3px;" bindtap='cancel'>{{status[statusCode].cancel}} </text>
+  <text style="display:inline-block;width:80px;height:28px;justify-content:center;text-align:center;font-size:17px;background-color:#a9a9a9;color:#fff;margin-left:10px;margin-top:11px;border-radius:3px;" bindtap='confirm'>{{status[statusCode].confirm}} </text>
   </view>
 </view>

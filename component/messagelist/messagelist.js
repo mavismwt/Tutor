@@ -51,6 +51,10 @@ Component({
     showCountDown: {
       type: Boolean,
       value: false
+    },
+    statusCode: {
+      type: Number,
+      value: 1
     }
     //attrArray: [],
   },
@@ -62,12 +66,37 @@ Component({
     targetTime: new Date().getTime() + 6430000,
     myFormat: ['时', '分', '秒'],
     status: '进行中...',
-    clearTimer: false
+    clearTimer: false,
+    status: [
+      {
+        code: 0,
+        content: '已回绝',
+        confirm: '联系客服',
+        cancel: ''
+      },
+      {
+        code: 1,
+        content: '待接受',
+        confirm: '接收申请',
+        cancel: '拒绝申请'
+      },
+      {
+        code: 2,
+        content: '已接受',
+        confirm: '去试教',
+        cancel: '取消试教'
+      }]
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    confirm: function(e) {
+
+    },
+    cancel: function(e) {
+
+    }
   }
 })
