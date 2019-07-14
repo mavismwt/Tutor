@@ -1,6 +1,7 @@
 // pages/message/chat/chat.js
 const app = getApp();
 var util = require('../../../utils/util.js');
+var msg = ''; 
 var index = 0;
 var notice = [];
 const identity = getApp().globalData.identity;
@@ -96,26 +97,11 @@ Page({
     index: 0,
     objectStatus:[],
     userInfo:{},
-    newslist: [{
-      self: true,
-      date: '2019-1-1',
-      nickName: '🐈',
-      avatarUrl: '',
-      type: 'text',
-      content: 'sakdas'
-    },
-    {
-        self: true,
-        date: '2019-1-1',
-        nickName: '🐈',
-        avatarUrl: '',
-        type: 'text',
-        content: '大sad'
-      }],
+    message: '',
+    newslist: [],
     example: [{
       self: true,
       date: '2019-1-1',
-      nickName: '🐈',
       avatarUrl: '',
       type: 'text',
       content: 'sakdas'
@@ -123,22 +109,44 @@ Page({
     {
       self: true,
       date: '2019-1-1',
-      nickName: '🐈',
       avatarUrl: '',
       type: 'text',
       content: '大sad'
     },
     {
       self: false,
-      date: '2019-1-1',
-      nickName: 'lalal',
+      date: '2019/7/15',
       avatarUrl: '',
       type: 'text',
       content: '大sad'
     }]
   },
+  send: function(e) {
+    
+    const that = this 
+    const list = that.data.newslist
+    list.push({
+      self: true,
+      date: '2019/7/15',
+      avatarUrl: '',
+      type: 'text',
+      content: that.data.message
+    })
+    that.setData({
+      newslist: list
+    })
+  },
+
+  input(e) {
+    console.log(e.detail.value)
+    this.setData({
+      message: e.detail.value
+    }
+    )
+  },
 
   inputFocus(e) {
+    console.log(this.data.message)
     var that = this
     if (e.detail.height) {
       this.setData ({
@@ -149,7 +157,6 @@ Page({
     query.select('#input').boundingClientRect();
     query.exec(function (res) {
       
-      console.log(res)
     })
   },
   inputBlur() {

@@ -8,6 +8,15 @@ const objectArray = [{ object: '语文', id: 'CHINESE', isSelected: false }, { o
 const gradeArray = [{ object: '一年级', id: 'PRI_1', isSelected: false }, { object: '二年级', id: 'PRI_2', isSelected: false }, { object: '三年级', id: 'PRI_3', isSelected: false }, { object: '四年级', id: 'PRI_4', isSelected: false }, { object: '五年级', id: 'PRI_5', isSelected: false }, { object: '六年级', id: 'PRI_6', isSelected: false }, { object: '初一', id: 'MID_1', isSelected: false }, { object: '初二', id: 'MID_2', isSelected: false }, { object: '初三', id: 'MID_3', isSelected: false }, { object: '高一', id: 'MIDHIGH_1', isSelected: false }, { object: '高二', id: 'MIDHIGH_2', isSelected: false }, { object: '高三', id: 'MIDHIGH_3', isSelected: false }]
 const sexArray = [{ object: '男', id: 'MALE', isSelected: false }, { object: '女', id: 'FEMALE', isSelected: false }, { object: '不限', id: 'BOTH',isSelected: false }];
 const typeArray = [{ object: '短期', isSelected: false }, { object: '长期', isSelected: false }, { object: '不限', isSelected: false }];
+
+const subjectJSON = {
+  "CHINESE": "语文", "MATH": "数学", "ENGLISH": "英语", "PHYSICS": "物理", "CHEMISTRY": "化学", "BIOLOGY": "生物", "POLITICS": "政治", "HISTORY": "历史", "GEOGRAPHY": "地理"
+};
+const gradeJSON = { "PRI_1": "一年级", "PRI_2": "二年级", "PRI_3": "三年级", "PRI_4": "四年级", "PRI_5": "五年级", "PRI_6": "六年级", "MID_1": "初一", "MID_2": "初二", "MID_3": "初三", "MIDHIGH_1": "高一", "MIDHIGH_2": "高二", "MIDHIGH_3": "高三" };
+const timeJSON = { "MORN": "上午", "AFTER": "中午", "EVEN": "晚上" };
+const weekJSON = { "MON": "周一", "TUE": "周二", "WED": "周三", "THU": "周四", "FRI": "周五", "SAT": "周六", "SUN": "周日" };
+const sexJSON = { "MALE": "男", "FEMALE": "女", "BOTH": "不限" }
+
 Page({
   /**
    * 页面的初始数据
@@ -240,80 +249,28 @@ Page({
               var subjects = ''
               var level = ''
               var i, j, k, h = 0
+
               const timeList = reqData.publishTerm.longTerm.timeList
               const subjectList = reqData.publishTerm.subjects
               for (i = 0; i < timeList.length; i++) {
-                var day = ''
-                var detail = ''
-                switch (timeList[i].day) {
-                  case 'MON':
-                    day = '周一';
-                    break;
-                  case 'TUE':
-                    day = '周二';
-                    break;
-                  case 'WED':
-                    day = '周三';
-                    break;
-                  case 'THU':
-                    day = '周四';
-                    break;
-                  case 'FRI':
-                    day = '周五';
-                    break;
-                  case 'SAT':
-                    day = '周六';
-                    break;
-                  case 'SUN':
-                    day = '周日';
-                    break;
-                }
-                switch (timeList[i].detail) {
-                  case 'MORN':
-                    detail = '上午';
-                    break;
-                  case 'AFTER':
-                    detail = '下午';
-                    break;
-                  case 'EVEN':
-                    detail = '晚上';
-                    break;
-                }
-                if (i == 0) {
-                  times = day + detail
-                } else {
-                  times = times + ' ' + day + detail
-                }
+                const day = weekJSON[`${timeList[j].day}`]
+                const detail = timeJSON[`${timeList[j].detail}`]
+                times = times + ' ' + day + detail
               }
+              times = times.slice(1,times.length)
+              
               for (j = 0; j < subjectList.length; j++) {
-                for (k = 0; k < objectArray.length; k++) {
-                  if (subjectList[j] == objectArray[k].id) {
-                    if (j == 0) {
-                      subjects = objectArray[k].object
-                    } else {
-                      subjects = subjects + ' ' + objectArray[k].object
-                    }
-                  }
-                }
+                const subject = subjectJSON[`${subjectList[j]}`]
+                subjects = subjects + ' ' + subject
               }
+              subjects = subjects.slice(1,subjects.length)
+              
               for (h = 0; h < gradeArray.length; h++) {
                 if (reqData.publishTerm.Level == gradeArray[h].id) {
                   level = gradeArray[h].object
                 }
               }
-              var sexDeamand = '';
-              let teacherGender = reqData.publishTerm.teacherGender;
-              switch (teacherGender) {
-                case 'MALE':
-                  sexDeamand = '男';
-                  break;
-                case 'FEMALE':
-                  sexDeamand = '女';
-                  break;
-                case 'BOTH':
-                  sexDeamand = '不限';
-                  break;
-              }
+              const sexDeamand = sexJSON[`${reqData.publishTerm.teacherGender}`]
               if (!reqData.longTerm) {
                 listData = {
                   name: reqData.slice(0, 1) + '同学',

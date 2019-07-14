@@ -224,7 +224,7 @@ Page({
   onClick: function (e) {
     var index = e.currentTarget.id// e.currentTarget
     wx.navigateTo({
-      url: 'detail/detail?id=' + this.data.teacherArray[index].id
+      url: 'detail/detail?id='+getApp().globalData.id
     })
   },
   changeStatus: function (e) {
@@ -299,6 +299,8 @@ Page({
   loadListOnPage: function (page, refresh) {
     if (!refresh) {
       list = this.data.list
+    } else {
+      list = []
     }
     var that = this
     wx.request({
@@ -311,7 +313,6 @@ Page({
         wx.hideLoading()
         that.showList(res)
       }
-      
     })
   },
 
@@ -357,7 +358,8 @@ Page({
         list.push({ id: res.data.data[i].openid, name: name, img: '/images/touxiang/t1.png', sex: sex, school: school, grade: levels, price: price, time: times, object: subjects })
       }
       that.setData({
-        list: list
+        list: list,
+        listLoading: false
       })
     }
   },
@@ -395,6 +397,21 @@ Page({
       title: '加载中',
     })
     this.loadListOnPage(0,true);
+    // wx.request({
+    //   url: 'https://hd.plus1sec.cn/student/update',
+    //   id: getApp().globalData.id,
+    //   data: {
+    //     expectPay: "100"
+    //   },
+    //   header: {
+    //     'Authorization': 'Bearer' + ' ' + getApp().globalData.token
+    //   },
+    //   method: 'POST',
+    //   success: function (res) {
+    //     console.log(res)
+    //   }
+
+    // })
   },
   
   

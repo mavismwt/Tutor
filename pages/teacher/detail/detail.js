@@ -137,6 +137,17 @@ Page({
         })
       },
     })
+    wx.request({
+      url: 'https://hd.plus1sec.cn/student/info/id',
+      header: {
+        'Authorization': 'Bearer' + ' ' + getApp().globalData.token
+      },
+      method: 'GET',
+      success: function (res) {
+        wx.hideLoading()
+        that.showList(res)
+      }
+  })
   },
 
   /**

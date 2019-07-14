@@ -29,7 +29,7 @@
           <!--自己的消息  -->
           <view class="chat-news" wx:if="{{item.self}}"> 
               <view style="text-align: right;padding-right: 20rpx;">
-                  <text class="name">{{ item.nickName }}</text>
+                  <!-- <text class="name">{{ item.nickName }}</text> -->
                   <text>{{userInfo.avaterUrl}}</text>
                   <image class='new_img' src="{{userInfo.avatarUrl}}"></image>
               </view>
@@ -62,7 +62,7 @@
   </view>
     <view class="message {{isIPX?'IPX':''}}" style='bottom:{{inputHeight}}'>
       <form bindreset="cleanInput" class="sendMessage">
-        <input id='input' class='input' value="{{value}}" bindinput="bindinput" confirm-type="send" adjust-position="{{inputUp}}" bindfocus="inputFocus" bindblur="inputBlur"></input>
+        <input id='input' class='input' value="{{message}}" bindinput="bindinput" confirm-type="send" adjust-position="{{inputUp}}" bindfocus="inputFocus" bindblur="inputBlur" bindinput='input'></input>
           <!-- <input type="text" placeholder="请输入聊天内容.." value="{{massage}}" bindinput='bindChange'></input> -->
           <button class='button' style='width:20vw;height:40px;background-color:#3cdede;color:#fff;text-align:center;justify-content:center;align-items:center;' bindtap='send' formType="reset" button-hover="blue">发送</button>
       </form>
