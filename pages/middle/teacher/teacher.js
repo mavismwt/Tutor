@@ -277,11 +277,11 @@ Page({
       data: {
         "openid": id,
         "name": t.name,
-        "university": t.singleArray[t.singleIndex].id,
+        "university": t.singleArray[t.singleIndex].text,
         "phone": t.phone,
         "email": "",
         "grade": t.gradeArray[t.gradeIndex].id,
-        "authStatus": "UNCOMMITED",
+        "authStatus": "AUTHED",
         "Gender": t.ismale ? "MALE" : "FEMALE",
         "subjects": {
           "create": subjects,

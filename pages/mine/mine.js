@@ -82,7 +82,6 @@ Page({
   onLoad: function (options) {
     app.editTabbar();
     wx.hideTabBar();
-    
   },
 
   /**

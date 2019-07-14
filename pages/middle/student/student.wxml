@@ -112,13 +112,13 @@
       bindblur='inputedit'>
       </infoList>
     </i-panel>
-    <definedButton title="完成" bindtap='complete'></definedButton>
+    <definedButton title="完成" bindtap='completeInfo'></definedButton>
   </view>
    <cover-view class = 'cover-view'  hidden='{{isSelectHidden}}' catchtap='changeSelectStatus' z-index='100'>
     <cover-view class='objects' style="flex-direction:row;">
       <cover-view class='object-item' wx:for="{{objectArray}}" wx:key="unique" style="background-color:{{item.isSelected?'#3cdede':''}};color:{{item.isSelected?'#fff':'#3cdede'}}" catchtap='select' data-index='{{index}}' data-status='{{item.isSelected}}'>{{item.object}}
       </cover-view>
     </cover-view>
-    <cover-view class='confirm' >确定</cover-view>
+    <cover-view class='confirm'>确定</cover-view>
   </cover-view>
 </view>

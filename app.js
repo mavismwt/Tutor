@@ -16,6 +16,7 @@ App({
     wx.login({
       success: res => {
         that.isAuthed()
+        //console.log(res.code)
         if (res.code) {
           wx.request({
             url: 'https://hd.plus1sec.cn/signup',
@@ -27,13 +28,15 @@ App({
               'content-type': 'application/json'
             },
             success: function (res) {
+              wx.hideLoading();
               const auth = res.header.Authorization;
               const id = res.data.id;
               const token = that.getToken(auth);
-              that.globalData.token = token; 
-              that.globalData.id = id; 
-              wx.hideLoading();
+              that.globalData.token = token;
+              that.globalData.id = id;
+              console.log(res);
             }
+            
           })
         } else {
           console.log('获取用户登录态失败')

@@ -3,5 +3,6 @@
   "usingComponents": {
     "studentList": "/component/studentlist/studentlist",
     "i-collapse-item": "../../dist/collapse-item/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }

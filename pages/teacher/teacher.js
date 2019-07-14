@@ -4,6 +4,7 @@ const app = getApp();
 var select = 'object';
 var filter = false;
 var isHidden = true;
+
 let objectArray = [{ object: '语文', isSelected: false }, { object: '数学', isSelected: false }, { object: '英语', isSelected: false }, { object: '物理', isSelected: false }, { object: '化学', isSelected: false }, { object: '生物', isSelected: false }, { object: '政治', isSelected: false }, { object: '历史', isSelected: false }, { object: '地理', isSelected: false }, { object: '其他', isSelected: false }];
 let gardeArray = [{ object: '小学', isSelected: false }, { object: '初中', isSelected: false }, { object: '高中', isSelected: false }, { object: '其他', isSelected: false }];
 let sexArray = [{ object: '男', isSelected: false }, { object: '女', isSelected: false }, { object: '不限', isSelected: false }];
@@ -14,6 +15,10 @@ Page({
    */
 
   data: {
+    list: [], //放置返回数据的数组
+    listPage: 1,
+    listLoading: false, //"上拉加载"的变量，默认false，隐藏
+    listLoadingComplete: false,//“没有数据”的变量，默认false，隐藏
     selected: false,
     isHidden: isHidden,
     itemSelect: [{
@@ -36,7 +41,9 @@ Page({
       selected: false,
       type: 'school'
     }],
-    teacherArray: [{
+    teacherArray: [
+    {
+      id:'',
       name: '叶老师',
       img: '/images/touxiang/t1.png',
       sex: 'female',
@@ -47,6 +54,7 @@ Page({
       time: '周一下午'
     },
     {
+      id: '',
       name: '陈老师',
       img: '/images/touxiang/t2.png',
       sex: 'male',
@@ -55,7 +63,8 @@ Page({
       price: '100',
       object: '物理',
       time: '周三晚上'
-    }],
+    }
+    ],
     selectArray: [{
       object: '',
       isSelected: false
@@ -85,6 +94,21 @@ Page({
     let selStr = 'itemSelect[' + selectIndex + '].selected'
     this.setData({
       [selStr]: true
+    })
+    wx.request({
+      url: 'https://hd.plus1sec.cn/student/publishlist/search',
+      data: {
+        "grades": ["PRI_1", "PRI_2"],
+        "gender": ["MALE", "FEMALE"],
+        "subjects": ["MATH", "ENGLISH"]
+      },
+      header: {
+        'Authorization': 'Bearer' + ' ' + getApp().globalData.token
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res)
+      }
     })
   },
 
@@ -183,6 +207,137 @@ Page({
 
   },
 
+  loadListOnPage: function (page, refresh) {
+    var list = []
+    if (!refresh) {
+      list = this.data.list
+    }
+    var that = this
+    wx.request({
+      url: 'https://hd.plus1sec.cn/parent/publishlist?first=' + that.data.listPage + '&skip=10',
+      header: {
+        'Authorization': 'Bearer' + ' ' + getApp().globalData.token
+      },
+      method: 'GET',
+      success: function (res) {
+        wx.hideLoading()
+        console.log(res)
+        if (res.statusCode == 200) {
+          if (res.data.data.length != 0) {
+            for (i = 0; i < res.data.data.length; i++) {
+              var times = ''
+              var subjects = ''
+              var level = ''
+              const timeList = res.data.data[i].avalible
+              const subjectList = res.data.data[i].publishTerm.subjects
+              for (p = 0; p < timeList.length; i++) {
+                var day = ''
+                var detail = ''
+                switch (timeList[p].day) {
+                  case 'MON':
+                    day = '周一';
+                    break;
+                  case 'TUE':
+                    day = '周二';
+                    break;
+                  case 'WED':
+                    day = '周三';
+                    break;
+                  case 'THU':
+                    day = '周四';
+                    break;
+                  case 'FRI':
+                    day = '周五';
+                    break;
+                  case 'SAT':
+                    day = '周六';
+                    break;
+                  case 'SUN':
+                    day = '周日';
+                    break;
+                }
+                switch (timeList[p].detail) {
+                  case 'MORN':
+                    detail = '上午';
+                    break;
+                  case 'AFTER':
+                    detail = '下午';
+                    break;
+                  case 'EVEN':
+                    detail = '晚上';
+                    break;
+                }
+                if (p == 0) {
+                  times = day + detail
+                } else {
+                  times = times + ' ' + day + detail
+                }
+              }
+              for (j = 0; j < subjectList.length; j++) {
+                for (k = 0; k < objectArray.length; k++) {
+                  if (subjectList[j].name == objectArray[k].id) {
+                    if (j == 0) {
+                      subjects = objectArray[k].object
+                    } else {
+                      subjects = subjects + ' ' + objectArray[k].object
+                    }
+                  }
+                }
+              }
+              for (h = 0; h < teachArray.length; h++) {
+                if (res.res.data.data[i].subjects[0].level.level == teachArray[h].id) {
+                  level = teachArray[h].object
+                }
+              }
+              list.push({ id: res.data.data[i].openid, name: res.data.data[i].name, img: '/images/touxiang/t1.png', sex: res.data.data[i].Gender == 'MALE' ? 'male' : 'female', school: res.data.data[i].university, grade: level, price: res.data.data[i].expectPay , object: subjects, time: times })
+            }
+            that.setData({
+              list: list,
+              listLoading: false
+            })
+          } else {
+            that.setData({
+              listLoading: false,
+              listLoadingComplete: true,
+            })
+          }
+        } else {
+          wx.showModal({
+            title: '加载失败',
+            content: '请检查网络及登录状况',
+            showCancel: false,
+          })
+          that.setData({
+            listLoading: false,
+            listLoadingComplete: false,
+          })
+        }
+      }
+    })
+  },
+
+  onPullDownRefresh() {
+    //刷新
+    this.loadListOnPage(1,true);
+    wx.showNavigationBarLoading();
+    wx.stopPullDownRefresh()//刷新结束
+  },
+
+  onReachBottom() {
+    //加载
+    const that = this
+    that.setData({
+      listLoading: true
+    })
+    if (!that.data.searchLoadingComplete) {
+      that.setData({
+        listPage: that.data.listPage + 1, //每次触发上拉事件，+1
+      });
+      that.loadListOnPage(that.data.listPage,false);
+    }
+  },
+
+  
 
   /**
    * 生命周期函数--监听页面加载
@@ -190,41 +345,13 @@ Page({
   onLoad: function (options) {
     app.editTabbar();
     wx.hideTabBar();
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // // 在没有 open-type=getUserInfo 版本的兼容处理
-      // wx.getUserInfo({
-      //   success: res => {
-      //     app.globalData.userInfo = res.userInfo
-      //     this.setData({
-      //       userInfo: res.userInfo,
-      //       hasUserInfo: true
-      //     })
-      //   }
-      // })
-    }
-  },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+    wx.showLoading({
+      title: '加载中',
     })
+    this.loadListOnPage(1,true);
   },
+  
+  
 
   /**
    * 生命周期函数--监听页面显示
@@ -244,20 +371,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
   },
 

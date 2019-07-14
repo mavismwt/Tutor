@@ -7,11 +7,24 @@ Page({
    */
   data: {
     identity:'student',
+    status:[{
+      statusCode: 1,
+      statusTitle: '待接受',
+      operate: '接受申请',
+      operateColor: 'ffcb68',
+    },{
+
+    },{
+
+    },{
+
+    }],
     studentArray:[{
       name: '李同学',
       date:'2019年6月1日',
       sex:  'male',
-      statusTitle: '已接受',
+      statusCode: 1,
+      statusTitle: '待接受',
       statusColor: '#3cdede',
       school: '实验中学',
       grade: '初三',
@@ -25,6 +38,7 @@ Page({
         name: '张同学',
         date: '2019年7月3日',
         sex: 'female',
+        statusCode: 2,
         statusTitle: '待接受',
         statusColor: '#3cdede',
         school: '华科附中',
@@ -39,6 +53,22 @@ Page({
         name: '李同学',
         date: '2019年5月31日',
         sex: 'male',
+        statusCode: 0,
+        statusTitle: '已回绝',
+        statusColor: '#3cdede',
+        school: '华科附中',
+        grade: '高一',
+        price: '70',
+        time: '周六下午',
+        operate: '联系客服',
+        operateColor: 'ffcb68',
+        showCountDown: false
+      },
+      {
+        name: '李同学',
+        date: '2019年5月31日',
+        sex: 'male',
+        statusCode: 0,
         statusTitle: '已回绝',
         statusColor: '#3cdede',
         school: '华科附中',
@@ -53,6 +83,7 @@ Page({
         name: '叶老师',
         date: '2019年6月1日',
         sex: 'female',
+        statusCode: 3,
         statusTitle: '已接受',
         statusColor: '#3cdede',
         school: '华中科技大学',

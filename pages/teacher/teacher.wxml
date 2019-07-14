@@ -2,7 +2,7 @@
 <view>
 <navigationBar id="navigationBar" title="老师列表"></navigationBar> 
 <view class="container">
-  <view class="selLine" style="position:fixed;">
+  <view class="selLine" style="position:fixed;top:90px;">
     <view class='button' wx:for="{{itemSelect}}" wx:key="unique">
       <text style="font-size:14px;color:{{item.selected?'#3cdede':'#7f7f7f'}};margin-top:2px;" bindtap='showSelect' data-type='{{item.type}}'>{{item.title}}</text>
       <i-icon size="14" type="enter" i-class="{{ item.selected ? 'i-collapse-item-arrow-selected' : 'i-collapse-item-arrow-unselected'}}"/>
@@ -16,7 +16,7 @@
     </cover-view>
     <cover-view class='confirm' bindtap='confirm'>确定</cover-view>
   </cover-view>
-  <teacherList id="teacherList"  wx:for="{{teacherArray}}" wx:key="unique"
+  <teacherList id="teacherList"  wx:for="{{list}}" wx:key="unique"
   name = "{{item.name}}"
   img = "{{item.img}}"
   sex="{{item.sex}}"
@@ -29,6 +29,8 @@
   id="{{index}}">
   </teacherList>
   </view>
+  <view class="loading" hidden="{{!listLoading}}">正在载入更多...</view>
+  <view class="loading" hidden="{{!listLoadingComplete}}">无更多数据</view>
   <tabbar tabbar="{{tabbar}}"></tabbar>
 </view>
 </view>

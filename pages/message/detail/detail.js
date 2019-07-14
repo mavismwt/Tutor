@@ -153,7 +153,9 @@ Page({
       })
   },
   gotoProcess: function(e) {
-    wx.navigateBack()
+    wx.navigateBack({
+      delta: 3
+    })
     getApp().globalData.statusCode = 3
   },
   goToAlert: function(e) {

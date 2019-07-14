@@ -3,12 +3,17 @@ const app = getApp();
 var identity = app.globalData.identity;
 var contactInfo = [{contactIndex: 0,name: '',number: '',advice:''}];
 var contactNum = 2;
+const gradeArray = [{ text: '大一', id: 'UNI_1' }, { text: '大二', id: 'UNI_2' }, { text: '大三', id: 'UNI_3' }, { text: '大四', id: 'UNI_4' }];
+const objectArray = [{ object: '语文', id: 'CHINESE', isSelected: false }, { object: '数学', id: 'MATH', isSelected: false }, { object: '英语', id: 'ENGLISH', isSelected: false }, { object: '物理', id: 'PHYSICS', isSelected: false }, { object: '化学', id: 'CHEMISTRY', isSelected: false }, { object: '生物', id: 'BIOLOGY', isSelected: false }, { object: '政治', id: 'POLITICS', isSelected: false }, { object: '历史', id: 'HISTORY', isSelected: false }, { object: '地理', id: 'GEOGRAPHY', isSelected: false }];
+const teachArray = [{ object: '一年级', id: 'PRI_1', isSelected: false }, { object: '二年级', id: 'PRI_2', isSelected: false }, { object: '三年级', id: 'PRI_3', isSelected: false }, { object: '四年级', id: 'PRI_4', isSelected: false }, { object: '五年级', id: 'PRI_5', isSelected: false }, { object: '六年级', id: 'PRI_6', isSelected: false }, { object: '初一', id: 'MID_1', isSelected: false }, { object: '初二', id: 'MID_2', isSelected: false }, { object: '初三', id: 'MID_3', isSelected: false }, { object: '高一', id: 'MIDHIGH_1', isSelected: false }, { object: '高二', id: 'MIDHIGH_2', isSelected: false }, { object: '高三', id: 'MIDHIGH_3', isSelected: false }]
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id: '',
+    identity: 'student',
     current: 0,
     isInfo: true,
     studentInfo: null,
@@ -22,16 +27,7 @@ Page({
       object: '数学，英语',
       time: '周一下午'
     },
-    info: {
-      id: 0,
-      name: '老师',
-      sex: 'male',
-      price: '80',
-      school:'华中科技大学',
-      grade: '高二',
-      object: '数学',
-      time: '周六晚上'
-    }, 
+    listData: {},
     contactInfo: [{
       contactIndex: 1,
       name: '',
@@ -96,21 +92,212 @@ Page({
    */
   onLoad: function (options) {
     const that = this;
+    const id = app.globalData.id;
     identity = app.globalData.identity;
-    var info = {};//app.globalData.info;
-    console.log(this.data.identity)
     this.setData({
       identity: identity,
-      //studentInfo: info
+      id: id
     }) 
-    wx.getStorage({
-      key: 'info222',
-      success: function(res) {
-        info = res.data
-        that.setData({
-          studentInfo: info
-        })
+    const searchid = identity=='student'?'parent':'student'
+    wx.request({
+      url: 'https://hd.plus1sec.cn/' + searchid + '/info/' + this.data.id,
+      header: {
+        'Authorization': 'Bearer' + ' ' + getApp().globalData.token
       },
+      method: 'GET',
+      success: function (res) {
+        if (identity == 'student') {
+          var listData = {}
+          var times = ''
+          var subjects = ''
+          var level = ''
+          var i, j, k, h = 0
+          const timeList = res.data.data.publishTerm.longTerm.timeList
+          const subjectList = res.data.data.publishTerm.subjects
+          for (i = 0; i < timeList.length; i++) {
+            var day = ''
+            var detail = ''
+            switch (timeList[i].day) {
+              case 'MON':
+                day = '周一';
+                break;
+              case 'TUE':
+                day = '周二';
+                break;
+              case 'WED':
+                day = '周三';
+                break;
+              case 'THU':
+                day = '周四';
+                break;
+              case 'FRI':
+                day = '周五';
+                break;
+              case 'SAT':
+                day = '周六';
+                break;
+              case 'SUN':
+                day = '周日';
+                break;
+            }
+            switch (timeList[i].detail) {
+              case 'MORN':
+                detail = '上午';
+                break;
+              case 'AFTER':
+                detail = '下午';
+                break;
+              case 'EVEN':
+                detail = '晚上';
+                break;
+            }
+            if (i == 0) {
+              times = day + detail
+            } else {
+              times = times + ' ' + day + detail
+            }
+          }
+          for (j = 0; j < subjectList.length; j++) {
+            for (k = 0; k < objectArray.length; k++) {
+              if (subjectList[j] == objectArray[k].id) {
+                if (j == 0) {
+                  subjects = objectArray[k].object
+                } else {
+                  subjects = subjects + ' ' + objectArray[k].object
+                }
+              }
+            }
+          }
+          for (h = 0; h < teachArray.length; h++) {
+            if (res.data.data.publishTerm.Level == teachArray[h].id) {
+              level = teachArray[h].object
+            }
+          }
+          var sexDeamand = '';
+          let teacherGender = res.data.data.publishTerm.teacherGender;
+          switch (teacherGender) {
+            case 'MALE':
+              sexDeamand = '男';
+              break;
+            case 'FEMALE':
+              sexDeamand = '女';
+              break;
+            case 'BOTH':
+              sexDeamand = '不限';
+              break;
+          }
+          if (!res.data.data.longTerm) {
+            listData = {
+              name: res.data.data.name,
+              img: '/images/touxiang/t1.png',
+              sex: res.data.data.publishTerm.childGender == 'MALE' ? 'male' : 'female',
+              grade: level,
+              price: res.data.data.publishTerm.pay,
+              object: subjects,
+              time: times,
+              location: res.data.data.address,
+              sexDeamand: sexDeamand,
+              isLongTerm: true
+            }
+          } else {
+            listData = {
+              name: res.data.data.name,
+              img: '/images/touxiang/t1.png',
+              sex: res.data.data.publishTerm.childGender == 'MALE' ? 'male' : 'female',
+              grade: level,
+              price: res.data.data.publishTerm.pay,
+              object: subjects,
+              time: times,
+              location: res.data.data.address,
+              sexDeamand: sexDeamand,
+              isLongTerm: false,
+              number: res.data.data.publishTerm.shotTerm.all,
+              perTime: res.data.data.publishTerm.shortTerm.lessonTime
+            }
+          }
+          that.setData({
+            listData: listData
+          })
+        } else {
+          var listData = {}
+          var times = ''
+          var subjects = ''
+          var level = ''
+          const timeList = res.data.data.avalible
+          const subjectList = res.data.data.publishTerm.subjects
+          for (i = 0; i < timeList.length; i++) {
+            var day = ''
+            var detail = ''
+            switch (timeList[i].day) {
+              case 'MON':
+                day = '周一';
+                break;
+              case 'TUE':
+                day = '周二';
+                break;
+              case 'WED':
+                day = '周三';
+                break;
+              case 'THU':
+                day = '周四';
+                break;
+              case 'FRI':
+                day = '周五';
+                break;
+              case 'SAT':
+                day = '周六';
+                break;
+              case 'SUN':
+                day = '周日';
+                break;
+            }
+            switch (timeList[i].detail) {
+              case 'MORN':
+                detail = '上午';
+                break;
+              case 'AFTER':
+                detail = '下午';
+                break;
+              case 'EVEN':
+                detail = '晚上';
+                break;
+            }
+            if (i == 0) {
+              times = day + detail
+            } else {
+              times = times + ' ' + day + detail
+            }
+          }
+          for (j = 0; j < subjectList.length; j++) {
+            for (k = 0; k < objectArray.length; k++) {
+              if (subjectList[j].name == objectArray[k].id) {
+                if (j == 0) {
+                  subjects = objectArray[k].object
+                } else {
+                  subjects = subjects + ' ' + objectArray[k].object
+                }
+              }
+            }
+          }
+          for (h = 0; h < teachArray.length; h++) {
+            if (res.data.data.subjects[0].level == teachArray[h].id) {
+              level = teachArray[h].object
+            }
+          }
+          listData = {
+            id: res.data.data.openid,
+            name: res.data.data.name,
+            shcool: res.data.data.university,
+            img: '/images/touxiang/t1.png',
+            sex: res.data.data.Gender == 'MALE' ? 'male' : 'female',
+            grade: level,
+            price: res.data.data.expectPay,
+            object: subjects,
+            time: times
+          }
+        }
+        
+      }
     })
   },
 

@@ -9,18 +9,18 @@
     <swiper current='{{current}}' class='swiper' style="top:{{identity=='student'?'0px':'41px'}}" duration="300" bindchange='change'>
     <swiper-item >
     <view class='swiper-con' >
-    <studentList id="studentList" wx:key="unique" style='position:fixed;margin-left:-5px;background-color:#f5f5f5;box-shadow: inset 0px -1px 0px 0px #e5e5e5;' wx:if="{{identity=='student'&&studentInfo}}"
-      name = "{{studentInfo.name}}"
-      img = "{{studentInfo.img}}"
-      price="{{studentInfo.price}}"
-      grade="{{studentInfo.grade}}"
-      object="{{studentInfo.object}}"
-      time="{{studentInfo.time}}"
-      location="{{studentInfo.location}}"
-      sex="{{studentInfo.sex}}"
-      isLongTerm="{{studentInfo.isLongTerm}}"
-      number="{{studentInfo.number}}"
-      perTime="{{studentInfo.perTime}}">
+    <studentList id="studentList" wx:key="unique" style='position:fixed;margin-left:-5px;background-color:#f5f5f5;box-shadow: inset 0px -1px 0px 0px #e5e5e5;' wx:if="{{identity=='student'&&listData}}"
+      name = "{{listData.name}}"
+      img = "{{listData.img}}"
+      price="{{listData.price}}"
+      grade="{{listData.grade}}"
+      object="{{listData.object}}"
+      time="{{listData.time}}"
+      location="{{listData.location}}"
+      sex="{{listData.sex}}"
+      isLongTerm="{{listData.isLongTerm}}"
+      number="{{listData.number}}"
+      perTime="{{listData.perTime}}">
       </studentList>
     <teacherList id="teacherList" wx:key="unique" style='position:fixed;top:0px;background-color:#f5f5f5;box-shadow: inset 0px -1px 0px 0px #e5e5e5;' wx:if="{{identity=='teacher'&&teacherInfo}}"
       name = "{{teacherInfo.name}}"

@@ -19,6 +19,7 @@ Page({
    */
   data: {
     userInfo: {},
+    token:'',
     isIPX: getApp().globalData.isIPX,
     image:'/images/bg_add.png',
     phone:'',
@@ -36,7 +37,7 @@ Page({
     ismale: ismale,
     object: [],
     objectID: [],
-    timeList:[{"day":"MON","deatil":"MORN"}],
+    timeList:[{"day":"MON","detail":"MORN"}],
     timeListStr: ["周一上午"],
     sexRoc: [{"title": '男',check: check1,},{"title": '女',check: check2,},{"title": '不限',check: check3,}],
     checks: checks,
@@ -224,7 +225,7 @@ Page({
         "name": t.name,
         "address": t.address,
         "email": "873498174@163.com",
-        "authStatus": "UNCOMMITED",
+        "authStatus": "AUTHED",
         "starList": {},
         "invitations": {},
         "order": {},
@@ -232,7 +233,7 @@ Page({
         "publishTerm": {
           "create": {
             "Level": t.singleArray[t.index].id,
-            "pay": t.price,
+            "pay": parseInt(t.price),
             "childGender": t.ismale ? "MALE" : "FEMALE",
             "teacherGender": t.sexRequire,
             "teacherReuqire": t.teacherRequire,
@@ -242,8 +243,8 @@ Page({
             },
             "longTerm": {
               "create": {
-                "lessonTime": t.perTime,
-                "days": t.number,
+                "lessonTime": parseInt(t.perTime),
+                "days": parseInt(t.number),
                 "timeList": {
                   "create": t.timeList
                 }
@@ -268,7 +269,7 @@ Page({
         "publishTerm": {
           "create": {
             "Level": t.singleArray[t.index].id,
-            "pay": t.price,
+            "pay": parseInt(t.price),
             "childGender": t.ismale ? "MALE" : "FEMALE",
             "teacherGender": t.sexRequire,
             "teacherReuqire": t.teacherRequire,
@@ -278,11 +279,9 @@ Page({
             },
             "shortTerm": {
               "create": {
-                "lessonTime": t.perTime,
-                "all": t.number,
-                "timeList": {
-                  "set": t.dates
-                }
+                "lessonTime": parseInt(t.perTime),
+                "all": parseInt(t.number),
+                "timeList": t.dates,
               }
             }
           }
@@ -294,11 +293,11 @@ Page({
       url: 'https://hd.plus1sec.cn/parent/signup',
       data: data,
       header: {
-        'Authorization': 'Bearer'+' '+ getApp().globalData.token,
-        'content-type': 'application/json'
+        'Authorization': 'Bearer' + ' ' + t.token
       },
       method: 'POST',
       success: function(res) {
+        console.log(res)
         if (res.statusCode == 200) {
           wx.navigateTo({
             url: '/pages/teacher/info/done/done',
@@ -391,6 +390,7 @@ Page({
       timeList: timeList,
       timeListStr: timeListStr
     })
+    console.log(this.data.timeList)
   },
   showHelp: function(e) {
     wx.showModal({
@@ -412,6 +412,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       date: date,
+      token: app.globalData.token
     })
   },
 
