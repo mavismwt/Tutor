@@ -54,7 +54,7 @@ Component({
     },
     statusCode: {
       type: Number,
-      value: 1
+      value: 0
     }
     //attrArray: [],
   },
@@ -77,7 +77,7 @@ Component({
       {
         code: 1,
         content: '待接受',
-        confirm: '接收申请',
+        confirm: '接受申请',
         cancel: '拒绝申请'
       },
       {
@@ -93,7 +93,35 @@ Component({
    */
   methods: {
     confirm: function(e) {
-
+      const code = e.currentTarget.dataset.code
+      switch (code) {
+        case 1:
+          wx.showModal({
+            title: '接受申请成功',
+            content: '是否现在去试教',
+            confirmText: '去试教',
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '/pages/message/chat/chat',
+                })
+              }
+            }
+          })
+        break;
+        case 2:
+          wx.navigateTo({
+            url: '/pages/message/chat/chat',
+          })
+          break;
+        case 0: 
+          wx.showModal({
+            title: '联系客服',
+            content: '如您在申请过程中遇到问题，请您在工作时间拨打客服电话（13164175090），我们将尽快解决您的问题。',
+            showCancel: false,
+          })
+          break;
+      }
     },
     cancel: function(e) {
 
