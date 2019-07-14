@@ -115,6 +115,15 @@
   margin-top: 14px;
   border-radius: 5px;
 }
+.select-button {
+  display: flex;
+  position: fixed;
+  right: 90px;
+  width: 100px;
+  height: 28px;
+  margin-top: 14px;
+  border-radius: 5px;
+}
 .edit-button {
   display: flex;
   position: fixed;

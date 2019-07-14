@@ -2,10 +2,7 @@
 <view>
   <navigationBar id="navigationBar" title="我的资料"back="true"></navigationBar> 
   <view class='container' >
-    <i-tabs current="{{current}}" color="#3cdede" bindchange="handleChange" style='position:fixed;width:100vw;' wx-if="{{identity=='student'?false:true}}">
-      <i-tab key="0" title="个人资料" bindtap='checkCurrent' data-current = "0" ></i-tab>
-      <i-tab key="1" title="安全防护" bindtap='checkCurrent' data-current = "1"></i-tab>
-    </i-tabs>
+    
     <swiper current='{{current}}' class='swiper' style="top:{{identity=='student'?'0px':'41px'}}" duration="300" bindchange='change'>
     <swiper-item >
     <view class='swiper-con' >
@@ -22,21 +19,21 @@
       number="{{listData.number}}"
       perTime="{{listData.perTime}}">
       </studentList>
-    <teacherList id="teacherList" wx:key="unique" style='position:fixed;top:0px;background-color:#f5f5f5;box-shadow: inset 0px -1px 0px 0px #e5e5e5;' wx:if="{{identity=='teacher'&&teacherInfo}}"
-      name = "{{teacherInfo.name}}"
-      img = "{{teacherInfo.img}}"
-      price="{{teacherInfo.price}}"
-      grade="{{teacherInfo.grade}}"
-      object="{{teacherInfo.object}}"
-      school = "{{item.school}}"
-      time="{{teacherInfo.time}}"
-      location="{{teacherInfo.location}}"
-      sex="{{teacherInfo.sex}}">
+    <teacherList id="teacherList" wx:key="unique" style='position:fixed;top:0px;background-color:#f5f5f5;box-shadow: inset 0px -1px 0px 0px #e5e5e5;' wx:if="{{identity=='teacher'&&listData}}"
+      name = "{{listData.name}}"
+      img = "{{listData.img}}"
+      price="{{listData.price}}"
+      grade="{{listData.grade}}"
+      object="{{listData.object}}"
+      school = "{{listData.school}}"
+      time="{{listData.time}}"
+      location="{{listData.location}}"
+      sex="{{listData.sex}}">
       </teacherList>
     </view></swiper-item>
     <swiper-item hidden="{{identity=='student'?true:false}}">
       <!-- <view style='position:absolute;width:100vw;padding:10px;background-color:#fff;font-size:14px;'>上门家教存在风险，请您务必填写安全信息</view> -->
-      <view style='position:relative;margin:55px 15px 15px 15px;padding:5px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;'>
+      <view style='position:relative;margin:15px 15px 15px 15px;padding:5px;background-color:#fff;box-shadow: inset 0px -1px 0px 0px #e5e5e5;border-radius:5px;'>
         <toplistcell title="个人详细信息" image='/images/icon/icon_personal.png'></toplistcell>
           <i-input title='专业班级' placeholder='如：计算机1602'></i-input>
           <i-input title='详细住址' placeholder='如：韵苑1栋101'></i-input>
@@ -57,5 +54,9 @@
       </view>
       </swiper-item>
     </swiper>
+    <i-tabs current="{{current}}" color="#3cdede" bindchange="handleChange" style='position:fixed;width:100vw;' wx-if="{{identity=='student'?false:true}}">
+      <i-tab key="0" title="个人资料" bindtap='checkCurrent' data-current = "0" ></i-tab>
+      <i-tab key="1" title="安全防护" bindtap='checkCurrent' data-current = "1"></i-tab>
+    </i-tabs>
   </view>
 </view>

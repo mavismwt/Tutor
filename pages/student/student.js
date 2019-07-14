@@ -14,7 +14,7 @@ Page({
    */
   data: {
     list: [], //放置返回数据的数组
-    listPage: 1,
+    listPage: 0,
     listLoading: false, //"上拉加载"的变量，默认false，隐藏
     listLoadingComplete: false,//“没有数据”的变量，默认false，隐藏
     isHidden: isHidden,
@@ -113,28 +113,28 @@ Page({
     if (!gradeSelected) {
       grades = ['PRI_1', 'PRI_2', 'PRI_3', 'PRI_4', 'PRI_5', 'PRI_6', 'MID_1', 'MID_2', 'MID_3', 'MIDHIGH_1', 'MIDHIGH_2', 'MIDHIGH_3']
     }
-    for (i = 0; i < genderArray.length; i++) {
-      if (genderArray[i].isSelected) {
-        gender.push(genderArray[i].id)
+    for (i = 0; i < sexArray.length; i++) {
+      if (sexArray[i].isSelected) {
+        gender.push(sexArray[i].id)
         genderSelected = true
       }
     }
     if (!genderSelected) {
-      gender = ['MALE','FEMALE','BOTH']
+      gender = ['MALE','FEMALE']
     } 
 
-    for (i = 0; i < subjectsArray.length; i++) {
-      if (subjectsArray[i].isSelected) {
-        subjects.push(gradeArray[i].id)
+    for (i = 0; i < objectArray.length; i++) {
+      if (objectArray[i].isSelected) {
+        subjects.push(objectArray[i].id)
         subjectsSelected = true
       }
     }
     if (!subjectsSelected) {
       subjects = ['CHINESE', 'MATH', 'ENGLISH', 'PHYSICS', 'CHEMISTRY', 'BIOLOGY', 'POLITICS', 'HISTORY', 'GEOGRAPHY']
     }
-    data.grades = grades
-    data.subjects = subjects
-    data.gender = gender
+    searchData.grades = grades
+    searchData.subjects = subjects
+    searchData.gender = gender
   },
   changeStatus: function (e) {
     let type = e.currentTarget.dataset['type'];
@@ -220,7 +220,7 @@ Page({
     }
     const that = this;
     wx.request({
-      url: 'https://hd.plus1sec.cn/student/publishlist?first=' + this.data.listPage + '&skip=10',
+      url: 'https://hd.plus1sec.cn/student/publishlist?first=10&skip=' + page*10,
       header: {
         'Authorization': 'Bearer' + ' ' + getApp().globalData.token
       },
@@ -315,7 +315,7 @@ Page({
               }
               if (!reqData.longTerm) {
                 listData = {
-                  name: reqData.name,
+                  name: reqData.slice(0, 1) + '同学',
                   img: '/images/touxiang/s1.png',
                   sex: reqData.publishTerm.childGender == 'MALE' ? 'male' : 'female',
                   grade: level,
@@ -371,7 +371,7 @@ Page({
   
   onPullDownRefresh: function() {
     //刷新
-    this.loadListOnPage(1,true);
+    this.loadListOnPage(0,true);
     wx.showNavigationBarLoading();
     wx.stopPullDownRefresh()//刷新结束
   },
@@ -399,7 +399,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    this.loadListOnPage(1,true);
+    this.loadListOnPage(0,true);
   },
 
   /**

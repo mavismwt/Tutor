@@ -214,6 +214,7 @@ Page({
   },
 
   completeInfo: function(e) {
+    const that = this
     const id = getApp().globalData.id;
     const t = this.data;
     var data = {};
@@ -229,7 +230,7 @@ Page({
         "starList": {},
         "invitations": {},
         "order": {},
-        "publish": false,
+        "publish": true,
         "publishTerm": {
           "create": {
             "Level": t.singleArray[t.index].id,
@@ -265,7 +266,7 @@ Page({
         "starList": {},
         "invitations": {},
         "order": {},
-        "publish": false,
+        "publish": true,
         "publishTerm": {
           "create": {
             "Level": t.singleArray[t.index].id,
@@ -299,6 +300,9 @@ Page({
       success: function(res) {
         console.log(res)
         if (res.statusCode == 200) {
+          const auth = res.header.Authorization;
+          const token = that.getToken(auth);
+          app.globalData.token = token;
           wx.navigateTo({
             url: '/pages/teacher/info/done/done',
           })
@@ -309,9 +313,19 @@ Page({
             showCancel: false
           })
         }
+        
       }
     })
     
+  },
+
+  getToken: function (auth) {
+    const Authorization = auth || null
+    if (Authorization === null) {
+      return ''
+    }
+    const token = Authorization.replace("Bearer ", "")
+    return token
   },
 
   bindPickerChange: function (e) {

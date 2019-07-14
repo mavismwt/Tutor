@@ -1,0 +1,8 @@
+<!--pages/mine/money/question.wxml-->
+<view>
+  <navigationBar id="navigationBar" title="常见问题"back="true"></navigationBar> 
+  <view class='container'>
+  <view style='color:#a9a9a9;margin-top:30px;font-size: 17px;'>暂无常见问题</view>
+  <view style='color:#a9a9a9;margin-top:8px;font-size: 14px;'>可前往“个人中心-反馈意见”反馈问题，感谢您的支持。</view>
+  </view>
+</view>

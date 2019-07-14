@@ -9,8 +9,8 @@
       </view>
       <view class='right-view'>
         <text class='title'>待提现金额</text>
-        <text class='money'>¥70</text>
-        <button class='button'>提现</button>
+        <text class='money'>¥{{withdraw}}</text>
+        <button class='button' bindtap='withdraw'>提现</button>
       </view>
     </view>
     <moneylist style='margin-top:10px;' wx:for="{{identity=='student'?detail1:detail2}}" date="{{item.date}}" time="{{item.time}}" money="{{item.money}}" info="{{item.info}}"></moneylist>

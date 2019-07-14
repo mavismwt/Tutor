@@ -30,7 +30,7 @@
     </view> -->
   </view>
   <view class='bottom-view'>
-    <text class='button' style= 'background-color:#a9a9a9;'>常见问题</text>
-    <text class='button' style= 'background-color:#3cdede;'>联系客服</text>
+    <text class='button' style= 'background-color:#a9a9a9;' bindtap='question'>常见问题</text>
+    <text class='button' style= 'background-color:#3cdede;' bindtap='help'>联系客服</text>
     </view>
 </view>

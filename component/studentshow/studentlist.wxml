@@ -41,9 +41,12 @@
     </view>
     <view class='bottom-view'>
       <text style='display:inline-block;font-size:12px;color:#b2b2b2;padding: 20px 10px;'>浏览{{lookNumber}}  申请{{appliNumber}}</text>
-      <view class='sel-button'>
-        <select style='display:flex;'></select>
+      <view style='display:flex;position:fixed;right:90px;width:100px;height:28px;margin-top:14px;border-radius:5px;'>
+        <select></select>
       </view>
+      <!-- <view class='sel-button'>
+        
+      </view> -->
       <view class='edit-button' bindtap='edit'>
       <text style='color:#fff;font-size:14px;margin-left:15px;'>编辑</text>
       </view> 

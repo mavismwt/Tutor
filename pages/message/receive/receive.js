@@ -50,22 +50,7 @@ Page({
         showCountDown: false
       },
       {
-        name: '李同学',
-        date: '2019年5月31日',
-        sex: 'male',
-        statusCode: 0,
-        statusTitle: '已回绝',
-        statusColor: '#3cdede',
-        school: '华科附中',
-        grade: '高一',
-        price: '70',
-        time: '周六下午',
-        operate: '联系客服',
-        operateColor: 'ffcb68',
-        showCountDown: false
-      },
-      {
-        name: '李同学',
+        name: '王同学',
         date: '2019年5月31日',
         sex: 'male',
         statusCode: 0,

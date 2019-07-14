@@ -22,6 +22,17 @@ Component({
   methods: {
     // 点击下拉显示框
     selectTap() {
+      // 获取现在状态
+      // wx.request({
+      //   url: 'https://hd.plus1sec.cn/parent/publish/status',
+      //   header: {
+      //     'Authorization': 'Bearer' + ' ' + getApp().globalData.token
+      //   },
+      //   method: 'GET',
+      //   success: function (res) {
+      //     console.log(res)
+      //   },
+      // })
       this.setData({
         selectShow: !this.data.selectShow
       });
@@ -34,6 +45,32 @@ Component({
           title: '取消发布成功',
           content: '您的资料将不在广场展示，他人无法主动向您发送申请。重新展示请再次发布。',
           showCancel: false,
+        })
+        wx.request({
+          url: 'https://hd.plus1sec.cn/parent/publish/false',
+          header: {
+            'Authorization': 'Bearer' + ' ' + getApp().globalData.token
+          },
+          method: 'POST',
+          success: function (res) {
+            console.log(res)
+          }
+        })
+      } else if (index == 0) {
+        wx.showModal({
+          title: '发布成功',
+          content: '您的资料将在广场展示。',
+          showCancel: false,
+        })
+        wx.request({
+          url: 'https://hd.plus1sec.cn/parent/publish/true',
+          header: {
+            'Authorization': 'Bearer' + ' ' + getApp().globalData.token
+          },
+          method: 'POST',
+          success: function (res) {
+            console.log(res)
+          }
         })
       }
       this.setData({

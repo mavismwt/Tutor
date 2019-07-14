@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/message/chat/chat",
     "pages/blank/blank",
     "pages/blank",
     "pages/index/index",
@@ -22,7 +23,6 @@
     "pages/mine/notice/notice",
     "pages/mine/money/money",
     "pages/message/message",
-    "pages/message/chat/chat",
     "pages/message/info/info",
     "pages/message/receive/receive",
     "pages/message/detail/detail",
@@ -31,7 +31,8 @@
     "pages/message/help/help",
     "pages/message/help/done/done",
     "pages/message/contact/contact",
-    "pages/message/agreement/agreement"
+    "pages/message/agreement/agreement",
+    "pages/mine/money/question"
   ],
   "window": {
     "navigationStyle": "custom",

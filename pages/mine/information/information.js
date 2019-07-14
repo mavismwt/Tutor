@@ -56,13 +56,12 @@ Page({
       current:e.detail.key
     })
   },
+
   checkCurrent: function (e) {
     const that = this;
-
     if (that.data.current === e.target.dataset.current) {
       return false;
     } else {
-
       that.setData({
         current: e.target.dataset.current
       })
@@ -99,6 +98,7 @@ Page({
       id: id
     }) 
     const searchid = identity=='student'?'parent':'student'
+    const call = identity == 'student' ? '同学' : '老师'
     wx.request({
       url: 'https://hd.plus1sec.cn/' + searchid + '/info/' + this.data.id,
       header: {
@@ -106,6 +106,7 @@ Page({
       },
       method: 'GET',
       success: function (res) {
+        console.log(res.data)
         if (identity == 'student') {
           var listData = {}
           var times = ''
@@ -188,7 +189,7 @@ Page({
           }
           if (!res.data.data.longTerm) {
             listData = {
-              name: res.data.data.name,
+              name: res.data.data.name.slice(0,1) + '同学',
               img: '/images/touxiang/t1.png',
               sex: res.data.data.publishTerm.childGender == 'MALE' ? 'male' : 'female',
               grade: level,
@@ -201,7 +202,7 @@ Page({
             }
           } else {
             listData = {
-              name: res.data.data.name,
+              name: res.data.data.name.slice(0, 1) + '同学',
               img: '/images/touxiang/t1.png',
               sex: res.data.data.publishTerm.childGender == 'MALE' ? 'male' : 'female',
               grade: level,
@@ -224,7 +225,7 @@ Page({
           var subjects = ''
           var level = ''
           const timeList = res.data.data.avalible
-          const subjectList = res.data.data.publishTerm.subjects
+          const subjectList = res.data.data.subjects
           for (i = 0; i < timeList.length; i++) {
             var day = ''
             var detail = ''
@@ -279,15 +280,35 @@ Page({
               }
             }
           }
-          for (h = 0; h < teachArray.length; h++) {
-            if (res.data.data.subjects[0].level == teachArray[h].id) {
-              level = teachArray[h].object
+          var l = 0
+          for (l = 0; l < res.data.data.subjects[0].level.length; l++) {
+            for (h = 0; h < teachArray.length; h++) {
+              if (res.data.data.subjects[0].level[l] == teachArray[h].id) {
+                if (l == 0) {
+                  level = teachArray[h].object
+                } else {
+                  level = level + ' ' + teachArray[h].object
+                }
+              }
             }
+          }
+          
+          var school = ''
+          switch (res.data.data.university) {
+            case 'HUST':
+              school = '华中科技大学';
+              break;
+            case 'WHU':
+              school = '武汉大学';
+              break;
+            default:
+              school = '其他高校';
+              break;
           }
           listData = {
             id: res.data.data.openid,
-            name: res.data.data.name,
-            shcool: res.data.data.university,
+            name: res.data.data.name.slice(0,1)+'老师',
+            school: school,
             img: '/images/touxiang/t1.png',
             sex: res.data.data.Gender == 'MALE' ? 'male' : 'female',
             grade: level,
@@ -295,6 +316,10 @@ Page({
             object: subjects,
             time: times
           }
+          that.setData({
+            listData: listData
+          })
+          console.log(that.data.listData)
         }
         
       }

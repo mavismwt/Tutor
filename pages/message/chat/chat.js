@@ -95,6 +95,46 @@ Page({
     process: '待试教',
     index: 0,
     objectStatus:[],
+    newslist: [{
+      self: true,
+      date: '2019-1-1',
+      nickName: '🐈',
+      avatarUrl: '',
+      type: 'text',
+      content: 'sakdas'
+    },
+    {
+        self: true,
+        date: '2019-1-1',
+        nickName: '🐈',
+        avatarUrl: '',
+        type: 'text',
+        content: '大sad'
+      }],
+    example: [{
+      self: true,
+      date: '2019-1-1',
+      nickName: '🐈',
+      avatarUrl: '',
+      type: 'text',
+      content: 'sakdas'
+    },
+    {
+      self: true,
+      date: '2019-1-1',
+      nickName: '🐈',
+      avatarUrl: '',
+      type: 'text',
+      content: '大sad'
+    },
+    {
+      self: false,
+      date: '2019-1-1',
+      nickName: 'lalal',
+      avatarUrl: '',
+      type: 'text',
+      content: '大sad'
+    }]
   },
 
   inputFocus(e) {
@@ -116,6 +156,21 @@ Page({
       inputHeight: 0
     })
   },
+
+  getData: function(e) {
+    const io = require('socket.io-client')
+
+    const chat = io('http://localhost:8010/chat')
+    //上线
+    chat.emit('register', { user: { id: 'xxxxxx111', name: "client-1" } })
+    //发送消息
+    chat.emit('send', { user: { id: 'xxxxxx222', name: "client-1" }, toUser: "client-2", info: 'send from node-1' })
+    //获取消息
+    chat.on('getMsg', (data) => {
+      console.log(data)
+    })
+  },
+
 
   gotoProcess: function(e) {
     const time = util.formatTime(new Date());
@@ -157,26 +212,6 @@ Page({
       })
       getApp().globalData.statusCode = current
     }
-    // if (index < this.data.objectStatus.length-1) {
-    //   index += 1
-    //   getApp().globalData.statusCode += 1
-    //   this.setData({
-    //     index: index
-    //   })
-    // }
-    // 
-    // const current = this.data.index -1;
-    // const urlindex = this.data.index;
-    // notice.push({time: time, detail: this.data.objectStatus[current].noticeInfo})
-    // this.setData({
-    //   notice: notice
-    // })
-    // console.log(current+'  '+this.data.objectStatus[urlindex].url)
-    // if (this.data.objectStatus[current].url) {
-    //   wx.redirectTo({
-    //     url: this.data.objectStatus[current].url,
-    //   })
-    // }
   },
 
   cancel: function(e) {
@@ -187,7 +222,7 @@ Page({
         case '联系客服': 
           wx.showModal({
             title: '联系客服',
-            content: '如您在试教过程中遇到问题，请您在工作时间拨打客服电话（15257370253），我们将尽快解决您的问题。',
+            content: '如您在试教过程中遇到问题，请您在工作时间拨打客服电话（13164175090），我们将尽快解决您的问题。',
             showCancel: false,
           })
           break;
@@ -209,8 +244,8 @@ Page({
           break;
       }
     }
-    
   },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -222,6 +257,8 @@ Page({
       identity: identity,
       index:index
     })
+    const userInfo = wx.getUserInfo()
+    console.log(`userInfo:${userInfo}`)
     switch (identity) {
       case 'student':
         this.setData({

@@ -4,11 +4,20 @@ const app = getApp();
 var select = 'object';
 var filter = false;
 var isHidden = true;
+var searchData = {};
+const objectArray = [{ object: '语文', id: 'CHINESE', isSelected: false }, { object: '数学', id: 'MATH', isSelected: false }, { object: '英语', id: 'ENGLISH', isSelected: false }, { object: '物理', id: 'PHYSICS', isSelected: false }, { object: '化学', id: 'CHEMISTRY', isSelected: false }, { object: '生物', id: 'BIOLOGY', isSelected: false }, { object: '政治', id: 'POLITICS', isSelected: false }, { object: '历史', id: 'HISTORY', isSelected: false }, { object: '地理', id: 'GEOGRAPHY', isSelected: false }];
+const gradeArray = [{ object: '一年级', id: 'PRI_1', isSelected: false }, { object: '二年级', id: 'PRI_2', isSelected: false }, { object: '三年级', id: 'PRI_3', isSelected: false }, { object: '四年级', id: 'PRI_4', isSelected: false }, { object: '五年级', id: 'PRI_5', isSelected: false }, { object: '六年级', id: 'PRI_6', isSelected: false }, { object: '初一', id: 'MID_1', isSelected: false }, { object: '初二', id: 'MID_2', isSelected: false }, { object: '初三', id: 'MID_3', isSelected: false }, { object: '高一', id: 'MIDHIGH_1', isSelected: false }, { object: '高二', id: 'MIDHIGH_2', isSelected: false }, { object: '高三', id: 'MIDHIGH_3', isSelected: false }]
+const sexArray = [{ object: '男', id: 'MALE', isSelected: false }, { object: '女', id: 'FEMALE', isSelected: false }, { object: '不限', id: 'BOTH', isSelected: false }];
+const schoolArray = [{ object: '华中科技大学', id:'HUST',isSelected: false }, { object: '武汉大学', id:'WHU', isSelected: false }, { object: '其他',id:'OTHER', isSelected: false }];
 
-let objectArray = [{ object: '语文', isSelected: false }, { object: '数学', isSelected: false }, { object: '英语', isSelected: false }, { object: '物理', isSelected: false }, { object: '化学', isSelected: false }, { object: '生物', isSelected: false }, { object: '政治', isSelected: false }, { object: '历史', isSelected: false }, { object: '地理', isSelected: false }, { object: '其他', isSelected: false }];
-let gardeArray = [{ object: '小学', isSelected: false }, { object: '初中', isSelected: false }, { object: '高中', isSelected: false }, { object: '其他', isSelected: false }];
-let sexArray = [{ object: '男', isSelected: false }, { object: '女', isSelected: false }, { object: '不限', isSelected: false }];
-let schoolArray = [{ object: '华中科技大学', isSelected: false }, { object: '武汉大学', isSelected: false }, { object: '不限', isSelected: false }];
+const subjectJSON = {
+  "CHINESE": "语文", "MATH": "数学", "ENGLISH": "英语", "PHYSICS": "物理", "CHEMISTRY": "化学", "BIOLOGY": "生物", "POLITICS": "政治", "HISTORY": "历史", "GEOGRAPHY": "地理"
+};
+const gradeJSON = { "PRI_1": "一年级", "PRI_2": "二年级", "PRI_3": "三年级", "PRI_4": "四年级", "PRI_5": "五年级", "PRI_6": "六年级", "MID_1": "初一", "MID_2": "初二", "MID_3": "初三",  "MIDHIGH_1": "高一", "MIDHIGH_2": "高二", "MIDHIGH_3": "高三"};
+const timeJSON = { "MORN": "上午", "AFTER": "中午", "EVEN": "晚上" };
+const weekJSON = { "MON": "周一", "TUE": "周二", "WED": "周三","THU":"周四","FRI":"周五","SAT":"周六","SUN":"周日"};
+const sexJSON = {"MALE":"男","FEMALE":"女","BOTH":"不限"}
+const schoolJSON = {"HUST":"华中科技大学","WHU":"武汉大学","OTHER":"其他高校"}
 Page({
   /**
    * 页面的初始数据
@@ -16,7 +25,7 @@ Page({
 
   data: {
     list: [], //放置返回数据的数组
-    listPage: 1,
+    listPage: 0,
     listLoading: false, //"上拉加载"的变量，默认false，隐藏
     listLoadingComplete: false,//“没有数据”的变量，默认false，隐藏
     selected: false,
@@ -41,30 +50,6 @@ Page({
       selected: false,
       type: 'school'
     }],
-    teacherArray: [
-    {
-      id:'',
-      name: '叶老师',
-      img: '/images/touxiang/t1.png',
-      sex: 'female',
-      school: '华中科技大学',
-      grade: '一年级',
-      price: '100',
-      object: '数学，英语',
-      time: '周一下午'
-    },
-    {
-      id: '',
-      name: '陈老师',
-      img: '/images/touxiang/t2.png',
-      sex: 'male',
-      school: '华中科技大学',
-      grade: '高三',
-      price: '100',
-      object: '物理',
-      time: '周三晚上'
-    }
-    ],
     selectArray: [{
       object: '',
       isSelected: false
@@ -95,13 +80,10 @@ Page({
     this.setData({
       [selStr]: true
     })
+    this.getSelectData()
     wx.request({
-      url: 'https://hd.plus1sec.cn/student/publishlist/search',
-      data: {
-        "grades": ["PRI_1", "PRI_2"],
-        "gender": ["MALE", "FEMALE"],
-        "subjects": ["MATH", "ENGLISH"]
-      },
+      url: 'https://hd.plus1sec.cn/parent/publishlist/search',
+      data: searchData,
       header: {
         'Authorization': 'Bearer' + ' ' + getApp().globalData.token
       },
@@ -110,6 +92,52 @@ Page({
         console.log(res)
       }
     })
+  },
+
+  getSelectData: function() {
+    searchData = {
+      levels: [],
+      university:[],
+      gender: [],
+      subjects: []
+    }
+    var levels = ['PRI_1', 'PRI_2', 'PRI_3', 'PRI_4', 'PRI_5', 'PRI_6', 'MID_1', 'MID_2', 'MID_3', 'MIDHIGH_1', 'MIDHIGH_2', 'MIDHIGH_3']
+    var levelSelected = false
+    var gender = ['MALE', 'FEMALE']
+    var genderSelected = false
+    var subjects = ['CHINESE', 'MATH', 'ENGLISH', 'PHYSICS', 'CHEMISTRY', 'BIOLOGY', 'POLITICS', 'HISTORY', 'GEOGRAPHY']
+    var subjectsSelected = false
+    var university = ['HUST', 'WHU', 'OTHER']
+    var universitySelected = false
+    var i, j, k, h = 0
+    for (i = 0; i < gradeArray.length; i++) {
+      if (gradeArray[i].isSelected) {
+        levels.push(gradeArray[i].id)
+        levelSelected = true
+      }
+    }
+    for (i = 0; i < sexArray.length; i++) {
+      if (sexArray[i].isSelected) {
+        gender.push(sexArray[i].id)
+        genderSelected = true
+      }
+    }
+    for (i = 0; i < objectArray.length; i++) {
+      if (objectArray[i].isSelected) {
+        subjects.push(objectArray[i].id)
+        subjectsSelected = true
+      }
+    }
+    for (i = 0; i < schoolArray.length; i++) {
+      if (schoolArray[i].isSelected) {
+        university.push(schoolArray[i].id)
+        universitySelected = true
+      }
+    }
+    searchData.levels = levels
+    searchData.subjects = subjects
+    searchData.gender = gender
+    searchData.university = university
   },
 
   select: function (e) {
@@ -149,7 +177,7 @@ Page({
         break;
       case 'grade':
         this.setData({
-          selectArray: gardeArray
+          selectArray: gradeArray
         })
         break;
       case 'sex':
@@ -183,7 +211,7 @@ Page({
       case 'grade':
         this.setData({
           select: 'grade',
-          selectArray: gardeArray
+          selectArray: gradeArray
         })
         break;
       case 'sex':
@@ -214,111 +242,99 @@ Page({
     }
     var that = this
     wx.request({
-      url: 'https://hd.plus1sec.cn/parent/publishlist?first=' + that.data.listPage + '&skip=10',
+      url: 'https://hd.plus1sec.cn/parent/publishlist?first=10&skip=' + page*10,
       header: {
         'Authorization': 'Bearer' + ' ' + getApp().globalData.token
       },
       method: 'GET',
       success: function (res) {
+        var i = 0
         wx.hideLoading()
-        console.log(res)
         if (res.statusCode == 200) {
-          if (res.data.data.length != 0) {
-            for (i = 0; i < res.data.data.length; i++) {
-              var times = ''
-              var subjects = ''
-              var level = ''
-              const timeList = res.data.data[i].avalible
-              const subjectList = res.data.data[i].publishTerm.subjects
-              for (p = 0; p < timeList.length; i++) {
-                var day = ''
-                var detail = ''
-                switch (timeList[p].day) {
-                  case 'MON':
-                    day = '周一';
-                    break;
-                  case 'TUE':
-                    day = '周二';
-                    break;
-                  case 'WED':
-                    day = '周三';
-                    break;
-                  case 'THU':
-                    day = '周四';
-                    break;
-                  case 'FRI':
-                    day = '周五';
-                    break;
-                  case 'SAT':
-                    day = '周六';
-                    break;
-                  case 'SUN':
-                    day = '周日';
-                    break;
-                }
-                switch (timeList[p].detail) {
-                  case 'MORN':
-                    detail = '上午';
-                    break;
-                  case 'AFTER':
-                    detail = '下午';
-                    break;
-                  case 'EVEN':
-                    detail = '晚上';
-                    break;
-                }
-                if (p == 0) {
-                  times = day + detail
-                } else {
-                  times = times + ' ' + day + detail
-                }
-              }
-              for (j = 0; j < subjectList.length; j++) {
-                for (k = 0; k < objectArray.length; k++) {
-                  if (subjectList[j].name == objectArray[k].id) {
-                    if (j == 0) {
-                      subjects = objectArray[k].object
-                    } else {
-                      subjects = subjects + ' ' + objectArray[k].object
-                    }
-                  }
-                }
-              }
-              for (h = 0; h < teachArray.length; h++) {
-                if (res.res.data.data[i].subjects[0].level.level == teachArray[h].id) {
-                  level = teachArray[h].object
-                }
-              }
-              list.push({ id: res.data.data[i].openid, name: res.data.data[i].name, img: '/images/touxiang/t1.png', sex: res.data.data[i].Gender == 'MALE' ? 'male' : 'female', school: res.data.data[i].university, grade: level, price: res.data.data[i].expectPay , object: subjects, time: times })
+          for (i = 0; i< res.data.data.length; i++) {
+            console.log(res.data.data[i])
+            const name = res.data.data[i].name.slice(0, 1) + '老师'
+            const sex = res.data.data[i].Gender == 'MALE' ? 'male' : 'female'
+            const price = res.data.data[i].expectPay
+            const school = schoolJSON[`${res.data.data[i].university}`]
+
+            var times = ''
+            var subjects = ''
+            var levels = ''
+
+            const timeList = res.data.data[i].avalible
+            const subjectList = res.data.data[i].subjects
+            const levelList = res.data.data[i].subjects[0].level
+            var j,k,l = 0
+
+            for (j = 0; j < timeList.length; j++) {
+              const day = weekJSON[`${timeList[j].day}`]
+              const detail = timeJSON[`${timeList[j].detail}`]
+              const time = day + detail
+              times = times + ' ' + time
             }
-            that.setData({
-              list: list,
-              listLoading: false
-            })
-          } else {
-            that.setData({
-              listLoading: false,
-              listLoadingComplete: true,
-            })
+            times = times.slice(1,times.length)
+            
+            for (k = 0; k < subjectList.length; k++) {
+              const subject = subjectJSON[`${subjectList[k].name}`]
+              subjects = subjects + ' ' + subject
+            }
+            subjects = subjects.slice(1,subjects.length)
+
+            for (l = 0; l < levelList.length; l++) {
+              const level = gradeJSON[`${levelList[l]}`]
+              levels = levels + ' ' + level
+            }
+            levels.slice(1,levels.length)
+
+
+            list.push({ id: res.data.data[i].openid, name: name, img: '/images/touxiang/t1.png', sex: sex, school: school, grade: levels, price: price, time: times, object: subjects})
+            //list.push({ id: res.data.data[i].openid, name: name, img: '/images/touxiang/t1.png', sex: sex, school: school, grade: level, price: price, object: subjects, time: times })
+
           }
-        } else {
-          wx.showModal({
-            title: '加载失败',
-            content: '请检查网络及登录状况',
-            showCancel: false,
-          })
           that.setData({
-            listLoading: false,
-            listLoadingComplete: false,
+            list:list
           })
         }
+
+      //         for (l = 0; l < res.data.data[i].subjects[0].level.length; l++) {
+      //           const onelevel = gradeJSON[`${res.data.data[i].subjects[0].level[l]}`]
+      //           if (l == 0) {
+      //             level = onelevel
+      //           } else {
+      //             level = level + ' ' + onelevel
+      //           }
+      //         }
+      //         list.push({ id: res.data.data[i].openid, name: name, img: '/images/touxiang/t1.png', sex: sex , school: school, grade: level, price: price, object: subjects, time: times })
+      //       }
+      //       that.setData({
+      //         list: list
+      //       })
+      //     } else {
+      //       that.setData({
+      //         listLoading: false,
+      //         listLoadingComplete: true,
+      //       })
+      //     }
+      //   } else {
+      //     wx.showModal({
+      //       title: '加载失败',
+      //       content: '请检查网络及登录状况',
+      //       showCancel: false,
+      //     })
+      //     that.setData({
+      //       listLoading: false,
+      //       listLoadingComplete: false,
+      //     })
+      //   }
       }
+      
     })
   },
 
   onPullDownRefresh() {
     //刷新
-    this.loadListOnPage(1,true);
+    this.loadListOnPage(0,true);
     wx.showNavigationBarLoading();
     wx.stopPullDownRefresh()//刷新结束
   },
@@ -348,7 +364,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    this.loadListOnPage(1,true);
+    this.loadListOnPage(0,true);
   },
   
   

@@ -50,6 +50,18 @@ Component({
       wx.navigateTo({
         url: url,
       })
+    },
+    question: function(e) {
+      wx.navigateTo({
+        url: '/pages/mine/money/question'
+      })
+    },
+    help: function(e) {
+      wx.showModal({
+        title: '联系客服',
+        content: '如您在钱款方面遇到问题，请您在工作时间拨打客服电话（13164175090），我们将尽快解决您的问题。',
+        showCancel: false,
+      })
     }
   }
 })

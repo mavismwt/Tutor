@@ -8,6 +8,7 @@ Page({
    */
   data: {
     identity: identity,
+    withdraw: 70,
     detail1: [{
       date: '2019年6月1日',
       time: '2019年5月13日 20:53',
@@ -95,7 +96,21 @@ Page({
     ],
     
   },
-
+  withdraw: function (e) {
+    const that = this
+    wx.showModal({
+      title: '提现申请提交',
+      content: '将在3个工作日内到账，请注意查收。',
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          that.setData({
+            withdraw: 0
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

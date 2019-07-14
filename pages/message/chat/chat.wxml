@@ -24,21 +24,22 @@
                     <image class="selectImg" src="{{item.images}}"></image> 
                   </block>
               </view>
-          </view>   -->
-          <view>{{item.date}}</view>
+          </view> -->
+          <view class='chat-notice'>{{item.date}}</view>
           <!--自己的消息  -->
-          <view class="chat-news" wx:if="{{item.nickName == userInfo.nickName}}">
+          <view class="chat-news" wx:if="{{item.self}}"> 
               <view style="text-align: right;padding-right: 20rpx;">
                   <text class="name">{{ item.nickName }}</text>
+                  <text>{{ userInfo.avaterUrl }}</text>
                   <image class='new_img' src="{{userInfo.avatarUrl}}"></image>
               </view>
               <view class='my_right'>
                   <block wx:if="{{item.type=='text'}}">      
                     <view class='new_txt'>{{item.content}}</view>
                   </block>
-                  <block wx:if="{{item.type=='image'}}">
+                  <!-- <block wx:if="{{item.type=='image'}}">
                     <image class="selectImg" src="{{item.images}}" data-src="{{item.images}}" lazy-load="true" bindtap="previewImg"></image>  
-                  </block> 
+                  </block>  -->
               </view>
           </view> 
           <!-- 别人的消息  -->
@@ -51,9 +52,9 @@
                   <block wx:if="{{item.type=='text'}}">      
                     <view class='new_txt'>{{item.content}}</view>
                   </block>
-                  <block wx:if="{{item.type=='image'}}">
+                  <!-- <block wx:if="{{item.type=='image'}}">
                     <image class="selectImg" src="{{item.images}}" data-src="{{item.images}}" lazy-load="true" bindtap="previewImg"></image>  
-                  </block>
+                  </block> -->
               </view>
           </view>  
        </block>
