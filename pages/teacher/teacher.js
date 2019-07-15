@@ -101,7 +101,10 @@ Page({
             console.log(res.data.students[i])
             const name = res.data.students[i].name.slice(0, 1) + '老师'
             const sex = res.data.students[i].Gender == 'MALE' ? 'male' : 'female'
-            const price = res.data.students[i].expectPay
+            var price = 70
+            if (res.data.students[i].expectPay) {
+              price = res.data.students[i].expectPay
+            }
             const school = schoolJSON[`${res.data.students[i].university}`]
 
             var times = ''
@@ -223,8 +226,10 @@ Page({
   },
   onClick: function (e) {
     var index = e.currentTarget.id// e.currentTarget
+    const data = this.data.list[index]
+    const dataStr = JSON.stringify(data);
     wx.navigateTo({
-      url: 'detail/detail?id='+getApp().globalData.id
+      url: 'detail/detail?data=' + dataStr
     })
   },
   changeStatus: function (e) {
@@ -324,7 +329,10 @@ Page({
         console.log(res.data.data[i])
         const name = res.data.data[i].name.slice(0, 1) + '老师'
         const sex = res.data.data[i].Gender == 'MALE' ? 'male' : 'female'
-        const price = res.data.data[i].expectPay
+        var price = 70
+        if (res.data.data[i].expectPay) {
+          price = res.data.data[i].expectPay
+        }
         const school = schoolJSON[`${res.data.data[i].university}`]
 
         var times = ''

@@ -9,6 +9,7 @@ var checks = [true, false, false];
 var isSelectHidden = true;
 var multiIndex = [[0, 0]];
 var date = util.formatDate(new Date());
+const timestamp = Date.parse(new Date());
 var dates = [date];
 var location = "";
 const id = getApp().globalData.id;
@@ -225,7 +226,7 @@ Page({
         "phone": t.phone,
         "name": t.name,
         "address": t.address,
-        "email": "873498174@163.com",
+        "email": timestamp,
         "authStatus": "AUTHED",
         "starList": {},
         "invitations": {},

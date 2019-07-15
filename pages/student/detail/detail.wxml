@@ -6,8 +6,8 @@
     <view class='left-view'>
       <image src='{{img}}' class='img' mode="widthFix"></image>
       <view class='basic-info'>
-        <view class='name'>{{name}}</view>
-        <image src='/images/icon/icon_{{sex}}.png' class='sex' mode='widthFix'></image>
+        <view class='name'>{{list.name}}</view>
+        <image src='/images/icon/icon_{{list.sex}}.png' class='sex' mode='widthFix'></image>
       </view>
       <view class='more-info'>
         <text class='left-title'>上次登录</text>
@@ -17,21 +17,21 @@
     <view class='right-view'>
       <view class='info'>
         <text class='title'>年级/科目</text>
-        <text class='detail'>{{grade}}/{{object}}</text>
+        <text class='detail'>{{list.grade}}/{{list.object}}</text>
       </view>
       <view style='display:flex;flex-deriction:row;'>
         <view class='info2'>
           <text class='title'>教师性别要求</text>
-          <text class='detail'>{{sexRec}}</text>
+          <text class='detail'>{{list.sexDeamand}}</text>
         </view>
         <view class='info2'>
           <text class='title'>提供薪酬</text>
-          <text class='detail'>{{price}}</text>
+          <text class='detail'>{{list.price}}</text>
         </view>
       </view>
       <view class='info'>
         <text class='title'>地址</text>
-        <text class='detail'>{{location}}</text>
+        <text class='detail'>{{list.location}}</text>
       </view>
     </view> 
   </view>

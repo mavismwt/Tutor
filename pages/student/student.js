@@ -214,8 +214,11 @@ Page({
   },
   onClick: function (e) {
     var index = e.currentTarget.id// e.currentTarget
+    const data = this.data.list[index]
+    const dataStr = JSON.stringify(data);
+    console.log(dataStr)
     wx.navigateTo({
-      url: 'detail/detail?id=' + this.data.studentArray[index].id
+      url: 'detail/detail?data=' + dataStr
     })
   },
   
@@ -241,7 +244,7 @@ Page({
         if (res.statusCode == 200) {
           if (res.data.data.length != 0) {
             var q = 0
-            for (q = 0; q < res.data.length; q++) {
+            for (q = 0; q < res.data.data.length; q++) {
               const reqData = res.data.data[q]
               var listData = {}
               var list = []
@@ -252,7 +255,9 @@ Page({
 
               const timeList = reqData.publishTerm.longTerm.timeList
               const subjectList = reqData.publishTerm.subjects
-              for (i = 0; i < timeList.length; i++) {
+              const sexDeamand = sexJSON[`${reqData.publishTerm.teacherGender}`]
+
+              for (j = 0; j < timeList.length; j++) {
                 const day = weekJSON[`${timeList[j].day}`]
                 const detail = timeJSON[`${timeList[j].detail}`]
                 times = times + ' ' + day + detail
@@ -264,29 +269,40 @@ Page({
                 subjects = subjects + ' ' + subject
               }
               subjects = subjects.slice(1,subjects.length)
-              
+
               for (h = 0; h < gradeArray.length; h++) {
                 if (reqData.publishTerm.Level == gradeArray[h].id) {
                   level = gradeArray[h].object
                 }
               }
-              const sexDeamand = sexJSON[`${reqData.publishTerm.teacherGender}`]
+              console.log({
+                name: reqData.name.slice(0, 1) + '同学',
+                img: '/images/touxiang/s1.png',
+                sex: reqData.publishTerm.childGender == 'MALE' ? 'male' : 'female',
+                grade: level,
+                price: reqData.publishTerm.pay,
+                object: subjects,
+                time: times,
+                location: reqData.address == '' ? '巴黎豪庭' : reqData.address,
+                sexDeamand: sexDeamand,
+                isLongTerm: true
+              })
               if (!reqData.longTerm) {
                 listData = {
-                  name: reqData.slice(0, 1) + '同学',
+                  name: reqData.name.slice(0, 1) + '同学',
                   img: '/images/touxiang/s1.png',
                   sex: reqData.publishTerm.childGender == 'MALE' ? 'male' : 'female',
                   grade: level,
                   price: reqData.publishTerm.pay,
                   object: subjects,
                   time: times,
-                  location: reqData.address,
+                  location: reqData.address == '' ? '巴黎豪庭' : reqData.address,
                   sexDeamand: sexDeamand,
                   isLongTerm: true
                 }
               } else {
                 listData = {
-                  name: reqData.name,
+                  name: reqData.name.slice(0, 1) + '同学',
                   img: '/images/touxiang/s2.png',
                   sex: reqData.publishTerm.childGender == 'MALE' ? 'male' : 'female',
                   grade: level,

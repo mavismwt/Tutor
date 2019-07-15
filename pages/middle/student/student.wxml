@@ -83,7 +83,7 @@
       </i-cell>
       <i-input value="{{phone}}" type="number" title="手机号码" maxlength="11" placeholder="与心仪老师对接后才公布" data-name='phone'  bindblur='inputedit'/>
       <i-cell title="地址">
-        <input style='diaplay:flex;margin-left:42px;width:62vw;' value='{{address}}' placeholder='无需具体至门牌号'></input>
+        <input style='display:flex;margin-left:42px;width:62vw;' value='{{address}}' placeholder='无需具体至门牌号' data-name='phone'  bindblur='inputedit'></input>
         <image src='/images/icon/icon_location.png' style='width:30px;height:30px;' bindtap='getLocation'></image>
       </i-cell>
       <i-cell title="提供薪酬">
@@ -92,7 +92,7 @@
           <image class='add-icon' src='/images/icon/icon_question.png' bindtap='showHelp'></image>
       </i-cell>
     </i-panel>
-    <i-panel class="cell-panel" title="以下信息非必填项，但填写有助于您更大几率找到心仪的老师">
+    <i-panel class="cell-panel">
        <infoList id="settingList" wx:key="unique" 
       title="孩子学习情况"
       icon="/images/icon/icon_learning_situation.png"
@@ -112,7 +112,7 @@
       bindblur='inputedit'>
       </infoList>
     </i-panel>
-    <definedButton title="完成" bindtap='completeInfo'></definedButton>
+    <definedButton title="完成" bindtap='complete'></definedButton>
   </view>
    <cover-view class = 'cover-view'  hidden='{{isSelectHidden}}' catchtap='changeSelectStatus' z-index='100'>
     <cover-view class='objects' style="flex-direction:row;">

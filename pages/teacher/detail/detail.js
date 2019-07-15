@@ -2,6 +2,14 @@
 const app = getApp();
 var isCompleted = app.globalData.isCompleted;
 //let isIphoneX = app.globalData.isIphoneX; this.setData({ isIphoneX: isIphoneX })
+const subjectJSON = {
+  "CHINESE": "语文", "MATH": "数学", "ENGLISH": "英语", "PHYSICS": "物理", "CHEMISTRY": "化学", "BIOLOGY": "生物", "POLITICS": "政治", "HISTORY": "历史", "GEOGRAPHY": "地理"
+};
+const gradeJSON = { "PRI_1": "一年级", "PRI_2": "二年级", "PRI_3": "三年级", "PRI_4": "四年级", "PRI_5": "五年级", "PRI_6": "六年级", "MID_1": "初一", "MID_2": "初二", "MID_3": "初三", "MIDHIGH_1": "高一", "MIDHIGH_2": "高二", "MIDHIGH_3": "高三" };
+const timeJSON = { "MORN": "上午", "AFTER": "中午", "EVEN": "晚上" };
+const weekJSON = { "MON": "周一", "TUE": "周二", "WED": "周三", "THU": "周四", "FRI": "周五", "SAT": "周六", "SUN": "周日" };
+const sexJSON = { "MALE": "男", "FEMALE": "女", "BOTH": "不限" }
+const schoolJSON = { "HUST": "华中科技大学", "WHU": "武汉大学", "OTHER": "其他高校" }
 Page({
 
   /**
@@ -11,6 +19,7 @@ Page({
     isCompleted: app.globalData.isCompleted,
     isIPX: app.globalData.isIPX,
     position:'fixed',
+    list: {},
     img: '/images/touxiang/t1.png',
     id: 0,
     name: '叶老师',
@@ -120,6 +129,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const dataStr = options.data
+    const list = JSON.parse(dataStr)
+    this.setData({
+      list: list
+    })
     var that = this
     wx.getStorage({
       key: 'info',
@@ -137,18 +151,59 @@ Page({
         })
       },
     })
-    wx.request({
-      url: 'https://hd.plus1sec.cn/student/info/id',
-      header: {
-        'Authorization': 'Bearer' + ' ' + getApp().globalData.token
-      },
-      method: 'GET',
-      success: function (res) {
-        wx.hideLoading()
-        that.showList(res)
-      }
-  })
+    
   },
+
+  showList: function (res) {
+    const that = this
+    var list = {}
+    var i = 0
+    if (res.statusCode == 200) {
+        console.log(res.data.data)
+        const name = res.data.data.name.slice(0, 1) + '老师'
+        const sex = res.data.data.Gender == 'MALE' ? 'male' : 'female'
+        var price = 70
+        if (res.data.data[i].expectPay) {
+          price = res.data.data[i].expectPay
+        }
+        const school = schoolJSON[`${res.data.data.university}`]
+
+        var times = ''
+        var subjects = ''
+        var levels = ''
+
+        const timeList = res.data.data.avalible
+        const subjectList = res.data.data.subjects
+        const levelList = res.data.data.subjects[0].level
+        var j, k, l = 0
+
+        for (j = 0; j < timeList.length; j++) {
+          const day = weekJSON[`${timeList[j].day}`]
+          const detail = timeJSON[`${timeList[j].detail}`]
+          const time = day + detail
+          times = times + ' ' + time
+        }
+        times = times.slice(1, times.length)
+
+        for (k = 0; k < subjectList.length; k++) {
+          const subject = subjectJSON[`${subjectList[k].name}`]
+          subjects = subjects + ' ' + subject
+        }
+        subjects = subjects.slice(1, subjects.length)
+
+        for (l = 0; l < levelList.length; l++) {
+          const level = gradeJSON[`${levelList[l]}`]
+          levels = levels + ' ' + level
+        }
+        levels.slice(1, levels.length)
+        list= { id: res.data.data.openid, name: name, img: '/images/touxiang/t1.png', sex: sex, school: school, grade: levels, price: price, time: times, object: subjects }
+      console.log('list'+list)
+      that.setData({
+        list: list
+      })
+    }
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

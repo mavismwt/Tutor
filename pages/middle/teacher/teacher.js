@@ -9,6 +9,7 @@ var checks = [true, false, false];
 var isSelectHidden = true;
 var multiIndex = [[0, 0]];
 var date = util.formatDate(new Date());
+const timestamp = Date.parse(new Date());
 var dates = [date];
 var type = '';
 Page({
@@ -280,7 +281,7 @@ Page({
         "name": t.name,
         "university": t.singleArray[t.singleIndex].id,
         "phone": t.phone,
-        "email": "",
+        "email": timestamp,
         "grade": t.gradeArray[t.gradeIndex].id,
         "authStatus": "AUTHED",
         "Gender": t.ismale ? "MALE" : "FEMALE",
