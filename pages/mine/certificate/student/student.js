@@ -37,19 +37,22 @@ Page({
         that.setData({
           image: tempFilePaths[0]
         });
-        wx.uploadFile({
-          url: 'https://hd.plus1sec.cn/parent/auth/upload',
-          filePath: tempFilePaths[0],
-          name: 'auth',
-          header: {
-            'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
-            'content-type': 'multipart/form-data'
-          },
-          method: 'POST',
-          success: function(res) {
-            console.log(res)
-          }
-        })
+
+        // wx.uploadFile({
+        //   url: 'https://hd.plus1sec.cn/parent/auth/upload',
+        //   filePath: tempFilePaths[0],
+        //   name: 'uploadfile_ant',
+        //   formData: {
+        //     'auth': 'File'
+        //   },
+        //   header: {
+        //     'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
+        //     'content-type': 'multipart/form-data'
+        //   },
+        //   success: function(res) {
+        //     console.log(res)
+        //   }
+        // })
       }
     })
     
@@ -61,14 +64,41 @@ Page({
       data: '1',
     })
     app.globalData.isAuthed = true,
-    wx.showModal({
-      title: '提交成功',
-      content: '我们将在9:00—23:00间三小时内完成审核\n您可先浏览收藏老师信息',
-      showCancel: false,
+    // wx.showModal({
+    //   title: '提交成功',
+    //   content: '我们将在9:00—23:00间三小时内完成审核\n您可先浏览收藏老师信息',
+    //   showCancel: false,
+    //   success: function (res) {
+    //     wx.reLaunch({
+    //       url: '/pages/teacher/teacher',
+    //     })
+    //   }
+    // })
+    wx.request({
+      url: 'https://hd.plus1sec.cn/parent/auth/upload',
+      header: {
+        'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      data: {
+        auth: tempFilePaths[0]
+      },
       success: function (res) {
-        wx.reLaunch({
-          url: '/pages/teacher/teacher',
-        })
+        console.log(res.data);
+        if (res.data.status == 0) {
+          wx.showToast({
+            title: '提交失败！！！',
+            icon: 'loading',
+            duration: 1500
+          })
+        } else {
+          wx.showToast({
+            title: '提交成功！！！',//这里打印出登录成功
+            icon: 'success',
+            duration: 1000
+          })
+        }
       }
     })
   },

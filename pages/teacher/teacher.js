@@ -159,7 +159,7 @@ Page({
     var genderSelected = false
     var subjects = ['CHINESE', 'MATH', 'ENGLISH', 'PHYSICS', 'CHEMISTRY', 'BIOLOGY', 'POLITICS', 'HISTORY', 'GEOGRAPHY']
     var subjectsSelected = false
-    var university = ['HUST', 'WHU', 'OTHER']
+    var university = ['HUST']
     var universitySelected = false
     var i, j, k, h = 0
     for (i = 0; i < gradeArray.length; i++) {
@@ -171,13 +171,17 @@ Page({
         levels.push(gradeArray[i].id)
       }
     }
-    for (i = 0; i < sexArray.length; i++) {
-      if (sexArray[i].isSelected && !genderSelected) {
-        gender = []
-        gender.push(sexArray[i].id)
-        genderSelected = true
-      } else if (sexArray[i].isSelected) {
-        gender.push(sexArray[i].id)
+    if (sexArray[2].isSelected) {
+      gender = ['MALE', 'FEMALE']
+    } else {
+      for (i = 0; i < sexArray.length-1; i++) {
+        if (sexArray[i].isSelected && !genderSelected) {
+          gender = []
+          gender.push(sexArray[i].id)
+          genderSelected = true
+        } else if (sexArray[i].isSelected) {
+          gender.push(sexArray[i].id)
+        }
       }
     }
     for (i = 0; i < objectArray.length; i++) {

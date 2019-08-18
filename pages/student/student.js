@@ -89,6 +89,7 @@ Page({
       [selStr]: true
     })
     this.getSelectData();
+    console.log(searchData)
     wx.request({
       url: 'https://hd.plus1sec.cn/student/publishlist/search',
       data: searchData,

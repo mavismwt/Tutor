@@ -37,33 +37,58 @@ Page({
         that.setData({
           image: tempFilePaths[0]
         });
-        wx.uploadFile({
-          url: 'https://hd.plus1sec.cn/student/auth/upload',
-          filePath: tempFilePaths[0],
-          name: 'auth',
-          header: {
-            'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
-            'content-type': 'multipart/form-data'
-          },
-          method: 'POST',
-          success: function (res) {
-            console.log(res)
-          }
-        })
+        
       }
     })
   },
 
   submit: function () {
-    wx.setStorage({
-      key: 'isAuthed',
-      data: '1',
-    })
-    app.globalData.isAuthed = true,
-    wx.redirectTo({
-      url: '../done/done',
-    })
+    // wx.setStorage({
+    //   key: 'isAuthed',
+    //   data: '1',
+    // })
+    // app.globalData.isAuthed = true,
+      // wx.showModal({
+      //   title: '提交成功',
+      //   content: '我们将在9:00—23:00间三小时内完成审核\n您可先浏览收藏老师信息',
+      //   showCancel: false,
+      //   success: function (res) {
+      //     wx.reLaunch({
+      //       url: '/pages/teacher/teacher',
+      //     })
+      //   }
+      // })
+      console.log('lalalal')
+      const that = this
+      wx.uploadFile({
+        url: 'https://hd.plus1sec.cn/student/auth/upload',
+        filePath: that.data.image,
+        name: getApp().globalData.id,
+        formData: {
+          auth: "File",
+        },
+        header: {
+          'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
+          "Content-Type": "multipart/form-data" 
+        },
+        method: 'POST',
+        complete: function (res) {
+          console.log(res)
+        }
+      })
+    
   },
+
+  // submit: function () {
+  //   wx.setStorage({
+  //     key: 'isAuthed',
+  //     data: '1',
+  //   })
+  //   app.globalData.isAuthed = true,
+  //   wx.redirectTo({
+  //     url: '../done/done',
+  //   })
+  // },
 
   handleChange({ detail = {} }) {
     this.setData({
@@ -97,7 +122,6 @@ Page({
       url: 'https://hd.plus1sec.cn/student/auth/status/' + getApp().globalData.id,
       header: {
         'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
-        //'content-type': 'application/json'
       },
       method: 'GET',
       success: function (res) {

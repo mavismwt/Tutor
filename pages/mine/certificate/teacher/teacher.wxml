@@ -16,9 +16,10 @@
         <input class='input'></input>
       </view>
     </view>
-    <view class='confirm-line'>
-      <view class='confirm' bindtap='submit'>提交</view>
+    <form class='confirm-line' bindsubmit="submit">
+      <!-- <view class='confirm' bindtap='submit'>提交</view> -->
+      <button class='confirm' formType="submit">提交</button>
       <text class='pstitle'>提交即同意《用户协议》</text>
-    </view>
+    </form>
   </view>
 </view>
