@@ -37,6 +37,19 @@ Page({
         that.setData({
           image: tempFilePaths[0]
         });
+        wx.uploadFile({
+          url: 'https://hd.plus1sec.cn/student/auth/upload',
+          filePath: tempFilePaths[0],
+          name: 'auth',
+          header: {
+            'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
+            'content-type': 'multipart/form-data'
+          },
+          method: 'POST',
+          success: function (res) {
+            console.log(res)
+          }
+        })
       }
     })
   },
@@ -80,7 +93,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: 'https://hd.plus1sec.cn/student/auth/status/' + getApp().globalData.id,
+      header: {
+        'Authorization': 'Bearer' + ' ' + getApp().globalData.token,
+        //'content-type': 'application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log(res)
+      }
+    })
   },
 
   /**

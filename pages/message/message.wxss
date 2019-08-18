@@ -1,6 +1,5 @@
 /* pages/mine/mine.wxss */
 .container {
-  
 }
 .swiper {
   display: flex;

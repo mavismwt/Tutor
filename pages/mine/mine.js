@@ -99,6 +99,7 @@ Page({
           userInfo: app.globalData.userInfo
         })
         wx.hideLoading();
+        console.log(app.globalData.userInfo.avatarUrl)
       }
     })
     wx.getStorage({
